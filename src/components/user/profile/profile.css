@@ -1,0 +1,154 @@
+.profile {
+    padding-top: 10vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileBox {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.profileForm {
+    height: 100%;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.profileStart {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 10% 0 5%;
+
+}
+
+.profileStart div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileStart .head {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.orText {
+    font-size: 12px;
+}
+
+.aLI {
+    width: 18px;
+}
+
+.profileLog {
+    background-color: transparent;
+}
+
+.profileSection {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileSection div {
+    position: relative;
+}
+
+.imgPen {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 2px;
+    background-color: rgb(226, 225, 255);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.312);
+}
+
+.profileSection div img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+.detailLog {
+    background-color: rgba(234, 234, 234, 0.493);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    margin: 13px 0;
+    height: 42px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.detailLog div {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.detailLog div div {
+    font-weight: 600;
+}
+
+.editIcon {
+    width: 14px;
+}
+
+.profileSignLog {
+    font-size: 12px;
+}
+
+.signSpace {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 30px;
+}
+
+.gTI {
+    width: 10px;
+}
+
+.signSpace div, .signSpace div span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.signSpace div span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signOutIcon {
+    width: 14px;
+}
+
+.binIcon {
+    width: 12px;
+}
+
+.showAlertInProfile {
+    display: block;
+}

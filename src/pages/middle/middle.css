@@ -1,0 +1,82 @@
+.middle {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-top: 5%;
+}
+
+.orderDetList {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 10px 5%;
+}
+
+.orderDetList .listDiv {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.listDiv p {
+    color: rgba(51, 51, 51, 0.956);
+}
+
+.orderDetList .listDiv span {
+    color: rgba(54, 54, 54, 0.679);
+    font-weight: 600;
+}
+
+.orderDetList div span {
+    color: rgba(70, 70, 70, 0.833);
+    font-size: 14px;
+}
+
+.orderDet {
+    margin: 50px 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.orderDet h2 {
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.orderDet p {
+    margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 900px) {
+    .orderDet {
+        margin: 5%;
+    }
+
+    .orderDet h2 {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 844px) {
+    .orderDetList {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .orderDet {
+        margin-top: 10%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    
+    .orderDet {
+        margin-top: 10%;
+    }
+
+    .orderDet p {
+        font-weight: 400;
+    }
+
+} 

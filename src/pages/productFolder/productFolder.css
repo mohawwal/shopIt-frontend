@@ -1,0 +1,170 @@
+.headTop {
+    padding: 4vh;
+}
+
+.productFolder {
+    height: 100%;
+}
+
+.itemOption h4 {
+    text-align: right;
+    padding: 10px;
+}
+
+.prodFold {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-rows: repeat(auto, minmax(200px, 350px));
+    grid-auto-flow: row;
+}
+.folder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.67);
+    padding: 10px;
+    border: 0.9px solid rgba(128, 128, 128, 0.178);
+    max-width: 300px;
+    max-height: 340px;
+}
+
+.sliderContainer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.t-slider {
+    width: 50px;
+
+}
+
+.paginationContainer {
+    margin-top: 10%;
+}
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.pagDiv {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.pagNoBtn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    
+}
+
+.pagBtn {
+    padding: 1px 10px;
+    border-radius: 20px;
+    
+}
+
+.prevActive {
+    background-color: rgb(114, 114, 114);
+    color: white;
+}
+
+.sliderContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.filterSlide {
+    margin: 25px;
+    width: 35px;
+    height: 35px;
+    background-color: rgb(242, 242, 242);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    position: relative;
+}
+
+.filterIcon {
+    font-size: 18px;
+    width: 100%;
+}
+
+.filterFolder {
+    position: absolute;
+    background-color: rgba(141, 140, 140, 0.947);
+    padding: 10px;
+    right: 0;
+    width: 100%;
+    max-width: 450px;
+    margin-top: 170px;
+}
+
+.filterFolder form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.filterInput, .filterBtn {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    gap: 10px;
+
+}
+
+.filterInput input {
+    border: none;
+    border-radius: 5px;
+    height: 35px;
+    padding: 10px;
+    min-width: 100px;
+}
+
+.filterBtn {
+    margin-top: 20px;
+}
+
+.filterBtn button {
+    width: 120px;
+    border: none;
+    padding: 5px 10px;
+    background-color: rgba(81, 52, 0, 0.84);
+    border-radius: 13px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+
+.tryPeg {
+    background-color: rgb(230, 230, 230);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    padding: 5px 10px;
+    border-radius: 25px;
+}
+
+
+
+@media screen and (min-width: 500px) {
+    .prodFold {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 3fr));
+    }
+}
+

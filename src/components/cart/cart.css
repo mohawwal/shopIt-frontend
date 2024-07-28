@@ -1,0 +1,421 @@
+.cart {
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 7vh;
+    max-width: 1200px;
+    
+}
+
+.cartList {
+    width: 100%;
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid rgba(119, 119, 119, 0.207);
+    margin-bottom: 10px;
+}
+
+.cartItems {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    height: 100%;
+}
+
+.cartItemImg {
+    width: 140px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cartItemImg img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+    padding: 5px;
+}
+
+.cartItemProp {
+    width: 100%;
+    padding: 0px 5px;
+}
+
+.itemProp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-bottom: 0.1px dashed rgba(221, 221, 221, 0.701);
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+.itemStart {
+    align-items: flex-start;
+    border-bottom: none;
+    font-size: 13px;
+}
+
+.propsPrice {
+    color: rgba(19, 3, 83, 0.56);
+    font-size: 14px;
+}
+
+.itemUp {
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.subTotalPrice {
+    font-weight: 600;
+    font-size: 14px;
+    color: rgba(19, 3, 83, 0.812);
+}
+
+.cancelIcons {
+    width: 15px;
+}
+
+.plainProp {
+    font-weight: 200;
+    font-size: 14px;
+    height: 100%;
+    width: 90%;
+}
+
+.itemDownBtn button, .itemDownBtn input {
+    width: 24px;
+    height: 30px;
+    border: none;
+    text-align: center;
+    font-weight: 500;
+    background-color: white;
+}
+
+.itemDownBtn .leftBtn {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top: 0.2px solid rgb(124, 124, 124);
+    border-left: 0.2px solid rgb(124, 124, 124);
+    border-bottom: 0.2px solid rgb(124, 124, 124);
+    border-right: 0.2px solid rgba(124, 124, 124, 0.711);
+}
+
+.itemDownBtn input {
+    border-top: 0.2px solid rgb(124, 124, 124);
+    border-bottom: 0.2px solid rgb(124, 124, 124);
+}
+
+.itemDownBtn .rightBtn {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top: 0.2px solid rgb(124, 124, 124);
+    border-right: 0.2px solid rgb(124, 124, 124);
+    border-bottom: 0.2px solid rgb(124, 124, 124);
+    border-left: 0.2px solid rgba(124, 124, 124, 0.711);
+}
+
+.spaceB {
+    padding: 5px 0;
+}
+
+.spaceC {
+    padding: 3px 0 7px;
+}
+
+.spaceD {
+    padding: 3px 0 7px;
+    border: none;
+}
+
+.shoppingCart {
+    font-size: 18px;
+    text-align: center;
+    background-color: rgb(5, 0, 40);
+    padding: 10px 0;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.cartScreenII, .headingII {
+    display: none;
+}
+
+.cartSections {
+    padding: 2px 10px;
+}
+
+.OrderDetails {
+    text-align: right;
+    border: 0.1px solid rgba(124, 124, 124, 0.425);
+    border-radius: 5px;
+    padding: 3%;
+    margin: 2%;
+}
+
+.orWay {
+    font-weight: 600;
+}
+
+.orderHead {
+    font-size: 18px;
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+}
+
+.orInput {
+    margin: 20px 0;
+    width: 100%;
+    justify-content: right;
+    max-width: 100%;
+}
+
+.orInput input {
+    max-width: 200px;
+    border-radius: 3px;
+    background-color: rgba(238, 238, 238, 0.745);
+}
+
+.orInput button {
+    max-width: 60px;
+    background-color: rgba(217, 217, 217, 0.781);
+    color: rgb(14, 0, 64);
+}
+
+.ORC, .listOrderSpaces {
+    padding-top: 15px;
+}
+
+.listOrderSpaces {
+    border-top: 1px dashed rgba(121, 121, 121, 0.46);
+}
+
+.ORC p {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.checkOut {
+    margin: 1px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkOut button {
+    padding: 10px 15px;
+    border: none;
+    font-weight: 600;
+    background-color: rgb(0, 7, 53);
+    color: white;
+}
+
+.orderFlex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.underlineOrder {
+    border-bottom: 0.1px dashed rgba(124, 124, 124, 0.482);
+    padding: 15px 0 15px;
+}
+
+.listOrderSpaces {
+    margin: 1px 0;
+    font-size: 12px;
+}
+
+.inputOrderList {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 80%;
+    justify-content: right;
+    margin: 5px 0 15px;
+}
+
+.inputList {
+    display: flex;
+    align-items: right;
+    gap: 5px;
+    width: 100%;
+    justify-content: right;
+    margin: 5px 0 10px;
+    font-size: 12px;
+}
+
+.EmptyCart {
+    color: rgba(1, 1, 123, 0.753);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.oDText {
+    font-size: 14px;
+}
+
+.oDLarge {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(2, 2, 62);
+}
+
+.itemDown {
+    display: flex;
+    justify-content: right;
+    flex-direction: row;
+}
+
+@media screen and (min-width: 780px) {
+    .cartList {
+        display: none;
+    }
+
+    .cartScreenII, .headingII {
+        display: block;
+    }
+
+    .cartScreenII {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 15px;
+        border-bottom: 0.5px dashed rgba(123, 123, 123, 0.363);
+        padding: 10px 0;
+        max-width: 999px;
+        justify-content: center;
+    }
+
+    .cartScreenII div {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .itemDownBtnII button, .itemDownBtnII input {
+        width: 30px;
+        height: 35px;
+        border: none;
+    }
+
+    .itemDownBtnII input {
+        border-top: 0.1px solid rgb(124, 124, 124);
+        border-bottom: 0.1px solid rgb(124, 124, 124);
+    }
+
+    .headingII {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        font-size: 12px;
+        gap: 15px;
+        margin-bottom: 10px;
+        border-bottom: 0.5px solid rgba(120, 120, 120, 0.34);
+        padding-bottom: 20px;
+        max-width: 999px;
+    }
+
+    .headingII div {
+        height: 15px;
+        text-align: start;
+        font-size: 16px;
+    }
+
+    .cartItemImgII {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cartItemImgII img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    .cancelII {
+        width: 5%;
+    }
+
+    .cartImgII {
+        min-width: 40px;
+        min-width: 70px;
+    }
+
+    .cartProdII {
+        width: 39%;
+    }
+
+    .cartPriceII {
+        width: 12%;
+        font-size: 14px;
+    } 
+
+    .cartQtyII {
+        width: 15%;
+    }
+
+    .cartSubII {
+        width: 12%;
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+    .allCartProp {
+        width: 100%;
+        gap: 15px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .cartSections {
+        width: 63%;
+        padding: 2px 10px;
+    }
+
+    .OrderDetails {
+        width: 35%;
+        padding: 1%;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .allCartProp {
+        width: 100%;
+        gap: 10px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .headingII {
+        padding-top: 20px;
+    }
+
+    .cartSections {
+        width: 65%;
+        padding: 2px 10px;
+    }
+
+    .OrderDetails {
+        width: 35%;
+        padding: 10px;
+        height: 100%;
+    }
+
+}

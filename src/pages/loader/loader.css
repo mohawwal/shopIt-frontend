@@ -1,0 +1,9 @@
+.loadingGif {
+    z-index: 35;
+    width: 100px;
+    margin: auto;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

@@ -1,0 +1,62 @@
+.fullNav2 {
+    z-index: 30;
+}
+
+.navBack {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navBack p {
+    text-decoration: underline;
+    margin: auto 0;
+    font-size: 12px;
+}
+
+.linkList {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    text-decoration: none;
+    color: black;
+}
+
+.linkList div p {
+    font-size: 14px;
+}
+
+.navBurger2 {
+    padding: 20px;
+}
+
+.arrowIcon {
+    width: 15px;
+}
+
+.burgerList2 {
+    margin-top: 8vh;
+}
+
+.blurNav2 {
+    background-color: rgba(0, 0, 0, 0.867);
+}
+
+.imagesShowNav {
+    height:     150px;
+    margin-bottom: 20px;
+    
+}
+
+.imagesShowNav img {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    border-radius: 10px;
+}
+
+
+.productLi {
+    gap: 2px;
+
+}

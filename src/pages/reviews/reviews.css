@@ -1,0 +1,17 @@
+.reviewForAll {
+    padding-top: 6%;
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+.allReview {
+    width: 95%;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 10px 0 ;
+}
+
+.tickLine {
+    background-color: rgba(103, 103, 103, 0.688);
+}

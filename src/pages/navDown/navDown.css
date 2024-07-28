@@ -1,0 +1,45 @@
+.navDown {
+    background-color: rgba(255, 255, 255, 0.992);
+    width: 100vw;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    border-top: 0.5px dashed rgba(0, 0, 0, 0.289);
+}
+
+.navDown {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.navDownComp, .downAccount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.navDownComp div {
+    font-size: 12px;
+}
+
+.navDownComp .icons {
+    font-weight: 700;
+}
+
+.downCartLink {
+    height: 90%;
+}
+
+.downNavNone {
+    display: none;
+}
+
+@media screen and (min-width: 550px) {
+    .bottomNav {
+      display: none;
+    }
+  }

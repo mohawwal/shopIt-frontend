@@ -1,0 +1,433 @@
+
+
+.productDetails {
+    background-color: rgb(255, 255, 255);
+}
+
+.headColor {
+    width: 100%;
+    height: 8vh;
+}
+
+.backArrowPD {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: row;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.PD {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.backArrowPD span {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.PDSelectionBag {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 12px;
+}
+
+.PDFolderImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+}
+
+.PDImageFolder {
+    width: 50%;
+}
+
+.PDImage {
+    width: 90%;
+    height: 60vh;
+}
+
+.PDImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+.PDDetailsFolder {
+    width: 50%;
+}
+
+.PDImageFolder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid rgb(243, 243, 243);
+}
+
+.icons {
+    width: 20px;
+}
+
+.accordion {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.accordion-item {
+    text-align: center;
+}
+
+.activeProductContent {
+    width: 100%;
+}
+
+.PDCat {
+    margin: 30px 0;
+}
+
+.prodsCat {
+    background-color: rgba(206, 205, 205, 0.281);
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.detailsName {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+.addLove {
+    background-color: rgba(206, 205, 205, 0.337);
+    padding: 4px 10px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+    width: 30%;
+    width: 124px;
+}
+
+.addLove span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.detailsName .PDName {
+    font-size: 16px;
+    font-weight: 600;
+    width: 70%;
+}
+
+.PDReview {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 7px;
+    flex-direction: row;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+.PDReview div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.DRate {
+    font-weight: 600;
+}
+
+.commentsPD {
+    margin: 10px 0;
+}
+
+.PDPrice {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.DPrice {
+    font-size: 18px;
+}
+
+.offPercent {
+    background-color: rgba(255, 0, 0, 0.826);
+    color: white;
+    padding: 2px 5px;
+    font-size: 10px;
+    border: none;
+    border-radius: 18px;
+}
+
+.PDPriceComment {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.PDCart {
+    background-color: rgba(27, 17, 41, 0.842);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 19px;
+    font-weight: 500;
+    text-align: center;
+    width: 50%;
+    height: 30px;
+    max-width: 200px;
+    min-width: 100px;
+}
+
+.underline {
+    width: 99%;
+    margin: 15px auto;
+    height: 1px;
+    background-color: rgba(223, 223, 223, 0.785);
+}
+.accordion {
+    width: 100%;
+}
+
+.spanAcc {
+    background-color: rgba(181, 181, 181, 0.304);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 2px;
+    width: 90%;
+    max-width: 500px;
+    padding: 5px;
+    border-radius: 18px;
+}
+
+.accordions-item {
+    border: none;
+}
+
+.accordions-item-button {
+    border: none;
+    cursor: pointer;
+    padding: 2px 12px;
+    border-radius: 13px;
+    background-color: transparent;
+}
+
+.accordions-item-button.active {
+    background-color: #ffffff; 
+}
+
+
+.PDContent {
+    margin: 15px 0 18px;
+}
+
+.PDRnR {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.PRnR {
+    font-size: 12px;
+}
+
+.PDR {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: black;
+}
+
+.DRatings {
+    margin: 10px 0;
+    border: 1px solid rgba(150, 150, 150, 0.221);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.reviewD {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.stars {
+    width: 20px;
+    height: 20px;
+    color: rgb(214, 182, 0);
+}
+
+.dotIcon {
+    width: 7px;
+    height: 7px;
+}
+
+.starNo {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+}
+
+.reviewRatingStar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qtyCart {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: right;
+    gap: 5px;
+    margin: 10px 0;
+    height: 40px;
+    width: 100%;
+}
+
+.prodDetailsQty {
+    height: 25px;
+    width: 20%;
+    min-width: 80px;
+}
+
+.prodDetailsQty input {
+    text-align: center;
+    width: 25px;
+    height: 100%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.373);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.prodDetailsQty button {
+    height: 100%;
+    width: 25px;
+    border: none;
+    color: #ffffff;
+    background-color: rgba(11, 2, 35, 0.788);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.btnRight {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.btnLeft {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+@media screen and (min-width: 380px) {
+    .PDR::before {
+        content: 'View All Reviews';
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .PDSelectionBag {
+        flex-direction: column;
+        width: 100%;
+    }
+    .PDImageFolder, .PDDetailsFolder {
+        width: 100%;
+    }
+    .detailsName .PDName {
+        font-size: 12spx;
+        font-weight: 500;
+    }
+    .PDFolderImage {
+        width: 100%;
+    }
+    .PDImage {
+        width: 100%;
+        height: 500px;
+    }
+
+    .PDImage img {
+        width: 100%;
+        height: 100%;
+    }
+    
+}
+
+@media screen and (min-width: 450px) and (max-width: 798px) {
+
+    .accordions-item-button.CProduct::before {
+        content: 'Product ';
+    }
+   .accordions-item-button.CShipping::after {
+        content: ' Information';
+    }
+}
+
+
+@media screen and (min-width: 988px) {
+    .PDSelectionBag {
+         width: 100%;
+     }
+ 
+    .accordions-item-button.CProduct::before {
+         content: 'Product ';
+     }
+    .accordions-item-button.CShipping::after {
+         content: ' Information';
+     }
+    
+ }
+
+ @media screen and (min-width: 1200px) {
+    .PDSelectionBag {
+         width: 80%;
+         max-width: 1100px;
+     }
+     .PDImage {
+        height: 70vh;
+     }
+}
+ 

@@ -1,0 +1,69 @@
+.frontProds2 {
+  height: 100%;
+  width: 100%;
+}
+
+.allShowOff2 {
+  height: 90%;
+}
+
+.prodImg img {
+  height: 195px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 1px;
+}
+
+.linkProd {
+  height: 90%;
+}
+
+.prodDet {
+  margin-top: 10px;
+}
+
+.prodPrice .price {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.allT .allName {
+  font-size: 15px;
+}
+
+.allT .allStars {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cart {
+  font-size: 25px;
+  color: rgb(1, 1, 52);
+}
+
+.basket {
+  background-color: rgb(243, 243, 243);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.allTDs {
+  height: 18%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  gap: 3px;
+  margin-top: 10px;
+}
+
+.prodCartIcon {
+  font-size: 22px;
+  color: rgb(0, 0, 54);
+}

@@ -1,0 +1,91 @@
+.signOutAlert {
+    background-color: rgba(146, 166, 237, 0.17);
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logOut {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2.5%;
+    border-radius: 10px;
+    gap: 18px;
+    width: 350px;
+    color: black;
+}
+
+.logoutImg {
+    background-color: rgba(119, 119, 226, 0.245);
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoutImg img {
+    width: 24px;
+    height: 24px;
+}
+
+.logoutDetails {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.logoutDetails h4 {
+    font-size: 16px;
+    text-align: center;
+}
+
+.logoutDetails p {
+    font-size: 12px;
+    text-align: center;
+}
+
+.logoutBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15%;
+    flex-direction: row;
+    width: 100%;
+}
+
+.logoutBtn .cancel, .logoutBtn .out {
+    background-color: rgba(238, 236, 236, 0.719);
+    padding: 8px 30px;
+    font-size: 13px;
+    border-radius: 10px;
+} 
+
+.logoutBtn .cancel:hover, .logoutBtn .out:hover,
+.logoutBtn .cancel:focus, .logoutBtn .out:focus {
+    background-color: rgba(255, 0, 0, 0.818);
+    color: white;
+}
+
+.noLogout {
+    display: none;
+}
+
+@media screen and (max-width: 450px) {
+    .logOut {
+        max-width: 280px;
+    }
+    .logoutBtn {
+        gap: 10%;
+    }
+}

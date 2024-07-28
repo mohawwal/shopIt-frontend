@@ -1,0 +1,223 @@
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 100vh;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 13px;
+}
+
+.toe {
+    font-size: 13px;
+}
+
+.avatarReg {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginForm {
+    max-width: 550px;
+    height: 100%;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.showCover {
+    display: none;
+}
+
+.logText .head {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2rem;
+}
+
+.google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.256);
+    height: 44px;
+    font-size: 13px;
+    border-radius: 5px;
+    margin: 6% 0;
+}
+
+.google img {
+    width: 25px;
+}
+
+.orLine {
+    width: 100%;
+    margin: 15px auto 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.orLine .line {
+    height: 0.5px;
+    width: 43%;
+    background-color: rgba(0, 0, 0, 0.132);
+}
+
+
+.nameAs {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.nameAs .as {
+    color: #ea5555;
+}
+
+.nameAs label {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.688);
+    padding: 5px 0;
+}
+
+.spaceHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.spaceHeader p {
+    color: rgb(57, 0, 110);
+}
+
+.space {
+    margin: 20px 0 20px;
+}
+
+.space input {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btnPss {
+    width: 100%;
+    height: 40px;
+    margin: 15px 0 10px;
+}
+
+.btnPss button {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(86, 29, 140);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.signLogFolder {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.SignLog {
+    font-weight: 600;
+    font-size: 14px;
+    color: rgb(73, 2, 102);
+}
+
+.inputField {
+    display: flex;
+    align-items: center;
+    border: 0.5px solid rgba(0, 0, 0, 0.442);
+    width: 100%;
+    height: 42px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.errorMsg {
+    color: #ea5555;
+    font-size: 12px;
+    text-align: right;
+}
+
+.avatarRegPick {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.avatarRegPick input {
+    background-color: transparent;
+}
+
+.nas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+.forgotPass {
+    font-weight: 700;
+    color: rgba(1, 1, 70, 0.971);
+}
+
+.forgetPassword {
+    width: 90%;
+    margin: 10px auto;
+    max-width: 500px;
+}
+
+.fpHead {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 10% 0;
+}
+
+.fpButton {
+    width: 40%;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    background-color: rgb(14, 2, 82);
+    color: white;
+    margin: 5% auto;
+}
+
+@media screen and (min-width: 982px) {
+    .login {
+        width: 100%;
+    }
+
+    .loginForm {
+        width: 32%;
+        margin: 0 30px;
+        max-width: 450px;
+    }
+
+    .showCover {
+        display: block;
+        width: 68%;
+        height: 100%;
+        background-color: red;
+    }
+}
