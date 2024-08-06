@@ -89,6 +89,12 @@ function App() {
 						exact
 					/>
 
+					<Route
+						path="/shipping"
+						element={<Shipping />}
+						exact
+					/>
+
 					{/* Protected Route if not authenticated user */}
 					<Route element={<ProtectedRoute />}>
 						<Route
@@ -109,10 +115,6 @@ function App() {
 							exact
 						/>
 
-						<Route
-							path="/shipping"
-							element={<Shipping />}
-						/>
 					</Route>
 				</Routes>
 				<Footer />

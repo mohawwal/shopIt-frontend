@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./user.css";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import { login, clearErrors } from "../../actions/userAction";
@@ -9,7 +9,6 @@ import googleIcon from "../../assets/images/google_icon.png";
 const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const location = useLocation()
 	const alert = useAlert();
 
 	const [email, setEmail] = useState("");
@@ -25,13 +24,9 @@ const Login = () => {
 		(state) => state.auth,
 	);
 
-	const redirect = location.search ? location.search.split('=')[1] : '/'
-
-	
-
 	useEffect(() => {
 		if (isAuthenticated) {
-			navigate(redirect);
+			navigate('/');
 			alert.success("Logged In successful");
 		}
 
@@ -39,8 +34,7 @@ const Login = () => {
 			alert.error(error)
 			dispatch(clearErrors());
 		}
-	}, [alert, dispatch, error, isAuthenticated, navigate, redirect]);
-
+	}, [alert, dispatch, error, isAuthenticated, navigate]);
 
 
 	return (

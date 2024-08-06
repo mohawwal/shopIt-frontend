@@ -67,8 +67,12 @@ const Navbar = () => {
 			navClass = "navOut";
 		} else if (location.pathname.includes("/cart")) {
 			navClass = "navOut";
-		} else if (location.pathname.includes("/password/Update")) {
+		} else if (location.pathname.includes("/shipping")) {
 			navClass = "navOut";
+		} else if (location.pathname.includes("/order")) {
+			navClass = "navOut";
+		}else if (location.pathname.includes("/password/Update")) {
+			navClass = "minNonNav";
 		} else if (location.pathname === "/login") {
 			navClass = "navNone";
 		} else if (location.pathname === "/register") {
@@ -77,7 +81,9 @@ const Navbar = () => {
 			navClass = "navNone";
 		} else if (location.pathname === "/me") {
 			navClass = "minNonNav";
-		}
+		} else if (location.pathname === "/me/Update") {
+			navClass = "minNonNav";
+		} 
 
 		setNavStyle(navClass);
 
@@ -120,7 +126,7 @@ const Navbar = () => {
 			<div className="preNavMenu">
 				<div onClick={handleNav}>
 					<span>
-						<Hamburger className="icons" />
+						<Hamburger className="navIcon" />
 					</span>
 					<span className="menuS">MENU</span>
 				</div>
@@ -159,7 +165,7 @@ const Navbar = () => {
 					onClick={handleNav}
 				>
 					<div>
-						<Hamburger className="icons hamburgerIcon" />
+						<Hamburger className="navIcon" />
 					</div>
 					<span className="menuS">MENU</span>
 				</div>

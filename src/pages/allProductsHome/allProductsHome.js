@@ -7,13 +7,14 @@ import homePix from '../../assets/images/image1.jpg'
 import { Link } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 import { BsCart4 } from "react-icons/bs";
+import { addItemToCart } from '../../actions/cartAction'
 
 const AllProductsHome = () => {
     const dispatch = useDispatch()
-    const alert = useAlert
+    const alert = useAlert()
 
     const {loading, error, products } =useSelector(state => state.allProducts)
-
+    
     useEffect(() => {
         if(error) {
             alert.error(error)
@@ -23,7 +24,12 @@ const AllProductsHome = () => {
         dispatch(getAllProducts())
     },[alert, dispatch, error])
 
+    const quantity = 1
 
+    const addToCart = (id) => {
+        dispatch(addItemToCart(id, quantity))
+        alert.success("Item Added To Cart")
+    }
 
     if(loading) {
         return(
@@ -45,7 +51,7 @@ const AllProductsHome = () => {
                                     <div className='allName'>{product.name && product.name.length > 13 ? `${product.name.toUpperCase().slice(0, 13)}...` : product.name.toUpperCase()}</div>
                                     <div className='allStars'>₦{product.price}</div>
                                 </div>
-                                <div className='basket'><BsCart4 className='basketIcon' /></div>
+                                <div onClick={() => addToCart(product._id)} className='basket'><BsCart4 className='basketIcon' /></div>
                             </div>
                         </div>
                     )

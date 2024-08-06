@@ -36,29 +36,29 @@ const NavDown = () => {
 					to="/"
 					className="downAccount"
 				>
-					<Home className="icons" />
-					<div>Home</div>
+					<Home className="iconsDown" />
+					<p className="pText">Home</p>
 				</Link>
 			</div>
 			<div className="navDownComp">
-				<ShopIcon className="icons" />
-				<div>Shop</div>
+				<ShopIcon className="iconsDown" />
+				<p className="pText">Shop</p>
 			</div>
 			<div className="navDownComp">
-				<FavoriteStar className="icons" />
-				<div>WishList</div>
+				<FavoriteStar className="iconsDown" />
+				<p className="pText">WishList</p>
 			</div>
 			<div className="navDownComp">
-				<Orders className="icons" />
-				<div>Order</div>
+				<Orders className="iconsDown" />
+				<p className="pText">Order</p>
 			</div>
 			<div className="navDownComp">
 				<Link
 					to="/me"
 					className="downAccount"
 				>
-					<UserIcon className="icons" />
-					<div>Profile</div>
+					<UserIcon className="iconsDown" />
+					<p className="pText">Profile</p>
 				</Link>
 			</div>
 		</div>

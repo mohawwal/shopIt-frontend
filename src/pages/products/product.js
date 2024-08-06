@@ -26,7 +26,7 @@ const Product = ({product}) => {
               </Link>
               <div className='allTDs'>
                 <div className='allT'>
-                    <div className='allName'>{product.name && product.name.length > 10 ? `${product.name.toUpperCase().slice(0, 10)}...` : product.name.toUpperCase()}</div>
+                    <div className='allName'>{product.name && product.name.length > 10 ? `${product.name.toUpperCase().slice(0, 15)}...` : product.name.toUpperCase()}</div>
                     <div className='allStars'>₦{product.price}</div>
                 </div>
                 <div className='basket' onClick={() => addToCart(product._id)}><BsCart4 className='prodCartIcon' /></div>

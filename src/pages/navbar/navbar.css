@@ -5,8 +5,8 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 50px;
-    padding: 15px 3% 8px;
+    height: 3rem;
+    padding: 2rem 3% 1.5rem;
     position: fixed;
     z-index: 30;
     background: transparent;
@@ -23,7 +23,7 @@
   .navBar.active {
     background-color: rgba(255, 255, 255, 0.877);
     color: black;
-    box-shadow: 0 8px 10px -4px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.6rem 0.8rem -0.35rem rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
   }
 
 .contactNav {
@@ -35,7 +35,11 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
-    gap: 5px;
+    gap: 0.35rem;
+}
+
+.contactNavbar p {
+    font-size: 0.9rem;
 }
 
 .contactNav p {
@@ -43,16 +47,16 @@
 }
 
 .addIcon {
-    width: 20px;
+    width: 1.2rem;
 }
   
 
 .navText {
     width: 30%;
-    font-size: 23px;
+    font-size: 1.5rem;
     font-weight: 700;
     text-align: center;
-    letter-spacing: 4px;
+    letter-spacing: 0.3rem;
 }
 
 .navIcons {
@@ -60,25 +64,22 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 10px;
+    gap: 0.6rem;
     height: 100%;
-}
-
-.navIcons .icons {
-    width: 20px;
 }
 
 .navMenu {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 0.4rem;
     position: relative;
     cursor: pointer;
+    margin-bottom: 0.3rem;
 }
 
 .navIcon {
-    width: 15px;
+    width: 1rem;
 }
 
 .navMenu div, .navMenu span {
@@ -99,7 +100,7 @@
 
 .blurNav {
     width: 50%;
-    background-color: rgba(255, 255, 255, 0.766);
+    background-color: rgba(11, 14, 89, 0.436);
 }
 
 .navBurger {
@@ -108,11 +109,11 @@
 }
 
 .profileAvatar {
-    width: 30px;
-    height: 30px;
+    width: 1.9rem;
+    height: 1.9rem;
     background-color: wheat;
     border-radius: 50%;
-    border: 2px solid rgb(255, 255, 255);
+    border: 0.2rem solid rgb(255, 255, 255);
 }
 
 .profileAvatar img {
@@ -129,27 +130,27 @@
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.7rem;
 }
 
 .dropBar .listBar {
     background-color: rgb(202, 211, 232);
-    padding: 10px 8px;
-    border-radius: 8px;
+    padding: 0.8rem 0.6rem;
+    border-radius: 0.8rem;
     font-weight: 500;
     color: black;
-    font-size: 14px;
+    font-size: 0.15rem;
 }
 
 .pp img {
     object-fit: cover;
     object-position: center;
-    width: 40px;
-    height: 40px;
+    width: 2.2rem;
+    height: 2.2rem;
     border-radius: 50%;
     top: 0;
     right: 0;
-    border: 2px solid rgb(4, 11, 155);
+    border: 0.2rem solid rgb(4, 11, 155);
 }
 
 .userIcon {
@@ -160,13 +161,13 @@
 .dropBar {
     position: fixed;
     background-color: rgba(164, 164, 205, 0.663);
-    min-width: 180px;
+    min-width: 10.4rem;
     width: 45%;
-    padding: 10px;
+    padding: 0.8rem;
     top: 0;
     right: 0;
     margin: 7vh 2%;
-    border-radius: 10px;
+    border-radius: 0.8rem;
 }
 
 .signs {
@@ -174,8 +175,8 @@
 }
 
 .cartBag {
-    height: 35px;
-    width: 28px;
+    height: 2.4rem;
+    width: 1.9rem;
     display: flex;
     align-items: center;
     justify-content: right;
@@ -190,12 +191,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 18px;
-    height: 18px;
+    width: 1.2rem;
+    height: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 0.9rem;
     border-radius: 50%;
     background-color: rgba(16, 16, 161, 0.396);
     text-align: center;
@@ -224,7 +225,7 @@
 }
 
 .hamburgerIcon {
-    width: 28px;
+    width: 1.3rem;
 }
 
 .preNavMenu {
@@ -237,7 +238,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 5px;
+    gap: 0.3rem;
 }
 
 .preNavMenu div span {
@@ -247,9 +248,17 @@
 }
 
 .menuS {
-    font-size: 12px;
+    font-size: 0.9rem;
 }
 
+
+.navIcons {
+    gap: 0.8rem;
+}
+
+.navIcon {
+    width: 1.28rem;
+} 
 
 @media screen and (min-width: 1000px) {
     .navBurger {
@@ -258,22 +267,17 @@
     .blurNav {
         width: 60%;
     }
-
 }
-
 
 @media screen and (max-width: 700px) {
     .navMenu span {
         display: none;
     }
     .navBar {
-        padding: 28px 10px;
+        padding: 1.8rem 0.8rem;
     }
     .navbar, .blurNav, .preNavMenu {
         display: none;
-    }
-    .navIcons {
-        gap: 10px;
     }
     .navBurger {
         width: 100%;
@@ -289,28 +293,13 @@
         display: block;
     }
 
-   .locationSpace {
-    margin: 0 10px;
-    display: block;
-    border-radius: 15px;
-    padding: 5px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    text-align: center;
-   }
-
-    .navText {
-        width: 30%;
-        font-size: 18px;
-        font-weight: 600;
-        text-align: center;
-        letter-spacing: 2px;
-    }
-
     .minNonNav {
         display: none;
     }
 
-}
+    .navText {
+        font-size: 1.3rem;
+        letter-spacing: 0.2rem;
+    }
+
+} 

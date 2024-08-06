@@ -1,6 +1,7 @@
 .frontProds2 {
   height: 100%;
   width: 100%;
+  max-width: 175px;
 }
 
 .allShowOff2 {
@@ -8,7 +9,7 @@
 }
 
 .prodImg img {
-  height: 195px;
+  max-height: 175px;
   object-fit: cover;
   object-position: center;
   border-radius: 1px;
@@ -24,21 +25,23 @@
 
 .prodPrice .price {
   margin-top: 10px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .allT .allName {
-  font-size: 15px;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.797);
+  overflow: hidden;
 }
 
 .allT .allStars {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 1rem;
+  color: rgb(18, 2, 65);
+  font-weight: 500;
 }
 
 .cart {
-  font-size: 25px;
+  font-size: 2rem;
   color: rgb(1, 1, 52);
 }
 
@@ -64,6 +67,6 @@
 }
 
 .prodCartIcon {
-  font-size: 22px;
+  font-size: 1.2rem;
   color: rgb(0, 0, 54);
 }

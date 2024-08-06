@@ -22,6 +22,8 @@ const Footer = () => {
             footerClass = "footerNone"
         } else if (location.pathname === '/password/Update') {
             footerClass = "footerNone"
+        } else if (location.pathname === '/me/Update') {
+            footerClass = "footerNone"
         } 
 
         setFooterStyle(footerClass)

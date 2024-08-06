@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPassword, clearErrors } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-import { useFormik, FormikProvider, Field } from "formik";
+import * as Yup from "yup";
+import { useFormik, FormikProvider, Field, ErrorMessage } from "formik";
 import { useNavigate, useParams } from "react-router-dom";
 
 const ResetPassword = () => {
@@ -27,12 +28,26 @@ const ResetPassword = () => {
 		}
 	}, [Navigate, alert, dispatch, error, success]);
 
+	const validationSchema = Yup.object().shape({
+		confirmPassword: Yup.string()
+		  .min(8, "Password must be at least 8 characters long")
+		  .matches(/(?=.*\d)/, "Password must contain one numeric digit")
+		  .matches(/(?=.*[a-z])/i, "Password must contain one lowercase letter")
+		  .matches(/(?=.*[A-Z])/i, "Password must contain one uppercase letter")
+		  .matches(
+			/(?=.*[@$!%*?&.])/i,
+			"Password must contain one special character",
+		  )
+		  .required("Password is required"),
+	  });
+
 	const formik = useFormik({
 		initialValues: {
 			password: "",
 			confirmPassword: "",
 		},
 		validateOnBlur: true,
+		validationSchema: validationSchema,
 		onSubmit: (values) => {
 			const formData = new FormData();
 			formData.append("password", values.password);
@@ -84,6 +99,11 @@ const ResetPassword = () => {
 									value={formik.values.confirmPassword}
 									onChange={formik.handleChange}
 								/>
+								<ErrorMessage
+										name="confirmPassword"
+										component="div"
+										className="errorMsg"
+									/>
 							</div>
 						</div>
 						<button

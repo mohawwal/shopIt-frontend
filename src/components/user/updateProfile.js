@@ -7,6 +7,7 @@ import avatarPrev from "../../assets/images/avatarPreview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { updateProfile, loadUser, clearErrors } from "../../actions/userAction";
 import { UPDATE_PROFILE_RESET } from "../constants/userConstants";
+import ArrowLeft from "../../assets/svg/arrowLeft";
 
 const UpdateProfile = () => {
 	const dispatch = useDispatch();
@@ -16,8 +17,8 @@ const UpdateProfile = () => {
 	const { user } = useSelector((state) => state.auth);
 	const { error, isUpdated, loading } = useSelector((state) => state.user);
 
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
+	const [name, setName] = useState(user.name);
+	const [email, setEmail] = useState(user.email);
 	const [selectedAvatar, setSelectedAvatar] = useState(null);
 	const [previewImage, setPreviewImage] = useState(avatarPrev);
 
@@ -25,9 +26,7 @@ const UpdateProfile = () => {
 		if (user) {
 			setName(user.name);
 			setEmail(user.email);
-			setPreviewImage(
-				user.avatar ? user.avatar.url : avatarPrev,
-			);
+			setPreviewImage(user.avatar ? user.avatar.url : avatarPrev);
 		}
 
 		if (error) {
@@ -58,6 +57,7 @@ const UpdateProfile = () => {
 				formData.append("avatar", selectedAvatar);
 			}
 			dispatch(updateProfile(formData));
+			console.log("lets see")
 		},
 	});
 
@@ -84,45 +84,73 @@ const UpdateProfile = () => {
 					onSubmit={formik.handleSubmit}
 					encType="multipart/form-data"
 				>
-					<div>
-						<img
-							src={previewImage}
-							alt="chosen"
-							style={{ height: "100px", width: "100px" }}
-						/>
-					</div>
-					<div>
-						<label htmlFor="avatar_upload">Choose Avatar</label>
-						<input
-							type="file"
-							name="avatar"
-							accept="image/*"
-							onChange={(e) => {
-								setSelectedAvatar(e.currentTarget.files[0]);
-								formik.setFieldValue("avatar", e.currentTarget.files[0]);
-								handleFileChange(e);
-							}}
-						/>
-					</div>
+					<div className="profile">
+						<div className="profileBox">
+							<div className="profileForm">
+								<div
+									className="profileStart editPStart"
+									onClick={() => navigate(-1)}
+								>
+									<div>
+										<ArrowLeft className="icons aLI" />
+									</div>
+									<div className="head">Edit Profile</div>
+								</div>
+								<div className="profileSection editPS">
+									<div>
+										<img
+											src={previewImage}
+											alt="chosen"
+											style={{ height: "100px", width: "100px" }}
+										/>
+									</div>
+									<div className="editCA">
+										<label htmlFor="avatar_upload">Choose Avatar</label>
+										<input
+											type="file"
+											name="avatar"
+											accept="image/*"
+											onChange={(e) => {
+												setSelectedAvatar(e.currentTarget.files[0]);
+												formik.setFieldValue(
+													"avatar",
+													e.currentTarget.files[0],
+												);
+												handleFileChange(e);
+											}}
+										/>
+									</div>
+								</div>
 
-					<h2>Update Profile</h2>
-
-					<div>
-						<label htmlFor="name_field">Name</label>
-						<Field name="name" />
+								<div className="profileLog editPL">
+									<div className="profileDetailsLog">
+										<div className="editLog">
+											<label htmlFor="name_field">Name</label>
+											<Field
+												className="fieldEdit"
+												name="name"
+											/>
+										</div>
+										<div className="editLog">
+											<label htmlFor="email_field">Email</label>
+											<Field
+												className="fieldEdit"
+												name="email"
+											/>
+										</div>
+									</div>
+									<div className="editBtn">
+										<button
+											disabled={loading ? true : false}
+											type="submit"
+										>
+											Update
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-
-					<div>
-						<label htmlFor="email_field">Email</label>
-						<Field name="email" />
-					</div>
-
-					<button
-						disabled={loading ? true : false}
-						type="submit"
-					>
-						Update
-					</button>
 				</form>
 			</FormikProvider>
 		</Fragment>

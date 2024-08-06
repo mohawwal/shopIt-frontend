@@ -2,14 +2,12 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import preImg from "../../assets/images/image3.jpg";
 import "./cart.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Cancel from "../../assets/svg/cancel";
 import { addItemToCart, removeItemFromCart } from "../../actions/cartAction";
 
-
 const Cart = () => {
 	const dispatch = useDispatch();
-	const Navigate = useNavigate()
 
 	const { cartItems } = useSelector((state) => state.cart);
 
@@ -37,11 +35,7 @@ const Cart = () => {
 	);
 	const totalPrice = cartItems
 		.reduce((acc, item) => acc + item.quantity * item.price, 0)
-		.toFixed(2);
-
-	const checkoutHandler = () => {
-		Navigate('/login?redirect=Shipping')
-	}
+		.toFixed(0);
 
 	return (
 		<div className="cart">
@@ -76,10 +70,14 @@ const Cart = () => {
 													<div className="cartItemProp">
 														<div className="itemProp itemStart spaceA">
 															<div className="itemUp plainProp">
-																<Link to={`product/${item.product}`}>
+																<Link
+																	className="itemUpName"
+																	to={`/product/${item.product}`}
+																>
 																	{item.name.toUpperCase()}
 																</Link>
 															</div>
+
 															<div
 																className="itemDown"
 																onClick={() =>
@@ -131,7 +129,7 @@ const Cart = () => {
 														<div className="itemProp spaceD">
 															<div className="itemUp">SUBTOTAL</div>
 															<div className="itemDown subTotalPrice">
-																{`₦ ${item.price * item.quantity}`}
+															{`₦ ${(item.price * item.quantity).toFixed(2)}`}
 															</div>
 														</div>
 													</div>
@@ -191,7 +189,7 @@ const Cart = () => {
 														</button>
 													</div>
 													<div className="itemDown subTotalPrice cartSubII">
-														{`₦ ${item.price * item.quantity}`}
+														{`₦ ${(item.price * item.quantity).toFixed(0)}`}
 													</div>
 												</div>
 											</div>
@@ -207,14 +205,6 @@ const Cart = () => {
 								<p className="orWay">Subtotal</p>
 								<p className="oDText">{totalGoods} Units</p>
 							</div>
-							{/* <div className="ORC"><p>Have a discount code?</p></div>
-							<div className="inputBtn orInput">
-								<input
-									type="text"
-									placeholder="Enter your discount code"
-								/>
-								<button>APPLY</button>
-							</div> */}
 							<div className="listOrderSpaces">
 								<div className="orderFlex">
 									<p className="orWay">Total </p>
@@ -223,9 +213,9 @@ const Cart = () => {
 									</div>
 								</div>
 							</div>
-							<div className="checkOut">
-								<button onClick={checkoutHandler}>PROCEED TO CHECKOUT</button>
-							</div>
+							<Link to='/shipping' className="checkOut">
+								<button>PROCEED TO CHECKOUT</button>
+							</Link>
 						</div>
 					</div>
 				)}

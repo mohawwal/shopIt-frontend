@@ -5,13 +5,13 @@
 .navBack {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.6rem;
 }
 
 .navBack p {
     text-decoration: underline;
     margin: auto 0;
-    font-size: 12px;
+    font-size: 1rem;
 }
 
 .linkList {
@@ -23,15 +23,15 @@
 }
 
 .linkList div p {
-    font-size: 14px;
+    font-size: 1rem;
 }
 
 .navBurger2 {
-    padding: 20px;
+    padding: 1.2rem;
 }
 
 .arrowIcon {
-    width: 15px;
+    width: 1.3rem;
 }
 
 .burgerList2 {
@@ -43,7 +43,7 @@
 }
 
 .imagesShowNav {
-    height:     150px;
+    height: 10rem;
     margin-bottom: 20px;
     
 }

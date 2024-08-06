@@ -1,421 +1,909 @@
 .cart {
-    width: 95%;
-    margin: 0 auto;
-    padding-top: 7vh;
-    max-width: 1200px;
-    
+	width: 95%;
+	margin: 0 auto;
+	padding-top: 5vh;
+	max-width: 1200px;
+	margin-bottom: 15%;
 }
 
 .cartList {
-    width: 100%;
-    padding-bottom: 20px;
-    border-bottom: 0.5px solid rgba(119, 119, 119, 0.207);
-    margin-bottom: 10px;
+	width: 100%;
+	padding-bottom: 1.2rem;
+	border-bottom: 0.5px solid rgba(119, 119, 119, 0.207);
+	margin-bottom: 0.65rem;
 }
 
 .cartItems {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: row;
-    height: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: row;
+	height: 100%;
 }
 
 .cartItemImg {
-    width: 140px;
-    height: 130px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	width: 9rem;
+	height: 130px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .cartItemImg img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    object-position: center;
-    padding: 5px;
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: cover;
+	object-position: center;
+	padding: 5px;
 }
 
 .cartItemProp {
-    width: 100%;
-    padding: 0px 5px;
+	width: 100%;
+	padding: 0px 5px;
 }
 
 .itemProp {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border-bottom: 0.1px dashed rgba(221, 221, 221, 0.701);
-    font-size: 12px;
-    margin: 5px 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: row;
+	flex-wrap: wrap;
+	border-bottom: 0.1px dashed rgba(221, 221, 221, 0.701);
+	font-size: 0.6rem;
+	margin: 0.3rem 0;
 }
 
 .itemStart {
-    align-items: flex-start;
-    border-bottom: none;
-    font-size: 13px;
+	align-items: flex-start;
+	border-bottom: none;
+	font-size: 0.8rem;
 }
 
 .propsPrice {
-    color: rgba(19, 3, 83, 0.56);
-    font-size: 14px;
+	color: rgba(19, 3, 83, 0.56);
+	font-size: 1rem;
 }
 
 .itemUp {
-    font-weight: 700;
-    font-size: 12px;
+	font-weight: 600;
+	font-size: 0.88rem;
+}
+
+.itemUpName:hover,
+.itemUpName:focus {
+	text-decoration: underline;
+	color: rgb(0, 0, 72);
 }
 
 .subTotalPrice {
-    font-weight: 600;
-    font-size: 14px;
-    color: rgba(19, 3, 83, 0.812);
+	font-weight: 600;
+	font-size: 1.05rem;
+	color: rgba(19, 3, 83, 0.812);
 }
 
 .cancelIcons {
-    width: 15px;
+	width: 15px;
 }
 
 .plainProp {
-    font-weight: 200;
-    font-size: 14px;
-    height: 100%;
-    width: 90%;
+	font-weight: 200;
+	font-size: 1rem;
+	height: 100%;
+	width: 90%;
 }
 
-.itemDownBtn button, .itemDownBtn input {
-    width: 24px;
-    height: 30px;
-    border: none;
-    text-align: center;
-    font-weight: 500;
-    background-color: white;
+.itemDownBtn button,
+.itemDownBtn input {
+	width: 24px;
+	height: 30px;
+	border: none;
+	text-align: center;
+	font-weight: 500;
+	background-color: white;
 }
 
 .itemDownBtn .leftBtn {
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-    border-top: 0.2px solid rgb(124, 124, 124);
-    border-left: 0.2px solid rgb(124, 124, 124);
-    border-bottom: 0.2px solid rgb(124, 124, 124);
-    border-right: 0.2px solid rgba(124, 124, 124, 0.711);
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+	border-top: 0.2px solid rgb(124, 124, 124);
+	border-left: 0.2px solid rgb(124, 124, 124);
+	border-bottom: 0.2px solid rgb(124, 124, 124);
+	border-right: 0.2px solid rgba(124, 124, 124, 0.711);
 }
 
 .itemDownBtn input {
-    border-top: 0.2px solid rgb(124, 124, 124);
-    border-bottom: 0.2px solid rgb(124, 124, 124);
+	border-top: 0.2px solid rgb(124, 124, 124);
+	border-bottom: 0.2px solid rgb(124, 124, 124);
 }
 
 .itemDownBtn .rightBtn {
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    border-top: 0.2px solid rgb(124, 124, 124);
-    border-right: 0.2px solid rgb(124, 124, 124);
-    border-bottom: 0.2px solid rgb(124, 124, 124);
-    border-left: 0.2px solid rgba(124, 124, 124, 0.711);
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+	border-top: 0.2px solid rgb(124, 124, 124);
+	border-right: 0.2px solid rgb(124, 124, 124);
+	border-bottom: 0.2px solid rgb(124, 124, 124);
+	border-left: 0.2px solid rgba(124, 124, 124, 0.711);
 }
 
 .spaceB {
-    padding: 5px 0;
+	padding: 5px 0;
 }
 
 .spaceC {
-    padding: 3px 0 7px;
+	padding: 3px 0 7px;
 }
 
 .spaceD {
-    padding: 3px 0 7px;
-    border: none;
+	padding: 3px 0 7px;
+	border: none;
 }
 
 .shoppingCart {
-    font-size: 18px;
-    text-align: center;
-    background-color: rgb(5, 0, 40);
-    padding: 10px 0;
-    color: white;
-    margin-top: 15px;
-    margin-bottom: 15px;
+	font-size: 0.8rem;
+	text-align: center;
+	background-color: rgb(0, 7, 53);
+	padding: 0.8rem 0;
+	color: white;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
-.cartScreenII, .headingII {
-    display: none;
+.cartScreenII,
+.headingII {
+	display: none;
 }
 
 .cartSections {
-    padding: 2px 10px;
+	padding: 2px 10px;
 }
 
 .OrderDetails {
-    text-align: right;
-    border: 0.1px solid rgba(124, 124, 124, 0.425);
-    border-radius: 5px;
-    padding: 3%;
-    margin: 2%;
+	text-align: right;
+	border: 0.1px solid rgba(124, 124, 124, 0.229);
+	border-radius: 5px;
+	padding: 3%;
+	margin: 2%;
 }
 
 .orWay {
-    font-weight: 600;
+	font-weight: 600;
+	font-size: 1rem;
 }
 
 .orderHead {
-    font-size: 18px;
-    width: 100%;
-    text-align: left;
-    font-weight: 600;
+	font-size: 1.2rem;
+	width: 100%;
+	text-align: left;
+	font-weight: 600;
 }
 
 .orInput {
-    margin: 20px 0;
-    width: 100%;
-    justify-content: right;
-    max-width: 100%;
+	margin: 20px 0;
+	width: 100%;
+	justify-content: right;
+	max-width: 100%;
 }
 
 .orInput input {
-    max-width: 200px;
-    border-radius: 3px;
-    background-color: rgba(238, 238, 238, 0.745);
+	max-width: 200px;
+	border-radius: 3px;
+	background-color: rgba(238, 238, 238, 0.745);
 }
 
 .orInput button {
-    max-width: 60px;
-    background-color: rgba(217, 217, 217, 0.781);
-    color: rgb(14, 0, 64);
+	max-width: 60px;
+	background-color: rgba(217, 217, 217, 0.781);
+	color: rgb(14, 0, 64);
 }
 
-.ORC, .listOrderSpaces {
-    padding-top: 15px;
+.ORC,
+.listOrderSpaces {
+	padding-top: 15px;
 }
 
 .listOrderSpaces {
-    border-top: 1px dashed rgba(121, 121, 121, 0.46);
+	border-top: 1px dashed rgba(121, 121, 121, 0.46);
 }
 
 .ORC p {
-    font-size: 16px;
-    font-weight: 600;
+	font-size: 16px;
+	font-weight: 600;
 }
 
 .checkOut {
-    margin: 1px 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	margin: 1px 0;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .checkOut button {
-    padding: 10px 15px;
-    border: none;
-    font-weight: 600;
-    background-color: rgb(0, 7, 53);
-    color: white;
+	padding: 10px 15px;
+	border: none;
+	font-size: 0.9rem;
+	width: 100%;
+	background-color: rgb(0, 7, 53);
+	color: white;
 }
 
 .orderFlex {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .underlineOrder {
-    border-bottom: 0.1px dashed rgba(124, 124, 124, 0.482);
-    padding: 15px 0 15px;
+	border-bottom: 0.1px dashed rgba(124, 124, 124, 0.482);
+	padding: 15px 0 15px;
 }
 
 .listOrderSpaces {
-    margin: 1px 0;
-    font-size: 12px;
+	margin: 1px 0;
+	font-size: 12px;
 }
 
 .inputOrderList {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 80%;
-    justify-content: right;
-    margin: 5px 0 15px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	width: 80%;
+	justify-content: right;
+	margin: 5px 0 15px;
 }
 
 .inputList {
-    display: flex;
-    align-items: right;
-    gap: 5px;
-    width: 100%;
-    justify-content: right;
-    margin: 5px 0 10px;
-    font-size: 12px;
+	display: flex;
+	align-items: right;
+	gap: 5px;
+	width: 100%;
+	justify-content: right;
+	margin: 5px 0 10px;
+	font-size: 12px;
 }
 
 .EmptyCart {
-    color: rgba(1, 1, 123, 0.753);
-    font-weight: 600;
-    font-size: 18px;
+	color: rgba(0, 0, 61, 0.753);
+	font-size: 1rem;
+	width: 100%;
+	text-align: center;
 }
 
 .oDText {
-    font-size: 14px;
+	font-size: 1rem;
 }
 
 .oDLarge {
-    font-size: 18px;
-    font-weight: 700;
-    color: rgb(2, 2, 62);
+	font-size: 1.2rem;
+	color: rgb(2, 2, 62);
 }
 
 .itemDown {
-    display: flex;
-    justify-content: right;
-    flex-direction: row;
+	display: flex;
+	justify-content: right;
+	flex-direction: row;
+}
+
+.prodDetailsQty  {
+	font-size: 1rem;
+	color: rgba(0, 0, 0, 0.715);
+	display: flex;
+	align-items: center;
+	justify-content: lefts;
+}
+
+/* checkout triangle */
+.checkShip {
+	margin: 15px 0;
+}
+.checkoutSteps,
+.checkLink {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+	padding: 5px;
+	flex-wrap: wrap;
+	padding: 3px;
+}
+
+.selectOpt {
+	border-radius: 30px;
+}
+
+.selectOpt option {
+	padding: 5px;
+}
+
+.shipLog {
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+.shipLog p .LogLink {
+	color: rgb(103, 133, 255);
+	border-bottom: 1px solid rgb(103, 133, 255);
+}
+
+.checkIcon {
+	width: 15px;
+	color: white;
+}
+
+.incomplete {
+	color: rgba(255, 255, 255, 0.604);
+	font-size: 0.68rem;
+}
+
+.active-step {
+	padding: 3px;
+	font-size: 0.75rem;
+	font-weight: 800;
+}
+
+.billingDetails {
+	font-size: 1.2rem;
+	margin: 20px 0 10px;
+}
+
+.shippingName {
+	font-size: 1rem;
+	margin-bottom: 4px;
+	color: rgb(53, 53, 53);
+}
+.shippingName span {
+	color: rgb(103, 133, 255);
+	font-size: 0.9rem;
+}
+
+.shipFormLoc {
+	display: flex;
+	align-self: center;
+	justify-content: flex-start;
+	gap: 10px;
+	font-size: 14px;
+	margin: 20px 0 10px;
+	font-weight: 600;
+}
+
+.shipFormLoc div:hover,
+.shipFormLoc div:focus {
+	color: rgb(103, 133, 255);
+}
+
+.verifyText {
+	color: rgb(103, 133, 255);
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+.shipNoteCat {
+	margin-top: 15px;
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+}
+
+.shipNoteCat .orderNote {
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	border: 0.5px solid rgba(95, 95, 95, 0.268);
+	height: 165px;
+	width: 100%;
+	overflow-y: auto;
+	border-radius: 20px;
+	font-size: 1rem;
+}
+
+.LSN {
+	font-size: 14px;
+	color: rgba(27, 0, 180, 0.899);
+}
+
+.LS {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: 5px;
+}
+
+.shipFormLoc div label {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: 5px;
+}
+
+.shipFormCat {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	margin-top: 15px;
+}
+
+.shipFormCat .field {
+    font-size: 0.9rem;
+	width: 100%;
+	height: 35px;
+	padding: 5px 10px;
+	border-radius: 30px;
+	border: 0.5px solid rgba(95, 95, 95, 0.268);
+}
+
+.shipVerifyEnd {
+	font-size: 14px;
+}
+
+.verifySpace {
+	padding: 7px;
+	border: 0.5px solid rgba(95, 95, 95, 0.268);
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	gap: 1px;
+}
+
+.verifySpace input {
+	padding: 4px;
+}
+
+.verifyQst {
+	font-size: 1rem;
+	text-decoration: wavy;
+	color: rgb(0, 9, 45);
+}
+
+.shipVerifyEnd input {
+	height: 20px;
+	width: 60px;
+	border: none;
+}
+
+.shipFormCat {
+	width: 100%;
+}
+
+.shipFormCat .orderNote {
+	box-sizing: border-box;
+	height: 200px;
+	width: 300px;
+	border-radius: 20px;
+	padding: 5px;
+}
+
+.shipBtn {
+	width: 100%;
+	height: 35px;
+	border-radius: 10px;
+	border: none;
+	margin: 20px 0;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.shipBtnYes {
+	background-color: rgb(0, 9, 43);
+	color: white;
+	cursor: pointer;
+}
+
+.shipBtnNo {
+	cursor: no-drop;
+	background-color: rgba(0, 9, 43, 0.773);
+	color: rgba(255, 255, 255, 0.393);
+}
+
+.shipDetails {
+	margin-top: 15px;
+}
+
+.shipDetails p {
+	color: rgba(28, 28, 28, 0.886);
+	font-size: 0.9rem;
+}
+
+.shipDetails p span {
+	font-weight: 600;
+}
+
+.errorMsg {
+	padding: 5px;
+	font-size: 0.9rem;
+}
+
+.LagField .lag{
+	border: none;
+	border-bottom: 0.5px dashed rgba(103, 133, 255, 0.538);
+	width: 100%;
+	font-weight: 600;
+	color: rgba(0, 2, 65, 0.737);
+	padding: 10px 2px;
+	font-size: 1rem;
+	text-align: right;
+
+}
+
+/* orders in shipping */
+
+.checkShips {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: 3px;
+}
+
+.checkShips div p {
+	padding-top: 3.5px;
+	font-weight: 600;
+	color: rgb(0, 11, 55);
+}
+
+.yOP {
+	display: flex;
+	align-items: flex-start;
+	padding-top: 10px;
+}
+
+.allYourOrders {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+	border-bottom: 8px solid rgba(150, 132, 228, 0.384);
+}
+
+.yourOrderImage {
+	width: 30%;
+	height: 7.5rem;
+}
+
+.yourOrderName {
+	width: 50%;
+}
+
+.yOPDetailsQty {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.prodDetailsQty2 {
+	min-width: 80px;
+	width: 20%;
+}
+
+.prodDetailsQty2 button, .prodDetailsQty2 input {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.yourOrderName div p {
+	padding: 10px 0;
+	font-size: 0.95rem;
+}
+
+.yourOrderName div span {
+	font-size: 1rem;
+	color: rgb(6, 6, 143);
+}
+
+.yourOrderImage img {
+	width: 100%;
+	object-position: center;
+	object-fit: cover;
+	height: 100%;
+}
+
+.yourOrderPrice {
+	width: 25%;
+	text-align: right;
+	padding: 10px;
+	overflow: hidden;
+}
+
+.yourOrderPrice p {
+	padding: 10px;
+	font-size: 1rem;
+	color: rgb(3, 3, 116);
+	width: 100%;
+}
+
+.zaza {
+	opacity: 5%;
+	width: 80%;
+}
+
+.yOP {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+
+/* Hide spin buttons for all browsers */
+input[type="number"] {
+	-moz-appearance: textfield; /* Firefox */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0; /* Safari and Chrome */
+}
+
+.d-wrapper {
+	background-color: #0700d912;
+    height: 100%;
+}
+
+.d-wrapper * {
+	margin: 0 auto;
+	padding: 0;
+}
+
+.d-wrapper .zig-zag-top:before {
+	background: linear-gradient(
+			-45deg,
+			rgb(103, 133, 255) 16px,
+			transparent 0
+		),
+		linear-gradient(45deg, rgb(103, 133, 255) 16px, transparent 0);
+	background-position: left top;
+	background-repeat: repeat-x;
+	background-size: 7px 39px;
+	content: " ";
+	display: block;
+
+	height: 32px;
+	width: 100%;
+
+	position: relative;
+	bottom: 50px;
+	left: 0;
+}
+
+.d-wrapper	.zig-zag-bottom:after{
+    background: 
+                linear-gradient(-45deg, transparent 16px, rgb(103, 133, 255) 0), 
+                linear-gradient(45deg, transparent 16px, rgb(103, 133, 255)  0);
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    background-size: 7px 39px;
+    content: "";
+    display: block;
+
+    width: 100%;
+    height: 32px;
+
+     position: relative;
+    top:64px;
+    left:0px;
+}
+
+.d-wrapper .zig-zag-top {
+	margin: 50px 0;
+	margin-bottom: 0;
+}
+
+.d-wrapper .zig-zag-top {
+	padding: 32px 0;
+}
+
+.inZag {
+    width: 90%;
+    height: 100%;
+    padding: 2px;
+}
+
+.yourOrder {
+    text-align: center;
+	padding-bottom: 10px;
+	font-size: 1.4rem;
+}
+
+.yourOrderItems {
+    background-color: white;
+	height: 100%;
+}
+
+.shipFoldBtn {
+	margin: 20px 0;
+}
+
+@media screen and (min-width: 801px) {
+	.shippingCart {
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+		width: 100%;
+		gap: 25px;
+	}
+
+	.shippingShip {
+		width: 60%;
+	}
+	.cartShip {
+		width: 40%;
+	}
+	.shipNameForm {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
+	}
+	.shipNameForm .shipFormCat {
+		width: 50%;
+	}
 }
 
 @media screen and (min-width: 780px) {
-    .cartList {
-        display: none;
-    }
+	.cartList {
+		display: none;
+	}
 
-    .cartScreenII, .headingII {
-        display: block;
-    }
+	.cartScreenII,
+	.headingII {
+		display: block;
+	}
 
-    .cartScreenII {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        gap: 15px;
-        border-bottom: 0.5px dashed rgba(123, 123, 123, 0.363);
-        padding: 10px 0;
-        max-width: 999px;
-        justify-content: center;
-    }
+	.cartScreenII {
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		gap: 15px;
+		border-bottom: 0.5px dashed rgba(123, 123, 123, 0.363);
+		padding: 10px 0;
+		max-width: 999px;
+		justify-content: center;
+	}
 
-    .cartScreenII div {
-        display: flex;
-        align-items: flex-start;
-    }
+	.cartScreenII div {
+		display: flex;
+		align-items: flex-start;
+	}
 
-    .itemDownBtnII button, .itemDownBtnII input {
-        width: 30px;
-        height: 35px;
-        border: none;
-    }
+	.itemDownBtnII button,
+	.itemDownBtnII input {
+		width: 30px;
+		height: 35px;
+		border: none;
+	}
 
-    .itemDownBtnII input {
-        border-top: 0.1px solid rgb(124, 124, 124);
-        border-bottom: 0.1px solid rgb(124, 124, 124);
-    }
+	.itemDownBtnII input {
+		border-top: 0.1px solid rgb(124, 124, 124);
+		border-bottom: 0.1px solid rgb(124, 124, 124);
+	}
 
-    .headingII {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        font-size: 12px;
-        gap: 15px;
-        margin-bottom: 10px;
-        border-bottom: 0.5px solid rgba(120, 120, 120, 0.34);
-        padding-bottom: 20px;
-        max-width: 999px;
-    }
+	.headingII {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		font-size: 0.8rem;
+		gap: 15px;
+		margin-bottom: 10px;
+		border-bottom: 0.5px solid rgba(120, 120, 120, 0.34);
+		padding-bottom: 20px;
+		max-width: 999px;
+	}
 
-    .headingII div {
-        height: 15px;
-        text-align: start;
-        font-size: 16px;
-    }
+	.headingII div {
+		height: 15px;
+		text-align: start;
+		font-size: 0.8rem;
+	}
 
-    .cartItemImgII {
-        width: 80px;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .cartItemImgII img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: cover;
-        object-position: center;
-    }
-    
-    .cancelII {
-        width: 5%;
-    }
+	.cartItemImgII {
+		width: 80px;
+		height: 80px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 
-    .cartImgII {
-        min-width: 40px;
-        min-width: 70px;
-    }
+	.cartItemImgII img {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
 
-    .cartProdII {
-        width: 39%;
-    }
+	.cancelII {
+		width: 5%;
+	}
 
-    .cartPriceII {
-        width: 12%;
-        font-size: 14px;
-    } 
+	.cartImgII {
+		min-width: 40px;
+		min-width: 70px;
+	}
 
-    .cartQtyII {
-        width: 15%;
-    }
+	.cartProdII {
+		width: 39%;
+	}
 
-    .cartSubII {
-        width: 12%;
-        font-size: 14px;
-    }
+	.cartPriceII {
+		width: 12%;
+		font-size: 1rem;
+	}
+
+	.cartQtyII {
+		width: 15%;
+	}
+
+	.cartSubII {
+		width: 12%;
+		font-size: 14px;
+	}
 }
 
 @media screen and (min-width: 1000px) and (max-width: 1200px) {
-    .allCartProp {
-        width: 100%;
-        gap: 15px;
-        display: flex;
-        align-items: flex-start;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+	.allCartProp {
+		width: 100%;
+		gap: 15px;
+		display: flex;
+		align-items: flex-start;
+		flex-direction: row;
+		justify-content: space-between;
+	}
 
-    .cartSections {
-        width: 63%;
-        padding: 2px 10px;
-    }
+	.cartSections {
+		width: 63%;
+		padding: 2px 10px;
+	}
 
-    .OrderDetails {
-        width: 35%;
-        padding: 1%;
-        height: 100%;
-    }
+	.OrderDetails {
+		width: 35%;
+		padding: 1%;
+		height: 100%;
+	}
 }
 
 @media screen and (min-width: 1201px) {
-    .allCartProp {
-        width: 100%;
-        gap: 10px;
-        display: flex;
-        align-items: flex-start;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+	.allCartProp {
+		width: 100%;
+		gap: 10px;
+		display: flex;
+		align-items: flex-start;
+		flex-direction: row;
+		justify-content: space-between;
+	}
 
-    .headingII {
-        padding-top: 20px;
-    }
+	.headingII {
+		padding-top: 20px;
+	}
 
-    .cartSections {
-        width: 65%;
-        padding: 2px 10px;
-    }
+	.cartSections {
+		width: 65%;
+		padding: 2px 10px;
+	}
 
-    .OrderDetails {
-        width: 35%;
-        padding: 10px;
-        height: 100%;
-    }
+	.OrderDetails {
+		width: 35%;
+		padding: 10px;
+		height: 100%;
+	}
+	
+}
 
+@media screen and (max-width: 1190px) and (min-width: 801px) {
+	.shippingShip {
+		width: 50%;
+	}
+	.cartShip {
+		width: 50%;
+	}
+	.shipNameForm {
+		flex-direction: column;
+	}
+	.shipNameForm .shipFormCat {
+		width: 100%;
+	}
+	.shipFormCatLast {
+		width: 100%;
+		margin-top: -3px;
+	}
 }

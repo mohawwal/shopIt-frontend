@@ -7,8 +7,8 @@
     align-items: center;
     flex-direction: row;
     overflow-x: scroll;
-    gap: 8px;
-    padding-left: 10px;
+    gap: 0.5rem;
+    padding-left: 0.8rem;
 }
 
 .productHome::-webkit-scrollbar {
@@ -16,19 +16,19 @@
 }
 
 .allHome {
-    height: 210px;
-    min-width: 140px;
-    border-radius: 2px;
+    height: 14rem;
+    min-width: 10rem;
+    border-radius: 0.2rem;
     transition: transform 0.3s ease-in-out;
 }
 
 .moving-sentence {
-    font-size: 12px;
+    font-size: 1rem;
 }
 
 .allHomeImg {
     height: 80%;
-    padding: 3px;
+    padding: 0.1rem;
 }
 
 .allHomeImg img {
@@ -43,19 +43,19 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5px;
-    gap: 3px;
+    padding: 0 0.5rem;
+    gap: 0.3rem;
     background-color: rgba(240, 248, 255, 0.23);
 }
 
 
 .allName {
-    font-size: 12px;
+    font-size: 0.8rem;
     font-weight: 500;
 }
 
 .allStars {
-    font-size: 11px;
+    font-size: 0.9rem;
 }
 
 .newMario {
@@ -65,10 +65,10 @@
 }
 
 .basket {
-    width: 20px;
-    height: 20px;
+    width: 1.8rem;
+    height: 1.8rem;
 }
 
 .basketIcon {
-    font-size: 16px;
+    font-size: 1.2rem;
 }
