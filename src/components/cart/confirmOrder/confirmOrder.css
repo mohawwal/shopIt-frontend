@@ -7,23 +7,28 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 8px 3px;
     border-bottom: 0.5px solid white;
     flex-wrap: wrap;
+    
 }
 
 .closingBalance .closing p {
     width: 25%;
     font-size: 0.93rem;
+    padding: 0.2rem;
 }
 
 .closingBalance .closing span {
     width: 75%;
-    background-color: rgba(250, 235, 215, 0.253);
+    height: 100%;
     text-align: right;
     font-size: 0.93rem;
     font-weight: 400;
-    padding: 3px;
+    padding: 0.65rem;
+}
+
+.closing .bl {
+    border-left: 1px solid rgba(255, 255, 255, 0.378);
 }
 
 
@@ -37,12 +42,41 @@
     color: rgb(2, 2, 89);
 }
 
+.closeTotal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 0.5rem;
+}
+
 .shipSpanDet {
     display: flex;
     align-items: center;
     flex-direction: row;
+    justify-content: space-around;
     width: 100%;
-    gap: 5px;
+    gap: 0.3rem;
+}
+
+.shipSpanTwo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.shipSpanTwo div {
+    width: 75%;
+}
+
+.sl {
+    font-size: 0.8rem;
+    padding: 0.3rem;
+}
+
+.shipSpanTwo p {
+    width: 25%;
 }
 
 .deliveryIcon {
@@ -64,9 +98,16 @@
 }
 
 .spanDetPrice {
-    width: 20%;
+    width: 26%;
     font-size: 0.9rem;
+    padding: 0.19rem;
 }
+
+.pl {
+    border: 1px solid rgba(255, 255, 255, 0.378);
+    text-align: center;
+}
+
 
 .spanDetText div {
     width: 100%;

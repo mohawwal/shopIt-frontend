@@ -4,40 +4,49 @@ import DeliveryScooter from "../../../assets/svg/deliveryScooter";
 import DeliveryFS from "../../../assets/svg/deliveryFastShipping";
 import { useNavigate } from "react-router-dom";
 
+
 const ConfirmOrder = ({
 	cartItems,
 	isVerify,
 	deliveryAddress,
 	deliveryPark,
 	deliveryState,
-	deliveryLoc
+	deliveryLoc,
 }) => {
+	const preShippingFee = 5000;
+	const shippingFee = parseFloat(preShippingFee.toFixed(0));
 
-	const preShippingFee = 5000
-	const shippingFee = parseFloat(preShippingFee.toFixed(0))
+	const prevSubTotalPrice = cartItems.reduce(
+		(acc, items) => acc + (Number(items.price) * Number(items.quantity)),
+		0
+	);
+	
+	const subTotalPrice = parseFloat(prevSubTotalPrice.toFixed(0));
 
-	const prevSubTotalPrice = cartItems.reduce((acc, items) => acc + Number(items.price), 0)
-	const subTotalPrice = parseFloat(prevSubTotalPrice.toFixed(0))
+	const prevTaskFee = (subTotalPrice * 10) / 100;
+	const taskFee = parseFloat(prevTaskFee.toFixed(0));
 
-	const prevTaskFee = subTotalPrice*10/100
-	const taskFee = parseFloat(prevTaskFee.toFixed(0))
+	const prevTotalPrice = subTotalPrice + taskFee + shippingFee;
+	const totalPrice = parseFloat(prevTotalPrice.toFixed(0));
 
-	const prevTotalPrice = subTotalPrice + taskFee + shippingFee
-	const totalPrice = parseFloat(prevTotalPrice.toFixed(0))
-
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	const processToPayment = () => {
 		const data = {
 			shippingFee,
 			subTotalPrice,
 			taskFee,
-			totalPrice
-		}
+			totalPrice,
+			products: cartItems.map(item => ({
+				name: item.name,
+				quantity: item.quantity,
+				price: item.price
+			})),
+		};
 
-		sessionStorage.setItem('orderInfo', JSON.stringify(data))
-		navigate('/')
-	}
+		sessionStorage.setItem("orderInfo", JSON.stringify(data));
+		navigate("/payment");
+	};
 
 	return (
 		<div className="cartShip">
@@ -47,62 +56,85 @@ const ConfirmOrder = ({
 						<div className="yourOrder">YOUR ORDER SUMMARY</div>
 						<div className="yourOrderItems">
 							{cartItems &&
-								cartItems.map((items) => (
-									<div
-										key={items.id}
-										className="allYourOrders"
-									>
-										<div className="yourOrderImage">
-											<img
-												src={img}
-												alt="img"
-											/>
-										</div>
-										<div className="yourOrderName">
-											<div>
-												<p>{items.name}</p> <span>x{items.quantity}</span>
+								cartItems.map((item) => {
+									const totalPrice = item.price * item.quantity;
+									const formattedPrice = new Intl.NumberFormat("en-NG", {
+										style: "currency",
+										currency: "NGN",
+										minimumFractionDigits: 2,
+										maximumFractionDigits: 2,
+									}).format(totalPrice);
+
+									return (
+										<div
+											key={item.id}
+											className="allYourOrders"
+										>
+											<div className="yourOrderImage">
+												<img
+													src={img}
+													alt="img"
+												/>
+											</div>
+											<div className="yourOrderName">
+												<div>
+													<p>{item.name}</p> <span>x{item.quantity}</span>
+												</div>
+											</div>
+											<div className="yourOrderPrice">
+												<p>{formattedPrice}</p>
 											</div>
 										</div>
-										<div className="yourOrderPrice">
-											<p>₦{items.price * items.quantity.toLocaleString()}</p>
-										</div>
-									</div>
-								))}
+									);
+								})}
 						</div>
 
 						<div className="closingBalance">
-							<div className="closing">
-								<p>Subtotal</p>
-								<span className="closePan">₦{subTotalPrice.toLocaleString()}</span>
+
+							<div className="closing closeTotal sl">
+								<p>
+									Subtotal
+								</p>
+								<span className="pl tPl">₦{subTotalPrice.toLocaleString()}</span>
 							</div>
-							<div className="closing">
-								<p>Task</p>
-								<span className="closePan">₦{taskFee.toLocaleString()}</span>
+
+							<div className="closing closeTotal sl">
+								<p>
+									Tax
+								</p>
+								<span className="pl tPl">₦{taskFee.toLocaleString()}</span>
 							</div>
+							
 							<div className="closing">
 								<p>Shipping</p>
-								<span className="shipSpanDet">
+								<span className="shipSpanDet bl">
 									<div className="spanDetIcon">
 										<DeliveryFS className="deliveryIcon" />
 									</div>
 									<div className="spanDetText">
 										<div>
-											{deliveryAddress + ' ' + deliveryLoc + ' ' + deliveryState ||
-												deliveryPark + ' ' + deliveryLoc + ' ' + deliveryState}
+											{deliveryAddress +
+												" " +
+												deliveryLoc +
+												" " +
+												deliveryState ||
+												deliveryPark + " " + deliveryLoc + " " + deliveryState}
 										</div>
 									</div>
-									<div className="spanDetPrice">
+									<div className="spanDetPrice pl">
 										₦{shippingFee.toLocaleString()}
 									</div>
 								</span>
 							</div>
+
 							<div className="closing closeTotal">
 								<p>
 									Total
 									<DeliveryScooter className="navIcons" />
 								</p>
-								<span>₦{totalPrice.toLocaleString()}</span>
+								<span className="pl tPl">₦{totalPrice.toLocaleString()}</span>
 							</div>
+
 						</div>
 
 						<div className="shipFoldBtn">

@@ -557,7 +557,7 @@
 
 .yourOrderImage {
 	width: 30%;
-	height: 7.5rem;
+	height: 8rem;
 }
 
 .yourOrderName {
@@ -599,7 +599,7 @@
 }
 
 .yourOrderPrice {
-	width: 25%;
+	width: 40%;
 	text-align: right;
 	padding: 10px;
 	overflow: hidden;

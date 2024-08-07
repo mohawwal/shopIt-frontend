@@ -18,6 +18,7 @@ import ResetPassword from "./components/user/resetPassword";
 import Navbar from "./pages/navbar/navbar";
 import NavDown from "./pages/navDown/navDown";
 import Shipping from "./components/cart/shipping";
+import Payment from "./components/cart/payment/payment";
 
 import store from "./store";
 import { loadUser } from "./actions/userAction";
@@ -92,6 +93,12 @@ function App() {
 					<Route
 						path="/shipping"
 						element={<Shipping />}
+						exact
+					/>
+
+					<Route
+						path="/payment"
+						element={<Payment />}
 						exact
 					/>
 
