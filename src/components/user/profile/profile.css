@@ -38,16 +38,16 @@
 }
 
 .profileStart .head {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 600;
 }
 
 .orText {
-    font-size: 12px;
+    font-size: 0.9rem;
 }
 
 .aLI {
-    width: 18px;
+    width: 1.4rem;
 }
 
 .profileLog {
@@ -79,8 +79,8 @@
 }
 
 .profileSection div img {
-    width: 80px;
-    height: 80px;
+    width: 5.5rem;
+    height: 5.5rem;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
@@ -93,7 +93,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 13px 0;
-    height: 42px;
+    height: 3rem;
     padding: 10px;
     border-radius: 10px;
 }
@@ -101,7 +101,7 @@
 .detailLog div {
     display: flex;
     flex-direction: column;
-    font-size: 12px;
+    font-size: 0.8rem;
 }
 
 .detailLog div div {
@@ -109,11 +109,11 @@
 }
 
 .editIcon {
-    width: 14px;
+    width: 1rem;
 }
 
 .profileSignLog {
-    font-size: 12px;
+    font-size: 0.8rem;
 }
 
 .signSpace {
@@ -142,11 +142,11 @@
 }
 
 .signOutIcon {
-    width: 14px;
+    width: 1.1rem;
 }
 
 .binIcon {
-    width: 12px;
+    width: 1.1rem;
 }
 
 .showAlertInProfile {

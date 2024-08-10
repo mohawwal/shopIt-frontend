@@ -75,6 +75,8 @@ const Navbar = () => {
 			navClass = "minNonNav";
 		} else if (location.pathname === "/login") {
 			navClass = "navNone";
+		} else if (location.pathname === "/payment") {
+			navClass = "navOut";
 		} else if (location.pathname === "/register") {
 			navClass = "navNone";
 		} else if (location.pathname === "/password/forgot") {

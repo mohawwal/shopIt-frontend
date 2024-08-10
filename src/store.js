@@ -13,7 +13,11 @@ import {
 	forgotPasswordReducer,
 } from "./components/reducer/userReducer";
 import { cartReducer } from "./components/reducer/cartReducers";
-
+import {
+	createOrderReducer,
+	myOrderReducer,
+} from "./components/reducer/orderReducer";
+import { paymentReducer, verifyPaymentReducer } from "./components/reducer/paymentReducer"
 
 const reducer = combineReducers({
 	productCategory: productCategoryReducer,
@@ -23,25 +27,27 @@ const reducer = combineReducers({
 	user: userReducer,
 	forgotPassword: forgotPasswordReducer,
 	cart: cartReducer,
+	paymentOrder: paymentReducer,
+	verifyPayment: verifyPaymentReducer,
+	createOrder: createOrderReducer,
+	myOrder: myOrderReducer,
 });
-
 
 let initialState = {
 	cart: {
 		cartItems: localStorage.getItem("cartItems")
 			? JSON.parse(localStorage.getItem("cartItems"))
-			: [], 
+			: [],
 		shippingInfo: localStorage.getItem("shippingInfo")
 			? JSON.parse(localStorage.getItem("shippingInfo"))
 			: {},
-	}
+	},
 };
-
 
 const middleware = [thunk];
 const store = createStore(
 	reducer,
-    initialState,
+	initialState,
 	composeWithDevTools(applyMiddleware(...middleware)),
 );
 

@@ -86,11 +86,16 @@ const Burger = ({ handleNav, user, loading, logoutFunc }) => {
 							)
 						)}
 					</div>
-					{user && user.role !== "admin" ? (
-						<div>My Orders</div>
-					) : (
+					{user && user.role === "admin" ? (
 						<div>My Dashboard</div>
+					) : (
+						null
 					)}
+					<div>
+						<Link to='/orders/me'>
+							My Orders
+						</Link>
+					</div>
 					<div>
 						<a
 							href="https://awwal-portfolio.vercel.app/CONTACT"

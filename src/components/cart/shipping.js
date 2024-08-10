@@ -1,23 +1,42 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { saveShippingInfo } from "../../actions/cartAction";
+import { saveShippingInfo } from '../../actions/cartAction'
 import { Field, ErrorMessage, useFormik, FormikProvider } from "formik";
 import * as Yup from "yup";
-//import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import ConfirmOrder from "./confirmOrder/confirmOrder";
-
 import CheckoutSteps from "./checkoutSteps";
-// import Swap from "../../assets/svg/swap";
-// import Location from "../../assets/svg/location";
+import { useNavigate } from "react-router-dom";
+import img from "../../assets/images/image5.jpg";
+import DeliveryScooter from "../../assets/svg/deliveryScooter";
+import DeliveryFS from "../../assets/svg/deliveryFastShipping";
 
 const Shipping = () => {
 	const dispatch = useDispatch();
-	//const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const No1 = Math.floor(Math.random() * 5) + 1;
 	const No2 = Math.floor(Math.random() * 5) + 1;
 	const totalNo = No1 + No2;
+
+	
+	const { shippingInfo } = useSelector((state) => state.cart);
+	const { user, isAuthenticated } = useSelector((state) => state.auth);
+	const { cartItems } = useSelector((state) => state.cart);
+
+	const prevShippingPrice = 5000;
+	const shippingPrice = parseFloat(prevShippingPrice.toFixed(0));
+
+	const prevItemsPrice = cartItems.reduce(
+		(acc, item) => acc + (Number(item.price) * Number(item.quantity)),
+		0
+	);
+	const itemsPrice = parseFloat(prevItemsPrice.toFixed(0));
+
+	const prevTaxPrice = (itemsPrice * 10) / 100;
+	const taxPrice = parseFloat(prevTaxPrice.toFixed(0));
+
+	const prevTotalPrice = itemsPrice + taxPrice + shippingPrice;
+	const totalPrice = parseFloat(prevTotalPrice.toFixed(0));
 
 	const [isVerify, setIsVerify] = useState(false);
 
@@ -30,10 +49,6 @@ const Shipping = () => {
 			setIsVerify(false);
 		}
 	};
-
-	const { shippingInfo } = useSelector((state) => state.cart);
-	const { user, isAuthenticated } = useSelector((state) => state.auth);
-	const { cartItems } = useSelector((state) => state.cart);
 
 	const phoneRegExp = /^[0-9+-]{6,}$/;
 
@@ -61,6 +76,13 @@ const Shipping = () => {
 			then: (schema) => schema.required("Park location is required"),
 			otherwise: (schema) => schema.notRequired(),
 		}),
+		
+
+		state: Yup.string().when("isLagos", {
+			is: false,
+			then: (schema) => schema.required("State is required"),
+			otherwise: (schema) => schema.notRequired(),
+		}),
 
 		phoneNo: Yup.string()
 			.matches(phoneRegExp, "Invalid phone number format")
@@ -70,19 +92,22 @@ const Shipping = () => {
 			.min(3, "Note message must be at least 3 characters long")
 			.max(50, "Note message cannot exceed 50 characters"),
 	});
+	
 
 	const formik = useFormik({
 		initialValues: {
 			isLagos: true,
+
 			firstName: shippingInfo.firstName || "",
 			lastName: (user && user.name) || shippingInfo.lastName || "",
+			email: (user && user.email) || shippingInfo.email || "",
+
 			streetAddress: shippingInfo.streetAddress || "",
 			location: shippingInfo.location || "",
 			state: shippingInfo.state || "",
 			park: shippingInfo.park || "",
 			phoneNo: shippingInfo.phoneNo || "",
-			email: (user && user.email) || shippingInfo.email || "",
-			orderNote: shippingInfo.orderNote || "",
+			orderNote: shippingInfo.orderNote || "Null",
 		},
 
 		validationSchema: validationSchema,
@@ -93,18 +118,48 @@ const Shipping = () => {
 			const shippingData = {
 				firstName: values.firstName,
 				lastName: values.lastName,
-				phoneNo: values.phoneNo,
 				email: values.email,
-				orderNote: values.orderNote,
+				streetAddress: values.streetAddress,
 				location: values.location,
+				// state: values.state,
+				// park: values.park,
+				phoneNo: values.phoneNo,
+				orderNote: values.orderNote,
 			};
 
 			if (values.isLagos) {
+				shippingData.state = "Lagos State"
 				shippingData.streetAddress = values.streetAddress;
 			} else {
+				shippingData.state = values.state
 				shippingData.state = values.state;
 				shippingData.park = values.park;
 			}
+
+			const data = {
+				itemsPrice,
+				taxPrice,
+				shippingPrice,
+				totalPrice,
+				orderItems: cartItems.map(item => ({
+					product: item._id,
+					name: item.name,
+					price: item.price,
+					image: item.image,
+					quantity: item.quantity,
+				})),
+				shippingInfo: {
+					streetAddress: formik.values.streetAddress,
+					location: formik.values.location,
+					state: formik.values.state,
+					park: formik.values.park,
+					phoneNo: formik.values.phoneNo,
+					orderNote: formik.values.orderNote
+				}
+			};
+	
+			sessionStorage.setItem("orderInfo", JSON.stringify(data));
+			navigate("/order");
 
 			dispatch(saveShippingInfo(shippingData));
 		},
@@ -322,7 +377,7 @@ const Shipping = () => {
 								<Field
 									type="text"
 									name="location"
-									placeholder="Example: Ikoyi Lagos"
+									placeholder="Example: Ikoyi"
 									className="field"
 									value={formik.values.location}
 									onChange={formik.handleChange}
@@ -406,16 +461,109 @@ const Shipping = () => {
 									className="errorMsg"
 								/>
 							</div>
+
 						</div>
 
-						<ConfirmOrder
-							cartItems={cartItems}
-							isVerify={isVerify}
-							deliveryAddress={formik.values.streetAddress}
-							deliveryPark={formik.values.park}
-							deliveryState={formik.values.state}
-							deliveryLoc= {formik.values.location}
-						/>
+						<div className="cartShip">
+			<div className="d-wrapper">
+				<div className="zig-zag-bottom zig-zag-top">
+					<div className="inZag">
+						<div className="yourOrder">YOUR ORDER SUMMARY</div>
+						<div className="yourOrderItems">
+							{cartItems && cartItems.length > 0 ? (
+								cartItems.map((item) => {
+									const totalPrice = item.price * item.quantity;
+									const formattedPrice = new Intl.NumberFormat("en-NG", {
+										style: "currency",
+										currency: "NGN",
+										minimumFractionDigits: 2,
+										maximumFractionDigits: 2,
+									}).format(totalPrice);
+
+									return (
+										<div
+											key={item._id}
+											className="allYourOrders"
+										>
+											<div className="yourOrderImage">
+												<img
+													src={img}
+													alt="img"
+												/>
+											</div>
+											<div className="yourOrderName">
+												<div>
+													<p>{item.name}</p> <span>x{item.quantity}</span>
+												</div>
+											</div>
+											<div className="yourOrderPrice">
+												<p>{formattedPrice}</p>
+											</div>
+										</div>
+									);
+								})
+							) : (
+								<p>No items in the cart</p>
+							)}
+						</div>
+
+						<div className="closingBalance">
+							<div className="closing closeTotal sl">
+								<p>Subtotal</p>
+								<span className="pl tPl">₦{itemsPrice.toLocaleString()}</span>
+							</div>
+
+							<div className="closing closeTotal sl">
+								<p>Tax</p>
+								<span className="pl tPl">₦{taxPrice.toLocaleString()}</span>
+							</div>
+
+							<div className="closing">
+								<p>Shipping</p>
+								<span className="shipSpanDet bl">
+									<div className="spanDetIcon">
+										<DeliveryFS className="deliveryIcon" />
+									</div>
+									<div className="spanDetText">
+										<div>
+											{formik.values.streetAddress +
+												" " +
+												formik.values.location +
+												" " +
+												formik.values.state ||
+												formik.values.park + " " + formik.values.location + " " + formik.values.state}
+										</div>
+									</div>
+									<div className="spanDetPrice pl">
+										₦{shippingPrice.toLocaleString()}
+									</div>
+								</span>
+							</div>
+
+							<div className="closing closeTotal">
+								<p>
+									Total
+									<DeliveryScooter className="navIcons" />
+								</p>
+								<span className="pl tPl">₦{totalPrice.toLocaleString()}</span>
+							</div>
+						</div>
+
+						<div className="shipFoldBtn">
+							<button
+								type="submit"
+								disabled={!isVerify}
+								className={
+									isVerify ? `shipBtn shipBtnYes` : `shipBtn shipBtnNo`
+								}
+							>
+								Confirm Order Details
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 					</div>
 				</form>
 			</FormikProvider>

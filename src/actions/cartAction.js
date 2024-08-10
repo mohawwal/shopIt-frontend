@@ -34,10 +34,16 @@ export const removeItemFromCart = (id) => async (dispatch, getState) => {
 
 
 export const saveShippingInfo = (data) => async (dispatch) => {
+    console.log('Dispatching saveShippingInfo with data:', data);
     dispatch({
         type: SAVE_SHIPPING_INFO,
         payload: data
-    })
+    });
 
-    localStorage.setItem('shippingInfo', JSON.stringify(data))
-}
+    try {
+        await localStorage.setItem('shippingInfo', JSON.stringify(data));
+        console.log('Shipping info saved to localStorage');
+    } catch (error) {
+        console.error('Failed to save shipping info to localStorage:', error);
+    }
+};

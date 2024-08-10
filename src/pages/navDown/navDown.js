@@ -49,8 +49,13 @@ const NavDown = () => {
 				<p className="pText">WishList</p>
 			</div>
 			<div className="navDownComp">
-				<Orders className="iconsDown" />
-				<p className="pText">Order</p>
+				<Link 
+					to="/order/me" 
+					className="downAccount"
+				>
+					<Orders className="iconsDown" />
+					<p className="pText">Order</p>
+				</Link>
 			</div>
 			<div className="navDownComp">
 				<Link
