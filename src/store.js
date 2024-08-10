@@ -27,7 +27,7 @@ const reducer = combineReducers({
 	user: userReducer,
 	forgotPassword: forgotPasswordReducer,
 	cart: cartReducer,
-	paymentOrder: paymentReducer,
+	payment: paymentReducer,
 	verifyPayment: verifyPaymentReducer,
 	createOrder: createOrderReducer,
 	myOrder: myOrderReducer,

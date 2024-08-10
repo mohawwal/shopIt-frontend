@@ -1,11 +1,11 @@
 import {
-    PAY_ORDER_REQUEST,
-    PAY_ORDER_SUCCESS,
-    PAY_ORDER_FAIL,
+    MAKE_PAYMENT_ORDER_REQUEST,
+    MAKE_PAYMENT_ORDER_SUCCESS,
+    MAKE_PAYMENT_ORDER_FAIL,
 
-    VERIFY_PAY_ORDER_REQUEST,
-	VERIFY_PAY_ORDER_SUCCESS,
-	VERIFY_PAY_ORDER_FAIL,
+    VERIFY_PAYMENT_ORDER_REQUEST,
+	VERIFY_PAYMENT_ORDER_SUCCESS,
+	VERIFY_PAYMENT_ORDER_FAIL,
 
     CLEAR_ERRORS
 } from '../constants/paymentConstant'
@@ -14,19 +14,19 @@ import {
 export const paymentReducer = (state = {}, action) => {
     switch(action.type) {
 
-        case PAY_ORDER_REQUEST:
+        case MAKE_PAYMENT_ORDER_REQUEST:
             return {
                 ...state,
                 loading: true
             }
 
-        case PAY_ORDER_SUCCESS:
+        case MAKE_PAYMENT_ORDER_SUCCESS:
             return {
                 loading: false,
                 order: action.payload
             }
 
-        case PAY_ORDER_FAIL:
+        case MAKE_PAYMENT_ORDER_FAIL:
             return {
                 loading: false,
                 error: action.payload
@@ -46,19 +46,19 @@ export const paymentReducer = (state = {}, action) => {
 export const verifyPaymentReducer = (state = {}, action) => {
     switch(action.type) {
 
-        case VERIFY_PAY_ORDER_REQUEST:
+        case VERIFY_PAYMENT_ORDER_REQUEST:
             return {
                 ...state,
                 loading: true
             }
 
-        case VERIFY_PAY_ORDER_SUCCESS:
+        case VERIFY_PAYMENT_ORDER_SUCCESS:
             return {
                 loading: false,
                 order: action.payload
             }
 
-        case VERIFY_PAY_ORDER_FAIL:
+        case VERIFY_PAYMENT_ORDER_FAIL:
             return {
                 loading: false,
                 error: action.payload
