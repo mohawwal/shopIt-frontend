@@ -1,7 +1,7 @@
 .navDown {
     background-color: rgba(255, 255, 255, 0.992);
     width: 100vw;
-    height: 55px;
+    height: 70px;
     position: fixed;
     bottom: 0;
     border-top: 0.5px dashed rgba(0, 0, 0, 0.289);
@@ -19,10 +19,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    gap: 3px;
 }
 
 .iconsDown {
-    width: 1.3rem;
+    width: 1.5rem;
 }
 
 .navDownComp div {
@@ -43,6 +44,25 @@
 
 .pText {
     font-size: 0.75rem;
+}
+
+.navDownAvatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.navDownAvatar img {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.navAvatarPreview {
+    width: 40px;
+    height: 40px;
 }
 
 @media screen and (min-width: 550px) {

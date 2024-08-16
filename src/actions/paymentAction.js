@@ -42,16 +42,25 @@ export const verifyPayment = (reference) => async(dispatch) => {
 
         const { data } = await axios.get(`/api/v1/createPayment?reference=${reference}`);
 
-        dispatch({
-            type: VERIFY_PAYMENT_ORDER_SUCCESS,
-            payload: data
-        });
+        if(data.success) {
+			dispatch({
+				type: VERIFY_PAYMENT_ORDER_SUCCESS,
+				payload: data
+			});
+			return { payload: data };
+		} else {
+			dispatch({
+                type: VERIFY_PAYMENT_ORDER_FAIL,
+                payload: "Payment verification failed."
+            });
+		}
 		
     } catch (error) {
         dispatch({
             type: VERIFY_PAYMENT_ORDER_FAIL,
-            payload: error.response
+            payload: error.response?.data.message || error.message
         });
+		throw error;
     }
 };
 

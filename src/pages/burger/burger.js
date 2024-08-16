@@ -59,11 +59,27 @@ const Burger = ({ handleNav, user, loading, logoutFunc }) => {
 
 				<div className="servicesNav">
 					<div>
-						<p>Zarmario Services</p>
+						<p>
+							<a
+								href="https://awwal-portfolio.vercel.app/CONTACT"
+								target="_blank"
+								rel="noreferrer"
+							>
+								Zarmario Services{" "}
+							</a>
+						</p>
 						<ArrowRight className="icons arrowIcons" />
 					</div>
 					<div>
-						<p>World of Mario</p>
+						<p>
+							<a
+								href="https://awwal-portfolio.vercel.app/CONTACT"
+								target="_blank"
+								rel="noreferrer"
+							>
+								World of Mario{" "}
+							</a>
+						</p>
 						<ArrowRight className="icons arrowIcons" />
 					</div>
 				</div>
@@ -87,14 +103,12 @@ const Burger = ({ handleNav, user, loading, logoutFunc }) => {
 						)}
 					</div>
 					{user && user.role === "admin" ? (
-						<div>My Dashboard</div>
-					) : (
-						null
-					)}
-					<div>
-						<Link to='/orders/me'>
-							My Orders
-						</Link>
+						<div onClick={handleNav}>
+							<Link to="/dashboard">My Dashboard</Link>
+						</div>
+					) : null}
+					<div onClick={handleNav}>
+						<Link to="/orders/me">My Orders</Link>
 					</div>
 					<div>
 						<a

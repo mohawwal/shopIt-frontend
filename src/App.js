@@ -18,13 +18,17 @@ import ResetPassword from "./components/user/resetPassword";
 import Navbar from "./pages/navbar/navbar";
 import NavDown from "./pages/navDown/navDown";
 import Shipping from "./components/cart/shipping";
-import Order from "./components/cart/order/Order"
-import ListOrders from "./components/order/ListOrders";
+import Payment from "./components/cart/payment/payment";
+import ListOrders from "./components/order/ListOrders/ListOrders";
 
 import store from "./store";
 import { loadUser } from "./actions/userAction";
 import Profile from "./components/user/profile/profile";
 import ProtectedRoute from "./components/route/protectedRoute";
+import OrderDetails from "./components/order/orderDetails/orderDetails";
+import DashBoard from "./components/admin/Dashboard/Dashboard"
+import ProductList from "./components/admin/productList/productList";
+import WishList from "./pages/wishList/WishList";
 
 function App() {
 	useEffect(() => {
@@ -103,6 +107,12 @@ function App() {
 						exact
 					/>
 
+					<Route
+						path="/wishlist"
+						element={<WishList />}
+						exact
+					/>
+
 					{/* Protected Route if not authenticated user */}
 					<Route element={<ProtectedRoute />}>
 						<Route
@@ -124,12 +134,33 @@ function App() {
 						/>
 
 						<Route
-							path="/order"
-							element={<Order />}
+							path="/payment"
+							element={<Payment />}
+							exact
+						/>
+
+						<Route
+							path="/order/:id"
+							element={<OrderDetails />}
+							exact
+						/>
+
+						<Route
+							path="/dashboard"
+							isAdmin={true}
+							element={<DashBoard />}
+							exact
+						/>
+
+						<Route
+							path="/admin/products"
+							isAdmin={true}
+							element={<ProductList />}
 							exact
 						/>
 
 					</Route>
+
 				</Routes>
 				<Footer />
 				<nav className="bottomNav">

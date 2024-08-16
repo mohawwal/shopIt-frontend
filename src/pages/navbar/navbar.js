@@ -71,7 +71,7 @@ const Navbar = () => {
 			navClass = "navOut";
 		} else if (location.pathname.includes("/order")) {
 			navClass = "navOut";
-		}else if (location.pathname.includes("/password/Update")) {
+		} else if (location.pathname.includes("/password/Update")) {
 			navClass = "minNonNav";
 		} else if (location.pathname === "/login") {
 			navClass = "navNone";
@@ -85,8 +85,15 @@ const Navbar = () => {
 			navClass = "minNonNav";
 		} else if (location.pathname === "/me/Update") {
 			navClass = "minNonNav";
+		} else if(location.pathname.startsWith('/order/')) {
+			navClass = "minNonNav";
+		}  else if (location.pathname.includes("/dashboard")) {
+			navClass = "navOut";
+		} else if (location.pathname === "/wishlist") {
+			navClass = "navOut";
 		} 
-
+		
+		
 		setNavStyle(navClass);
 
 		window.addEventListener("scroll", changeNavStyle);

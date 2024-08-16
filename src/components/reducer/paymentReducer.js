@@ -49,19 +49,18 @@ export const verifyPaymentReducer = (state = {}, action) => {
         case VERIFY_PAYMENT_ORDER_REQUEST:
             return {
                 ...state,
-                loading: true
             }
 
         case VERIFY_PAYMENT_ORDER_SUCCESS:
             return {
                 loading: false,
-                order: action.payload
+                status: action.payload
             }
 
         case VERIFY_PAYMENT_ORDER_FAIL:
             return {
                 loading: false,
-                error: action.payload
+                error: action.payload,
             }
 
         case CLEAR_ERRORS:

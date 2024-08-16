@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import preImg from "../../assets/images/image3.jpg";
 import "./cart.css";
 import { Link } from "react-router-dom";
 import Cancel from "../../assets/svg/cancel";
@@ -63,7 +62,7 @@ const Cart = () => {
 													<div className="cartItemImg">
 														<img
 															className="itemImg"
-															src={preImg}
+															src={item.image}
 															alt="item_Image"
 														/>
 													</div>
@@ -146,7 +145,7 @@ const Cart = () => {
 													<div className="cartItemImgII">
 														<img
 															className="itemImg"
-															src={preImg}
+															src={item.image}
 															alt="item_Image"
 														/>
 													</div>

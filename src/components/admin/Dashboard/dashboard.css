@@ -1,0 +1,110 @@
+.dashBoard {
+    padding-top: 10vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 100vh;
+    flex-wrap: wrap;
+}
+
+.dashSide {
+    width: 23%;
+}
+
+.dashMain {
+    width: 77%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashCategory {
+    width: 90%;
+
+}
+
+.dasHead {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.dashFolder {
+    background-color: transparent;
+}
+
+.dashFolderAmount {
+    margin-bottom: 20px;
+    background-color: rgb(202, 191, 235);
+    padding: 7%;
+    text-align: center;
+    border: 0.1px solid rgba(0, 0, 0, 0.264);
+}
+
+.dashFolderAmount p {
+    font-size: 1.1rem;
+}
+
+.dashFolderAmount span {
+    font-size: 1.5rem;
+}
+
+.dashFolderBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.dashFolderBottomFiles {
+    background-color: rgb(233, 235, 191);
+    width: 20%;
+    max-width: 165px;
+    width: 100%;
+}
+
+.contentDash {
+    padding: 20px 10px;
+}
+
+.viewDash {
+    display: flex;
+    align-items: center;
+    padding: 5px 3px;
+    justify-content: space-between;
+}
+
+.dashIconCat {
+    width: 40px;
+}
+
+@media screen and (max-width: 560px) {
+    .dashSide {
+        width: 20%;
+    }
+
+    .dashMain {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 725px) {
+    .dashFolderBottom {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    .dashFolderBottomFiles {
+        width: 48%;
+        max-width: 300px;
+    }
+}

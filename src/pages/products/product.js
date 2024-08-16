@@ -22,7 +22,7 @@ const Product = ({product}) => {
       <div className='linkProd'>
         <div className='allShowOff2 Link'>
               <Link Link to={`/product/${product._id}`}  className='prodImg'>
-                <img src={ Img } alt="goods" />
+                <img src={ product.image && product.image[0].url } alt="goods" />
               </Link>
               <div className='allTDs'>
                 <div className='allT'>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './search.css'
-import pic4 from '../../assets/images/pic4.jpg'
 import Cancel from '../../assets/svg/cancel'
 
 import { Link } from 'react-router-dom'
@@ -54,7 +53,7 @@ const Search = ({toggleSearch}) => {
                         {product.name}
                       </div>
                       <div className='searchImg'>
-                        <img src={pic4} alt="" />
+                        <img src={product.images[0].url} alt="" />
                       </div>
                     </Link>
                   </li>

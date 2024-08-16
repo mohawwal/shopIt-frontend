@@ -1,249 +1,251 @@
 import React, { useEffect, useState } from "react";
 import "./productDetails.css";
-import prodImg from "../../assets/images/image6.jpg";
-import { clearErrors, getProductDetails } from "../../actions/productActions";
+import { clearErrors, getProductDetails, newReview } from "../../actions/productActions";
 import { addItemToCart } from "../../actions/cartAction";
-
 import Loading from "../loader/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
-import { IoMdStar } from "react-icons/io";
-import { IoMdStarHalf } from "react-icons/io";
-import { IoMdStarOutline } from "react-icons/io";
-// import { FaArrowRightLong } from "react-icons/fa6";
+import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
 import { GoDotFill } from "react-icons/go";
 import { useAlert } from "react-alert";
-
 import Love from "../../assets/svg/love";
 import ArrowLeft from "../../assets/svg/arrowLeft";
 import MetaData from "../../components/layouts/MetaData";
+import { NEW_REVIEW_RESET } from "../../components/constants/productConstants";
+import { addToWishList, removeFromWishList } from "../../actions/wishListAction";
 
 const ProductDetails = () => {
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
-	const { id } = useParams();
-	const alert = useAlert();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    const alert = useAlert();
 
-	const {
-		loading: detailsLoading,
-		product: productDetails,
-		error: detailsError,
-	} = useSelector((state) => state.productDetails);
+    const { loading: detailsLoading, product: productDetails, error: detailsError } = useSelector((state) => state.productDetails);
+    const { user } = useSelector((state) => state.auth);
+    const { wishList } = useSelector((state) => state.wishList);
+    const { success, error } = useSelector((state) => state.newReview);
 
-	const [activeProductInfo, setActiveProductInfo] = useState(0);
+    const [activeProductInfo, setActiveProductInfo] = useState(0);
+    const [showReviewText, setShowReviewText] = useState(false);
+    const [rating, setRating] = useState(0);
+    const [comment, setComment] = useState("");
+    const [quantity, setQuantity] = useState(1);
 
-	const handleClick = (index) => {
-		setActiveProductInfo(activeProductInfo === index ? 0 : index);
-	};
+    const isProductInWishList = wishList.some((item) => item.product === id);
+    const [likeProduct, setLikeProduct] = useState(isProductInWishList);
 
-	useEffect(() => {
-		if (detailsError) {
-			alert.error(detailsError);
-			dispatch(clearErrors());
-		}
 
-		dispatch(getProductDetails(id));
-	}, [alert, detailsError, dispatch, id, productDetails.category]);
+    useEffect(() => {
+        if (detailsError) {
+            alert.error(detailsError);
+            dispatch(clearErrors());
+        }
 
-	const renderRatingStars = (ratingValue) => {
-		return Array.from({ length: 5 }, (elem, index) => {
-			let number = index + 0.1;
-			return ratingValue >= index + 1 ? (
-				<IoMdStar className="stars" />
-			) : ratingValue >= number ? (
-				<IoMdStarHalf className="stars" />
-			) : (
-				<IoMdStarOutline className="stars" />
-			);
-		});
-	};
+        if (error) {
+            alert.error(error);
+            dispatch(clearErrors());
+        }
 
-  const addToCart = () => {
-    dispatch(addItemToCart(`${id}`, quantity))
-    alert.success("Item Added To Cart")
-  }
+        if (success) {
+            alert.success("Review Posted");
+            dispatch({ type: NEW_REVIEW_RESET });
+        }
 
-	const [quantity, setQuantity] = useState(1);
+        dispatch(getProductDetails(id));
+    }, [alert, detailsError, dispatch, error, id, success]);
 
-	const increaseQty = () => {
-		const count = document.querySelector(".count");
+    const handleClick = (index) => {
+        setActiveProductInfo(activeProductInfo === index ? 0 : index);
+    };
 
-		if (count.valueAsNumber >= productDetails.stock) return;
+    const reviewHandler = () => {
+        if (rating === 0 || comment.trim() === "") {
+            alert.error("Please provide a rating and a comment.");
+            return;
+        }
 
-		const qty = count.valueAsNumber + 1;
-		setQuantity(qty);
-	};
+        const formData = new FormData();
+        formData.set("rating", rating);
+        formData.set("comment", comment);
+        formData.set("productId", id);
 
-	const decreaseQty = () => {
-		const count = document.querySelector(".count");
+        dispatch(newReview(formData));
+    };
 
-		if (count.valueAsNumber <= 1) return;
+    const renderRatingStars = (ratingValue) => {
+        return Array.from({ length: 5 }, (elem, index) => {
+            const number = index + 0.1;
+            return ratingValue >= index + 1 ? (
+                <IoMdStar className="stars" key={index} />
+            ) : ratingValue >= number ? (
+                <IoMdStarHalf className="stars" key={index} />
+            ) : (
+                <IoMdStarOutline className="stars" key={index} />
+            );
+        });
+    };
 
-		const qty = count.valueAsNumber - 1;
-		setQuantity(qty);
-	};
+    const addToCart = () => {
+        dispatch(addItemToCart(`${id}`, quantity));
+        alert.success("Item Added To Cart");
+    };
 
-	if (detailsLoading) {
-		return <Loading />;
-	}
+    const increaseQty = () => {
+        if (quantity < productDetails.stock) {
+            setQuantity(quantity + 1);
+        }
+    };
 
-	return (
-		<div className="productDetails">
-			<MetaData title="Zarmario store product" />
-			<div className="headTop"></div>
-			<div className="PD">
-				<div
-					className="backArrowPD"
-					onClick={() => navigate(-1)}
-				>
-					<ArrowLeft className="icons ArrowLeft" />
-					<span>Back</span>
-				</div>
+    const decreaseQty = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
 
-				<div className="PDSelectionBag">
-					<div className="PDFolderImage">
-						<div className="PDImage">
-							<img
-								src={prodImg}
-								alt="detailsIMG"
-							/>
-						</div>
-					</div>
+    const likeProductHandler = () => {
+        const updatedLikeProduct = !likeProduct;
+        setLikeProduct(updatedLikeProduct);
 
-					<div className="PDDetailsFolder">
-						<div className="PDCat">
-							<span className="prodsCat">
-								{productDetails.category &&
-									productDetails.category.replace(/_/g, " ")}
-							</span>
-							<div className="detailsName">
-								<div className="PDName">
-									{productDetails.name && productDetails.name.toUpperCase()}
-								</div>
-								<div className="addLove">
-									<span>
-										<Love className="icons love" />
-									</span>
-									<span>Add to Wishlist</span>
-								</div>
-							</div>
-						</div>
+        if (updatedLikeProduct) {
+            dispatch(addToWishList(id));
+            alert.success("Product added to Favorite");
+        } else {
+            dispatch(removeFromWishList(id));
+            alert.success("Product removed from Favorite");
+        }
+    };
 
-						<div className="PDReview">
-							<div className="PDRatingStar">
-								{renderRatingStars(productDetails.ratings)}
-							</div>
-							<div className="DRate">({productDetails.ratings})</div>
-							<div>
-								<GoDotFill className="dotIcon" />
-							</div>
-							<div>
-								{productDetails.numberOfReviews}{" "}
-								{productDetails.numberOfReviews > 1 ? "Reviews" : "Review"}
-							</div>
-						</div>
+    const ReviewTextHandler = () => {
+        setShowReviewText(!showReviewText);
+    };
 
-						<div className="commentsPD">{productDetails.description}</div>
+    if (detailsLoading) {
+        return <Loading />;
+    }
 
-						<div className="PDPriceComment">
-							<div className="PDPrice">
-								<span className="DPrice">₦{productDetails.price}</span>
-								<span className="offPercent">10% off!</span>
-							</div>
-						</div>
+    return (
+        <div className="productDetails">
+            <MetaData title="Zarmario store product" />
+            <div className="headTop"></div>
+            <div className="PD">
+                <div className="backArrowPD" onClick={() => navigate(-1)}>
+                    <ArrowLeft className="icons ArrowLeft" />
+                    <span>Back</span>
+                </div>
 
-						<div className="qtyCart">
-								<div className="prodDetailsQty">
-									<button className="btnLeft" onClick={decreaseQty}> - </button>
-									<input
-										className="count"
-										type="number"
-										value={quantity}
-										readOnly
-									/>
-									<button className="btnRight" onClick={increaseQty}> + </button>
-								</div>
-								<button
-									className="PDCart"
-									onClick={addToCart}
-									disabled={productDetails.stock === 0}
-								>
-									<span>Add to Cart</span>
-								</button>
-							</div>
+                <div className="PDSelectionBag">
+                    <div className="PDFolderImage">
+                        <div className="PDImage">
+                            <img src={productDetails.images && productDetails.images[0].url} alt="detailsIMG" />
+                        </div>
+                    </div>
 
-						<div className="underline"></div>
+                    <div className="PDDetailsFolder">
+                        <div className="PDCat">
+                            <span className="prodsCat">
+                                {productDetails.category && productDetails.category.replace(/_/g, " ")}
+                            </span>
+                            <div className="detailsName">
+                                <div className="PDName">
+                                    {productDetails.name && productDetails.name.toUpperCase()}
+                                </div>
+                                <div className="addLove" onClick={likeProductHandler}>
+                                    <Love className="loveIcon" filled={likeProduct ? "red" : "white"} />
+                                </div>
+                            </div>
+                        </div>
 
-						<div className="accordion">
-							<div className="spanAcc">
-								<div className="accordions-item">
-									<button
-										className={
-											activeProductInfo === 0
-												? "accordions-item-button active CProduct"
-												: "accordions-item-button CProduct"
-										}
-										onClick={() => handleClick(0)}
-									>
-										Details
-									</button>
-								</div>
-								<div className="accordions-item">
-									<button
-										className={
-											activeProductInfo === 1
-												? "accordions-item-button active CPackage"
-												: "accordions-item-button CPackage"
-										}
-										onClick={() => handleClick(1)}
-									>
-										Packaging
-									</button>
-								</div>
-								<div className="accordions-item">
-									<button
-										className={
-											activeProductInfo === 2
-												? "accordions-item-button active CShipping"
-												: "accordions-item-button CShipping"
-										}
-										onClick={() => handleClick(2)}
-									>
-										Shipping
-									</button>
-								</div>
-							</div>
-						</div>
+                        <div className="PDReview">
+                            <div className="PDRatingStar">
+                                {renderRatingStars(productDetails.ratings)}
+                            </div>
+                            <div className="DRate">({productDetails.ratings})</div>
+                            <div>
+                                <GoDotFill className="dotIcon" />
+                            </div>
+                            <div>
+                                {productDetails.numberOfReviews}{" "}
+                                {productDetails.numberOfReviews > 1 ? "Reviews" : "Review"}
+                            </div>
+                        </div>
 
-						<div className="PDContent">
-							<div>
-								{activeProductInfo === 0 && (
-									<div className="activeProductContent">
-										{productDetails.description}
-									</div>
-								)}
-							</div>
+                        <div className="commentsPD">{productDetails.description}</div>
 
-							<div>
-								{activeProductInfo === 1 && (
-									<div className="activeProductContent">
-										Details about packaging
-									</div>
-								)}
-							</div>
+                        <div className="PDPriceComment">
+                            <div className="PDPrice">
+                                <span className="DPrice">₦{productDetails.price}</span>
+                                <span className="offPercent">10% off!</span>
+                            </div>
+                        </div>
 
-							<div>
-								{activeProductInfo === 2 && (
-									<div className="activeProductContent">
-										Details about shipping info
-									</div>
-								)}
-							</div>
-						</div>
+                        <div className="qtyCart">
+                            <div className="prodDetailsQty">
+                                <button className="btnLeft" onClick={decreaseQty}> - </button>
+                                <input className="count" type="number" value={quantity} readOnly />
+                                <button className="btnRight" onClick={increaseQty}> + </button>
+                            </div>
+                            <button className="PDCart" onClick={addToCart} disabled={productDetails.stock === 0}>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
 
-						<div className="underline"></div>
+                        <div className="underline"></div>
+
+                        <div className="accordion">
+                            <div className="spanAcc">
+                                <div className="accordions-item">
+                                    <button
+                                        className={activeProductInfo === 0 ? "accordions-item-button active CProduct" : "accordions-item-button CProduct"}
+                                        onClick={() => handleClick(0)}
+                                    >
+                                        Details
+                                    </button>
+                                </div>
+                                <div className="accordions-item">
+                                    <button
+                                        className={activeProductInfo === 1 ? "accordions-item-button active CPackage" : "accordions-item-button CPackage"}
+                                        onClick={() => handleClick(1)}
+                                    >
+                                        Packaging
+                                    </button>
+                                </div>
+                                <div className="accordions-item">
+                                    <button
+                                        className={activeProductInfo === 2 ? "accordions-item-button active CShipping" : "accordions-item-button CShipping"}
+                                        onClick={() => handleClick(2)}
+                                    >
+                                        Shipping
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="PDContent">
+                            <div>
+                                {activeProductInfo === 0 && (
+                                    <div className="activeProductContent">
+                                        {productDetails.description}
+                                    </div>
+                                )}
+                            </div>
+                            <div>
+                                {activeProductInfo === 1 && (
+                                    <div className="activeProductContent">
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit cupiditate, natus eveniet esse unde dolore.
+                                    </div>
+                                )}
+                            </div>
+                            <div>
+                                {activeProductInfo === 2 && (
+                                    <div className="activeProductContent">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis magnam cum pariatur ea ad non natus nostrum quae?
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className="underline"></div>
 
 						{productDetails.numberOfReviews &&
 						productDetails.numberOfReviews >= 1 ? (
@@ -298,13 +300,57 @@ const ProductDetails = () => {
 						) : (
 							<div></div>
 						)}
+						<div>
+							{user ? (
+								<div
+									onClick={ReviewTextHandler}
+									className="PostReview"
+								>
+									Post your review
+								</div>
+							) : (
+								<button
+									className="loginPostReview"
+									onClick={() => navigate("/login")}
+								>
+									Login to post your review
+								</button>
+							)}
+						</div>
 					</div>
 				</div>
 			</div>
-
-			{/* {productDetails.category ? <div>
-          <ProductCategories categoryProducts={productDetails.category} />
-        </div>: "No recommendation"} */}
+			{showReviewText ? (
+				<div className="postReviewBox">
+					<div
+						className="cancelShowReview"
+						onClick={ReviewTextHandler}
+					>
+						cancel
+					</div>
+					<input
+						value={rating}
+						type="number"
+						placeholder="rating this product from 0-5"
+						min={0}
+						max={5}
+						onChange={
+							(e) => {
+								const value = Math.min(5, e.target.value)
+								setRating(value)
+							}
+						}
+					/>
+					<textarea
+						value={comment}
+						placeholder="Write your review"
+						onChange={(e) => setComment(e.target.value)}
+					></textarea>{" "}
+					<button onClick={() => {reviewHandler(); ReviewTextHandler()}}>
+						Post
+					</button>
+				</div>
+			) : null}
 		</div>
 	);
 };

@@ -1,0 +1,87 @@
+.dashIcon {
+	width: 20px;
+}
+
+.sideBar {
+	height: 90vh;
+	background-color: rgba(188, 188, 188, 0.142);
+}
+
+.dashIcons {
+	width: 6px;
+	height: 6px;
+}
+
+.sideComponent {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	padding: 10px;
+	gap: 25px;
+}
+
+.dashProdList {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: right;
+}
+
+.componentBar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	cursor: pointer;
+}
+
+.componentBarList {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	flex-wrap: wrap;
+}
+
+.dashDownList ul li {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.downList li {
+	margin-top: 4px;
+	background-color: rgba(186, 186, 186, 0.592);
+	padding: 5px;
+	border-radius: 5px;
+	color: rgb(0, 0, 0);
+}
+
+@media screen and (max-width: 560px) {
+	.componentBar span {
+		display: none;
+	}
+	.dashIcon {
+		width: 25px;
+	}
+	.sideComponent {
+		align-items: center;
+	}
+
+	.componentBar {
+		background-color: rgba(198, 198, 198, 0.323);
+		padding: 6px;
+		border-radius: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	.board p {
+		font-size: 0.8rem;
+	}
+}

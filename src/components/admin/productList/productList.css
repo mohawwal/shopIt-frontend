@@ -1,0 +1,55 @@
+.adminProductList {
+    padding-top: 8vh;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.adminProducts {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 90vh;
+}
+
+.adminProducts {
+    display: block;
+    max-width: 100%;
+    padding: 20px;
+    overflow-x: auto;
+    white-space: nowrap; 
+}
+
+.adminProducts p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.adminProducts > div {
+    display: inline-block;
+    padding: 15px; 
+}
+
+
+.adminProductTable .dataTables_paginate {
+    display: flex !important;
+    justify-content: center;
+    flex-direction: row !important;
+    align-items: center;
+}
+
+.adminProductAction {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 20px;
+}
+
+.adminProductTable .dataTables_paginate {
+    margin: 10px 0 100px !important;
+}

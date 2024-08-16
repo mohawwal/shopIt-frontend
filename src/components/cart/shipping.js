@@ -142,7 +142,7 @@ const Shipping = () => {
 				shippingPrice,
 				totalPrice,
 				orderItems: cartItems.map(item => ({
-					product: item._id,
+					product: item.product,
 					name: item.name,
 					price: item.price,
 					image: item.image,
@@ -159,7 +159,7 @@ const Shipping = () => {
 			};
 	
 			sessionStorage.setItem("orderInfo", JSON.stringify(data));
-			navigate("/order");
+			navigate("/payment");
 
 			dispatch(saveShippingInfo(shippingData));
 		},

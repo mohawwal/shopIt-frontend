@@ -1,0 +1,36 @@
+.ListOrders {
+    padding-top: 8vh;
+    margin: 0 auto;
+    width: 95%;
+    max-width: 650px;
+    margin-bottom: 7vh;
+}
+
+.list {
+    border-bottom: 0.2px solid rgba(47, 47, 47, 0.129);
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.listA, .listB {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.listA div {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.listA span, .listB span {
+    font-size: 0.75rem;
+}
+
+.timeLine {
+    color: rgb(0, 26, 171);
+    font-size: 0.6rem;
+}

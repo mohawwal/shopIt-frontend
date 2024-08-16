@@ -20,21 +20,18 @@ export const addItemToCart =  (id, quantity) => async (dispatch, getState) => {
 
 
 export const removeItemFromCart = (id) => async (dispatch, getState) => {
-    const { data } = await axios.get(`/api/v1/product/${id}`)
 
     dispatch({
         type: REMOVE_ITEM_CART,
         payload: id
     })
 
-    console.log(data)
 
     localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
 }
 
 
 export const saveShippingInfo = (data) => async (dispatch) => {
-    console.log('Dispatching saveShippingInfo with data:', data);
     dispatch({
         type: SAVE_SHIPPING_INFO,
         payload: data
@@ -42,8 +39,7 @@ export const saveShippingInfo = (data) => async (dispatch) => {
 
     try {
         await localStorage.setItem('shippingInfo', JSON.stringify(data));
-        console.log('Shipping info saved to localStorage');
     } catch (error) {
-        console.error('Failed to save shipping info to localStorage:', error);
+        alert.error('Failed to save shipping info to localStorage:', error);
     }
 };

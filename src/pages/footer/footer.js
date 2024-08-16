@@ -24,7 +24,17 @@ const Footer = () => {
             footerClass = "footerNone"
         } else if (location.pathname === '/me/Update') {
             footerClass = "footerNone"
-        } 
+        } else if (location.pathname === '/orders/me') {
+            footerClass = "footerNone"
+        } else if(location.pathname.startsWith('/order/')) {
+            footerClass = "footerNone"
+        } else if(location.pathname.startsWith('/dashboard')) {
+            footerClass = "footerNone"
+        } else if(location.pathname.startsWith('/admin/products')) {
+            footerClass = "footerNone"
+        } else if(location.pathname.startsWith('/wishlist')) {
+            footerClass = "footerNone"
+        }
 
         setFooterStyle(footerClass)
     },[footerStyle, location.pathname])
