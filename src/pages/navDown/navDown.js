@@ -26,7 +26,7 @@ const NavDown = () => {
 			downNavClass = "downNavNone";
 		} else if (location.pathname === "/register") {
 			downNavClass = "downNavNone";
-		}
+		} 
 
 		setDownNav(downNavClass);
 	}, [downNav, location.pathname]);
@@ -43,8 +43,13 @@ const NavDown = () => {
 				</Link>
 			</div>
 			<div className="navDownComp">
-				<ShopIcon className="iconsDown" />
-				<p className="pText">Shop</p>
+				<Link
+					to="/shop"
+					className="downAccount"
+				>
+					<ShopIcon className="iconsDown" />
+					<p className="pText">Shop</p>
+				</Link>
 			</div>
 			<div className="navDownComp">
 				<Link

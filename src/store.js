@@ -6,7 +6,9 @@ import {
 	productCategoryReducer,
 	productDetailsReducer,
 	allProductsReducer,
-	newReviewReducer
+	newProductReducer,
+	newReviewReducer,
+	productReducer,
 } from "./components/reducer/productReducers";
 import {
 	authReducer,
@@ -17,15 +19,22 @@ import { cartReducer } from "./components/reducer/cartReducers";
 import {
 	createOrderReducer,
 	myOrderReducer,
-	getOrderDetailsReducer
+	getOrderDetailsReducer,
+	allOrderReducer,
+	orderReducer
 } from "./components/reducer/orderReducer";
-import { paymentReducer, verifyPaymentReducer } from "./components/reducer/paymentReducer"
-import { wishListReducer } from "./components/reducer/wishListReducer"
+import {
+	paymentReducer,
+	verifyPaymentReducer,
+} from "./components/reducer/paymentReducer";
+import { wishListReducer } from "./components/reducer/wishListReducer";
 
 const reducer = combineReducers({
 	productCategory: productCategoryReducer,
 	productDetails: productDetailsReducer,
 	allProducts: allProductsReducer,
+	newProduct: newProductReducer,
+	product: productReducer,
 	newReview: newReviewReducer,
 	auth: authReducer,
 	user: userReducer,
@@ -36,7 +45,9 @@ const reducer = combineReducers({
 	createOrder: createOrderReducer,
 	myOrder: myOrderReducer,
 	getOrderDetails: getOrderDetailsReducer,
-	wishList: wishListReducer
+	allOrder: allOrderReducer,
+	order: orderReducer,
+	wishList: wishListReducer,
 });
 
 let initialState = {
@@ -51,8 +62,8 @@ let initialState = {
 	wishListItems: {
 		wishList: localStorage.getItem("wishList")
 			? JSON.parse(localStorage.getItem("wishList"))
-			: []
-	}
+			: [],
+	},
 };
 
 const middleware = [thunk];

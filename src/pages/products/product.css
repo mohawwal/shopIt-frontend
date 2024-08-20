@@ -1,48 +1,37 @@
-.frontProds2 {
+.folderList {
+  height: 13rem;
+  width: 100%;
+}
+
+.foldersList {
   height: 100%;
   width: 100%;
-  max-width: 175px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.allShowOff2 {
-  height: 90%;
+
+.folderImg {
+  height: 78%;
+  width: 100%;
 }
 
-.prodImg img {
-  max-height: 175px;
+.folderImg img {
+  height: 100%;
+  width: 100%;
   object-fit: cover;
-  object-position: center;
-  border-radius: 1px;
+  object-position: top;
 }
 
-.linkProd {
-  height: 90%;
-}
-
-.prodDet {
+.allTDs {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 3px;
   margin-top: 10px;
-}
-
-.prodPrice .price {
-  margin-top: 10px;
-  font-size: 1.1rem;
-}
-
-.allT .allName {
-  font-size: 0.85rem;
-  color: rgba(0, 0, 0, 0.797);
-  overflow: hidden;
-}
-
-.allT .allStars {
-  font-size: 1rem;
-  color: rgb(18, 2, 65);
-  font-weight: 500;
-}
-
-.cart {
-  font-size: 2rem;
-  color: rgb(1, 1, 52);
 }
 
 .basket {
@@ -55,18 +44,34 @@
   border-radius: 5px;
 }
 
-.allTDs {
-  height: 18%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 5px;
-  gap: 3px;
-  margin-top: 10px;
+.cart {
+  font-size: 2rem;
+  color: rgb(1, 1, 52);
 }
 
-.prodCartIcon {
-  font-size: 1.2rem;
-  color: rgb(0, 0, 54);
+.allT {
+  width: 80%;
+  padding-left: 5px;
 }
+
+
+.allT .allName {
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.797);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.allT .allStars {
+  font-size: 1rem;
+  color: rgb(18, 2, 65);
+  font-weight: 500;
+} 
+
+
+.prodCartIcon {
+  font-size: 1.3rem;
+  color: rgb(0, 0, 54);
+} 

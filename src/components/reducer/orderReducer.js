@@ -7,6 +7,15 @@ import {
     MY_ORDER_SUCCESS,
     MY_ORDER_FAIL,
 
+    ALL_ORDER_REQUEST,
+    ALL_ORDER_SUCCESS,
+    ALL_ORDER_FAIL,
+
+    UPDATE_ORDER_REQUEST,
+    UPDATE_ORDER_SUCCESS,
+    UPDATE_ORDER_RESET,
+    UPDATE_ORDER_FAIL,
+
     ORDER_DETAILS_REQUEST,
     ORDER_DETAILS_SUCCESS,
     ORDER_DETAILS_FAIL,
@@ -112,4 +121,80 @@ export const getOrderDetailsReducer = (state = {order: {}}, action) => {
             return state;
     }
 
+}
+
+
+//get order details
+export const allOrderReducer = (state = {orders: []}, action) => {
+    switch(action.type) {
+        case ALL_ORDER_REQUEST:
+            return {
+                loading: true,
+            }
+        
+        case ALL_ORDER_SUCCESS:
+            return {
+                loading: false,
+                orders: action.payload.orders,
+                totalAmount:action.payload.totalAmount
+            }
+
+        case ALL_ORDER_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+
+        default:
+            return state;
+    }
+
+}
+
+
+
+
+export const orderReducer = (state = {}, action) => {
+    switch(action.type) {
+
+        case UPDATE_ORDER_REQUEST:
+            return {
+                ...state,
+                loading: true
+            }
+
+        case UPDATE_ORDER_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                isUpdated: action.payload
+            }
+
+        case UPDATE_ORDER_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        case UPDATE_ORDER_RESET:
+            return {
+                ...state,
+                isUpdated: false
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+
+        default:
+            return state;
+    }
 }

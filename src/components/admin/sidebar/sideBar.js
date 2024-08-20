@@ -18,9 +18,9 @@ const SideBar = () => {
 	return (
 		<div className="sideBar">
 			<div className="sideComponent">
-				<div className="board">
+				<Link to='/dashboard' className="board">
 					<DashboardIcon className="dashIcon" />
-				</div>
+				</Link>
 				<div className="componentBar">
 					<div className="componentBarList" onClick={dashDownHandler}>
 						<Product className="dashIcon" />
@@ -31,10 +31,10 @@ const SideBar = () => {
 						<div className="dashProdList">
 							<ul className="downList">
 								<li>
-									<Link to="/admin/products">All</Link>
+									<Link className="liLink" to="/admin/products"><p>All</p></Link>
 								</li>
 								<li>
-									<Link to="/admin/product">Create</Link>
+									<Link className="liLink" to="/admin/product"><p>Create</p></Link>
 								</li>
 							</ul>
 						</div>

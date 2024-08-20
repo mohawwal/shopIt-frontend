@@ -34,7 +34,9 @@ const Footer = () => {
             footerClass = "footerNone"
         } else if(location.pathname.startsWith('/wishlist')) {
             footerClass = "footerNone"
-        }
+        } else if (location.pathname === '/shop') {
+            footerClass = "footerNone"
+        } 
 
         setFooterStyle(footerClass)
     },[footerStyle, location.pathname])

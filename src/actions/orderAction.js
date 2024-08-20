@@ -9,6 +9,14 @@ import {
 	MY_ORDER_SUCCESS,
 	MY_ORDER_FAIL,
 
+	ALL_ORDER_REQUEST,
+	ALL_ORDER_SUCCESS,
+	ALL_ORDER_FAIL,
+
+	UPDATE_ORDER_REQUEST,
+	UPDATE_ORDER_SUCCESS,
+	UPDATE_ORDER_FAIL,
+
 	ORDER_DETAILS_REQUEST,
 	ORDER_DETAILS_SUCCESS,
 	ORDER_DETAILS_FAIL,
@@ -34,7 +42,6 @@ export const addOrder = (orderData) => async (dispatch) => {
         });
 
     } catch (error) {
-        console.error("Error adding order:", error.response ? error.response.data : error.message); // Log detailed error
         dispatch({
             type: CREATE_ORDER_FAIL,
             payload: error.response ? error.response.data.message : error.message
@@ -56,7 +63,6 @@ export const myOrder = () => async (dispatch) => {
 		});
 
 	} catch (error) {
-		console.log('Error:', error.response.data.message);
 		dispatch({
 			type: MY_ORDER_FAIL,
 			payload: error.response.data.message,
@@ -79,7 +85,6 @@ export const getOrderDetails = (id) => async (dispatch) => {
 
 
 	} catch (error) {
-		console.log('Error:', error.response.data.message);
 		dispatch({
 			type: ORDER_DETAILS_FAIL,
 			payload: error.response.data.message,
@@ -87,6 +92,54 @@ export const getOrderDetails = (id) => async (dispatch) => {
 	}
 	
 };
+
+export const getAllOrder = () => async (dispatch) => {
+	try {
+		dispatch({ type: ALL_ORDER_REQUEST })
+
+		const { data } = await axios.get(`/api/v1/admin/orders`); 
+
+		dispatch({
+			type: ALL_ORDER_SUCCESS,
+			payload: data,
+		});
+
+
+	} catch (error) {
+		dispatch({
+			type: ALL_ORDER_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
+
+
+export const updateOrder = (id, orderData) => async (dispatch) => {
+	try {
+		dispatch({ type: UPDATE_ORDER_REQUEST })
+
+		const config = {
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}
+
+		const { data } = await axios.put(`/api/v1/admin/order/${id}`, orderData, config); 
+
+		dispatch({
+			type: UPDATE_ORDER_SUCCESS,
+			payload: data.success,
+		});
+
+
+	} catch (error) {
+		dispatch({
+			type: UPDATE_ORDER_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
+
 
 //Clear Errors
 export const clearErrors = () => async (dispatch) => {

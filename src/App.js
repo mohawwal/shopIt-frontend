@@ -29,6 +29,10 @@ import OrderDetails from "./components/order/orderDetails/orderDetails";
 import DashBoard from "./components/admin/Dashboard/Dashboard"
 import ProductList from "./components/admin/productList/productList";
 import WishList from "./pages/wishList/WishList";
+import NewProduct from "./components/admin/newProduct/newProduct";
+import Shop from "./pages/shop/Shop";
+import UpdateProduct from "./components/admin/updateProduct/UpdateProduct";
+import OrderList from "./components/admin/ordersList/orderList";
 
 function App() {
 	useEffect(() => {
@@ -113,6 +117,12 @@ function App() {
 						exact
 					/>
 
+					<Route
+						path="/shop"
+						element={<Shop />}
+						exact
+					/>
+
 					{/* Protected Route if not authenticated user */}
 					<Route element={<ProtectedRoute />}>
 						<Route
@@ -159,6 +169,26 @@ function App() {
 							exact
 						/>
 
+						<Route
+							path="/admin/product"
+							isAdmin={true}
+							element={<NewProduct />}
+							exact
+						/>
+
+						<Route
+							path="/admin/product/:productId"
+							isAdmin={true}
+							element={<UpdateProduct />}
+							exact
+						/>
+
+						<Route
+							path="/admin/orders"
+							isAdmin={true}
+							element={<OrderList />}
+							exact
+						/>
 					</Route>
 
 				</Routes>

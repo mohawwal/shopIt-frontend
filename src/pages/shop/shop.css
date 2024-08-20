@@ -1,0 +1,62 @@
+.navShop {
+    padding-top: 7vh;
+    width: 95%;
+    margin: 0 auto 10vh;
+}
+
+.zs {
+    font-size: 1.2rem;
+    color: rgba(1, 1, 94, 0.275);
+    font-weight: 600;
+    text-align: right;
+}
+
+.shopCategory {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.shopCat {
+    height: 12rem;
+    width: 100%;
+    position: relative;
+    justify-content: space-around;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.shopCatImg {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.shopCatImg img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+
+.shopCatTitle {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(33, 0, 104, 0.73);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.shopCatTitle:hover,
+.shopCatTitle:focus {
+    background-color: rgba(210, 188, 255, 0.63);
+    color: black;
+} 

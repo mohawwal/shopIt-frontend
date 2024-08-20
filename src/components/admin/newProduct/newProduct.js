@@ -15,10 +15,10 @@ const NewProduct = () => {
 
 	const { loading, success, error } = useSelector((state) => state.newProduct);
 
-
 	useEffect(() => {
 		if (error) {
 			alert.error(error);
+			console.log(error)
 			dispatch(clearErrors());
 		}
 
@@ -74,7 +74,33 @@ const NewProduct = () => {
 			.min(3, "Name must be at least 3 characters long")
 			.max(20, "Name cannot exceed 20 characters")
 			.required("Name is required"),
+	
+		price: Yup.number()
+			.typeError("Price must be a number")
+			.positive("Price must be a positive number")
+			.required("Price is required"),
+	
+		description: Yup.string()
+			.min(10, "Description must be at least 10 characters long")
+			.max(1000, "Description cannot exceed 1000 characters")
+			.required("Description is required"),
+	
+		category: Yup.string()
+			.oneOf(categories, "Please select a valid category")
+			.required("Category is required"),
+	
+		stock: Yup.number()
+			.typeError("Stock must be a number")
+			.integer("Stock must be a whole number")
+			.positive("Stock must be a positive number")
+			.required("Stock is required"),
+	
+		seller: Yup.string()
+			.min(3, "Seller name must be at least 3 characters long")
+			.max(50, "Seller name cannot exceed 50 characters")
+			.required("Seller name is required"),
 	});
+	
 
 	const formik = useFormik({
 		initialValues: initialValue,
@@ -90,8 +116,8 @@ const NewProduct = () => {
 			formData.append("stock", values.stock);
 			formData.append("seller", values.seller);
 
-			images.forEach((image) => {
-				formData.append("images", image);
+			images.forEach((image, index) => {
+				formData.append(`images[${index}]`, image);
 			});
 
 			dispatch(newProduct(formData));
@@ -112,8 +138,11 @@ const NewProduct = () => {
 					setImagePreview((oldArray) => [...oldArray, reader.result]);
 					setImages((oldArray) => [...oldArray, reader.result]);
 				}
+			}
+			reader.onerror = (error) => {
+				console.error(`Error reading file ${file.name}:`, error);
 			};
-
+			
 			reader.readAsDataURL(file);
 		});
 	};
@@ -128,12 +157,12 @@ const NewProduct = () => {
 					onSubmit={formik.handleSubmit}
 					encType="multipart/form-data"
 				>
-					<div className="space emailSpace">
+					<div className="">
 						<div className="nameAs">
 							<label htmlFor="name_field">Name</label>
 							<div className="as">*</div>
 						</div>
-						<div className="inputField">
+						<div className="">
 							<Field
 								type="name"
 								name="name"
@@ -150,37 +179,23 @@ const NewProduct = () => {
 						</div>
 					</div>
 
-                    <div className="productImg">
-						<label htmlFor="avatar_upload">Upload Product Image</label>
-						<input
-							type="file"
-							name="images"
-							accept="image/*"
-							onChange={(e) => handleFileChange(e)}
-                            multiple
-						/>
-					</div>
-                    <div>
-                        {imagePreview.map(img => (
-                            <img src={img} key={img} alt="img previews" />
-                        ))}
-                    </div>
-
-
-                    <div className="space emailSpace">
+					<div className="space emailSpace">
 						<div className="nameAs">
-							<label htmlFor="name_field">Price</label>
+							<label htmlFor="price">Price</label>
 							<div className="as">*</div>
 						</div>
-						<div className="inputField">
-							<Field
-								type="name"
-								name="name"
-								placeholder="Price of the Product"
-								className="field"
-								value={formik.values.price}
-								onChange={formik.handleChange}
-							/>
+						<div className="">
+							<div style={{ display: "flex", alignItems: "center" }}>
+								<span>₦</span>
+								<Field
+									type="number"
+									name="price"
+									placeholder="Price of the Product"
+									className="field"
+									value={formik.values.price}
+									onChange={formik.handleChange}
+								/>
+							</div>
 							<ErrorMessage
 								name="price"
 								component="div"
@@ -188,16 +203,16 @@ const NewProduct = () => {
 							/>
 						</div>
 					</div>
-   
-                    <div className="space emailSpace">
+
+					<div className="">
 						<div className="nameAs">
 							<label htmlFor="name_field">Description</label>
 							<div className="as">*</div>
 						</div>
-						<div className="inputField">
+						<div className="">
 							<Field
-								type="textarea"
-								name="name"
+								as="textarea"
+								name="description"
 								placeholder="Product Description"
 								className="field"
 								value={formik.values.description}
@@ -211,40 +226,76 @@ const NewProduct = () => {
 						</div>
 					</div>
 
-                    <div className="space emailSpace">
+					<div className="space emailSpace">
 						<div className="nameAs">
 							<label htmlFor="name_field">Category</label>
 							<div className="as">*</div>
 						</div>
-						<div className="inputField">
+						<div className="">
 							<Field
-								type="name"
-								name="name"
+								as="select"
+								name="category"
 								placeholder="name"
 								className="field"
-								value={formik.values.description}
+								value={formik.values.category}
 								onChange={formik.handleChange}
-							/>
-							<ErrorMessage
-								name="description"
-								component="div"
-								className="errorMsg"
-							/>
+							>
+								<option
+									value=""
+									label="select category"
+								/>
+								{categories.map((category) => (
+									<option
+										value={category}
+										key={category}
+									>
+										{category.replace(/_/g, " ")}
+									</option>
+								))}
+								<ErrorMessage
+									name="description"
+									component="div"
+									className="errorMsg"
+								/>
+							</Field>
 						</div>
 					</div>
 
-                    <div className="space emailSpace">
+					<div className="">
 						<div className="nameAs">
 							<label htmlFor="name_field">stock</label>
 							<div className="as">*</div>
 						</div>
-						<div className="inputField">
+						<div className="">
 							<Field
-								type="name"
-								name="name"
+								type="number"
+								name="stock"
 								placeholder="Quantity Available for sell"
 								className="field"
-								value={formik.values.description}
+								value={formik.values.stock}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+							/>
+							<ErrorMessage
+								name="stock"
+								component="div"
+								className="errorMsg"
+							/>
+						</div>
+					</div>
+
+					<div className="space emailSpace">
+						<div className="nameAs">
+							<label htmlFor="name_field">Brand Name</label>
+							<div className="as">*</div>
+						</div>
+						<div className="inputField">
+							<Field
+								type="text"
+								name="seller"
+								placeholder="You Name or Product Brand Name"
+								className="field"
+								value={formik.values.seller}
 								onChange={formik.handleChange}
 							/>
 							<ErrorMessage
@@ -255,26 +306,24 @@ const NewProduct = () => {
 						</div>
 					</div>
 
-                    <div className="space emailSpace">
-						<div className="nameAs">
-							<label htmlFor="name_field">Seller Name</label>
-							<div className="as">*</div>
-						</div>
-						<div className="inputField">
-							<Field
-								type="name"
-								name="name"
-								placeholder="You Name or Brand Name"
-								className="field"
-								value={formik.values.description}
-								onChange={formik.handleChange}
+					<div className="productImg">
+						<label htmlFor="avatar_upload">Upload Product Image</label>
+						<input
+							type="file"
+							name="images"
+							accept="image/*"
+							onChange={(e) => handleFileChange(e)}
+							multiple
+						/>
+					</div>
+					<div className="preImgProduct">
+						{imagePreview.map((img) => (
+							<img
+								src={img}
+								key={img}
+								alt="img previews"
 							/>
-							<ErrorMessage
-								name="description"
-								component="div"
-								className="errorMsg"
-							/>
-						</div>
+						))}
 					</div>
 
 					<div className="btnPss">
@@ -282,7 +331,7 @@ const NewProduct = () => {
 							disabled={loading ? true : false}
 							type="submit"
 						>
-							Upload New Product 
+							Upload New Product
 						</button>
 					</div>
 				</form>

@@ -54,10 +54,16 @@
 
 .downList li {
 	margin-top: 4px;
-	background-color: rgba(186, 186, 186, 0.592);
+	width: 100%;
+	background-color: rgba(186, 186, 186, 0.484);
 	padding: 5px;
 	border-radius: 5px;
 	color: rgb(0, 0, 0);
+}
+
+.liLink {
+	width: 100%;
+	background-color: red;
 }
 
 @media screen and (max-width: 560px) {
@@ -72,8 +78,8 @@
 	}
 
 	.componentBar {
-		background-color: rgba(198, 198, 198, 0.323);
-		padding: 6px;
+		background-color: rgba(198, 198, 198, 0.21);
+		padding: 3px;
 		border-radius: 10px;
 		display: flex;
 		align-items: center;

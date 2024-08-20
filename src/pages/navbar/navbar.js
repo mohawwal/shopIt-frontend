@@ -91,6 +91,8 @@ const Navbar = () => {
 			navClass = "navOut";
 		} else if (location.pathname === "/wishlist") {
 			navClass = "navOut";
+		} else if (location.pathname === "/shop") {
+			navClass = "navOut";
 		} 
 		
 		

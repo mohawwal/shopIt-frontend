@@ -6,14 +6,17 @@ import { Link } from "react-router-dom";
 import Loading from "../../../pages/loader/loader";
 import './productList.css'
 import { useDispatch, useSelector } from "react-redux";
-import { getAdminProducts, clearErrors } from "../../../actions/productActions";
+import { getAdminProducts, clearErrors, deleteProduct } from "../../../actions/productActions";
+import { useNavigate } from "react-router-dom";
+import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
 const ProductList = () => {
     const alert = useAlert();
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const { loading, error, products } = useSelector((state) => state.allProducts);
-    console.log(products)
+    const { error: deleteError, isDeleted } = useSelector((state) => state.product)
 
     useEffect(() => {
         dispatch(getAdminProducts());
@@ -22,7 +25,24 @@ const ProductList = () => {
             alert.error(error);
             dispatch(clearErrors());
         }
-    }, [alert, dispatch, error]);
+
+        if (deleteError) {
+            alert.error(deleteError);
+            dispatch(clearErrors());
+        }
+
+        if(isDeleted) {
+            alert.success('Product Deleted Successfully')
+            navigate('/admin/products')
+            dispatch({ type: DELETE_PRODUCT_RESET })
+        }
+        
+    }, [alert, deleteError, dispatch, error, isDeleted, navigate]);
+
+
+    const handleDeleteProduct = (id) => {
+        dispatch(deleteProduct(id))
+    }
 
     const setProducts = () => {
         const data = {
@@ -66,7 +86,7 @@ const ProductList = () => {
                         <Link to={`/admin/product/${product._id}`} className="btn btn-primary btn-sm">
                             Edit
                         </Link>
-                        <button className="btn btn-danger btn-sm">
+                        <button onClick={() => handleDeleteProduct(product._id)} className="btn btn-danger btn-sm">
                             Delete
                         </button>
                     </div>
