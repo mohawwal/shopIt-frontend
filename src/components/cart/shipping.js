@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { saveShippingInfo } from '../../actions/cartAction'
+import { saveShippingInfo } from "../../actions/cartAction";
 import { Field, ErrorMessage, useFormik, FormikProvider } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import CheckoutSteps from "./checkoutSteps";
 import { useNavigate } from "react-router-dom";
-import img from "../../assets/images/image5.jpg";
 import DeliveryScooter from "../../assets/svg/deliveryScooter";
 import DeliveryFS from "../../assets/svg/deliveryFastShipping";
 
@@ -18,7 +17,6 @@ const Shipping = () => {
 	const No2 = Math.floor(Math.random() * 5) + 1;
 	const totalNo = No1 + No2;
 
-	
 	const { shippingInfo } = useSelector((state) => state.cart);
 	const { user, isAuthenticated } = useSelector((state) => state.auth);
 	const { cartItems } = useSelector((state) => state.cart);
@@ -27,8 +25,8 @@ const Shipping = () => {
 	const shippingPrice = parseFloat(prevShippingPrice.toFixed(0));
 
 	const prevItemsPrice = cartItems.reduce(
-		(acc, item) => acc + (Number(item.price) * Number(item.quantity)),
-		0
+		(acc, item) => acc + Number(item.price) * Number(item.quantity),
+		0,
 	);
 	const itemsPrice = parseFloat(prevItemsPrice.toFixed(0));
 
@@ -76,7 +74,6 @@ const Shipping = () => {
 			then: (schema) => schema.required("Park location is required"),
 			otherwise: (schema) => schema.notRequired(),
 		}),
-		
 
 		state: Yup.string().when("isLagos", {
 			is: false,
@@ -92,7 +89,6 @@ const Shipping = () => {
 			.min(3, "Note message must be at least 3 characters long")
 			.max(50, "Note message cannot exceed 50 characters"),
 	});
-	
 
 	const formik = useFormik({
 		initialValues: {
@@ -128,10 +124,10 @@ const Shipping = () => {
 			};
 
 			if (values.isLagos) {
-				shippingData.state = "Lagos State"
+				shippingData.state = "Lagos State";
 				shippingData.streetAddress = values.streetAddress;
 			} else {
-				shippingData.state = values.state
+				shippingData.state = values.state;
 				shippingData.state = values.state;
 				shippingData.park = values.park;
 			}
@@ -141,7 +137,7 @@ const Shipping = () => {
 				taxPrice,
 				shippingPrice,
 				totalPrice,
-				orderItems: cartItems.map(item => ({
+				orderItems: cartItems.map((item) => ({
 					product: item.product,
 					name: item.name,
 					price: item.price,
@@ -154,10 +150,10 @@ const Shipping = () => {
 					state: formik.values.state,
 					park: formik.values.park,
 					phoneNo: formik.values.phoneNo,
-					orderNote: formik.values.orderNote
-				}
+					orderNote: formik.values.orderNote,
+				},
 			};
-	
+
 			sessionStorage.setItem("orderInfo", JSON.stringify(data));
 			navigate("/payment");
 
@@ -461,109 +457,122 @@ const Shipping = () => {
 									className="errorMsg"
 								/>
 							</div>
-
 						</div>
 
 						<div className="cartShip">
-			<div className="d-wrapper">
-				<div className="zig-zag-bottom zig-zag-top">
-					<div className="inZag">
-						<div className="yourOrder">YOUR ORDER SUMMARY</div>
-						<div className="yourOrderItems">
-							{cartItems && cartItems.length > 0 ? (
-								cartItems.map((item) => {
-									const totalPrice = item.price * item.quantity;
-									const formattedPrice = new Intl.NumberFormat("en-NG", {
-										style: "currency",
-										currency: "NGN",
-										minimumFractionDigits: 2,
-										maximumFractionDigits: 2,
-									}).format(totalPrice);
+							<div className="d-wrapper">
+								<div className="zig-zag-bottom zig-zag-top">
+									<div className="inZag">
+										<div className="yourOrder">YOUR ORDER SUMMARY</div>
+										<div className="yourOrderItems">
+											{cartItems && cartItems.length > 0 ? (
+												cartItems.map((item) => {
+													const totalPrice = item.price * item.quantity;
+													const formattedPrice = new Intl.NumberFormat(
+														"en-NG",
+														{
+															style: "currency",
+															currency: "NGN",
+															minimumFractionDigits: 2,
+															maximumFractionDigits: 2,
+														},
+													).format(totalPrice);
 
-									return (
-										<div
-											key={item._id}
-											className="allYourOrders"
-										>
-											<div className="yourOrderImage">
-												<img
-													src={img}
-													alt="img"
-												/>
+													return (
+														<div
+															key={item._id}
+															className="allYourOrders"
+														>
+															<div className="yourOrderImage">
+																<img
+																	src={item.image}
+																	alt="img"
+																/>
+															</div>
+															<div className="yourOrderName">
+																<div>
+																	<p>{item.name}</p>{" "}
+																	<span>x{item.quantity}</span>
+																</div>
+															</div>
+															<div className="yourOrderPrice">
+																<p>{formattedPrice}</p>
+															</div>
+														</div>
+													);
+												})
+											) : (
+												<p>No items in the cart</p>
+											)}
+										</div>
+
+										<div className="closingBalance">
+											<div className="closing closeTotal sl">
+												<p>Subtotal</p>
+												<span className="pl tPl">
+													₦{itemsPrice.toLocaleString()}
+												</span>
 											</div>
-											<div className="yourOrderName">
-												<div>
-													<p>{item.name}</p> <span>x{item.quantity}</span>
-												</div>
+
+											<div className="closing closeTotal sl">
+												<p>Tax</p>
+												<span className="pl tPl">
+													₦{taxPrice.toLocaleString()}
+												</span>
 											</div>
-											<div className="yourOrderPrice">
-												<p>{formattedPrice}</p>
+
+											<div className="closing">
+												<p>Shipping</p>
+												<span className="shipSpanDet bl">
+													<div className="spanDetIcon">
+														<DeliveryFS className="deliveryIcon" />
+													</div>
+													<div className="spanDetText">
+														<div>
+															{formik.values.streetAddress +
+																" " +
+																formik.values.location +
+																" " +
+																formik.values.state ||
+																formik.values.park +
+																	" " +
+																	formik.values.location +
+																	" " +
+																	formik.values.state}
+														</div>
+													</div>
+													<div className="spanDetPrice pl">
+														₦{shippingPrice.toLocaleString()}
+													</div>
+												</span>
+											</div>
+
+											<div className="closing closeTotal">
+												<p>
+													Total
+													<DeliveryScooter className="navIcons" />
+												</p>
+												<span className="pl tPl">
+													₦{totalPrice.toLocaleString()}
+												</span>
 											</div>
 										</div>
-									);
-								})
-							) : (
-								<p>No items in the cart</p>
-							)}
-						</div>
 
-						<div className="closingBalance">
-							<div className="closing closeTotal sl">
-								<p>Subtotal</p>
-								<span className="pl tPl">₦{itemsPrice.toLocaleString()}</span>
-							</div>
-
-							<div className="closing closeTotal sl">
-								<p>Tax</p>
-								<span className="pl tPl">₦{taxPrice.toLocaleString()}</span>
-							</div>
-
-							<div className="closing">
-								<p>Shipping</p>
-								<span className="shipSpanDet bl">
-									<div className="spanDetIcon">
-										<DeliveryFS className="deliveryIcon" />
-									</div>
-									<div className="spanDetText">
-										<div>
-											{formik.values.streetAddress +
-												" " +
-												formik.values.location +
-												" " +
-												formik.values.state ||
-												formik.values.park + " " + formik.values.location + " " + formik.values.state}
+										<div className="shipFoldBtn">
+											<button
+												type="submit"
+												disabled={!isVerify}
+												className={
+													isVerify ? `shipBtn shipBtnYes` : `shipBtn shipBtnNo`
+												}
+											>
+												Confirm Order Details
+											</button>
 										</div>
 									</div>
-									<div className="spanDetPrice pl">
-										₦{shippingPrice.toLocaleString()}
-									</div>
-								</span>
-							</div>
-
-							<div className="closing closeTotal">
-								<p>
-									Total
-									<DeliveryScooter className="navIcons" />
-								</p>
-								<span className="pl tPl">₦{totalPrice.toLocaleString()}</span>
+								</div>
 							</div>
 						</div>
-
-						<div className="shipFoldBtn">
-							<button
-								type="submit"
-								disabled={!isVerify}
-								className={
-									isVerify ? `shipBtn shipBtnYes` : `shipBtn shipBtnNo`
-								}
-							>
-								Confirm Order Details
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 					</div>
 				</form>
 			</FormikProvider>

@@ -18,6 +18,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.ari {
+    height: 150px;
+}
+
+.ari img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
 }
 
 .loginForm {
@@ -141,6 +152,10 @@
     font-weight: 600;
     font-size: 0.9rem;
     color: rgb(73, 2, 102);
+}
+
+.cln {
+    font-size: 0.8rem;
 }
 
 .inputField {

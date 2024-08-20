@@ -17,7 +17,6 @@ const OrderList = () => {
 	const { loading, totalAmount, orders, error } = useSelector(
 		(state) => state.allOrder,
 	);
-	console.log(totalAmount);
 
 	useEffect(() => {
 		dispatch(getAllOrder());
@@ -115,6 +114,7 @@ const OrderList = () => {
 						/>
 					)}
 				</div>
+				<div>{totalAmount}</div>
 			</div>
 		</Fragment>
 	);

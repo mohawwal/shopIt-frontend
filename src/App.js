@@ -33,6 +33,7 @@ import NewProduct from "./components/admin/newProduct/newProduct";
 import Shop from "./pages/shop/Shop";
 import UpdateProduct from "./components/admin/updateProduct/UpdateProduct";
 import OrderList from "./components/admin/ordersList/orderList";
+import ProcessOrder from "./components/admin/processOrder/processOrder";
 
 function App() {
 	useEffect(() => {
@@ -187,6 +188,13 @@ function App() {
 							path="/admin/orders"
 							isAdmin={true}
 							element={<OrderList />}
+							exact
+						/>
+
+						<Route
+							path="/admin/order/:id"
+							isAdmin={true}
+							element={<ProcessOrder />}
 							exact
 						/>
 					</Route>

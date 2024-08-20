@@ -106,7 +106,7 @@ const Register = () => {
 					<div className="logText">
 						<div className="avatarReg">
 							{
-								<div>
+								<div className="ari">
 									<img
 										src={previewImage}
 										alt="chosen"
@@ -205,7 +205,7 @@ const Register = () => {
 							</div>
 
 							<div className="avatarRegPick">
-								<label htmlFor="avatar_upload">Choose Avatar</label>
+								<label htmlFor="avatar_upload" className="cln">Choose Avatar</label>
 								<input
 									type="file"
 									name="avatar"

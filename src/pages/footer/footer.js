@@ -36,6 +36,8 @@ const Footer = () => {
             footerClass = "footerNone"
         } else if (location.pathname === '/shop') {
             footerClass = "footerNone"
+        } else if (location.pathname === '/shipping') {
+            footerClass = "footerNone"
         } 
 
         setFooterStyle(footerClass)

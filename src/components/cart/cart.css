@@ -85,6 +85,10 @@
 	width: 15px;
 }
 
+.shipForm  {
+	margin-bottom: 11vh;
+}
+
 .plainProp {
 	font-weight: 200;
 	font-size: 1rem;
@@ -557,7 +561,8 @@
 
 .yourOrderImage {
 	width: 30%;
-	height: 8rem;
+	width: 8rem;
+	height: 7rem;
 }
 
 .yourOrderName {
@@ -593,7 +598,7 @@
 
 .yourOrderImage img {
 	width: 100%;
-	object-position: center;
+	object-position: top;
 	object-fit: cover;
 	height: 100%;
 }
@@ -711,7 +716,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .shipFoldBtn {
-	margin: 20px 0;
+	margin: 20px 0 0px;
 }
 
 .closingBalance {
