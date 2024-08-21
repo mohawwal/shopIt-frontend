@@ -4,14 +4,14 @@ import { clearErrors, getAllProducts } from "../../actions/productActions";
 import Loader from "../../pages/loader/loader";
 import "./allProductsHome.css";
 import { Link } from "react-router-dom";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import { BsCart4 } from "react-icons/bs";
 import { addItemToCart } from "../../actions/cartAction";
 
 
 const AllProductsHome = () => {
 	const dispatch = useDispatch();
-	const alert = useAlert();
+	//const alert = useAlert();
 
 	const { loading, error, products } = useSelector(
 		(state) => state.allProducts,
@@ -19,18 +19,18 @@ const AllProductsHome = () => {
 
 	useEffect(() => {
 		if (error) {
-			alert.error(error);
+			//alert.error(error);
 			dispatch(clearErrors());
 		}
 
 		dispatch(getAllProducts());
-	}, [alert, dispatch, error]);
+	}, [dispatch, error]);
 
 	const quantity = 1;
 
 	const addToCart = (id) => {
 		dispatch(addItemToCart(id, quantity));
-		alert.success("Item Added To Cart");
+		//alert.success("Item Added To Cart");
 	};
 
 	if (loading) {

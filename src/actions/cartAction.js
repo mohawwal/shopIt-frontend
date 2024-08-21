@@ -40,6 +40,6 @@ export const saveShippingInfo = (data) => async (dispatch) => {
     try {
         await localStorage.setItem('shippingInfo', JSON.stringify(data));
     } catch (error) {
-        alert.error('Failed to save shipping info to localStorage:', error);
+        //alert.error('Failed to save shipping info to localStorage:', error);
     }
 };

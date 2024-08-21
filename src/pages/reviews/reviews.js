@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clearErrors, getProductDetails } from '../../actions/productActions'
 import Loader from '../loader/loader'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useAlert } from 'react-alert'
+//import { useAlert } from 'react-alert'
 
 import { IoMdStar } from "react-icons/io";
 import { IoMdStarHalf } from "react-icons/io";
@@ -17,7 +17,7 @@ const Reviews = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const {id} = useParams()
-    const alert = useAlert()
+    //const alert = useAlert()
 
     const {
         loading, product, error
@@ -25,12 +25,12 @@ const Reviews = () => {
 
     useEffect(() => {
         if(error) {
-            alert.error(error)
+            //alert.error(error)
             dispatch(clearErrors())
         }
 
         dispatch(getProductDetails(id))
-    }, [alert, dispatch, error, id])
+    }, [dispatch, error, id])
 
     
 

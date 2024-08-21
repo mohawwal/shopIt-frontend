@@ -3,18 +3,18 @@ import "./product.css";
 import { Link } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import { addItemToCart } from "../../actions/cartAction";
 
 const Product = ({ product }) => {
 	const dispatch = useDispatch();
-	const alert = useAlert();
+	//const alert = useAlert();
 
 	const quantity = 1;
 
 	const addToCart = (id) => {
 		dispatch(addItemToCart(id, quantity));
-		alert.success("Item Added To Cart");
+		//alert.success("Item Added To Cart");
 	};
 	return (
 		<div className="folderList">

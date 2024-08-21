@@ -2,16 +2,16 @@ import React from "react";
 import "./wishList.css";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromWishList } from "../../actions/wishListAction";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import { Link } from "react-router-dom";
 
 const WishList = () => {
 	const dispatch = useDispatch();
-	const alert = useAlert();
+	//const alert = useAlert();
 
 	const unLikeItem = (id) => {
 		dispatch(removeFromWishList(id));
-		alert.success("Product removed to Favorite");
+		//alert.success("Product removed to Favorite");
 	};
 
 	const { wishList } = useSelector((state) => state.wishList);

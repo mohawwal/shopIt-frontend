@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./payment.css";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import CheckoutSteps from "../checkoutSteps";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { addOrder } from "../../../actions/orderAction"
 
 const Payment = () => {
-	const alert = useAlert();
+	//const alert = useAlert();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -32,10 +32,10 @@ const Payment = () => {
 
 	useEffect(() => {
 		if (error) {
-			alert.error(error);
+			//alert.error(error);
 			dispatch(clearErrors());
 		}
-	}, [error, alert, dispatch]);
+	}, [error, dispatch]);
 
 	const initializePayment = (e) => {
 		e.preventDefault();
@@ -65,23 +65,23 @@ const Payment = () => {
 								const paymentStatus = response.payload.data.status; 
 	
 								if (paymentStatus === "success") {
-									alert.success(`Payment ${paymentStatus}`);
+									//alert.success(`Payment ${paymentStatus}`);
 									dispatch(addOrder(orderInfo))
 									navigate("/orders/me");
 								} else {
-									alert.error(`Payment ${paymentStatus}`);
+									//alert.error(`Payment ${paymentStatus}`);
 									navigate("/shipping");
 									setIsButtonDisabled(false);
 								}
 							})
 							.catch((error) => {
 								// Handle the error if needed
-								alert.error(`Payment verification failed: ${error.message}`);
+								//alert.error(`Payment verification failed: ${error.message}`);
 							})
 					}
 				}, 1000);
 			} else {
-				alert.error("Failed to open payment window.");
+				//alert.error("Failed to open payment window.");
 			}
 		})
 	};

@@ -182,7 +182,7 @@ import React from 'react'
 const ProductList = () => {
   return (
     <div>
-      product List
+      products - List
     </div>
   )
 }

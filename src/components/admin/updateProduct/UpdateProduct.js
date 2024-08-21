@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./updateProduct.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	clearErrors,
@@ -15,7 +15,7 @@ import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 
 const UpdateProduct = () => {
 	const dispatch = useDispatch();
-	const alert = useAlert();
+	//const alert = useAlert();
 	const navigate = useNavigate();
 	const { productId } = useParams();
 
@@ -141,23 +141,23 @@ const UpdateProduct = () => {
         }
     
         if (error) {
-            alert.error(error);
+            //alert.error(error);
             dispatch(clearErrors());
         }
     
         if (updateError) {
-            alert.error(updateError);
+            //alert.error(updateError);
             dispatch(clearErrors());
         }
     
         if (isUpdated) {
             navigate("/");
-            alert.success("Product updated successfully");
+            //alert.success("Product updated successfully");
             dispatch({
                 type: UPDATE_PRODUCT_RESET,
             });
         }
-    }, [alert, dispatch, error, formInitialized, isUpdated, navigate, product, productId, updateError]);
+    }, [dispatch, error, formInitialized, formik, isUpdated, navigate, product, productId, updateError]);
     
 
 	const handleFileChange = (e) => {

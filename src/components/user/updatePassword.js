@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_PASSWORD_RESET } from "../constants/userConstants";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import { updatePassword, clearErrors } from "../../actions/userAction";
 import { useFormik, Field, FormikProvider, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ import ViewShow from "../../assets/svg/viewShow";
 import ArrowLeft from "../../assets/svg/arrowLeft"
 
 const UpdatePassword = () => {
-	const alert = useAlert();
+	//const alert = useAlert();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -20,19 +20,19 @@ const UpdatePassword = () => {
 
 	useEffect(() => {
 		if (error) {
-			alert.error(error);
+			//alert.error(error);
 			dispatch(clearErrors());
 		}
 
 		if (isUpdated) {
-			alert.success("Password Changed Successfully");
+			//alert.success("Password Changed Successfully");
 			navigate("/me");
 		}
 
 		dispatch({
 			type: UPDATE_PASSWORD_RESET,
 		});
-	}, [navigate, alert, dispatch, error, isUpdated]);
+	}, [navigate, dispatch, error, isUpdated]);
 
 	const validationSchema = Yup.object().shape({
 		oldPassword: Yup.string().required("Old password is required"),

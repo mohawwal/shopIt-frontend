@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Loading from "../loader/loader";
 import "./productFolder.css";
-
 //import { FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getProductCategory } from "../../actions/productActions";
@@ -9,10 +8,10 @@ import Product from "../products/product";
 import { useParams } from "react-router-dom";
 import { FaFilter } from "react-icons/fa";
 import MetaData from "../../components/layouts/MetaData";
-import { useAlert } from "react-alert";
+
 
 const ProductFolder = () => {
-	const alert = useAlert();
+	//const alert = useAlert();
 	const dispatch = useDispatch();
 	const { id } = useParams();
 
@@ -29,12 +28,12 @@ const ProductFolder = () => {
 
 	useEffect(() => {
 		if (error) {
-			alert.error(error);
+			//alert.error(error);
 			dispatch(clearErrors());
 		}
 
 		dispatch(getProductCategory(`${id}`, currentPage));
-	}, [alert, currentPage, dispatch, error, id]);
+	}, [currentPage, dispatch, error, id]);
 
 	const handleCurrentPage = (targetPage) => {
 		if (targetPage >= 1 && targetPage <= pageNo) setCurrentPage(targetPage);

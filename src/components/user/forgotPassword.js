@@ -1,26 +1,26 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import { forgetPassword, clearErrors } from "../../actions/userAction";
 import { useFormik, FormikProvider, Field } from "formik";
 
 const ForgotPassword = () => {
 	const dispatch = useDispatch();
-	const alert = useAlert();
+	//const alert = useAlert();
 
 
 	const { message, error, loading } = useSelector((state) => state.forgotPassword);
 
 	useEffect(() => {
 		if (error) {
-			alert.error(error);
+			//alert.error(error);
 			dispatch(clearErrors());
 		}
 
 		if (message) {
-			alert.success(message);
+			//alert.success(message);
 		}
-	}, [alert, dispatch, error, message]);
+	}, [dispatch, error, message]);
 
 	const formik = useFormik({
 		initialValues: {

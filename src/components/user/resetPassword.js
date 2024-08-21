@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPassword, clearErrors } from "../../actions/userAction";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import * as Yup from "yup";
 import { useFormik, FormikProvider, Field, ErrorMessage } from "formik";
 import { useNavigate, useParams } from "react-router-dom";
 
 const ResetPassword = () => {
 	const dispatch = useDispatch();
-	const alert = useAlert();
+	//const alert = useAlert();
 	const Navigate = useNavigate();
 	const { token } = useParams();
 
@@ -18,15 +18,15 @@ const ResetPassword = () => {
 
 	useEffect(() => {
 		if (error) {
-			alert.error(error);
+			//alert.error(error);
 			dispatch(clearErrors());
 		}
 
 		if (success) {
-			alert.success("Password updated successfully");
+			//alert.success("Password updated successfully");
 			Navigate("/login");
 		}
-	}, [Navigate, alert, dispatch, error, success]);
+	}, [Navigate, dispatch, error, success]);
 
 	const validationSchema = Yup.object().shape({
 		confirmPassword: Yup.string()

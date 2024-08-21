@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import MetaData from "../layouts/MetaData";
 import { useFormik, FormikProvider, Field } from "formik";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
 import avatarPrev from "../../assets/images/avatarPreview.png";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,7 +11,7 @@ import ArrowLeft from "../../assets/svg/arrowLeft";
 
 const UpdateProfile = () => {
 	const dispatch = useDispatch();
-	const alert = useAlert();
+	//const alert = useAlert();
 	const navigate = useNavigate();
 
 	const { user } = useSelector((state) => state.auth);
@@ -30,17 +30,17 @@ const UpdateProfile = () => {
 		}
 
 		if (error) {
-			alert.error(error);
+			//alert.error(error);
 			dispatch(clearErrors());
 		}
 
 		if (isUpdated) {
-			alert.success("Update Successful");
+			//alert.success("Update Successful");
 			dispatch(loadUser());
 			navigate("/me");
 			dispatch({ type: UPDATE_PROFILE_RESET });
 		}
-	}, [navigate, alert, dispatch, error, isUpdated, user]);
+	}, [navigate, dispatch, error, isUpdated, user]);
 
 	const formik = useFormik({
 		initialValues: {

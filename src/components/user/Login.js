@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./user.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import { login, clearErrors } from "../../actions/userAction";
 import googleIcon from "../../assets/images/google_icon.png";
 
 const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const alert = useAlert();
+	//const alert = useAlert();
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -27,14 +27,14 @@ const Login = () => {
 	useEffect(() => {
 		if (isAuthenticated) {
 			navigate('/');
-			alert.success("Logged In successful");
+			//alert.success("Logged In successful");
 		}
 
 		if (error) {
-			alert.error(error)
+			//alert.error(error)
 			dispatch(clearErrors());
 		}
-	}, [alert, dispatch, error, isAuthenticated, navigate]);
+	}, [dispatch, error, isAuthenticated, navigate]);
 
 
 	return (

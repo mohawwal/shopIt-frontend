@@ -6,12 +6,12 @@ import { BsCart4 } from "react-icons/bs";
 import Loader from '../../pages/loader/loader'
 import homePix from '../../assets/images/image1.jpg'
 import { clearErrors } from '../../actions/userAction';
-import { useAlert } from 'react-alert';
+//import { useAlert } from 'react-alert';
 
 const AllCategory = ({ category }) => {
     const dispatch = useDispatch()
     const {id} = useParams()
-    const alert = useAlert()
+    //const alert = useAlert()
     
 
     const { loading, error, products } = useSelector(state => state.productCategory)
@@ -19,11 +19,11 @@ const AllCategory = ({ category }) => {
     useEffect(() => {
         if(error) {
             dispatch(clearErrors())
-            alert.error(error)
+            //alert.error(error)
         }
         
         dispatch(getProductCategory(`${id}`))
-    },[alert, dispatch, error, id])
+    },[dispatch, error, id])
 
     if(loading) {
         return(

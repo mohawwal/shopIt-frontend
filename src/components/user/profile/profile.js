@@ -12,18 +12,18 @@ import ChangePassword from "../../../assets/svg/chnagePassword"
 import Pen from '../../../assets/svg/pen'
 import { logOut } from "../../../actions/userAction";
 import { useDispatch } from "react-redux";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 
 const Profile = () => {
 	const dispatch = useDispatch()
-	const alert = useAlert()
+	//const alert = useAlert()
 	const navigate = useNavigate()
 
 	const { user, loading } = useSelector((state) => state.auth);
 
 	const signOutFromProfile = () => {
 		dispatch(logOut())
-		alert.success('sign out successfully')
+		//alert.success('sign out successfully')
 	}
 
 	if (loading) {

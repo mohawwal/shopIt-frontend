@@ -3,7 +3,7 @@ import "./orderDetails.css";
 import Loading from "../../../pages/loader/loader";
 import Location from "../../../assets/svg/location";
 //import { Link } from "react-router-dom";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderDetails, clearErrors } from "../../../actions/orderAction";
 import { useParams } from "react-router-dom";
@@ -13,7 +13,7 @@ import Back from "../../../assets/svg/arrowLeft";
 import Repeat from "../../../assets/svg/repeat";
 
 const OrderDetails = () => {
-	const alert = useAlert();
+	//const alert = useAlert();
 	const dispatch = useDispatch();
 	const { id } = useParams();
 	const navigate = useNavigate();
@@ -27,10 +27,10 @@ const OrderDetails = () => {
 		dispatch(getOrderDetails(id));
 
 		if (error) {
-			alert.error(error);
+			//alert.error(error);
 			dispatch(clearErrors());
 		}
-	}, [alert, dispatch, error, id]);
+	}, [dispatch, error, id]);
 
 	if (loading) {
 		return <Loading />;

@@ -34,12 +34,13 @@ import Shop from "./pages/shop/Shop";
 import UpdateProduct from "./components/admin/updateProduct/UpdateProduct";
 import OrderList from "./components/admin/ordersList/orderList";
 import ProcessOrder from "./components/admin/processOrder/processOrder";
+//import Alert from "./components/alert/alert";
+//import AlertContext from "./components/alert/AlertContext";
 
 function App() {
 	useEffect(() => {
 		store.dispatch(loadUser());
 	}, []);
-
 
 	return (
 		<div className="App">
@@ -47,6 +48,7 @@ function App() {
 				<nav className="upNav">
 					<Navbar />
 				</nav>
+				
 				<Routes>
 					<Route
 						path="/"

@@ -8,7 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 import Search from "../search/search";
 import Add from "../../assets/svg/arrowUp";
 
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../actions/userAction";
@@ -17,14 +17,14 @@ import SignOutAlert from "../../components/user/signOutAlert/signOutAlert";
 const Navbar = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
-	const alert = useAlert();
+	//const alert = useAlert();
 
 	const { loading, user } = useSelector((state) => state.auth);
 	const { cartItems } = useSelector((state) => state.cart);
 
 	const logOutHandler = () => {
 		dispatch(logOut());
-		alert.success("LoggedOut successful");
+		//alert.success("LoggedOut successful");
 	};
 
 	const [navStyle, setNavStyle] = useState("navHome");

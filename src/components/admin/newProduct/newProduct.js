@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./newProduct.css";
 import { useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, newProduct } from "../../../actions/productActions";
 import * as Yup from "yup";
@@ -10,26 +10,26 @@ import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 
 const NewProduct = () => {
 	const dispatch = useDispatch();
-	const alert = useAlert();
+	//const alert = useAlert();
 	const navigate = useNavigate();
 
 	const { loading, success, error } = useSelector((state) => state.newProduct);
 
 	useEffect(() => {
 		if (error) {
-			alert.error(error);
+			//alert.error(error);
 			console.log(error)
 			dispatch(clearErrors());
 		}
 
 		if (success) {
 			navigate("/");
-			alert.success("Product created successfully");
+			//alert.success("Product created successfully");
 			dispatch({
 				type: NEW_PRODUCT_RESET,
 			});
 		}
-	}, [alert, dispatch, error, navigate, success]);
+	}, [dispatch, error, navigate, success]);
 
 	const initialValue = {
 		name: "",

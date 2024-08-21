@@ -2,25 +2,25 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ListOrders.css";
 import Loading from "../../../pages/loader/loader";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { myOrder, clearErrors } from "../../../actions/orderAction";
 import { formatDate } from '../dateTime'
 
 const ListOrders = () => {
-	const alert = useAlert();
+	//const alert = useAlert();
 	const dispatch = useDispatch();
 
 	const { orders, loading, error } = useSelector((state) => state.myOrder);
 
 	useEffect(() => {
 		if (error) {
-			alert.error(error);
+			//alert.error(error);
 			dispatch(clearErrors());
 		}
 
 		dispatch(myOrder());
-	}, [alert, dispatch, error]);
+	}, [dispatch, error]);
 
 	if(loading) {
 		return (

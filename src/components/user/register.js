@@ -6,13 +6,13 @@ import * as Yup from "yup";
 import { Field, ErrorMessage, useFormik, FormikProvider } from "formik";
 import avatarPrev from "../../assets/images/avatarPreview.png";
 import googleIcon from "../../assets/images/google_icon.png";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import "./user.css";
 
 const Register = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const alert = useAlert();
+	//const alert = useAlert();
 
 	const { loading, isAuthenticated, error } = useSelector(
 		(state) => state.auth,
@@ -21,14 +21,14 @@ const Register = () => {
 	useEffect(() => {
 		if (error) {
 			dispatch(clearErrors());
-			alert.error(error);
+			//alert.error(error);
 		}
 
 		if (isAuthenticated) {
 			navigate("/");
-			alert.success("User Registration Successful");
+			//alert.success("User Registration Successful");
 		}
-	}, [alert, dispatch, error, isAuthenticated, navigate]);
+	}, [dispatch, error, isAuthenticated, navigate]);
 
 	const [selectedAvatar, setSelectedAvatar] = useState(null);
 	const [previewImage, setPreviewImage] = useState(avatarPrev);

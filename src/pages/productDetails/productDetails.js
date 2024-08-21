@@ -8,7 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
 import { GoDotFill } from "react-icons/go";
-import { useAlert } from "react-alert";
+//import { useAlert } from "react-alert";
 import Love from "../../assets/svg/love";
 import ArrowLeft from "../../assets/svg/arrowLeft";
 import MetaData from "../../components/layouts/MetaData";
@@ -19,7 +19,7 @@ const ProductDetails = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { id } = useParams();
-    const alert = useAlert();
+    //const alert = useAlert();
 
     const { loading: detailsLoading, product: productDetails, error: detailsError } = useSelector((state) => state.productDetails);
     const { user } = useSelector((state) => state.auth);
@@ -38,22 +38,22 @@ const ProductDetails = () => {
 
     useEffect(() => {
         if (detailsError) {
-            alert.error(detailsError);
+            //alert.error(detailsError);
             dispatch(clearErrors());
         }
 
         if (error) {
-            alert.error(error);
+            //alert.error(error);
             dispatch(clearErrors());
         }
 
         if (success) {
-            alert.success("Review Posted");
+            //alert.success("Review Posted");
             dispatch({ type: NEW_REVIEW_RESET });
         }
 
         dispatch(getProductDetails(id));
-    }, [alert, detailsError, dispatch, error, id, success]);
+    }, [detailsError, dispatch, error, id, success]);
 
     const handleClick = (index) => {
         setActiveProductInfo(activeProductInfo === index ? 0 : index);
@@ -61,7 +61,7 @@ const ProductDetails = () => {
 
     const reviewHandler = () => {
         if (rating === 0 || comment.trim() === "") {
-            alert.error("Please provide a rating and a comment.");
+            //alert.error("Please provide a rating and a comment.");
             return;
         }
 
@@ -88,7 +88,7 @@ const ProductDetails = () => {
 
     const addToCart = () => {
         dispatch(addItemToCart(`${id}`, quantity));
-        alert.success("Item Added To Cart");
+        //alert.success("Item Added To Cart");
     };
 
     const increaseQty = () => {
@@ -109,10 +109,10 @@ const ProductDetails = () => {
 
         if (updatedLikeProduct) {
             dispatch(addToWishList(id));
-            alert.success("Product added to Favorite");
+            //alert.success("Product added to Favorite");
         } else {
             dispatch(removeFromWishList(id));
-            alert.success("Product removed from Favorite");
+            //alert.success("Product removed from Favorite");
         }
     };
 
