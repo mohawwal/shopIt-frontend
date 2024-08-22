@@ -1,62 +1,88 @@
+
+
 .navShop {
     padding-top: 7vh;
     width: 95%;
     margin: 0 auto 10vh;
-}
-
-.zs {
-    font-size: 1.2rem;
-    color: rgba(1, 1, 94, 0.275);
-    font-weight: 600;
-    text-align: right;
-}
-
-.shopCategory {
-    position: relative;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
     flex-wrap: wrap;
 }
 
-.shopCat {
-    height: 12rem;
-    width: 100%;
-    position: relative;
-    justify-content: space-around;
-    margin: 5px;
-    border-radius: 10px;
+.shopSpace {
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex-direction: row;
 }
 
-.shopCatImg {
-    height: 100%;
-    width: 100%;
-    position: relative;
+.shopCategory {
+    background-color: rgba(238, 237, 237, 0.586);
+    width: 95%;
+    max-width: 400px;
+    height: 170px;
+    margin: 15px auto;
+    border-radius: 8px;
 }
 
-.shopCatImg img {
+.shopImageBox {
+    background-color: rgb(255, 255, 255);
     height: 100%;
+    width: 65%;
+    border-radius: 8px;
+}
+
+.shopImageBox img {
+    width: 100%;
+    height: 100%;
+    object-position: top;
     object-fit: cover;
-    object-position: center;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
-.shopCatTitle {
-    position: absolute;
-    top: 0;
+.shopDetailsBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100%;
-    width: 100%;
-    background-color: rgba(33, 0, 104, 0.73);
+    width: 35%;
+    padding: 0 5px;
+}
+
+.arrowUpRight {
+    width: 0.8rem;
+}
+
+.detailsShop {
+    height: 70%;
+}
+
+.detailsShop p {
+    color: rgba(0, 0, 0, 0.504);
+    margin-top: 5px;
+}
+
+.buyShop {
+    background-color: white;
+    color: rgb(33, 33, 33);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    font-weight: 700;
-    color: white;
+    flex-direction: row;
+    margin-bottom: 10px;
+    padding: 3px;
+    width: 77%;
+    gap: 2px;
+    border-radius: 10px;
 }
 
-.shopCatTitle:hover,
-.shopCatTitle:focus {
-    background-color: rgba(210, 188, 255, 0.63);
-    color: black;
-} 
+.buyShop div, .buyShop p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}

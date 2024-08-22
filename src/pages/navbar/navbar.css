@@ -175,8 +175,8 @@
 }
 
 .cartBag {
-    height: 2.4rem;
-    width: 1.9rem;
+    height: 2.9rem;
+    width: 2.1rem;
     display: flex;
     align-items: center;
     justify-content: right;
@@ -191,16 +191,15 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1.4rem;
+    height: 1.4rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     border-radius: 50%;
     background-color: rgba(16, 16, 161, 0.396);
     text-align: center;
-    font-weight: 600;
 }
 
 .searchIcons {

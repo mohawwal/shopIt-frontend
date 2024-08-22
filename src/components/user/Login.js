@@ -1,15 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./user.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 //import { useAlert } from "react-alert";
 import { login, clearErrors } from "../../actions/userAction";
 import googleIcon from "../../assets/images/google_icon.png";
+import AlertContext from "../alert/AlertContext";
 
 const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	//const alert = useAlert();
+
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -27,11 +37,11 @@ const Login = () => {
 	useEffect(() => {
 		if (isAuthenticated) {
 			navigate('/');
-			//alert.success("Logged In successful");
+			showAlert("Logged In successful", 'success')
 		}
 
 		if (error) {
-			//alert.error(error)
+			showAlert(error, 'error')
 			dispatch(clearErrors());
 		}
 	}, [dispatch, error, isAuthenticated, navigate]);

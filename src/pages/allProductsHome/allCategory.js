@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProductCategory } from '../../actions/productActions'
 import { Link, useParams } from 'react-router-dom'
@@ -6,20 +6,28 @@ import { BsCart4 } from "react-icons/bs";
 import Loader from '../../pages/loader/loader'
 import homePix from '../../assets/images/image1.jpg'
 import { clearErrors } from '../../actions/userAction';
-//import { useAlert } from 'react-alert';
+import AlertContext from '../../components/alert/AlertContext';
 
-const AllCategory = ({ category }) => {
+const AllCategory = () => {
     const dispatch = useDispatch()
     const {id} = useParams()
-    //const alert = useAlert()
+    
+    const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
     
 
     const { loading, error, products } = useSelector(state => state.productCategory)
 
     useEffect(() => {
         if(error) {
+            showAlert(error, 'error')
             dispatch(clearErrors())
-            //alert.error(error)
         }
         
         dispatch(getProductCategory(`${id}`))

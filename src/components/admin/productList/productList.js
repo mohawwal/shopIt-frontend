@@ -1,7 +1,7 @@
-// import React, { useEffect } from "react";
+// import React, { useEffect, useContext } from "react";
 // import { MDBDataTable } from 'mdbreact';
 // import SideBar from "../sidebar/sideBar";
-// import { useAlert } from "react-alert";
+// import AlertContext from '../../alert/AlertContext'
 // import { Link } from "react-router-dom";
 // import Loading from "../../../pages/loader/loader";
 // import './productList.css'
@@ -11,9 +11,17 @@
 // import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
 // const ProductList = () => {
-//     const alert = useAlert();
 //     const dispatch = useDispatch();
 //     const navigate = useNavigate()
+
+        // const [, setAlert] = useContext(AlertContext)
+
+        // const showAlert = (message, type) => {
+        //   setAlert({
+        //     message,
+        //     type
+        //   })
+        // }
 
 //     const { loading, error, products } = useSelector((state) => state.allProducts);
 //     const { error: deleteError, isDeleted } = useSelector((state) => state.product)
@@ -22,17 +30,17 @@
 //         dispatch(getAdminProducts());
 
 //         if (error) {
-//             alert.error(error);
+//             setAlert(error, 'error')
 //             dispatch(clearErrors());
 //         }
 
 //         if (deleteError) {
-//             alert.error(deleteError);
+//              setAlert(deleteError, 'error')
 //             dispatch(clearErrors());
 //         }
 
 //         if(isDeleted) {
-//             alert.success('Product Deleted Successfully')
+//              setAlert('Product Deleted Successfully', 'info')
 //             navigate('/admin/products')
 //             dispatch({ type: DELETE_PRODUCT_RESET })
 //         }

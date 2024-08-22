@@ -1,5 +1,5 @@
-import React from "react";
 import "./profile.css";
+import React,{ useContext } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "../../../pages/loader/loader";
@@ -12,18 +12,26 @@ import ChangePassword from "../../../assets/svg/chnagePassword"
 import Pen from '../../../assets/svg/pen'
 import { logOut } from "../../../actions/userAction";
 import { useDispatch } from "react-redux";
-//import { useAlert } from "react-alert";
+import AlertContext from "../../alert/AlertContext";
 
 const Profile = () => {
 	const dispatch = useDispatch()
-	//const alert = useAlert()
 	const navigate = useNavigate()
+
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const { user, loading } = useSelector((state) => state.auth);
 
 	const signOutFromProfile = () => {
 		dispatch(logOut())
-		//alert.success('sign out successfully')
+		showAlert('sign out successfully', 'success')
 	}
 
 	if (loading) {

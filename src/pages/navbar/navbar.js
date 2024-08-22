@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./navbar.css";
 import Hamburger from "../../assets/svg/hamburger";
 import SearchIcon from "../../assets/svg/Search";
@@ -8,23 +8,30 @@ import { Link, useLocation } from "react-router-dom";
 import Search from "../search/search";
 import Add from "../../assets/svg/arrowUp";
 
-//import { useAlert } from "react-alert";
-
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../actions/userAction";
 import SignOutAlert from "../../components/user/signOutAlert/signOutAlert";
+import AlertContext from "../../components/alert/AlertContext";
 
 const Navbar = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
-	//const alert = useAlert();
+	
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const { loading, user } = useSelector((state) => state.auth);
 	const { cartItems } = useSelector((state) => state.cart);
 
 	const logOutHandler = () => {
 		dispatch(logOut());
-		//alert.success("LoggedOut successful");
+		showAlert("LoggedOut successful", 'success')
 	};
 
 	const [navStyle, setNavStyle] = useState("navHome");

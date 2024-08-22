@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import "./orderDetails.css";
 import Loading from "../../../pages/loader/loader";
 import Location from "../../../assets/svg/location";
 //import { Link } from "react-router-dom";
-//import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderDetails, clearErrors } from "../../../actions/orderAction";
 import { useParams } from "react-router-dom";
@@ -11,12 +10,21 @@ import { formatDate } from "../dateTime";
 import { useNavigate } from "react-router-dom";
 import Back from "../../../assets/svg/arrowLeft";
 import Repeat from "../../../assets/svg/repeat";
+import AlertContext from "../../alert/AlertContext";
 
 const OrderDetails = () => {
-	//const alert = useAlert();
 	const dispatch = useDispatch();
 	const { id } = useParams();
 	const navigate = useNavigate();
+
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const { order, error, loading } = useSelector(
 		(state) => state.getOrderDetails,
@@ -27,7 +35,7 @@ const OrderDetails = () => {
 		dispatch(getOrderDetails(id));
 
 		if (error) {
-			//alert.error(error);
+			showAlert(error, 'error')
 			dispatch(clearErrors());
 		}
 	}, [dispatch, error, id]);

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./ListOrders.css";
 import Loading from "../../../pages/loader/loader";
@@ -6,16 +6,25 @@ import Loading from "../../../pages/loader/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { myOrder, clearErrors } from "../../../actions/orderAction";
 import { formatDate } from '../dateTime'
+import AlertContext from "../../alert/AlertContext";
 
 const ListOrders = () => {
-	//const alert = useAlert();
 	const dispatch = useDispatch();
+
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const { orders, loading, error } = useSelector((state) => state.myOrder);
 
 	useEffect(() => {
 		if (error) {
-			//alert.error(error);
+			showAlert(error, 'error')
 			dispatch(clearErrors());
 		}
 

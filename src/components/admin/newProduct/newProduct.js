@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./newProduct.css";
 import { useNavigate } from "react-router-dom";
-//import { useAlert } from "react-alert";
+import AlertContext from "../../alert/AlertContext";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, newProduct } from "../../../actions/productActions";
 import * as Yup from "yup";
@@ -10,21 +10,29 @@ import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 
 const NewProduct = () => {
 	const dispatch = useDispatch();
-	//const alert = useAlert();
 	const navigate = useNavigate();
+
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const { loading, success, error } = useSelector((state) => state.newProduct);
 
 	useEffect(() => {
 		if (error) {
-			//alert.error(error);
+			showAlert(error, 'error')
 			console.log(error)
 			dispatch(clearErrors());
 		}
 
 		if (success) {
 			navigate("/");
-			//alert.success("Product created successfully");
+			showAlert("Product created successfully", 'success')
 			dispatch({
 				type: NEW_PRODUCT_RESET,
 			});

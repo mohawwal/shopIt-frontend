@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import SideBar from "../sidebar/sideBar";
 import "./dashboard.css";
 import {Link} from 'react-router-dom'
-//import {useAlert} from 'react-alert'
+import AlertContext from "../../alert/AlertContext";
 import { useSelector, useDispatch } from 'react-redux'
 import { getAdminProducts, clearErrors } from "../../../actions/productActions";
 import { getAllOrder } from "../../../actions/orderAction";
@@ -10,7 +10,15 @@ import Loader from "../../../pages/loader/loader";
 
 const Dashboard = () => {
 	const dispatch = useDispatch();
-	//const alert = useAlert()
+	
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
     const { error, products } = useSelector((state) => state.allProducts);
 	const { totalAmount, orders, loading } = useSelector((state) => state.allOrder)
@@ -28,7 +36,7 @@ const Dashboard = () => {
 		dispatch(getAllOrder())
 
 		if (error) {
-            //alert.error(error);
+			showAlert(error, 'error')
             dispatch(clearErrors());
         }
 

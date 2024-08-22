@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState, Fragment, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { register, clearErrors } from "../../actions/userAction";
 import { useNavigate } from "react-router-dom";
@@ -6,13 +6,22 @@ import * as Yup from "yup";
 import { Field, ErrorMessage, useFormik, FormikProvider } from "formik";
 import avatarPrev from "../../assets/images/avatarPreview.png";
 import googleIcon from "../../assets/images/google_icon.png";
-//import { useAlert } from "react-alert";
+import AlertContext from "../alert/AlertContext";
 import "./user.css";
 
 const Register = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	//const alert = useAlert();
+
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const { loading, isAuthenticated, error } = useSelector(
 		(state) => state.auth,
@@ -21,12 +30,12 @@ const Register = () => {
 	useEffect(() => {
 		if (error) {
 			dispatch(clearErrors());
-			//alert.error(error);
+			showAlert(error, 'error')
 		}
 
 		if (isAuthenticated) {
 			navigate("/");
-			//alert.success("User Registration Successful");
+			showAlert("User Registration Successful", 'success')
 		}
 	}, [dispatch, error, isAuthenticated, navigate]);
 

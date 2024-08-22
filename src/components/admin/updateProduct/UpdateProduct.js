@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./updateProduct.css";
 import { useNavigate, useParams } from "react-router-dom";
-//import { useAlert } from "react-alert";
+import AlertContext from "../../alert/AlertContext";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	clearErrors,
@@ -15,9 +15,17 @@ import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 
 const UpdateProduct = () => {
 	const dispatch = useDispatch();
-	//const alert = useAlert();
 	const navigate = useNavigate();
 	const { productId } = useParams();
+
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const {
 		loading,
@@ -141,18 +149,18 @@ const UpdateProduct = () => {
         }
     
         if (error) {
-            //alert.error(error);
+			setAlert(error, 'error')
             dispatch(clearErrors());
         }
     
         if (updateError) {
-            //alert.error(updateError);
+			setAlert(updateError, 'error')
             dispatch(clearErrors());
         }
     
         if (isUpdated) {
             navigate("/");
-            //alert.success("Product updated successfully");
+			setAlert("Product updated successfully", 'success')
             dispatch({
                 type: UPDATE_PRODUCT_RESET,
             });

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Loading from "../loader/loader";
 import "./productFolder.css";
 //import { FaStar } from "react-icons/fa";
@@ -8,12 +8,22 @@ import Product from "../products/product";
 import { useParams } from "react-router-dom";
 import { FaFilter } from "react-icons/fa";
 import MetaData from "../../components/layouts/MetaData";
+import AlertContext from "../../components/alert/AlertContext";
 
 
 const ProductFolder = () => {
-	//const alert = useAlert();
 	const dispatch = useDispatch();
 	const { id } = useParams();
+
+	//Alert
+	const [,setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -28,8 +38,8 @@ const ProductFolder = () => {
 
 	useEffect(() => {
 		if (error) {
-			//alert.error(error);
 			dispatch(clearErrors());
+			showAlert(error, 'error')
 		}
 
 		dispatch(getProductCategory(`${id}`, currentPage));

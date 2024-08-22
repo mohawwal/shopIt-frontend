@@ -1,11 +1,11 @@
-// import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState, useContext } from "react";
 // import "./processOrder.css";
 // import { Link, useParams } from "react-router-dom";
 
 // import Loader from "../../../pages/loader/loader";
 // import MetaData from "../../layouts/MetaData";
 // import SideBar from "../sidebar/sideBar";
-// import { useAlert } from "react-alert";
+// import AlertContext from '../../alert/AlertContext'
 // import { useDispatch, useSelector } from "react-redux";
 // import {
 // 	getOrderDetails,
@@ -15,9 +15,17 @@
 // import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 
 // const ProcessOrder = () => {
-// 	const alert = useAlert();
 // 	const dispatch = useDispatch();
 // 	const { orderId } = useParams();
+
+// const [, setAlert] = useContext(AlertContext)
+
+// 	const showAlert = (message, type) => {
+// 		setAlert({
+// 			message,
+// 			type
+// 		})
+// 	}
 
 // 	const [status, setStatus] = useState("");
 
@@ -38,13 +46,13 @@
   
 
 // 		if (error) {
-// 			alert.error(error);
+//      setAlert(error, 'error')
 // 			dispatch(clearErrors());
 // 		}
 
 // 		if (isUpdated) {
 //       console.log('isUpdated: ', isUpdated)
-// 			alert.success("Order Updated Successfully");
+//       setAlert("Order Updated Successfully", 'success')
 // 			dispatch({ type: UPDATE_ORDER_RESET });
 // 		}
 // 	}, [alert, dispatch, error, isUpdated, orderId]);

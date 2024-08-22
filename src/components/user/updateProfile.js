@@ -1,18 +1,27 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useContext } from "react";
 import MetaData from "../layouts/MetaData";
 import { useFormik, FormikProvider, Field } from "formik";
-//import { useAlert } from "react-alert";
+
 import { useNavigate } from "react-router-dom";
 import avatarPrev from "../../assets/images/avatarPreview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { updateProfile, loadUser, clearErrors } from "../../actions/userAction";
 import { UPDATE_PROFILE_RESET } from "../constants/userConstants";
 import ArrowLeft from "../../assets/svg/arrowLeft";
+import AlertContext from "../alert/AlertContext";
 
 const UpdateProfile = () => {
 	const dispatch = useDispatch();
-	//const alert = useAlert();
 	const navigate = useNavigate();
+
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const { user } = useSelector((state) => state.auth);
 	const { error, isUpdated, loading } = useSelector((state) => state.user);
@@ -30,12 +39,12 @@ const UpdateProfile = () => {
 		}
 
 		if (error) {
-			//alert.error(error);
+			showAlert(error, 'error')
 			dispatch(clearErrors());
 		}
 
 		if (isUpdated) {
-			//alert.success("Update Successful");
+			showAlert('Update Successful', 'success')
 			dispatch(loadUser());
 			navigate("/me");
 			dispatch({ type: UPDATE_PROFILE_RESET });
@@ -57,7 +66,6 @@ const UpdateProfile = () => {
 				formData.append("avatar", selectedAvatar);
 			}
 			dispatch(updateProfile(formData));
-			console.log("lets see")
 		},
 	});
 

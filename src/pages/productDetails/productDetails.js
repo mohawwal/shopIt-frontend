@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./productDetails.css";
 import { clearErrors, getProductDetails, newReview } from "../../actions/productActions";
 import { addItemToCart } from "../../actions/cartAction";
@@ -8,7 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
 import { GoDotFill } from "react-icons/go";
-//import { useAlert } from "react-alert";
+import AlertContext from "../../components/alert/AlertContext";
 import Love from "../../assets/svg/love";
 import ArrowLeft from "../../assets/svg/arrowLeft";
 import MetaData from "../../components/layouts/MetaData";
@@ -19,7 +19,15 @@ const ProductDetails = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { id } = useParams();
-    //const alert = useAlert();
+    
+    const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
     const { loading: detailsLoading, product: productDetails, error: detailsError } = useSelector((state) => state.productDetails);
     const { user } = useSelector((state) => state.auth);
@@ -38,17 +46,17 @@ const ProductDetails = () => {
 
     useEffect(() => {
         if (detailsError) {
-            //alert.error(detailsError);
+            showAlert(detailsError, 'error')
             dispatch(clearErrors());
         }
 
         if (error) {
-            //alert.error(error);
+            showAlert(error, 'error')
             dispatch(clearErrors());
         }
 
         if (success) {
-            //alert.success("Review Posted");
+            showAlert('"Review Posted"', 'success')
             dispatch({ type: NEW_REVIEW_RESET });
         }
 

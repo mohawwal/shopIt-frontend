@@ -1,17 +1,25 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./wishList.css";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromWishList } from "../../actions/wishListAction";
-//import { useAlert } from "react-alert";
+import AlertContext from "../../components/alert/AlertContext";
 import { Link } from "react-router-dom";
 
 const WishList = () => {
 	const dispatch = useDispatch();
-	//const alert = useAlert();
+	
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const unLikeItem = (id) => {
 		dispatch(removeFromWishList(id));
-		//alert.success("Product removed to Favorite");
+		showAlert("Product removed to Favorite", 'success')
 	};
 
 	const { wishList } = useSelector((state) => state.wishList);

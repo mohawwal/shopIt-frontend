@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./product.css";
 import { Link } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-//import { useAlert } from "react-alert";
 import { addItemToCart } from "../../actions/cartAction";
+import Alert from "../../components/alert/alert";
+import AlertContext from "../../components/alert/AlertContext";
 
 const Product = ({ product }) => {
 	const dispatch = useDispatch();
-	//const alert = useAlert();
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const quantity = 1;
 
 	const addToCart = (id) => {
 		dispatch(addItemToCart(id, quantity));
-		//alert.success("Item Added To Cart");
+		showAlert('Item Added To Cart', 'success')
 	};
 	return (
 		<div className="folderList">
+			<Alert />
 			<div className="foldersList">
 				<Link
 					Link

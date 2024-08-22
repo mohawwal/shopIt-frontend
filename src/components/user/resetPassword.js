@@ -1,16 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPassword, clearErrors } from "../../actions/userAction";
-//import { useAlert } from "react-alert";
+import AlertContext from "../alert/AlertContext";
 import * as Yup from "yup";
 import { useFormik, FormikProvider, Field, ErrorMessage } from "formik";
 import { useNavigate, useParams } from "react-router-dom";
 
 const ResetPassword = () => {
 	const dispatch = useDispatch();
-	//const alert = useAlert();
 	const Navigate = useNavigate();
 	const { token } = useParams();
+
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const { loading, error, success } = useSelector(
 		(state) => state.forgotPassword,
@@ -18,12 +26,12 @@ const ResetPassword = () => {
 
 	useEffect(() => {
 		if (error) {
-			//alert.error(error);
+			showAlert(error, 'error')
 			dispatch(clearErrors());
 		}
 
 		if (success) {
-			//alert.success("Password updated successfully");
+			showAlert("Password updated successfully", 'success')
 			Navigate("/login");
 		}
 	}, [Navigate, dispatch, error, success]);

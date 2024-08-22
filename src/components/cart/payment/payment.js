@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./payment.css";
-//import { useAlert } from "react-alert";
 import CheckoutSteps from "../checkoutSteps";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,11 +10,20 @@ import {
 } from "../../../actions/paymentAction";
 import { useNavigate } from "react-router-dom";
 import { addOrder } from "../../../actions/orderAction"
+import AlertContext from "../../alert/AlertContext";
 
 const Payment = () => {
-	//const alert = useAlert();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
@@ -32,7 +40,7 @@ const Payment = () => {
 
 	useEffect(() => {
 		if (error) {
-			//alert.error(error);
+			showAlert(error, 'error')
 			dispatch(clearErrors());
 		}
 	}, [error, dispatch]);
@@ -65,23 +73,23 @@ const Payment = () => {
 								const paymentStatus = response.payload.data.status; 
 	
 								if (paymentStatus === "success") {
-									//alert.success(`Payment ${paymentStatus}`);
+									showAlert(`Payment ${paymentStatus}`, 'success')
 									dispatch(addOrder(orderInfo))
 									navigate("/orders/me");
 								} else {
-									//alert.error(`Payment ${paymentStatus}`);
+									showAlert(`Payment ${paymentStatus}`, 'error')
 									navigate("/shipping");
 									setIsButtonDisabled(false);
 								}
 							})
 							.catch((error) => {
 								// Handle the error if needed
-								//alert.error(`Payment verification failed: ${error.message}`);
+								showAlert(`Payment verification failed: ${error.message}`, 'error')
 							})
 					}
 				}, 1000);
 			} else {
-				//alert.error("Failed to open payment window.");
+				showAlert('Failed to open payment window.', 'error')
 			}
 		})
 	};

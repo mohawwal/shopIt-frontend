@@ -1,18 +1,26 @@
-// import React, { useEffect, Fragment } from "react";
+// import React, { useEffect, Fragment, useContext } from "react";
 // import "./orderList.css";
 // import { Link } from "react-router-dom";
 // import { MDBDataTable } from "mdbreact";
 
 // import MetaData from "../../layouts/MetaData";
 // import Loader from "../../../pages/loader/loader";
-// import { useAlert } from "react-alert";
+//import AlertContext from '../../alert/AlertContext'
 // import { useDispatch, useSelector } from "react-redux";
 // import { getAllOrder, clearErrors } from "../../../actions/orderAction";
 // import SideBar from "../sidebar/sideBar";
 
 // const OrderList = () => {
 // 	const dispatch = useDispatch();
-// 	const alert = useAlert();
+
+// const [, setAlert] = useContext(AlertContext)
+
+// 	const showAlert = (message, type) => {
+// 		setAlert({
+// 			message,
+// 			type
+// 		})
+// 	}
 
 // 	const { loading, totalAmount, orders, error } = useSelector(
 // 		(state) => state.allOrder,
@@ -22,7 +30,7 @@
 // 		dispatch(getAllOrder());
 
 // 		if (error) {
-// 			alert.error(error);
+// 			showAlert(error, 'error)
 // 			dispatchEvent(clearErrors());
 // 		}
 // 	}, [alert, dispatch, error]);

@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_PASSWORD_RESET } from "../constants/userConstants";
-//import { useAlert } from "react-alert";
+
 import { updatePassword, clearErrors } from "../../actions/userAction";
 import { useFormik, Field, FormikProvider, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -10,22 +10,31 @@ import * as Yup from "yup";
 import ViewHide from "../../assets/svg/viewHide";
 import ViewShow from "../../assets/svg/viewShow";
 import ArrowLeft from "../../assets/svg/arrowLeft"
+import AlertContext from "../alert/AlertContext";
 
 const UpdatePassword = () => {
-	//const alert = useAlert();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
+	const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
 
 	const { error, isUpdated, loading } = useSelector((state) => state.user);
 
 	useEffect(() => {
 		if (error) {
-			//alert.error(error);
+			showAlert(error, 'error')
 			dispatch(clearErrors());
 		}
 
 		if (isUpdated) {
-			//alert.success("Password Changed Successfully");
+			showAlert("Password Changed Successfully", 'success')
 			navigate("/me");
 		}
 
