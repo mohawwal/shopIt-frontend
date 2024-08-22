@@ -8,7 +8,7 @@ import homePix from '../../assets/images/image1.jpg'
 import { clearErrors } from '../../actions/userAction';
 import AlertContext from '../../components/alert/AlertContext';
 
-const AllCategory = () => {
+const AllCategory = ({ category }) => {
     const dispatch = useDispatch()
     const {id} = useParams()
     

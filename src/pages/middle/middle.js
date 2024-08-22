@@ -7,7 +7,7 @@ const Middle = () => {
       <div className='orderDetList'>
         <div className='listDiv'>
             <span>FREE SHIPPING</span>
-            <p>On orders above $200</p>
+            <p>On orders above ₦200</p>
         </div>
         <div className='listDiv'>
             <span>REFER A FRIEND</span>
@@ -19,7 +19,7 @@ const Middle = () => {
         </div>
       </div>
       <div className='orderDet'>
-        <h2>Shop More Pay Less</h2>
+        <h2>Shop More With Mario</h2>
         <p>YAY!</p>
         <p>Lorem ipsum dolor sit amet consectetur
             adipisicing elit. Deleniti dolor sunt

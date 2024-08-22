@@ -1,5 +1,17 @@
 .allProdHome {
     width: 100%;
+    margin-top: 10px;
+}
+
+.shopHomeCategory {
+    border: 7px solid red;
+    width: 900px;
+}
+
+.homeCategory {
+    min-width: 270px;
+    min-height: 100px;
+    background-color: red;
 }
 
 .productHome {
@@ -16,8 +28,8 @@
 }
 
 .allHome {
-    height: 14rem;
-    min-width: 10rem;
+    height: 15rem;
+    min-width: 11rem;
     border-radius: 0.2rem;
     transition: transform 0.3s ease-in-out;
 }
@@ -39,13 +51,21 @@
 
 .allTD {
     height: 20%;
+    width: 100%;
+    padding: 0 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0 0.5rem;
     gap: 0.3rem;
-    background-color: rgba(240, 248, 255, 0.23);
+}
+
+.allTDet {
+    width: 100%;
+}
+
+.allTD .buyShop p {
+    font-size: 0.7rem;
 }
 
 
@@ -55,7 +75,7 @@
 }
 
 .allStars {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .newMario {
@@ -71,4 +91,17 @@
 
 .basketIcon {
     font-size: 1.2rem;
+}
+
+.aHC {
+    min-width: 280px;
+    height: 160px;
+    background-color: rgba(238, 237, 237, 0.586);
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 550px) {
+    .allHomeCategoryFile {
+        display: none;
+    }
 }

@@ -5,7 +5,6 @@ import { clearErrors } from "../../actions/productActions";
 import Loader from "../loader/loader";
 import { shopCategory } from "../../components/data/categories";
 import { Link } from "react-router-dom";
-import img from "../../assets/images/image5.jpg";
 import ArrowUpRight from "../../assets/svg/arrowUpRight";
 
 const Shop = () => {
@@ -25,24 +24,6 @@ const Shop = () => {
 
 	return (
 		<div className="navShop">
-			{/* <div className="zs">ZARMARIO SHOP</div>
-			<div className="shopCategory">
-				{shopCategory.map((shop, index) => (
-					<Link
-						className="shopCat"
-						key={index}
-						to={`/product/category/${shop.category}`}
-					>
-						<div className="shopCatImg">
-							<img
-								src={shop.image}
-								alt=""
-							/>
-						</div>
-						<div className="shopCatTitle">{shop.title}</div>
-					</Link>
-				))}
-			</div> */}
 			{shopCategory.map((shop, index) => (
 			<div className="shopCategory" key={index}>
 				<div className="shopSpace">

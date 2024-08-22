@@ -3,6 +3,8 @@ import MetaData from "../../components/layouts/MetaData";
 import Home from "../home/home";
 import Middle from "../middle/middle";
 import AllProductsHome from "../allProductsHome/allProductsHome";
+import AllHomeCategory from "../allProductsHome/allHomeCategory";
+
 
 const DisplayPage = () => {
 	return (
@@ -12,6 +14,9 @@ const DisplayPage = () => {
 			<div>
 				<Home />
 				<AllProductsHome />
+				<div className="allHomeCategoryFile">
+					<AllHomeCategory/>
+				</div>
 				<Middle />
 			</div>
 		</div>
