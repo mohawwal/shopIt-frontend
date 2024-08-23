@@ -15,8 +15,8 @@ const DisplayPage = () => {
 			x: "-100%",
 			transition: {
 				repeat: Infinity,
-				repeatType: "loop",
-				duration: 1,
+				repeatType: "mirror",
+				duration: 15,
 				ease: "linear", 
 			},
 		},
@@ -34,7 +34,7 @@ const DisplayPage = () => {
 						initial="initial"
 						animate="animate"
 					>
-						<p>ZARMARIO!!! HOME OF EXCLUSIVE FASHIONABLE WEARS - WHERE MARIO THERE'S DRIP - WEAR MARIO THERE'S LIGHT.</p>
+						<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
 					</motion.div>
 					<div className="mTB"></div>
 				</div>
