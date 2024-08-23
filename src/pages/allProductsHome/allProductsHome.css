@@ -104,25 +104,40 @@
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
 } */
-
 .marioText {
     background-image: url('../../assets/images/image2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
-    height: 25rem;
+    height: 20rem;
+    position: relative;
+    overflow: hidden; 
+    display: flex;
+    align-items: center; 
 }
 
-
 .marioText div {
-    font-size: 16rem;
-    font-weight: 600;
-    overflow: hidden;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: center; 
     height: 100%;
+}
+
+.marioText div p {
+    font-size: 20rem; 
+    white-space: nowrap;
+    display: inline-block; 
+    margin: 0;
+    padding: 0;
+}
+
+.mTB {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(132, 132, 132, 0.307);
 }
 
 /* 
