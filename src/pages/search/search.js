@@ -1,70 +1,73 @@
-import React, { useEffect, useState } from 'react'
-import './search.css'
-import Cancel from '../../assets/svg/cancel'
+import React, { useEffect, useState } from "react";
+import "./search.css";
+import Cancel from "../../assets/svg/cancel";
 
-import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { getAllProducts } from '../../actions/productActions' 
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProducts } from "../../actions/productActions";
 
-const Search = ({toggleSearch}) => {
-  const dispatch = useDispatch()
+const Search = ({ toggleSearch }) => {
+	const dispatch = useDispatch();
 
-  const [keyWords, setKeyWords] = useState('')
+	const [keyWords, setKeyWords] = useState("");
 
-  const {
-    products
-   } = useSelector(state => state.allProducts)
+	const { products } = useSelector((state) => state.allProducts);
 
+	useEffect(() => {
+		dispatch(getAllProducts(keyWords));
+	}, [dispatch, keyWords]);
 
-  useEffect(() => {
+	const handleSubmit = (e) => {
+		e.preventDefault();
+	};
 
-    dispatch(getAllProducts(keyWords))
-  }, [dispatch, keyWords])
+	return (
+		<div className="search">
+			<div className="searchTable">
+				<div className="searchCancel">
+					<span onClick={toggleSearch}>
+						<Cancel className="icons searchCancelIcon" />
+					</span>
+				</div>
 
+				<form
+					className="searchText"
+					onSubmit={handleSubmit}
+				>
+					<input
+						type="text"
+						placeholder="Search Product"
+						onChange={(e) => setKeyWords(e.target.value)}
+					/>
+				</form>
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+				<div className="searchProducts">
+					<ul>
+						{products.map((product, index) => (
+							<li
+								key={index}
+								onClick={toggleSearch}
+							>
+								<Link
+									className="searchList Link"
+									style={{ textDecoration: "none" }}
+									to={`/product/${product._id}`}
+								>
+									<div className="searchName">{product.name}</div>
+									<div className="searchImg">
+										<img
+											src={product.images[0].url}
+											alt=""
+										/>
+									</div>
+								</Link>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</div>
+	);
+};
 
-  return (
-    <div className='search'>
-        <div className='searchTable'>
-
-          <div className='searchCancel'>
-              <span onClick={toggleSearch}> 
-                  <Cancel className="icons searchCancelIcon"/>
-              </span>
-          </div>
-        
-            <form className='searchText'onSubmit={handleSubmit} >
-              <input 
-                type="text" 
-                placeholder='Search Product'
-                onChange={(e) => setKeyWords(e.target.value)}
-              />
-            </form>
-        
-            <div className='searchProducts'>
-              <ul>
-                {products.map((product, index) => (
-                  <li key={index} onClick={toggleSearch}>
-                    <Link className='searchList Link' style={{ textDecoration: 'none' }} to={`/product/${product._id}`}>
-                      <div className='searchName'>
-                        {product.name}
-                      </div>
-                      <div className='searchImg'>
-                        <img src={product.images[0].url} alt="" />
-                      </div>
-                    </Link>
-                  </li>
-                ))
-                }
-              </ul>
-          </div>
-
-        </div>
-    </div>
-  )
-}
-
-export default Search
+export default Search;

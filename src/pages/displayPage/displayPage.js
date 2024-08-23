@@ -5,17 +5,22 @@ import Middle from "../middle/middle";
 import AllProductsHome from "../allProductsHome/allProductsHome";
 import AllHomeCategory from "../allProductsHome/allHomeCategory";
 
-
 const DisplayPage = () => {
 	return (
 		<div>
 			<MetaData title="Zarmario Shop" />
 
-			<div>
+			<div className="displayPage">
 				<Home />
 				<AllProductsHome />
+				<div className="marioText">
+					<div>
+						ZARMARIO!!! HOME OF EXCLUSIVE FASHIONABLE WEARS - WHERE MARIO THERE'S
+						DRIP - WEAR MARIO THERE'S LIGHT.
+					</div>
+				</div>
 				<div className="allHomeCategoryFile">
-					<AllHomeCategory/>
+					<AllHomeCategory />
 				</div>
 				<Middle />
 			</div>

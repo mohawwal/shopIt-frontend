@@ -175,10 +175,11 @@
 }
 
 .orderHead {
-	font-size: 1.2rem;
+	font-size: 1.05rem;
 	width: 100%;
 	text-align: left;
 	font-weight: 600;
+	margin: 2px 0 5px;
 }
 
 .orInput {
@@ -220,6 +221,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
 }
 
 .checkOut button {
@@ -964,6 +966,23 @@ input[type="number"]::-webkit-outer-spin-button {
 	.cartSubII {
 		width: 12%;
 		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.OrderDetails {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 96%;
+		margin-bottom: 1vh;
+		z-index: 100;
+		background-color: rgb(255, 255, 255);
+		border: 0.1px 0.1px none solid rgba(111, 0, 0, 0.421);
+		height: 18vh;
+	}
+	.cartSmallList {
+		margin-bottom: 18vh;
 	}
 }
 

@@ -53,7 +53,7 @@ const Cart = () => {
 								<div className="cartQtyII">QUANTITY</div>
 								<div className="cartSubII">SUBTOTAL</div>
 							</div>
-							<div>
+							<div className="cartSmallList">
 								{cartItems.map((item) => {
 									return (
 										<div>
@@ -199,11 +199,7 @@ const Cart = () => {
 						</div>
 
 						<div className="OrderDetails">
-							<div className="orderHead">CART TOTALS</div>
-							<div className="orderFlex underlineOrder">
-								<p className="orWay">Subtotal</p>
-								<p className="oDText">{totalGoods} Units</p>
-							</div>
+							<div className="orderHead">CART TOTALS ({totalGoods})</div>
 							<div className="listOrderSpaces">
 								<div className="orderFlex">
 									<p className="orWay">Total </p>
