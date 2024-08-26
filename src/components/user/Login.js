@@ -44,7 +44,7 @@ const Login = () => {
 			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
-	}, [dispatch, error, navigate]);
+	}, [dispatch, error, navigate, isAuthenticated]);
 
 
 	return (
