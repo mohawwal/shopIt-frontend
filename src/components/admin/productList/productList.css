@@ -12,6 +12,8 @@
     justify-content: center;
     width: 100%;
     height: 90vh;
+    margin: 0 auto;
+
 }
 
 .adminProducts {
@@ -24,7 +26,7 @@
 
 .adminProducts p {
     font-size: 1.2rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: 600;
     padding-bottom: 10px;
     display: inline-block;
@@ -32,15 +34,7 @@
 
 .adminProducts > div {
     display: inline-block;
-    padding: 15px; 
-}
-
-
-.adminProductTable .dataTables_paginate {
-    display: flex !important;
-    justify-content: center;
-    flex-direction: row !important;
-    align-items: center;
+    margin-bottom: 5vh;
 }
 
 .adminProductAction {
@@ -50,6 +44,61 @@
     margin: 0 20px;
 }
 
-.adminProductTable .dataTables_paginate {
-    margin: 10px 0 100px !important;
-}
+.adminProductTable table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px; 
+    background-color: #f9f9f9;
+  }
+  
+  .adminProductTable th, 
+  .adminProductTable td {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    text-align: left; 
+  }
+  
+  .adminProductTable th {
+    background-color: #e9ecef;
+    font-weight: bold;
+  }
+  
+  .adminProductTable tbody tr:nth-child(even) {
+    background-color: #f1f1f1; /* Faint background color for even rows */
+  }
+  
+  .adminProductTable tbody tr:nth-child(4n-1), 
+  .adminProductTable tbody tr:nth-child(4n) {
+    background-color: #f3f3f3; /* Faint background color after every 2 rows */
+  }
+  
+  .adminProductTable th, 
+  .adminProductTable td {
+    padding: 10px 20px;
+  }
+  
+  .pagination-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pagination-controls button,
+  .pagination-controls select {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: 1px solid #cccccc9c;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination-controls button:hover,
+  .pagination-controls select:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  

@@ -131,6 +131,13 @@ function App() {
 						exact
 					/>
 
+					<Route
+						path="/payment"
+						element={<Payment />}
+						exact
+					/>
+					
+
 					{/* Protected Route if not authenticated user */}
 					<Route element={<ProtectedRoute />}>
 						<Route
@@ -148,12 +155,6 @@ function App() {
 						<Route
 							path="/password/Update"
 							element={<UpdatePassword />}
-							exact
-						/>
-
-						<Route
-							path="/payment"
-							element={<Payment />}
 							exact
 						/>
 
@@ -199,7 +200,7 @@ function App() {
 						/>
 
 						<Route
-							path="/admin/order/:id"
+							path="/admin/order/:orderId"
 							isAdmin={true}
 							element={<ProcessOrder />}
 							exact

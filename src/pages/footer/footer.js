@@ -16,29 +16,25 @@ const Footer = () => {
             footerClass = "footerNone"
         } else if (location.pathname === '/login') {
             footerClass = "footerNone"
-        } else if (location.pathname === '/me') {
+        } else if(location.pathname.startsWith('/me')) {
             footerClass = "footerNone"
-        } else if (location.pathname === '/password/forgot') {
+        } else if(location.pathname.startsWith('/password')) {
             footerClass = "footerNone"
-        } else if (location.pathname === '/password/Update') {
-            footerClass = "footerNone"
-        } else if (location.pathname === '/me/Update') {
-            footerClass = "footerNone"
-        } else if (location.pathname === '/orders/me') {
-            footerClass = "footerNone"
-        } else if(location.pathname.startsWith('/order/')) {
+        } else if(location.pathname.startsWith('/order')) {
             footerClass = "footerNone"
         } else if(location.pathname.startsWith('/dashboard')) {
             footerClass = "footerNone"
-        } else if(location.pathname.startsWith('/admin/products')) {
-            footerClass = "footerNone"
         } else if(location.pathname.startsWith('/wishlist')) {
+            footerClass = "footerNone"
+        } else if(location.pathname.startsWith('/payment')) {
             footerClass = "footerNone"
         } else if (location.pathname === '/shop') {
             footerClass = "footerNone"
         } else if (location.pathname === '/shipping') {
             footerClass = "footerNone"
         } else if (location.pathname === '/cart') {
+            footerClass = "footerNone"
+        } else if(location.pathname.startsWith('/admin')) {
             footerClass = "footerNone"
         } 
 

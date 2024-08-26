@@ -107,9 +107,9 @@ const Burger = ({ handleNav, user, loading, logoutFunc }) => {
 							<Link to="/dashboard">My Dashboard</Link>
 						</div>
 					) : null}
-					<div onClick={handleNav}>
+					{user && <div onClick={handleNav}>
 						<Link to="/orders/me">My Orders</Link>
-					</div>
+					</div>}
 					<div>
 						<a
 							href="https://awwal-portfolio.vercel.app/CONTACT"

@@ -27,18 +27,20 @@ const Payment = () => {
 
 	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-	const { user } = useSelector((state) => state.auth);
+	//const { user } = useSelector((state) => state.auth);
 	const { loading, order, error } = useSelector((state) => state.payment);
 
 	const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+	
 
 	const paymentData = {
 		amount: Math.round(orderInfo.totalPrice),
-		email: user.email,
+		email: orderInfo?.shippingInfo?.email,
 		products: orderInfo.orderItems || [],
 	};
-
+	
 	useEffect(() => {
+		
 		if (error) {
 			showAlert(error, 'error')
 			dispatch(clearErrors());
@@ -67,6 +69,7 @@ const Payment = () => {
 	
 						// Verify the payment after the payment window is closed
 						const reference = order.data.data.reference;
+						console.log(reference)
 	
 						dispatch(verifyPayment(reference))
 							.then((response) => {

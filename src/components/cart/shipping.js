@@ -97,7 +97,6 @@ const Shipping = () => {
 			firstName: shippingInfo.firstName || "",
 			lastName: (user && user.name) || shippingInfo.lastName || "",
 			email: (user && user.email) || shippingInfo.email || "",
-
 			streetAddress: shippingInfo.streetAddress || "",
 			location: shippingInfo.location || "",
 			state: shippingInfo.state || "",
@@ -111,25 +110,30 @@ const Shipping = () => {
 		validateOnBlur: true,
 
 		onSubmit: (values) => {
-			const shippingData = {
-				firstName: values.firstName,
-				lastName: values.lastName,
-				email: values.email,
-				streetAddress: values.streetAddress,
-				location: values.location,
-				// state: values.state,
-				// park: values.park,
-				phoneNo: values.phoneNo,
-				orderNote: values.orderNote,
-			};
+			let shippingData = {};
 
 			if (values.isLagos) {
-				shippingData.state = "Lagos State";
-				shippingData.streetAddress = values.streetAddress;
+				shippingData = {
+					firstName: values.firstName,
+					lastName: values.lastName,
+					email: values.email,
+					streetAddress: values.streetAddress,
+					location: values.location,
+					state: "Lagos State",
+					phoneNo: values.phoneNo,
+					orderNote: values.orderNote,
+				};
 			} else {
-				shippingData.state = values.state;
-				shippingData.state = values.state;
-				shippingData.park = values.park;
+				shippingData = {
+					firstName: values.firstName,
+					lastName: values.lastName,
+					email: values.email,
+					location: values.location,
+					state: values.state,
+					park: values.park,
+					phoneNo: values.phoneNo,
+					orderNote: values.orderNote,
+				};
 			}
 
 			const data = {
@@ -145,6 +149,8 @@ const Shipping = () => {
 					quantity: item.quantity,
 				})),
 				shippingInfo: {
+					name: formik.values.firstName + " " + formik.values.lastName,
+					email: formik.values.email,
 					streetAddress: formik.values.streetAddress,
 					location: formik.values.location,
 					state: formik.values.state,
@@ -192,74 +198,6 @@ const Shipping = () => {
 								)}
 							</div>
 							<div className="billingDetails">BILLING DETAILS</div>
-
-							<div className="shipNameForm">
-								<div className="shipFormCat">
-									<label
-										className="shippingName"
-										htmlFor="name_field"
-									>
-										First name<span>*</span>
-									</label>
-									<Field
-										type="text"
-										name="firstName"
-										placeholder="First Name"
-										className="field"
-										value={formik.values.firstName}
-										onChange={formik.handleChange}
-									/>
-									<ErrorMessage
-										name="firstName"
-										component="div"
-										className="errorMsg"
-									/>
-								</div>
-
-								<div className="shipFormCat shipFormCatLast">
-									<label
-										className="shippingName"
-										htmlFor="name_field"
-									>
-										Last name<span>*</span>
-									</label>
-									<Field
-										type="text"
-										name="lastName"
-										placeholder="Last Name"
-										className="field"
-										value={formik.values.lastName}
-										onChange={formik.handleChange}
-									/>
-									<ErrorMessage
-										name="lastName"
-										component="div"
-										className="errorMsg"
-									/>
-								</div>
-							</div>
-
-							<div className="shipFormCat">
-								<label
-									className="shippingName"
-									htmlFor="email_field"
-								>
-									Email Address<span>*</span>
-								</label>
-								<Field
-									type="email"
-									name="email"
-									placeholder="name@email.com"
-									className="field"
-									value={formik.values.email}
-									onChange={formik.handleChange}
-								/>
-								<ErrorMessage
-									name="email"
-									component="div"
-									className="errorMsg"
-								/>
-							</div>
 							<div className="shipDetails">
 								<p>
 									Order delivery{" "}
@@ -276,21 +214,88 @@ const Shipping = () => {
 								</p>
 							</div>
 
+							{/* use checkbox to check if you are in lagos or another state. */}
 							<div className="shipFormCat checkShips">
 								<Field
 									type="checkbox"
 									name="isLagos"
 									placeholder="For delivery outside Lagos"
+									className="custom-checkbox"
 								/>
 								<div>
-									<p className="shippingName">Delivery within Lagos</p>
+									<div className="deliveryText"><p style={{color: "white"}}>Delivery within Lagos</p></div>
 								</div>
 							</div>
 
+							{/* if user select lagos, bring this form */}
 							{formik.values.isLagos ? (
 								<div>
-									<div className="LagField">
-										<p className="lag">Lagos State Nigeria</p>
+									<div className="shipNameForm">
+										<div className="shipFormCat">
+											<label
+												className="shippingName"
+												htmlFor="name_field"
+											>
+												First name<span>*</span>
+											</label>
+											<Field
+												type="text"
+												name="firstName"
+												placeholder="First Name"
+												className="field"
+												value={formik.values.firstName}
+												onChange={formik.handleChange}
+											/>
+											<ErrorMessage
+												name="firstName"
+												component="div"
+												className="errorMsg"
+											/>
+										</div>
+
+										<div className="shipFormCat shipFormCatLast">
+											<label
+												className="shippingName"
+												htmlFor="name_field"
+											>
+												Last name<span>*</span>
+											</label>
+											<Field
+												type="text"
+												name="lastName"
+												placeholder="Last Name"
+												className="field"
+												value={formik.values.lastName}
+												onChange={formik.handleChange}
+											/>
+											<ErrorMessage
+												name="lastName"
+												component="div"
+												className="errorMsg"
+											/>
+										</div>
+									</div>
+
+									<div className="shipFormCat">
+										<label
+											className="shippingName"
+											htmlFor="email_field"
+										>
+											Email Address<span>*</span>
+										</label>
+										<Field
+											type="email"
+											name="email"
+											placeholder="name@email.com"
+											className="field"
+											value={formik.values.email}
+											onChange={formik.handleChange}
+										/>
+										<ErrorMessage
+											name="email"
+											component="div"
+											className="errorMsg"
+										/>
 									</div>
 
 									<div className="shipFormCat">
@@ -314,9 +319,141 @@ const Shipping = () => {
 											className="errorMsg"
 										/>
 									</div>
+									<div className="shipFormCat">
+										<label
+											className="shippingName"
+											htmlFor="email_field"
+										>
+											Enter location<span>*</span>
+										</label>
+										<Field
+											type="text"
+											name="location"
+											placeholder="Example: Ikoyi"
+											className="field"
+											value={formik.values.location}
+											onChange={formik.handleChange}
+										/>
+										<ErrorMessage
+											name="location"
+											component="div"
+											className="errorMsg"
+										/>
+									</div>
+
+									<div className="shipFormCat">
+										<label
+											className="shippingName"
+											htmlFor="email_field"
+										>
+											Enter PhoneNo<span>*</span>
+										</label>
+										<Field
+											type="tel"
+											name="phoneNo"
+											placeholder="Example: 0801234567"
+											className="field"
+											value={formik.values.phoneNo}
+											onChange={formik.handleChange}
+										/>
+										<ErrorMessage
+											name="phoneNo"
+											component="div"
+											className="errorMsg"
+										/>
+									</div>
 								</div>
 							) : (
+								//if it is not in lagos
 								<div>
+									<div className="shipNameForm">
+										<div className="shipFormCat">
+											<label
+												className="shippingName"
+												htmlFor="name_field"
+											>
+												First name<span>*</span>
+											</label>
+											<Field
+												type="text"
+												name="firstName"
+												placeholder="First Name"
+												className="field"
+												value={formik.values.firstName}
+												onChange={formik.handleChange}
+											/>
+											<ErrorMessage
+												name="firstName"
+												component="div"
+												className="errorMsg"
+											/>
+										</div>
+
+										<div className="shipFormCat shipFormCatLast">
+											<label
+												className="shippingName"
+												htmlFor="name_field"
+											>
+												Last name<span>*</span>
+											</label>
+											<Field
+												type="text"
+												name="lastName"
+												placeholder="Last Name"
+												className="field"
+												value={formik.values.lastName}
+												onChange={formik.handleChange}
+											/>
+											<ErrorMessage
+												name="lastName"
+												component="div"
+												className="errorMsg"
+											/>
+										</div>
+									</div>
+
+									<div className="shipFormCat">
+										<label
+											className="shippingName"
+											htmlFor="email_field"
+										>
+											Email Address<span>*</span>
+										</label>
+										<Field
+											type="email"
+											name="email"
+											placeholder="name@email.com"
+											className="field"
+											value={formik.values.email}
+											onChange={formik.handleChange}
+										/>
+										<ErrorMessage
+											name="email"
+											component="div"
+											className="errorMsg"
+										/>
+									</div>
+									<div className="shipFormCat">
+										<label
+											className="shippingName"
+											htmlFor="email_field"
+										>
+											Enter PhoneNo<span>*</span>
+										</label>
+										<Field
+											type="tel"
+											name="phoneNo"
+											placeholder="Example: 0801234567"
+											className="field"
+											value={formik.values.phoneNo}
+											onChange={formik.handleChange}
+										/>
+										<ErrorMessage
+											name="phoneNo"
+											component="div"
+											className="errorMsg"
+										/>
+									</div>
 									<div className="shipFormCat">
 										<label
 											className="shippingName"
@@ -336,7 +473,7 @@ const Shipping = () => {
 											name="state"
 											component="div"
 											className="errorMsg"
-										/>
+										/>das
 									</div>
 
 									<div className="shipFormCat">
@@ -360,52 +497,31 @@ const Shipping = () => {
 											className="errorMsg"
 										/>
 									</div>
+
+									<div className="shipFormCat">
+										<label
+											className="shippingName"
+											htmlFor="email_field"
+										>
+											Enter location<span>*</span>
+										</label>
+										<Field
+											type="text"
+											name="location"
+											placeholder="Example: Ikoyi"
+											className="field"
+											value={formik.values.location}
+											onChange={formik.handleChange}
+										/>
+										<ErrorMessage
+											name="location"
+											component="div"
+											className="errorMsg"
+										/>
+									</div>
+
 								</div>
 							)}
-
-							<div className="shipFormCat">
-								<label
-									className="shippingName"
-									htmlFor="email_field"
-								>
-									Enter location<span>*</span>
-								</label>
-								<Field
-									type="text"
-									name="location"
-									placeholder="Example: Ikoyi"
-									className="field"
-									value={formik.values.location}
-									onChange={formik.handleChange}
-								/>
-								<ErrorMessage
-									name="location"
-									component="div"
-									className="errorMsg"
-								/>
-							</div>
-
-							<div className="shipFormCat">
-								<label
-									className="shippingName"
-									htmlFor="email_field"
-								>
-									Enter PhoneNo<span>*</span>
-								</label>
-								<Field
-									type="tel"
-									name="phoneNo"
-									placeholder="Example: 0801234567"
-									className="field"
-									value={formik.values.phoneNo}
-									onChange={formik.handleChange}
-								/>
-								<ErrorMessage
-									name="phoneNo"
-									component="div"
-									className="errorMsg"
-								/>
-							</div>
 
 							<div className="shipVerifyEnd shipFormCat">
 								<label

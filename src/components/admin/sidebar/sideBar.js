@@ -18,8 +18,9 @@ const SideBar = () => {
 	return (
 		<div className="sideBar">
 			<div className="sideComponent">
-				<Link to='/dashboard' className="board">
+				<Link to='/dashboard' className="componentBar">
 					<DashboardIcon className="dashIcon" />
+					<span>Dashboard</span>
 				</Link>
 				<div className="componentBar">
 					<div className="componentBarList" onClick={dashDownHandler}>

@@ -55,8 +55,8 @@
 .downList li {
 	margin-top: 4px;
 	width: 100%;
-	background-color: rgba(186, 186, 186, 0.484);
-	padding: 5px;
+	background-color: rgba(154, 154, 154, 0.545);
+	padding: 3px;
 	border-radius: 5px;
 	color: rgb(0, 0, 0);
 }

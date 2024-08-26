@@ -77,7 +77,7 @@ const NavDown = () => {
 					className="downAccount"
 				>
 					{/* <UserIcon className="iconsDown" /> */}
-					{isAuthenticated ? (
+					{isAuthenticated && user && user.avatar && user.avatar.url ? (
 						<div className="navDownAvatar">
 							<img
 								src={user && user.avatar && user.avatar.url}

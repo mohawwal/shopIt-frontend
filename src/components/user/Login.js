@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import "./user.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-//import { useAlert } from "react-alert";
+import ClipLoader from "react-spinners/ClipLoader";
 import { login, clearErrors } from "../../actions/userAction";
 import googleIcon from "../../assets/images/google_icon.png";
 import AlertContext from "../alert/AlertContext";
@@ -12,14 +12,14 @@ const Login = () => {
 	const navigate = useNavigate();
 	//const alert = useAlert();
 
-	const [, setAlert] = useContext(AlertContext)
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -36,16 +36,15 @@ const Login = () => {
 
 	useEffect(() => {
 		if (isAuthenticated) {
-			navigate('/');
-			showAlert("Logged In successful", 'success')
+			navigate("/");
+			showAlert("Logged In successful", "success");
 		}
 
 		if (error) {
-			showAlert(error, 'error')
+			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
 	}, [dispatch, error, isAuthenticated, navigate]);
-
 
 	return (
 		<div className="login">
@@ -101,7 +100,12 @@ const Login = () => {
 									<div className="as">*</div>
 								</div>
 								<div>
-									<Link className="forgotPass" to="/password/forgot">Forgot Password ?</Link>
+									<Link
+										className="forgotPass"
+										to="/password/forgot"
+									>
+										Forgot Password ?
+									</Link>
 								</div>
 							</div>
 							<div className="inputField">
@@ -120,9 +124,7 @@ const Login = () => {
 							</div>
 						</div>
 
-						<div className="errorMsg">
-							{error}
-						</div>
+						<div className="errorMsg">{error}</div>
 
 						<div className="remember">
 							<input
@@ -133,11 +135,19 @@ const Login = () => {
 						</div>
 
 						<div className="btnPss">
-							<button 
-								type="submit" 
+							<button
+								type="submit"
 								disabled={loading ? true : false}
 							>
-								Log in
+								{loading ? (
+									<ClipLoader
+										color={"white"}
+										loading={true}
+										size={20}
+									/>
+								) : (
+									<p>Login</p>
+								)}
 							</button>
 						</div>
 					</form>

@@ -5,20 +5,21 @@ import AlertContext from "../alert/AlertContext";
 import * as Yup from "yup";
 import { useFormik, FormikProvider, Field, ErrorMessage } from "formik";
 import { useNavigate, useParams } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const ResetPassword = () => {
 	const dispatch = useDispatch();
 	const Navigate = useNavigate();
 	const { token } = useParams();
 
-	const [, setAlert] = useContext(AlertContext)
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
 	const { loading, error, success } = useSelector(
 		(state) => state.forgotPassword,
@@ -26,28 +27,28 @@ const ResetPassword = () => {
 
 	useEffect(() => {
 		if (error) {
-			showAlert(error, 'error')
+			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
 
 		if (success) {
-			showAlert("Password updated successfully", 'success')
+			showAlert("Password updated successfully", "success");
 			Navigate("/login");
 		}
 	}, [Navigate, dispatch, error, success]);
 
 	const validationSchema = Yup.object().shape({
 		confirmPassword: Yup.string()
-		  .min(8, "Password must be at least 8 characters long")
-		  .matches(/(?=.*\d)/, "Password must contain one numeric digit")
-		  .matches(/(?=.*[a-z])/i, "Password must contain one lowercase letter")
-		  .matches(/(?=.*[A-Z])/i, "Password must contain one uppercase letter")
-		  .matches(
-			/(?=.*[@$!%*?&.])/i,
-			"Password must contain one special character",
-		  )
-		  .required("Password is required"),
-	  });
+			.min(8, "Password must be at least 8 characters long")
+			.matches(/(?=.*\d)/, "Password must contain one numeric digit")
+			.matches(/(?=.*[a-z])/i, "Password must contain one lowercase letter")
+			.matches(/(?=.*[A-Z])/i, "Password must contain one uppercase letter")
+			.matches(
+				/(?=.*[@$!%*?&.])/i,
+				"Password must contain one special character",
+			)
+			.required("Password is required"),
+	});
 
 	const formik = useFormik({
 		initialValues: {
@@ -108,17 +109,25 @@ const ResetPassword = () => {
 									onChange={formik.handleChange}
 								/>
 								<ErrorMessage
-										name="confirmPassword"
-										component="div"
-										className="errorMsg"
-									/>
+									name="confirmPassword"
+									component="div"
+									className="errorMsg"
+								/>
 							</div>
 						</div>
 						<button
 							type="submit"
 							disabled={loading ? true : false}
 						>
-							Enter
+							{loading ? (
+								<ClipLoader
+									color={"white"}
+									loading={true}
+									size={20}
+								/>
+							) : (
+								<div>Enter</div>
+							)}
 						</button>
 					</div>
 				</form>

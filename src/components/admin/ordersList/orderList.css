@@ -1,0 +1,54 @@
+
+.adminOrders {
+    flex-grow: 1;
+    width: 80%;
+    overflow-x: auto;
+    margin: 0 5% 5vh;
+
+}
+
+.dashSide {
+    max-width: 180px;
+}
+
+.search-input {
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.orderTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; 
+}
+
+.orderTable th,
+.orderTable td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.orderTable th {
+    background-color: #f4f4f4;
+}
+
+.pagination-controls {
+    width: 100%;
+    min-width: 600px;
+    margin-bottom: 3vh;
+}
+
+.action-row {
+    width: 100%;
+    min-width: 120px;
+}
+
+.action-row button {
+    padding: 4px 6px;
+    margin-left: 15px;
+}

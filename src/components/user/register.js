@@ -2,6 +2,7 @@ import React, { useEffect, useState, Fragment, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { register, clearErrors } from "../../actions/userAction";
 import { useNavigate } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 import * as Yup from "yup";
 import { Field, ErrorMessage, useFormik, FormikProvider } from "formik";
 import avatarPrev from "../../assets/images/avatarPreview.png";
@@ -232,7 +233,11 @@ const Register = () => {
 									disabled={loading ? true : false}
 									type="submit"
 								>
-									SIGN UP
+									{loading ? <ClipLoader
+										color={"white"}
+										loading={true}
+										size={20}
+									/> : <div>SIGN UP</div>}
 								</button>
 							</div>
 						</form>

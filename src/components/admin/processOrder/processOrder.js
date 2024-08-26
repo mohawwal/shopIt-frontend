@@ -40,10 +40,8 @@
 // 	} = useSelector((state) => state.product);
 // 	const { error, isUpdated } = useSelector((state) => state.order);
 
-
 // 	useEffect(() => {
 // 		dispatch(getOrderDetails(orderId));
-  
 
 // 		if (error) {
 //      setAlert(error, 'error')
@@ -150,7 +148,7 @@
 // 						</div>
 // 					</div>
 // 				)}
-        
+
 // 			</div>
 // 		</div>
 // 	);
@@ -158,14 +156,113 @@
 
 // export default ProcessOrder;
 
-import React from 'react'
+
+
+
+import React, { useEffect, useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	getOrderDetails,
+	clearErrors,
+	updateOrder,
+} from "../../../actions/orderAction";
+import { useParams } from "react-router-dom";
+import SideBar from "../sidebar/sideBar";
+import AlertContext from "../../alert/AlertContext";
+import Loader from "../../../pages/loader/loader";
 
 const ProcessOrder = () => {
-  return (
-    <div>
-      chill
-    </div>
-  )
-}
+	const dispatch = useDispatch();
+	const { orderId } = useParams();
 
-export default ProcessOrder
+  const [, setAlert] = useContext(AlertContext)
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type
+		})
+	}
+
+	const { order, loading, error } = useSelector(
+		(state) => state.getOrderDetails,
+	);
+
+	useEffect(() => {
+		dispatch(getOrderDetails(orderId));
+
+    if(error) {
+      showAlert(error, "error")
+      dispatch(clearErrors())
+    }
+	}, [dispatch, error, orderId]);
+
+	const isShippingWithinLagos = order?.shippingInfo?.state?.toLowerCase().includes("lagos");
+
+  if(loading) {
+    return (
+      <Loader />
+    )
+  }
+	return (
+		<div className="adminProductList">
+			<div className="dashSide">
+				<SideBar />
+			</div>
+			<div className="">
+				<div>
+					<div>#{order?._id}</div>
+					<div>
+						<h3>Shipping Info</h3>
+						<div>
+							<span>
+								<b>Name: </b>
+								{order?.user?.name}
+							</span>
+							<span>
+								<b>Phone No: </b>
+								{order?.shippingInfo?.phoneNo}
+							</span>
+							<div>
+								{isShippingWithinLagos ? (
+									<span>😁Shipping Within Lagos</span>
+								) : (
+									<span>
+										<b>State: </b>
+										{order?.shippingInfo?.state}
+									</span>
+								)}
+							</div>
+							<div>
+								<span>
+									<b>Address: </b>
+									{order?.shippingInfo?.streetAddress}
+								</span>
+							</div>
+							{!isShippingWithinLagos && (
+								<div>
+									<span>
+										<b>Park: </b>
+										{order?.shippingInfo?.park}
+									</span>
+								</div>
+							)}
+							<span>
+								<b>Location: </b>
+								{order?.shippingInfo?.location}
+							</span>
+              <span>
+                <b>Order Note: </b>
+                {order?.shippingInfo?.orderNote}
+              </span>
+						</div>
+					</div>
+          <div>Payment</div>
+
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default ProcessOrder;

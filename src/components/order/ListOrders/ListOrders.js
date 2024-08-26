@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ListOrders.css";
 import Loading from "../../../pages/loader/loader";
 //import { useAlert } from "react-alert";
@@ -10,6 +10,7 @@ import AlertContext from "../../alert/AlertContext";
 
 const ListOrders = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate()
 
 	const [, setAlert] = useContext(AlertContext)
 
@@ -20,16 +21,22 @@ const ListOrders = () => {
 		})
 	}
 
+	const { user } = useSelector(state => state.auth)
 	const { orders, loading, error } = useSelector((state) => state.myOrder);
 
 	useEffect(() => {
+
+		if(!user) {
+			navigate("/")
+		}
+
 		if (error) {
 			showAlert(error, 'error')
 			dispatch(clearErrors());
 		}
 
 		dispatch(myOrder());
-	}, [dispatch, error]);
+	}, [dispatch, error, navigate, user]);
 
 	if(loading) {
 		return (
@@ -40,7 +47,7 @@ const ListOrders = () => {
 	return (
 		<div className="ListOrders">
 			<div>
-				{orders.length > 0 ? (
+				{orders && orders.length > 0 ? (
 					<div>
 						<div>
 							{orders.map((order) => (

@@ -798,6 +798,27 @@ input[type="number"]::-webkit-outer-spin-button {
     padding: 0.3rem;
 }
 
+.deliveryText {
+	background-color: rgb(42, 42, 42);
+	
+}
+
+.deliveryText p {
+	font-size: 0.9rem;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.custom-checkbox {
+    width: 17px;
+    height: 17px;
+    margin-right: 1px;
+    cursor: pointer;
+    position: relative;
+}
+
+
 .shipSpanTwo p {
     width: 25%;
 }

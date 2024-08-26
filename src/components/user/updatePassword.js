@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_PASSWORD_RESET } from "../constants/userConstants";
+import ClipLoader from "react-spinners/ClipLoader";
 
 import { updatePassword, clearErrors } from "../../actions/userAction";
 import { useFormik, Field, FormikProvider, ErrorMessage } from "formik";
@@ -162,7 +163,11 @@ const UpdatePassword = () => {
 								type="submit"
 								disabled={loading ? true : false}
 							>
-								Reset Password
+								{loading ? <ClipLoader
+										color={"white"}
+										loading={true}
+										size={20}
+									/> : <div>Reset Password</div>}
 							</button>
 						</div>
 					</div>

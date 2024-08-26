@@ -23,7 +23,7 @@ const severityStyles = {
     },
     info: {
       color: "#055160",
-      background: "cff4fc",
+      background: "90ddee",
     },
     warning: {
       color: "#664d03",

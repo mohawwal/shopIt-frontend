@@ -5,6 +5,7 @@ import AlertContext from "../../alert/AlertContext";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, newProduct } from "../../../actions/productActions";
 import * as Yup from "yup";
+import ClipLoader from "react-spinners/ClipLoader";
 import { Field, ErrorMessage, useFormik, FormikProvider } from "formik";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 
@@ -12,27 +13,27 @@ const NewProduct = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const [, setAlert] = useContext(AlertContext)
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
 	const { loading, success, error } = useSelector((state) => state.newProduct);
 
 	useEffect(() => {
 		if (error) {
-			showAlert(error, 'error')
-			console.log(error)
+			showAlert(error, "error");
+			console.log(error);
 			dispatch(clearErrors());
 		}
 
 		if (success) {
 			navigate("/");
-			showAlert("Product created successfully", 'success')
+			showAlert("Product created successfully", "success");
 			dispatch({
 				type: NEW_PRODUCT_RESET,
 			});
@@ -61,17 +62,14 @@ const NewProduct = () => {
 		"Men_Suit",
 		"Men_Jacket",
 		"Men_Cap",
-
 		"Women_Dresses",
 		"WomanShirt",
 		"Women_Gown",
 		"Women_Jacket",
 		"Women_Bag",
-
 		"Kids_Boys",
 		"kids_Girls",
 		"kids_Shoes",
-
 		"Fragrance",
 		"Jewelry",
 		"Gifts",
@@ -82,33 +80,32 @@ const NewProduct = () => {
 			.min(3, "Name must be at least 3 characters long")
 			.max(20, "Name cannot exceed 20 characters")
 			.required("Name is required"),
-	
+
 		price: Yup.number()
 			.typeError("Price must be a number")
 			.positive("Price must be a positive number")
 			.required("Price is required"),
-	
+
 		description: Yup.string()
 			.min(10, "Description must be at least 10 characters long")
 			.max(1000, "Description cannot exceed 1000 characters")
 			.required("Description is required"),
-	
+
 		category: Yup.string()
 			.oneOf(categories, "Please select a valid category")
 			.required("Category is required"),
-	
+
 		stock: Yup.number()
 			.typeError("Stock must be a number")
 			.integer("Stock must be a whole number")
 			.positive("Stock must be a positive number")
 			.required("Stock is required"),
-	
+
 		seller: Yup.string()
 			.min(3, "Seller name must be at least 3 characters long")
 			.max(50, "Seller name cannot exceed 50 characters")
 			.required("Seller name is required"),
 	});
-	
 
 	const formik = useFormik({
 		initialValues: initialValue,
@@ -146,11 +143,11 @@ const NewProduct = () => {
 					setImagePreview((oldArray) => [...oldArray, reader.result]);
 					setImages((oldArray) => [...oldArray, reader.result]);
 				}
-			}
+			};
 			reader.onerror = (error) => {
 				console.error(`Error reading file ${file.name}:`, error);
 			};
-			
+
 			reader.readAsDataURL(file);
 		});
 	};
@@ -339,7 +336,15 @@ const NewProduct = () => {
 							disabled={loading ? true : false}
 							type="submit"
 						>
-							Upload New Product
+							{loading ? (
+								<ClipLoader
+									color="white"
+									loading={true}
+									size={24}
+								/>
+							) : (
+								<p>Upload New Product</p>
+							)}
 						</button>
 					</div>
 				</form>

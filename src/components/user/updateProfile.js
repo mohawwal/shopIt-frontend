@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState, useContext } from "react";
 import MetaData from "../layouts/MetaData";
 import { useFormik, FormikProvider, Field } from "formik";
 
+import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from "react-router-dom";
 import avatarPrev from "../../assets/images/avatarPreview.png";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,14 +15,14 @@ const UpdateProfile = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const [, setAlert] = useContext(AlertContext)
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
 	const { user } = useSelector((state) => state.auth);
 	const { error, isUpdated, loading } = useSelector((state) => state.user);
@@ -39,12 +40,12 @@ const UpdateProfile = () => {
 		}
 
 		if (error) {
-			showAlert(error, 'error')
+			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
 
 		if (isUpdated) {
-			showAlert('Update Successful', 'success')
+			showAlert("Update Successful", "success");
 			dispatch(loadUser());
 			navigate("/me");
 			dispatch({ type: UPDATE_PROFILE_RESET });
@@ -152,7 +153,15 @@ const UpdateProfile = () => {
 											disabled={loading ? true : false}
 											type="submit"
 										>
-											Update
+											{loading ? (
+												<ClipLoader
+													color={"white"}
+													loading={true}
+													size={20}
+												/>
+											) : (
+												<div>Update</div>
+											)}
 										</button>
 									</div>
 								</div>

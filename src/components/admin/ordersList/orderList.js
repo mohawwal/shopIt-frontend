@@ -1,144 +1,200 @@
-// import React, { useEffect, Fragment, useContext } from "react";
-// import "./orderList.css";
-// import { Link } from "react-router-dom";
-// import { MDBDataTable } from "mdbreact";
-
-// import MetaData from "../../layouts/MetaData";
-// import Loader from "../../../pages/loader/loader";
-//import AlertContext from '../../alert/AlertContext'
-// import { useDispatch, useSelector } from "react-redux";
-// import { getAllOrder, clearErrors } from "../../../actions/orderAction";
-// import SideBar from "../sidebar/sideBar";
-
-// const OrderList = () => {
-// 	const dispatch = useDispatch();
-
-// const [, setAlert] = useContext(AlertContext)
-
-// 	const showAlert = (message, type) => {
-// 		setAlert({
-// 			message,
-// 			type
-// 		})
-// 	}
-
-// 	const { loading, totalAmount, orders, error } = useSelector(
-// 		(state) => state.allOrder,
-// 	);
-
-// 	useEffect(() => {
-// 		dispatch(getAllOrder());
-
-// 		if (error) {
-// 			showAlert(error, 'error)
-// 			dispatchEvent(clearErrors());
-// 		}
-// 	}, [alert, dispatch, error]);
-
-// 	const setOrders = () => {
-// 		const data = {
-// 			columns: [
-// 				{
-// 					label: "Order ID",
-// 					field: "id",
-// 					sort: "asc",
-// 				},
-// 				{
-// 					label: "No of Items",
-// 					field: "numOfItems",
-// 					sort: "asc",
-// 				},
-// 				{
-// 					label: "Amount",
-// 					field: "amount",
-// 					sort: "asc",
-// 				},
-// 				{
-// 					label: "Status",
-// 					field: "status",
-// 					sort: "asc",
-// 				},
-// 				{
-// 					label: "Actions",
-// 					field: "actions",
-// 				},
-// 			],
-// 			rows: [],
-// 		};
-
-// 		orders.forEach((order) => {
-// 			data.rows.push({
-// 				id: order._id,
-// 				numOfItems: order.orderItems.length,
-// 				amount: `₦${order.totalPrice}`,
-// 				status:
-// 					order.orderStatus &&
-// 					String(order.orderStatus).includes("Delivered") ? (
-// 						<p style={{ color: "green" }}>{order.orderStatus}</p>
-// 					) : (
-// 						<p style={{ color: "red" }}>{order.orderStatus}</p>
-// 					),
-// 				actions: (
-// 					<Fragment>
-// 						<Link
-// 							to={`/admin/order/${order._id}`}
-// 							className=""
-// 						>
-// 							<p className="">View</p>
-// 						</Link>
-// 						<button
-// 							className=""
-// 							onClick
-// 						>
-// 							<p className="">cancel</p>
-// 						</button>
-// 					</Fragment>
-// 				),
-// 			});
-// 		});
-
-// 		return data;
-// 	};
-
-// 	return (
-// 		<Fragment>
-// 			<div className="adminProductList">
-// 				<div className="dashSide">
-// 					<SideBar />
-// 				</div>
-// 				<div className="adminProducts">
-// 					<MetaData title={"My Order"} />
-// 					<h1 className="my-5">All Orders</h1>
-
-// 					{loading ? (
-// 						<Loader />
-// 					) : (
-// 						<MDBDataTable
-// 							data={setOrders()}
-// 							className="px-3"
-// 							bordered
-// 							striped
-// 							hover
-// 						/>
-// 					)}
-// 				</div>
-// 				<div>{totalAmount}</div>
-// 			</div>
-// 		</Fragment>
-// 	);
-// };
-
-// export default OrderList;
-
-
-import React from 'react'
+import React, { useEffect, useMemo, useState, useContext, useCallback } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	useReactTable,
+	getCoreRowModel,
+	getPaginationRowModel,
+	getFilteredRowModel,
+} from "@tanstack/react-table";
+import { getAllOrder, clearErrors } from "../../../actions/orderAction";
+import AlertContext from "../../alert/AlertContext";
+import Loader from "../../../pages/loader/loader";
+import SideBar from "../sidebar/sideBar";
+import MetaData from "../../layouts/MetaData";
+import "./orderList.css";
 
 const OrderList = () => {
-  return (
-	<div>
-	  orderList
-	</div>
-  )
-}
+	const dispatch = useDispatch();
+	const [globalFilter, setGlobalFilter] = useState("");
+	const [, setAlert] = useContext(AlertContext);
 
-export default OrderList
+	const { loading, totalAmount, orders, error } = useSelector(
+		(state) => state.allOrder,
+	);
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type,
+		});
+	};
+
+	useEffect(() => {
+		dispatch(getAllOrder());
+
+		if (error) {
+			showAlert(error, "error");
+			dispatch(clearErrors());
+		}
+	}, [dispatch, error]);
+
+	const handleCancelOrder = useCallback((id) => {
+		console.log("clicked");
+	}, []);
+
+	const headers = ['Order ID', 'Quantity', 'Price', 'Status', 'Actions'];
+
+
+	const columns = useMemo(
+		() => [
+			{
+				header: "Order ID",
+				accessorKey: "_id",
+			},
+			{
+				header: "No of Items",
+				accessorFn: (order) => order.orderItems.length,
+			},
+			{
+				header: "Amount",
+				accessorFn: (row) => row.totalPrice,
+				cell: ({ getValue }) => `₦${getValue()}`,
+			},
+			{
+				header: "Status",
+				accessorFn: (row) => row.orderStatus,
+				cell: ({ getValue }) => (
+					<p
+						style={{
+							color: getValue().includes("Delivered") ? "green" : "red",
+						}}
+					>
+						{getValue()}
+					</p>
+				),
+			},
+			{
+				header: "Actions",
+				accessorKey: "actions",
+				cell: ({ row }) => (
+					<div className="action-row">
+						<Link
+							to={`/admin/order/${row.original._id}`}
+							className="btn viewBtn"
+						>
+							View
+						</Link>
+						<button
+							className="btn"
+							onClick={() => handleCancelOrder(row.original._id)}
+						>
+							Cancel
+						</button>
+					</div>
+				),
+			},
+		],
+		[handleCancelOrder],
+	);
+
+	const data = useMemo(() => orders, [orders]);
+
+	const tableInstance = useReactTable({
+		data,
+		columns,
+		state: {
+			globalFilter,
+			pagination: { pageIndex: 0, pageSize: 10 },
+		},
+		onGlobalFilterChange: setGlobalFilter,
+		getCoreRowModel: getCoreRowModel(),
+		getPaginationRowModel: getPaginationRowModel(),
+		getFilteredRowModel: getFilteredRowModel(),
+	});
+
+	const {
+		getRowModel,
+		getState,
+		getPageCount,
+		nextPage,
+		previousPage,
+		setPageSize,
+		canNextPage,
+		canPreviousPage,
+	} = tableInstance;
+
+	return (
+		<div className="adminProductList">
+			<div className="dashSide">
+				<SideBar />
+			</div>
+			<div className="adminOrders">
+				<div>
+				<MetaData title={"Order List"} />
+				<h3 className="allO">All Orders</h3>
+
+				{loading ? (
+					<Loader />
+				) : (
+					<>
+						<input
+							value={globalFilter || ""}
+							onChange={(e) => setGlobalFilter(e.target.value)}
+							placeholder="Search orders"
+							className="search-input"
+						/>
+						<table className="orderTable">
+							<thead>
+								<tr>
+									{headers.map((header, index) => (
+										<th key={index}>{header}</th>
+									))}
+								</tr>
+							</thead>
+							<tbody>
+								{getRowModel().rows.map((row) => (
+									<tr key={row.id}>
+										{row.getVisibleCells().map((cell) => (
+											<td key={cell.id}>
+												{cell.column.columnDef.cell?.(cell) ?? cell.getValue()}
+											</td>
+										))}
+									</tr>
+								))}
+							</tbody>
+						</table>
+						<div className="pagination-controls">
+							<button onClick={() => previousPage()} disabled={!canPreviousPage}>
+								Previous
+							</button>
+							<span>
+								Page <strong>{getState().pagination.pageIndex + 1} of {getPageCount()}</strong>
+							</span>
+							<button onClick={() => nextPage()} disabled={!canNextPage}>
+								Next
+							</button>
+							<select
+								value={getState().pagination.pageSize}
+								onChange={(e) => setPageSize(Number(e.target.value))}
+							>
+								{[10, 20, 30].map((size) => (
+									<option
+										key={size}
+										value={size}
+									>
+										Show {size}
+									</option>
+								))}
+							</select>
+						</div>
+					</>
+				)}
+				<div>{totalAmount}</div>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default OrderList;
