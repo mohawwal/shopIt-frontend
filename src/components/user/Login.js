@@ -35,7 +35,7 @@ const Login = () => {
 	);
 
 	useEffect(() => {
-		if (isAuthenticated) {
+		if (formSubmitted && isAuthenticated) {
 			navigate("/");
 			showAlert("Logged In successful", "success");
 		}
