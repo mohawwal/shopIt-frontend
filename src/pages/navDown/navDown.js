@@ -72,25 +72,24 @@ const NavDown = () => {
 				</div>
 			)}
 			<div className="navDownComp">
-				<Link
-					to={isAuthenticated ? "/me" : "/login"}
+				<div
 					className="downAccount"
 				>
 					{/* <UserIcon className="iconsDown" /> */}
 					{isAuthenticated && user && user.avatar && user.avatar.url ? (
-						<div className="navDownAvatar">
+						<Link to="/me" className="navDownAvatar">
 							<img
 								src={user && user.avatar && user.avatar.url}
 								alt=""
 							/>
-						</div>
+						</Link>
 					) : (
-						<div className="navDownAvatar">
+						<Link to="/login" className="navDownAvatar">
 							<UserIcon className="iconsDown" />
-						</div>
+						</Link>
 					)}
 					<p className="pText">Profile</p>
-				</Link>
+				</div>
 			</div>
 		</div>
 	);
