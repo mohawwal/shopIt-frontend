@@ -73,7 +73,7 @@ const NavDown = () => {
 			)}
 			<div className="navDownComp">
 				<Link
-					to="/me"
+					to={isAuthenticated ? "/me" : "/login"}
 					className="downAccount"
 				>
 					{/* <UserIcon className="iconsDown" /> */}
