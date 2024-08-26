@@ -28,7 +28,6 @@ const Login = () => {
 		e.preventDefault();
 		setFormSubmitted(true)
 		dispatch(login(email, password));
-		console.log("Form Submitted");
 	};
 
 	const { loading, error, isAuthenticated } = useSelector(
@@ -36,8 +35,6 @@ const Login = () => {
 	);
 
 	useEffect(() => {
-		console.log("Effect Triggered", { isAuthenticated, error, formSubmitted });
-		
 		if (isAuthenticated) {
 			navigate("/");
 			showAlert("Logged In successful", "success");
@@ -47,7 +44,7 @@ const Login = () => {
 			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
-	}, [dispatch, error, navigate, isAuthenticated]);
+	}, [dispatch, error, navigate]);
 
 
 	return (
