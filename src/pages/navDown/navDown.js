@@ -60,7 +60,7 @@ const NavDown = () => {
 					<p className="pText">WishList</p>
 				</Link>
 			</div>
-			{isAuthenticated ? (
+			{isAuthenticated && (
 				<div className="navDownComp">
 					<Link
 						to="/orders/me"
@@ -70,7 +70,7 @@ const NavDown = () => {
 						<p className="pText">Order</p>
 					</Link>
 				</div>
-			) : null}
+			)}
 			<div className="navDownComp">
 				<Link
 					to="/me"
