@@ -1,25 +1,25 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import "./user.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ClipLoader from "react-spinners/ClipLoader";
 import { login, clearErrors } from "../../actions/userAction";
 import googleIcon from "../../assets/images/google_icon.png";
-import AlertContext from "../alert/AlertContext";
+//import AlertContext from "../alert/AlertContext";
 
 const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	//const alert = useAlert();
 
-	const [, setAlert] = useContext(AlertContext);
+	// const [, setAlert] = useContext(AlertContext);
 
-	const showAlert = (message, type) => {
-		setAlert({
-			message,
-			type,
-		});
-	};
+	// const showAlert = (message, type) => {
+	// 	setAlert({
+	// 		message,
+	// 		type,
+	// 	});
+	// };
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -38,18 +38,18 @@ const Login = () => {
 	useEffect(() => {
 		if (formSubmitted && isAuthenticated) {
 			navigate("/");
-			showAlert("Logged In successful", "success");
+			//showAlert("Logged In successful", "success");
 		}
 
 		if (formSubmitted && error) {
-			showAlert(error, "error");
+			//showAlert(error, "error");
 			dispatch(clearErrors());
 		}
-	}, [dispatch, error, isAuthenticated, navigate, formSubmitted]);
+	}, [dispatch, error, navigate, formSubmitted]);
 
-	if(isAuthenticated) {
-		return null
-	}
+	// if(isAuthenticated) {
+	// 	return null
+	// }
 
 	return (
 		<div className="login">
