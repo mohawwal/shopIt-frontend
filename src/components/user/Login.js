@@ -28,6 +28,7 @@ const Login = () => {
 		e.preventDefault();
 		setFormSubmitted(true)
 		dispatch(login(email, password));
+		console.log("Form Submitted");
 	};
 
 	const { loading, error, isAuthenticated } = useSelector(
@@ -35,7 +36,9 @@ const Login = () => {
 	);
 
 	useEffect(() => {
-		if (formSubmitted && isAuthenticated) {
+		console.log("Effect Triggered", { isAuthenticated, error, formSubmitted });
+		
+		if (isAuthenticated) {
 			navigate("/");
 			showAlert("Logged In successful", "success");
 		}
@@ -44,11 +47,8 @@ const Login = () => {
 			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
-	}, [dispatch, error, navigate, formSubmitted]);
+	}, [dispatch, error, navigate, isAuthenticated]);
 
-	// if(isAuthenticated) {
-	// 	return null
-	// }
 
 	return (
 		<div className="login">
@@ -58,6 +58,7 @@ const Login = () => {
 					<div className="toe">
 						Enter your credentials to access your account.
 					</div>
+					{/* <div className="errorMsg">{error}</div> */}
 				</div>
 				<div className="google">
 					<img
@@ -127,8 +128,6 @@ const Login = () => {
 								/> */}
 							</div>
 						</div>
-
-						<div className="errorMsg">{error}</div>
 
 						<div className="remember">
 							<input

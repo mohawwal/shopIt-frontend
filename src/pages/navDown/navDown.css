@@ -7,6 +7,14 @@
     border-top: 0.5px dashed rgba(0, 0, 0, 0.289);
 }
 
+.iconsDown {
+    fill: black; 
+  }
+  
+  .iconsDown.active {
+    fill: rgb(134, 128, 254);
+  }
+
 .navDown {
     display: flex;
     align-items: center;

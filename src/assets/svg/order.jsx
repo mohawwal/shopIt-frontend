@@ -1,9 +1,9 @@
 import React from "react";
 
-const Order = ({ className }) => {
+const Order = ({ className, fill }) => {
 	return (
 		<svg
-			fill="#000000"
+			fill={fill}
 			xmlns="http://www.w3.org/2000/svg"
 			className={className}
 			viewBox="0 0 100 100"
