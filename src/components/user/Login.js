@@ -11,20 +11,22 @@ const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	 const [, setAlert] = useContext(AlertContext);
+	const [, setAlert] = useContext(AlertContext);
 
-	 const showAlert = (message, type) => {
-	 	setAlert({
-	 		message,
-	 		type,
-	 	});
-	 };
+	const showAlert = (message, type) => {
+		setAlert({
+			message,
+			type,
+		});
+	};
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [formSubmitted, setFormSubmitted] = useState(false)
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+		setFormSubmitted(true)
 		dispatch(login(email, password));
 	};
 
@@ -33,16 +35,16 @@ const Login = () => {
 	);
 
 	useEffect(() => {
-		if (isAuthenticated) {
+		if (formSubmitted && isAuthenticated) {
 			navigate("/");
 			showAlert("Logged In successful", "success");
 		}
 
-		if (error) {
+		if (formSubmitted && error) {
 			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
-	}, [dispatch, error, navigate]);
+	}, [dispatch, error, navigate, formSubmitted]);
 
 	// if(isAuthenticated) {
 	// 	return null
