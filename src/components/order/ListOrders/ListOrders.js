@@ -21,22 +21,29 @@ const ListOrders = () => {
 		})
 	}
 
-	const { user } = useSelector(state => state.auth)
+	const { user, isAuthenticated } = useSelector(state => state.auth)
 	const { orders, loading, error } = useSelector((state) => state.myOrder);
 
 	useEffect(() => {
 
-		if(!user) {
-			navigate("/")
+		if(!isAuthenticated) {
+			navigate("/");
+			return;
 		}
+
+		dispatch(myOrder());
 
 		if (error) {
 			showAlert(error, 'error')
 			dispatch(clearErrors());
 		}
 
-		dispatch(myOrder());
-	}, [dispatch, error, navigate, user]);
+	}, [dispatch, error, isAuthenticated, navigate]);
+
+	if (!isAuthenticated) {
+		// Prevent the component from rendering if the user is not authenticated
+		return null;
+	  }
 
 	if(loading) {
 		return (

@@ -96,7 +96,7 @@ const ProductDetails = () => {
 
     const addToCart = () => {
         dispatch(addItemToCart(`${id}`, quantity));
-        //alert.success("Item Added To Cart");
+        showAlert("Item Added To Cart", 'success');
     };
 
     const increaseQty = () => {
@@ -117,10 +117,10 @@ const ProductDetails = () => {
 
         if (updatedLikeProduct) {
             dispatch(addToWishList(id));
-            //alert.success("Product added to Favorite");
+            showAlert("Product added to Favorite", "success");
         } else {
             dispatch(removeFromWishList(id));
-            //alert.success("Product removed from Favorite");
+            showAlert("Product removed from Favorite", "success");
         }
     };
 

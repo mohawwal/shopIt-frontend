@@ -19,11 +19,7 @@ const NavDown = () => {
 
 		if (location.pathname === "/") {
 			downNavClass = "downNavHome";
-		} else if (location.pathname === "/login") {
-			downNavClass = "downNavNone";
-		} else if (location.pathname === "/password/forgot") {
-			downNavClass = "downNavNone";
-		} else if (location.pathname === "/register") {
+		} else if (location.pathname === "/login" || location.pathname === "/password/forgot" || location.pathname === "/register") {
 			downNavClass = "downNavNone";
 		} 
 
@@ -37,26 +33,26 @@ const NavDown = () => {
 			<div className="navDownComp">
 				<Link to="/" className="downAccount">
 					<Home className={`iconsDown ${isActive("/") ? "active" : ""}`} />
-					<p className="pText">Home</p>
+					<p className={`pText ${isActive("/") ? "active" : ""}`}>Home</p>
 				</Link>
 			</div>
 			<div className="navDownComp">
 				<Link to="/shop" className="downAccount">
 					<ShopIcon className={`iconsDown ${isActive("/shop") ? "active" : ""}`} />
-					<p className="pText">Shop</p>
+					<p className={`pText ${isActive("/shop") ? "active" : ""}`}>Shop</p>
 				</Link>
 			</div>
 			<div className="navDownComp">
 				<Link to="/wishlist" className="downAccount">
 					<FavoriteStar className={`iconsDown ${isActive("/wishlist") ? "active" : ""}`} />
-					<p className="pText">WishList</p>
+					<p className={`pText ${isActive("/wishlist") ? "active" : ""}`}>WishList</p>
 				</Link>
 			</div>
 			{isAuthenticated && user && (
 				<div className="navDownComp">
 					<Link to="/orders/me" className="downAccount">
 						<Orders className={`iconsDown ${isActive("/orders/me") ? "active" : ""}`} />
-						<p className="pText">Order</p>
+						<p className={`pText ${isActive("/orders/me") ? "active" : ""}`}>Order</p>
 					</Link>
 				</div>
 			)}
@@ -68,10 +64,10 @@ const NavDown = () => {
 						</Link>
 					) : (
 						<Link to="/login" className="navDownAvatar">
-							<UserIcon className="iconsDown" fill="white" />
+							<UserIcon className="iconsDownProfile" fill="white" />
 						</Link>
 					)}
-					<p className="pText">Profile</p>
+					<p className={`pText ${isActive("/me") ? "active" : ""}`}>Profile</p>
 				</div>
 			</div>
 		</div>

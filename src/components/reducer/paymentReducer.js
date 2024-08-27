@@ -1,6 +1,7 @@
 import {
     MAKE_PAYMENT_ORDER_REQUEST,
     MAKE_PAYMENT_ORDER_SUCCESS,
+    MAKE_PAYMENT_ORDER_RESET,
     MAKE_PAYMENT_ORDER_FAIL,
 
     VERIFY_PAYMENT_ORDER_REQUEST,
@@ -30,6 +31,12 @@ export const paymentReducer = (state = {}, action) => {
             return {
                 loading: false,
                 error: action.payload
+            }
+
+        case MAKE_PAYMENT_ORDER_RESET:
+            return {
+                ...state,
+                order: {}
             }
 
         case CLEAR_ERRORS:

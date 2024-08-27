@@ -473,7 +473,7 @@ const Shipping = () => {
 											name="state"
 											component="div"
 											className="errorMsg"
-										/>das
+										/>
 									</div>
 
 									<div className="shipFormCat">

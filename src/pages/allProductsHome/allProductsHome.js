@@ -40,6 +40,10 @@ const AllProductsHome = () => {
 		showAlert("Item Added To Cart", "success")
 	};
 
+	const formatPrice = (price) => {
+		return price.toLocaleString();
+	};
+
 	if (loading) {
 		return (
 			<div>
@@ -77,7 +81,7 @@ const AllProductsHome = () => {
 												? `${product.name.toUpperCase().slice(0, 13)}...`
 												: product.name.toUpperCase()}
 										</div>
-										<div className="allStars">₦{product.price}</div>
+										<div className="allStars">₦{formatPrice(product.price)}</div>
 									</div>
 									<div
 										onClick={() => addToCart(product._id)}

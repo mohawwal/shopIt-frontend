@@ -7,12 +7,17 @@
     border-top: 0.5px dashed rgba(0, 0, 0, 0.289);
 }
 
-.iconsDown {
-    fill: black; 
+.iconsDownProfile {
+    width: 1.5rem;
+    margin-top: 4px;
   }
   
   .iconsDown.active {
-    fill: rgb(134, 128, 254);
+    fill: rgb(101, 93, 255);
+  }
+
+  .pText.active {
+    color: rgb(101, 93, 255);
   }
 
 .navDown {
@@ -32,6 +37,7 @@
 
 .iconsDown {
     width: 1.5rem;
+    fill: rgb(24, 24, 24); 
 }
 
 .navDownComp div {

@@ -27,6 +27,7 @@ const Cart = () => {
 	const removeCartItemHandler = (id) => {
 		dispatch(removeItemFromCart(id));
 	};
+	
 
 	const totalGoods = cartItems.reduce(
 		(acc, item) => acc + Number(item.quantity),
