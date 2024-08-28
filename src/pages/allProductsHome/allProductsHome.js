@@ -10,15 +10,15 @@ import AlertContext from "../../components/alert/AlertContext";
 
 const AllProductsHome = () => {
 	const dispatch = useDispatch();
-	
-	const [, setAlert] = useContext(AlertContext)
+
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
 	const { loading, error, products } = useSelector(
 		(state) => state.allProducts,
@@ -26,7 +26,7 @@ const AllProductsHome = () => {
 
 	useEffect(() => {
 		if (error) {
-			showAlert(error, 'error')
+			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
 
@@ -37,7 +37,7 @@ const AllProductsHome = () => {
 
 	const addToCart = (id) => {
 		dispatch(addItemToCart(id, quantity));
-		showAlert("Item Added To Cart", "success")
+		showAlert("Item Added To Cart", "success");
 	};
 
 	const formatPrice = (price) => {
@@ -53,49 +53,51 @@ const AllProductsHome = () => {
 	}
 	return (
 		<div>
-			<div className="allProdHome">
-			<div class="moving-sentence">NEW MARIO'S</div>
-			<div className="productHome">
-				{products &&
-					products.map((product, index) => {
-						return (
-							<div
-								className="allHome Link"
-								key={index}
-							>
-								<div className="allHomeImg">
-									<Link
-										className="Link"
-										to={`/product/${product._id}`}
-									>
-										<img
-											src={product.images[0]?.url}
-											alt="img"
-										/>
-									</Link>
-								</div>
-								<div className="allTD">
-									<div>
-										<div className="allName">
-											{product.name && product.name.length > 13
-												? `${product.name.toUpperCase().slice(0, 13)}...`
-												: product.name.toUpperCase()}
+			<div className="allProdHome allProdHomeSC">
+				<div class="moving-sentence MDSC">NEW MARIO'S</div>
+				<div className="productHome productHomeSC">
+					{products &&
+						products.map((product, index) => {
+							return (
+								<div
+									className="allHome Link"
+									key={index}
+								>
+									<div className="allHomeImg">
+										<Link
+											className="Link"
+											to={`/product/${product._id}`}
+										>
+											<img
+												src={product.images[0]?.url}
+												alt="img"
+											/>
+										</Link>
+									</div>
+									<div className="allTD">
+										<div>
+											<div className="allName">
+												{product.name && product.name.length > 13
+													? `${product.name.toUpperCase().slice(0, 13)}...`
+													: product.name.toUpperCase()}
+											</div>
+											<div className="allStars">
+												₦{formatPrice(product.price)}
+											</div>
 										</div>
-										<div className="allStars">₦{formatPrice(product.price)}</div>
-									</div>
-									<div
-										onClick={() => addToCart(product._id)}
-										className="basket"
-									>
-										<BsCart4 className="basketIcon" />
+										<div
+											onClick={() => addToCart(product._id)}
+											className="basket"
+										>
+											<BsCart4 className="basketIcon" />
+										</div>
 									</div>
 								</div>
-							</div>
-						);
-					})}
+							);
+						})}
+				</div>
+				<div className="pagSC">pagination</div>
 			</div>
-		</div>
-		
 		</div>
 	);
 };

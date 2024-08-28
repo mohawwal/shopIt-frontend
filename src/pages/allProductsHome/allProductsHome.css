@@ -1,6 +1,6 @@
 .allProdHome {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 .shopHomeCategory {
@@ -36,6 +36,8 @@
 
 .moving-sentence {
     font-size: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 .allHomeImg {
@@ -100,10 +102,10 @@
     border-radius: 8px;
 }
 
-/* .displayPage {
+.displayPage {
     scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-} */
+    scroll-behavior: smooth;
+} 
 .marioText {
     background-image: url('../../assets/images/image2.jpg');
     background-size: cover;
@@ -151,9 +153,29 @@
     justify-content: center;
 }
 
-/* 
+.pagSC {
+    display: none;
+}
+
 @media screen and (max-width: 550px) {
-    .allHomeCategoryFile {
-        display: none;
+    .allProdHomeSC {
+        background-color: red;
+        height: 92vh;
     }
-} */
+
+    .MDSC {
+        height: 7%;
+    }
+    .pagSC {
+        display: block;
+        height: 7%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .productHomeSC {
+        height: 86%;
+        background-color: antiquewhite;
+    }
+} 

@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./ListOrders.css";
 import Loading from "../../../pages/loader/loader";
-//import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { myOrder, clearErrors } from "../../../actions/orderAction";
 import { formatDate } from '../dateTime'
@@ -24,11 +23,11 @@ const ListOrders = () => {
 	const { user, isAuthenticated } = useSelector(state => state.auth)
 	const { orders, loading, error } = useSelector((state) => state.myOrder);
 
+	
 	useEffect(() => {
 
-		if(!isAuthenticated) {
+		if(!isAuthenticated && !user) {
 			navigate("/");
-			return;
 		}
 
 		dispatch(myOrder());
@@ -40,10 +39,6 @@ const ListOrders = () => {
 
 	}, [dispatch, error, isAuthenticated, navigate]);
 
-	if (!isAuthenticated) {
-		// Prevent the component from rendering if the user is not authenticated
-		return null;
-	  }
 
 	if(loading) {
 		return (
