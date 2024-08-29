@@ -49,10 +49,17 @@ const UpdateProduct = () => {
 	const [imagePreview, setImagePreview] = useState([]);
 
 	const categories = [
+		"Women_Dresses",
+		"WomanShirt",
+		"Women_Gown",
+		"Women_Jacket",
+		"Women_Bag",
+		"Kids_Boys",
+		"kids_Girls",
+		"kids_Shoes",
 		"Fragrance",
 		"Jewelry",
 		"Gifts",
-
 		"Men_Shirt",
 		"Men_T-Shirt",
 		"Men_Polo",
@@ -62,16 +69,6 @@ const UpdateProduct = () => {
 		"Men_Suit",
 		"Men_Jacket",
 		"Men_Cap",
-
-		"Women_Dresses",
-		"WomanShirt",
-		"Women_Gown",
-		"Women_Jacket",
-		"Women_Bag",
-
-		"Kids_Boys",
-		"kids_Girls",
-		"kids_Shoes",
 	];
 
 	const validationSchema = Yup.object().shape({
@@ -115,7 +112,6 @@ const UpdateProduct = () => {
 		validationSchema: validationSchema,
 		validateOnBlur: true,
 		onSubmit: (values) => {
-			console.log("i can click")
 			let formData = new FormData();
 
 			formData.append("name", values.name);
@@ -125,18 +121,16 @@ const UpdateProduct = () => {
 			formData.append("stock", values.stock);
 			formData.append("seller", values.seller);
 
-			if (images.length > 0) {
-				images.forEach((image) => {
-					formData.append(`images`, image);
-				});
-			}
+			images.forEach((image) => {
+				formData.append(`images`, image);
+			});
 
 			dispatch(updateProduct(product._id, formData));
 		},
 	});
 
 	useEffect(() => {
-		if (!product || product._id !== productId) {
+		if (product && product._id !== productId) {
 		    dispatch(getProductDetails(productId));
 		} else {
 		    formik.setValues({
@@ -182,6 +176,7 @@ const UpdateProduct = () => {
 
 		setImagePreview([]);
 		setImages([]);
+		setOldImages([])
 
 		files.forEach((file) => {
 			const reader = new FileReader();
@@ -189,9 +184,9 @@ const UpdateProduct = () => {
 			reader.onload = () => {
 				if (reader.readyState === 2) {
 					setImagePreview((oldArray) => [...oldArray, reader.result]);
+					setImages((oldArray) => [...oldArray, reader.result]);
 				}
 			};
-			setImages((oldArray) => [...oldArray, file]);
 
 			reader.readAsDataURL(file)
 
@@ -362,7 +357,7 @@ const UpdateProduct = () => {
 							type="file"
 							name="images"
 							accept="image/*"
-							onChange={(e) => handleFileChange(e)}
+							onChange={handleFileChange}
 							multiple
 						/>
 					</div>
