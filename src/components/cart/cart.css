@@ -67,6 +67,7 @@
 .itemUp {
 	font-weight: 600;
 	font-size: 0.88rem;
+	color: rgb(1, 5, 34);
 }
 
 .itemUpName:hover,
@@ -76,9 +77,8 @@
 }
 
 .subTotalPrice {
-	font-weight: 600;
-	font-size: 1.05rem;
-	color: rgba(19, 3, 83, 0.812);
+	font-size: 1rem;
+	color: rgba(0, 0, 0, 0.812);
 }
 
 .cancelIcons {

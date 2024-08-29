@@ -248,12 +248,14 @@
 }
 
 .accordions-item-button.active {
-    background-color: rgb(156, 171, 255); 
+    background-color: rgb(161, 175, 255); 
+    color: #ffffff;
 }
 
 
 .PDContent {
     margin: 15px 0 18px;
+    font-size: 0.8rem;
 }
 
 .PDRnR {
@@ -394,7 +396,7 @@
 }
 
 .postReviewBox {
-    background-color: rgba(144, 144, 144, 0.342);
+    background-color: rgba(214, 222, 252, 0.54);
     position: fixed;
     height: 100vh;
     top: 0;
@@ -407,25 +409,25 @@
 }
 
 .postReviewBox textarea {
-    width: 70%;
+    width: 80%;
     height: 150px;
-    max-width: 300px;
+    max-width: 350px;
     padding: 5px;
 }
 
 .postReviewBox input {
-    width: 70%;
-    max-width: 300px;
+    width: 80%;
+    max-width: 350px;
     height: 5%;
     padding: 5px;
 }
 
 .postReviewBox button {
-    width: 70%;
-    max-width: 300px;
+    width: 80%;
+    max-width: 350px;
     margin-top: 10px;
     height: 35px;
-    background-color: rgba(0, 0, 66, 0.938);
+    background-color: rgb(86, 111, 255);
     color: white;
     border: none;
     cursor: pointer;
