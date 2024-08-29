@@ -39,7 +39,7 @@ const AllCategory = ({ category }) => {
         )
     }
     return (
-        <div className='allProdHome'>
+        <div className='catProdHome'>
             <div class="moving-sentence">SIMILAR MARIO'S</div>
             <div className='productHome'>
                 {products.map((product, index) => {

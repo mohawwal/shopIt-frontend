@@ -46,7 +46,8 @@ const ProductFolder = () => {
 	}, [currentPage, dispatch, error, id]);
 
 	const handleCurrentPage = (targetPage) => {
-		if (targetPage >= 1 && targetPage <= pageNo) setCurrentPage(targetPage);
+		if (targetPage >= 1 && targetPage <= pageNo) 
+			setCurrentPage(targetPage);
 	};
 
 	if (loading) {

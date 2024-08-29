@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../../actions/cartAction";
-import Alert from "../../components/alert/alert";
 import AlertContext from "../../components/alert/AlertContext";
 
 const Product = ({ product }) => {
@@ -26,7 +25,6 @@ const Product = ({ product }) => {
 	};
 	return (
 		<div className="folderList">
-			<Alert />
 			<div className="foldersList">
 				<Link
 					Link

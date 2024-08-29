@@ -22,7 +22,7 @@ const AllHomeCategory = () => {
 	}
 
 	return (
-		<div className="allProdHome" style={{marginTop: "20px"}}>
+		<div className="catProdHome" style={{marginTop: "20px"}}>
 			<div class="moving-sentence">MARIO'S SHOP</div>
 			<div className="productHome">
 				{shopCategory.map((shop, index) => (
