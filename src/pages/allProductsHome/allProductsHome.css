@@ -92,6 +92,10 @@
     height: 1.8rem;
 }
 
+.basket:hover, .basket:focus {
+    background-color: rgb(203, 179, 251);
+}
+
 .basketIcon {
     font-size: 1.2rem;
 }

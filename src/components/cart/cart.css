@@ -145,7 +145,7 @@
 .shoppingCart {
 	font-size: 0.8rem;
 	text-align: center;
-	background-color: rgb(0, 7, 53);
+	background-color: rgb(133, 150, 255);
 	padding: 0.8rem 0;
 	color: white;
 	margin-top: 15px;
@@ -229,8 +229,9 @@
 	border: none;
 	font-size: 0.9rem;
 	width: 100%;
-	background-color: rgb(0, 7, 53);
+	background-color: rgb(110, 129, 255);
 	color: white;
+	cursor: pointer;
 }
 
 .orderFlex {
@@ -308,7 +309,7 @@
 	align-items: center;
 	justify-content: center;
 	gap: 12px;
-	background-color: rgb(0, 0, 0);
+	background-color: rgb(110, 129, 255);
 	color: rgb(255, 255, 255);
 	padding: 5px;
 	flex-wrap: wrap;

@@ -121,17 +121,19 @@
 
 .addLove {
     background-color: rgba(153, 153, 153, 0.16);
-    width: 40px;
-    border-radius: 10px;
-    height: 40px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5px;
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    font-weight: 700;
 }
 
 .loveIcon {
-    width: 30px;
-    color: rgba(0, 0, 0, 0.316);
+    width: 28px;
+    color: rgba(255, 255, 255, 0.489);
 }
 
 .detailsName .PDName {
@@ -195,24 +197,23 @@
 }
 
 .PDCart {
-    background-color: rgba(27, 17, 41, 0.842);
+    background-color: rgb(110, 129, 255);
     color: white;
     padding: 0.3rem 0.6rem;
     border: none;
     border-radius: 19px;
     font-weight: 500;
     text-align: center;
-    width: 50%;
-    height: 2.4rem;
-    max-width: 200px;
-    min-width: 100px;
+    padding: 8px 18px;
+    max-width: 150px;
+    min-width: 90px;
 }
 
 .underline {
-    width: 99%;
+    width: 100%;
     margin: 15px auto;
-    height: 1px;
-    background-color: rgba(223, 223, 223, 0.785);
+    height: 0.1px;
+    background-color: rgb(156, 171, 255);
 }
 .accordion {
     width: 100%;
@@ -238,13 +239,16 @@
 .accordions-item-button {
     border: none;
     cursor: pointer;
-    padding: 2px 12px;
-    border-radius: 13px;
+    padding: 5px 12px;
+    border-radius: 12px;
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .accordions-item-button.active {
-    background-color: #ffffff; 
+    background-color: rgb(156, 171, 255); 
 }
 
 
@@ -274,10 +278,9 @@
 }
 
 .DRatings {
-    margin: 10px 0;
-    border: 1px solid rgba(150, 150, 150, 0.221);
-    border-radius: 10px;
-    padding: 5px;
+    margin: 15px 0;
+    border-bottom: 0.01px dashed rgba(184, 184, 255, 0.56);
+    padding: 2px;
 }
 
 .reviewD {
@@ -291,7 +294,8 @@
 .stars {
     width: 20px;
     height: 20px;
-    color: rgb(214, 182, 0);
+    /* color: rgb(156, 171, 255); */
+    color: rgb(201, 201, 0);
 }
 
 .dotIcon {
@@ -323,7 +327,7 @@
 }
 
 .prodDetailsQty {
-    height: 1.8rem;
+    height: 1.7rem;
     width: 20%;
     min-width: 100px;
     display: flex;
@@ -334,23 +338,22 @@
 
 .prodDetailsQty input {
     text-align: center;
-    width: 1.8rem;
+    width: 1.7rem;
     height: 100%;
     border: none;
-    background-color: rgba(0, 0, 0, 0.373);
-    color: white;
-    font-size: 12px;
-    font-weight: 700;
+    background-color: whitesmoke;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
 }
 
 .prodDetailsQty button {
     height: 100%;
-    width: 1.8rem;
+    width: 1.7rem;
     border: none;
     color: #ffffff;
-    background-color: rgba(11, 2, 35, 0.788);
+    background-color: rgb(156, 171, 255);
     text-align: center;
-    font-size: 12px;
+    font-size: 1rem;
     font-weight: 700;
 }
 
@@ -365,14 +368,19 @@
 }
 
 .PostReview {
-    background-color: rgba(0, 0, 0, 0.742);
-    padding: 10px;
-    color: white;
-    max-width: 200px;
+    background-color: transparent;
+    padding: 8px;
+    color: rgb(0, 0, 0);
+    width: 100%;
     text-align: center;
-    border-radius: 15px;
-    margin: 5% 0;
+    margin: 10% 0;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(156, 171, 255);
+    color: white;
+
 }
 
 .loginPostReview {
