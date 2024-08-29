@@ -162,7 +162,10 @@
     border-radius: 15px;
 }
 
-
+.noProducts {
+    text-align: center;
+    color: rgb(0, 0, 146);
+}
 
 @media screen and (min-width: 500px) {
     .prodFold {

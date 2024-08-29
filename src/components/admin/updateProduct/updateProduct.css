@@ -1,0 +1,36 @@
+.udi button {
+    background-color: rgb(165, 170, 255);
+    width: 100%;
+    border: none;
+    padding: 10px;
+}
+
+.formClass {
+    margin-bottom: 10vh;
+}
+
+.upSpace {
+    margin-top: 20px;
+}
+
+.udi button p {
+    color: black;
+}
+
+.productImg {
+    margin-top: 10px;
+}
+
+.desUpdate .field {
+    width: 100%;
+    height: 100px;
+    border: 0.1px solid rgba(0, 0, 0, 0.677);
+    padding: 3px;
+}
+
+.updateProduct .field {
+    width: 100%;
+    height: 35px;
+    padding: 5px;
+    border: 0.1px solid rgba(0, 0, 0, 0.677);
+}

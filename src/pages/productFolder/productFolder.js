@@ -10,20 +10,19 @@ import { FaFilter } from "react-icons/fa";
 import MetaData from "../../components/layouts/MetaData";
 import AlertContext from "../../components/alert/AlertContext";
 
-
 const ProductFolder = () => {
 	const dispatch = useDispatch();
 	const { id } = useParams();
 
 	//Alert
-	const [,setAlert] = useContext(AlertContext)
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -38,16 +37,15 @@ const ProductFolder = () => {
 
 	useEffect(() => {
 		if (error) {
+			showAlert(error, "error");
 			dispatch(clearErrors());
-			showAlert(error, 'error')
 		}
 
 		dispatch(getProductCategory(`${id}`, currentPage));
 	}, [currentPage, dispatch, error, id]);
 
 	const handleCurrentPage = (targetPage) => {
-		if (targetPage >= 1 && targetPage <= pageNo) 
-			setCurrentPage(targetPage);
+		if (targetPage >= 1 && targetPage <= pageNo) setCurrentPage(targetPage);
 	};
 
 	if (loading) {
@@ -71,7 +69,7 @@ const ProductFolder = () => {
 					</div>
 
 					<div className="prodFold">
-						{products &&
+						{products && products.length > 0 ? (
 							products.map((product) => {
 								return (
 									<div
@@ -81,7 +79,12 @@ const ProductFolder = () => {
 										<Product product={product} />
 									</div>
 								);
-							})}
+							})
+						) : (
+							<div className="noProducts">
+								No products found in this category.
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

@@ -18,14 +18,14 @@ const UpdateProduct = () => {
 	const navigate = useNavigate();
 	const { productId } = useParams();
 
-	const [, setAlert] = useContext(AlertContext)
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
 	const {
 		loading,
@@ -35,7 +35,7 @@ const UpdateProduct = () => {
 
 	const { error, product } = useSelector((state) => state.productDetails);
 
-    const initialValue = {
+	const initialValue = {
 		name: "",
 		price: "",
 		description: "",
@@ -47,11 +47,9 @@ const UpdateProduct = () => {
 	const [images, setImages] = useState([]);
 	const [oldImages, setOldImages] = useState([]);
 	const [imagePreview, setImagePreview] = useState([]);
-    const [formInitialized, setFormInitialized] = useState(false)
 
-	
 	const categories = [
-        "Fragrance",
+		"Fragrance",
 		"Jewelry",
 		"Gifts",
 
@@ -104,8 +102,12 @@ const UpdateProduct = () => {
 
 		seller: Yup.string()
 			.min(3, "Seller name must be at least 3 characters long")
-			.max(50, "Seller name cannot exceed 50 characters")
+			.max(40, "Seller name cannot exceed 50 characters")
 			.required("Seller name is required"),
+	
+		images: Yup.array()
+			.min(1, "At least one image is required")
+			.required("Product images are required")
 	});
 
 	const formik = useFormik({
@@ -113,6 +115,7 @@ const UpdateProduct = () => {
 		validationSchema: validationSchema,
 		validateOnBlur: true,
 		onSubmit: (values) => {
+			console.log("i can click")
 			let formData = new FormData();
 
 			formData.append("name", values.name);
@@ -122,58 +125,63 @@ const UpdateProduct = () => {
 			formData.append("stock", values.stock);
 			formData.append("seller", values.seller);
 
-			if(images.length > 0) {
-                images.forEach((image, index) => {
-                    formData.append(`images[${index}]`, image);
-                })
-            }
+			if (images.length > 0) {
+				images.forEach((image) => {
+					formData.append(`images`, image);
+				});
+			}
 
 			dispatch(updateProduct(product._id, formData));
 		},
 	});
 
-    useEffect(() => {
-        if (!product || product._id !== productId) {
-            dispatch(getProductDetails(productId));
-        } else if (!formInitialized) {
-            formik.setValues({
-                name: product.name,
-                price: product.price,
-                description: product.description,
-                stock: product.stock,
-                seller: product.seller,
-                category: product.category,
-            });
-            setOldImages(product.images);
-            setFormInitialized(true);
-        }
-    
-        if (error) {
-			setAlert(error, 'error')
-            dispatch(clearErrors());
-        }
-    
-        if (updateError) {
-			setAlert(updateError, 'error')
-            dispatch(clearErrors());
-        }
-    
-        if (isUpdated) {
-            navigate("/");
-			setAlert("Product updated successfully", 'success')
-            dispatch({
-                type: UPDATE_PRODUCT_RESET,
-            });
-        }
-    }, [dispatch, error, formInitialized, formik, isUpdated, navigate, product, productId, updateError]);
-    
+	useEffect(() => {
+		if (!product || product._id !== productId) {
+		    dispatch(getProductDetails(productId));
+		} else {
+		    formik.setValues({
+		        name: product.name,
+		        price: product.price,
+		        description: product.description,
+		        stock: product.stock,
+		        seller: product.seller,
+		        category: product.category,
+		    });
+		    setOldImages(product.images);
+		}
+
+		if (error) {
+			showAlert(error, "error");
+			dispatch(clearErrors());
+		}
+
+		if (updateError) {
+			showAlert(updateError, "error");
+			dispatch(clearErrors());
+		}
+
+		if (isUpdated) {
+			navigate("/admin/products");
+			showAlert("Product updated successfully", "success");
+			dispatch({
+				type: UPDATE_PRODUCT_RESET,
+			});
+		}
+	}, [
+		dispatch,
+		error,
+		isUpdated,
+		navigate,
+		product,
+		productId,
+		updateError,
+	]);
 
 	const handleFileChange = (e) => {
 		const files = Array.from(e.target.files);
 
 		setImagePreview([]);
 		setImages([]);
-		setOldImages([]);
 
 		files.forEach((file) => {
 			const reader = new FileReader();
@@ -181,14 +189,12 @@ const UpdateProduct = () => {
 			reader.onload = () => {
 				if (reader.readyState === 2) {
 					setImagePreview((oldArray) => [...oldArray, reader.result]);
-					setImages((oldArray) => [...oldArray, reader.result]);
 				}
 			};
-			reader.onerror = (error) => {
-				console.error(`Error reading file ${file.name}:`, error);
-			};
+			setImages((oldArray) => [...oldArray, file]);
 
-			reader.readAsDataURL(file);
+			reader.readAsDataURL(file)
+
 		});
 	};
 
@@ -201,13 +207,14 @@ const UpdateProduct = () => {
 				<form
 					onSubmit={formik.handleSubmit}
 					encType="multipart/form-data"
+					className="formClass"
 				>
 					<div className="">
 						<div className="nameAs">
 							<label htmlFor="name_field">Name</label>
 							<div className="as">*</div>
 						</div>
-						<div className="">
+						<div className="updateProduct">
 							<Field
 								type="name"
 								name="name"
@@ -224,23 +231,21 @@ const UpdateProduct = () => {
 						</div>
 					</div>
 
-					<div className="space emailSpace">
+					<div className="upSpace emailSpace">
 						<div className="nameAs">
 							<label htmlFor="price">Price</label>
 							<div className="as">*</div>
 						</div>
-						<div className="">
-							<div style={{ display: "flex", alignItems: "center" }}>
-								<span>₦</span>
+						<div className="updateProduct">
+								
 								<Field
 									type="number"
 									name="price"
-									placeholder="Price of the Product"
+									placeholder="Price of the Product (₦)"
 									className="field"
 									value={formik.values.price}
 									onChange={formik.handleChange}
 								/>
-							</div>
 							<ErrorMessage
 								name="price"
 								component="div"
@@ -254,7 +259,7 @@ const UpdateProduct = () => {
 							<label htmlFor="name_field">Description</label>
 							<div className="as">*</div>
 						</div>
-						<div className="">
+						<div className="desUpdate">
 							<Field
 								as="textarea"
 								name="description"
@@ -271,12 +276,12 @@ const UpdateProduct = () => {
 						</div>
 					</div>
 
-					<div className="space emailSpace">
+					<div className="emailSpace">
 						<div className="nameAs">
 							<label htmlFor="name_field">Category</label>
 							<div className="as">*</div>
 						</div>
-						<div className="">
+						<div className="updateProduct">
 							<Field
 								as="select"
 								name="category"
@@ -306,12 +311,12 @@ const UpdateProduct = () => {
 						</div>
 					</div>
 
-					<div className="">
+					<div className="upSpace">
 						<div className="nameAs">
 							<label htmlFor="name_field">stock</label>
 							<div className="as">*</div>
 						</div>
-						<div className="">
+						<div className="updateProduct">
 							<Field
 								type="number"
 								name="stock"
@@ -329,12 +334,12 @@ const UpdateProduct = () => {
 						</div>
 					</div>
 
-					<div className="space emailSpace">
+					<div className="emailSpace">
 						<div className="nameAs">
 							<label htmlFor="name_field">Brand Name</label>
 							<div className="as">*</div>
 						</div>
-						<div className="inputField">
+						<div className="updateProduct">
 							<Field
 								type="text"
 								name="seller"
@@ -344,7 +349,7 @@ const UpdateProduct = () => {
 								onChange={formik.handleChange}
 							/>
 							<ErrorMessage
-								name="description"
+								name="seller"
 								component="div"
 								className="errorMsg"
 							/>
@@ -362,9 +367,14 @@ const UpdateProduct = () => {
 						/>
 					</div>
 					<div className="preImgProduct">
-                        {oldImages && oldImages.map((img) => (
-                            <img src={img.url} alt='img' key={img}/>
-                        )) }
+						{oldImages &&
+							oldImages.map((img) => (
+								<img
+									src={img.url}
+									alt="img"
+									key={img}
+								/>
+							))}
 
 						{imagePreview.map((img) => (
 							<img
@@ -375,22 +385,22 @@ const UpdateProduct = () => {
 						))}
 					</div>
 
-					<div className="btnPss">
+					<div className="udi">
 						<button
 							disabled={loading}
 							type="submit"
 						>
-                            {loading ? (
-						<div>
-							<ClipLoader
-								color={"white"}
-								loading={true}
-								size={23}
-							/>
-						</div>
-					) : (
-						<p>Update Product</p>
-					)}
+							{loading ? (
+								<div>
+									<ClipLoader
+										color={"black"}
+										loading={true}
+										size={23}
+									/>
+								</div>
+							) : (
+								<p>Update Product</p>
+							)}
 						</button>
 					</div>
 				</form>

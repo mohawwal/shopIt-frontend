@@ -53,9 +53,9 @@ const ProductList = () => {
 		}
 
 		if (isDeleted) {
-			showAlert("Product Deleted Successfully", "info");
-			navigate("/admin/products");
 			dispatch({ type: DELETE_PRODUCT_RESET });
+			showAlert("Product Deleted Successfully", "success");
+      navigate("/admin/products");
 		}
 	}, [dispatch, error, deleteError, isDeleted, navigate]);
 

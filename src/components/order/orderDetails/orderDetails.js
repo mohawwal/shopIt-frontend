@@ -57,7 +57,7 @@ const OrderDetails = () => {
 				{order && order.orderStatus && order.orderStatus.includes(String("Delivered")) ? (
 					<div className="dob">
 						<Repeat className="navIcon" />
-						<p>Repeat order</p>
+						<p>Order Delivered</p>
 					</div>
 				) : (
 					<span className="orderStatus">{order && order.orderStatus}...</span>
@@ -94,7 +94,7 @@ const OrderDetails = () => {
 								<img
 									src={item.image}
 									alt={item.name}
-									style={{ width: "50px", height: "50px" }}
+									style={{ width: "60px", height: "60px", objectFit: "contain" }}
 								/>
 								<div className="classDetails">
 									<span>{item.name}</span>

@@ -3,7 +3,7 @@
     position: relative;
     height: 100vh;
     max-width: 750px;
-    margin: 0 auto;
+    margin: 0px auto;
 }
 
 .detailsOrder {
@@ -143,6 +143,7 @@
     position: fixed;
     bottom: 8vh;
     width: 100%;
+    max-width: 750px;
     padding: 10px 25px;
 }
 

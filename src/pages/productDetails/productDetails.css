@@ -433,10 +433,38 @@
     cursor: pointer;
 }
 
+.reviewRatingStar {
+    background-color: #ffffff;
+    width: 80%;
+    max-width: 350px;
+}
+
+.RRStars {
+    width: 30px;
+    height: 30px;
+    color: red;
+}
+
 .cancelShowReview {
-    background-color: red;
     padding: 5px;
     cursor: pointer;
+    width: 80%;
+    max-width: 350px;
+    display: flex;
+    justify-content: right;
+}
+
+.cancelShowReview p {
+    background-color: rgb(235, 76, 76);
+    padding: 5px 7px;
+    color: white;
+    font-size: 1rem;
+    width: 30%;
+    text-align: center;
+}
+
+.cartIcon {
+    width: 22px;
 }
 
 @media screen and (min-width: 380px) {
