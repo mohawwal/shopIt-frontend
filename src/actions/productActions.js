@@ -179,13 +179,8 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_PRODUCT_REQUEST })
 
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-
-        const { data } = await axios.put(`/api/v1/admin/product/${id}`, productData, config)
+        const { data } = await axios.put(`/api/v1/admin/product/${id}`, productData)
+        console.log("update product", data)
 
         dispatch({
             type: UPDATE_PRODUCT_SUCCESS,
@@ -197,6 +192,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
             type: UPDATE_PRODUCT_FAIL,
             payload: error.response.data.message
         })
+        console.log("update product error", error)
     }
 }
 

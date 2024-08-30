@@ -37,6 +37,8 @@ const Cart = () => {
 		.reduce((acc, item) => acc + item.quantity * item.price, 0)
 		.toFixed(0);
 
+	const formattedTotalPrice = Number(totalPrice).toLocaleString();
+
 	return (
 		<div className="cart">
 			<div className="shoppingCart">SHOPPING CART</div>
@@ -90,7 +92,7 @@ const Cart = () => {
 														<div className="itemProp spaceB">
 															<div className="itemUp">PRICE</div>
 															<div className="itemDown propsPrice">
-																₦{item.price}
+																₦{item.price && item.price.toLocaleString()}
 															</div>
 														</div>
 														<div className="itemProp spaceC">
@@ -156,7 +158,7 @@ const Cart = () => {
 														</Link>
 													</div>
 													<div className=" propsPrice cartPriceII">
-														₦{item.price}
+														₦{item.price && item.price.toLocaleString()}
 													</div>
 													<div className="prodDetailsQty cartQtyII">
 														<button
@@ -205,7 +207,7 @@ const Cart = () => {
 								<div className="orderFlex">
 									<p className="orWay">Total </p>
 									<div className="inputOrderList">
-										<p className="oDLarge">₦{totalPrice}</p>
+										<p className="oDLarge">₦{formattedTotalPrice}</p>
 									</div>
 								</div>
 							</div>

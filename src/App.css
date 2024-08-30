@@ -1,7 +1,6 @@
 :root {
-  ---pri-bg-color-white: rgba(57, 0, 0, 0.948);
-  --pri-bg-color-black: #ffb9b9f2;
-  --pri-b-text-black: rgb(0, 7, 53);
+  ---pri-bg-color-white: rgba(16, 16, 161, 0.396);
+  --pri-bg-color-black: rgba(16, 16, 161, 0.627);
 }
 
 * {

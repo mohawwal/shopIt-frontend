@@ -33,7 +33,7 @@
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
-	object-position: center;
+	object-position: top;
 	padding: 5px;
 }
 
@@ -65,8 +65,7 @@
 }
 
 .itemUp {
-	font-weight: 600;
-	font-size: 0.88rem;
+	font-size: 0.8rem;
 	color: rgb(1, 5, 34);
 }
 
@@ -145,8 +144,8 @@
 .shoppingCart {
 	font-size: 0.8rem;
 	text-align: center;
-	background-color: rgb(133, 150, 255);
-	padding: 0.8rem 0;
+	background-color: rgba(16, 16, 161, 0.396);
+	padding: 0.5rem 0;
 	color: white;
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -229,7 +228,7 @@
 	border: none;
 	font-size: 0.9rem;
 	width: 100%;
-	background-color: rgb(110, 129, 255);
+	background-color: rgba(16, 16, 161, 0.627);
 	color: white;
 	cursor: pointer;
 }
@@ -309,7 +308,7 @@
 	align-items: center;
 	justify-content: center;
 	gap: 12px;
-	background-color: rgb(110, 129, 255);
+	background-color: rgba(16, 16, 161, 0.396);
 	color: rgb(255, 255, 255);
 	padding: 5px;
 	flex-wrap: wrap;

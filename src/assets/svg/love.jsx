@@ -3,7 +3,6 @@ import React from "react";
 const Love = ({ className, filled }) => {
 	return (
 		<svg
-			xmlns="http://www.w3.org/2000/svg"
 			fill={filled}
 			viewBox="0 0 24 24"
 			stroke-width="1.5"

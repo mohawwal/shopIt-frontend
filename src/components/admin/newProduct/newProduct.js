@@ -32,7 +32,7 @@ const NewProduct = () => {
 		}
 
 		if (success) {
-			navigate("/");
+			navigate("/admin/products");
 			showAlert("Product created successfully", "success");
 			dispatch({
 				type: NEW_PRODUCT_RESET,

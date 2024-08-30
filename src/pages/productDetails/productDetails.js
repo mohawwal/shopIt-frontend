@@ -11,7 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
-import { GoDotFill } from "react-icons/go";
+import ViewHide from "../../assets/svg/viewHide";
+import ViewShow from "../../assets/svg/viewShow";
 import AlertContext from "../../components/alert/AlertContext";
 import Love from "../../assets/svg/love";
 import ArrowLeft from "../../assets/svg/arrowLeft";
@@ -21,7 +22,7 @@ import {
 	addToWishList,
 	removeFromWishList,
 } from "../../actions/wishListAction";
-import Cart from '../../assets/svg/cart'
+import Cart from "../../assets/svg/cart";
 import { getProductCategory } from "../../actions/productActions";
 import Loader from "../loader/loader";
 
@@ -44,13 +45,15 @@ const ProductDetails = () => {
 		product: productDetails,
 		error: detailsError,
 	} = useSelector((state) => state.productDetails);
-	const { loading, products, pageNo } = useSelector((state) => state.productCategory)
+	const { loading, products, pageNo } = useSelector(
+		(state) => state.productCategory,
+	);
 
 	const { user } = useSelector((state) => state.auth);
 	const { wishList } = useSelector((state) => state.wishList);
 	const { success, error } = useSelector((state) => state.newReview);
 
-	const [activeProductInfo, setActiveProductInfo] = useState(0);
+	//const [activeProductInfo, setActiveProductInfo] = useState(0);
 	const [showReviewText, setShowReviewText] = useState(false);
 	const [rating, setRating] = useState(0);
 	const [comment, setComment] = useState("");
@@ -63,7 +66,7 @@ const ProductDetails = () => {
 		if (productDetails.category) {
 			dispatch(getProductCategory(productDetails.category, pageNo));
 		}
-		
+
 		if (detailsError) {
 			showAlert(detailsError, "error");
 			dispatch(clearErrors());
@@ -82,10 +85,9 @@ const ProductDetails = () => {
 		dispatch(getProductDetails(id));
 	}, [detailsError, dispatch, error, productDetails.category, success]);
 
-
-	const handleClick = (index) => {
-		setActiveProductInfo(activeProductInfo === index ? 0 : index);
-	};
+	// const handleClick = (index) => {
+	// 	setActiveProductInfo(activeProductInfo === index ? 0 : index);
+	// };
 
 	const reviewHandler = () => {
 		if (rating === 0 || comment.trim() === "") {
@@ -153,6 +155,12 @@ const ProductDetails = () => {
 		}
 	};
 
+	const [viewReview, setViewReview] = useState(false)
+
+	const handleReviewFunc = () => {
+		setViewReview(prevState => !prevState)
+	}
+
 	const ReviewTextHandler = () => {
 		setShowReviewText(!showReviewText);
 	};
@@ -183,6 +191,11 @@ const ProductDetails = () => {
 									alt="detailsIMG"
 								/>
 							</div>
+							<div className="PDImageList">
+								<p>img1</p>
+								<p>img2</p>
+								<p>img3</p>
+							</div>
 						</div>
 
 						<div className="PDDetailsFolder">
@@ -201,10 +214,21 @@ const ProductDetails = () => {
 									>
 										<Love
 											className="loveIcon"
-											filled={likeProduct ? "red" : "rgb(24, 24, 24)"}
+											filled={likeProduct ? "red" : "white"}
 										/>
-										<div>WishList</div>
 									</div>
+								</div>
+							</div>
+
+							<div className="PDPriceComment">
+								<div className="PDPrice">
+									<span className="DPrice">
+										{" "}
+										₦
+										{productDetails.price &&
+											productDetails.price.toLocaleString()}
+									</span>
+									{/* <span className="offPercent">10% off!</span> */}
 								</div>
 							</div>
 
@@ -212,23 +236,17 @@ const ProductDetails = () => {
 								<div className="PDRatingStar">
 									{renderRatingStars(productDetails.ratings)}
 								</div>
-								<div className="DRate">({productDetails.ratings})</div>
-								<div>
+								<div className="DRate">
+									( {productDetails.ratings} ratings )
+								</div>
+								{/* <div>
 									<GoDotFill className="dotIcon" />
-								</div>
-								<div>
-									{productDetails.numberOfReviews}{" "}
-									{productDetails.numberOfReviews > 1 ? "Reviews" : "Review"}
-								</div>
+								</div> */}
 							</div>
 
-							<div className="commentsPD">{productDetails.description}</div>
-
-							<div className="PDPriceComment">
-								<div className="PDPrice">
-									<span className="DPrice">₦{productDetails.price}</span>
-									<span className="offPercent">10% off!</span>
-								</div>
+							<div className="commentsPD">
+								<div>Product Description</div>
+								<p>{productDetails.description}</p>
 							</div>
 
 							<div className="qtyCart">
@@ -263,9 +281,7 @@ const ProductDetails = () => {
 								</button>
 							</div>
 
-							<div className="underline"></div>
-
-							<div className="accordion">
+							{/* <div className="accordion">
 								<div className="spanAcc">
 									<div className="accordions-item">
 										<button
@@ -330,64 +346,63 @@ const ProductDetails = () => {
 										</div>
 									)}
 								</div>
-							</div>
+							</div> */}
 
-							<div className="underline"></div>
-
-							{productDetails.numberOfReviews &&
-							productDetails.numberOfReviews >= 1 ? (
-								<div>
-									<div className="PDRnR">
-										<div className="PRnR">Reviews & Rating</div>
-										{productDetails.numberOfReviews > 5 && (
-											<Link
-												to={`/product/${productDetails._id}/reviews`}
-												className="PDR"
-											>
-												{/* <div>
-												<FaArrowRightLong />
-											</div> */}
-											</Link>
-										)}
-									</div>
-
+							{productDetails.numberOfReviews ?
+								productDetails.numberOfReviews >= 1 && (
 									<div>
-										<div>
-											{productDetails.reviews &&
-												productDetails.reviews
-													.slice(0, 5)
-													.map((review, index) => {
-														return (
-															<div
-																className="DRatings"
-																key={index}
-															>
-																<div className="reviewD">
-																	<div className="DName">
-																		{review.name && review.name.toUpperCase()}
-																	</div>
-																	<div className="starNo">
-																		<div className="reviewRatingStar">
-																			{renderRatingStars(review.rating)}
+										<div className="PDRnR">
+											<div className="PRnR">
+												<p>Reviews & Rating</p>
+												<div onClick={handleReviewFunc} >
+													{productDetails.numberOfReviews <= 5 ? <ViewShow className="icons" /> : null}
+												</div>
+											</div>
+											{productDetails.numberOfReviews > 5 && (
+												<Link
+													to={`/product/${productDetails._id}/reviews`}
+													className="PDR"
+												>
+													<ViewShow className="icons" />
+												</Link>
+											)}
+										</div>
+
+										<div className={viewReview ? "VR" : "nonVR"}>
+											<div>
+												{productDetails.reviews &&
+													productDetails.reviews
+														.slice(0, 5)
+														.map((review, index) => {
+															return (
+																<div
+																	className="DRatings"
+																	key={index}
+																>
+																	<div className="reviewD">
+																		<div className="DName">
+																			{review.name && review.name.toUpperCase()}
 																		</div>
-																		<div>
+																		<div className="starNo">
+																			<div className="reviewRatingStar">
+																				{renderRatingStars(review.rating)}
+																			</div>
+																			{/* <div>
 																			{" "}
 																			<GoDotFill className="dotIcon" />{" "}
+																		</div> */}
+																			{/* <div> ({review.rating})</div> */}
 																		</div>
-																		<div> ({review.rating})</div>
 																	</div>
+																	<div className="rc">{review.comment}</div>
 																</div>
-																<div>{review.comment}</div>
-															</div>
-														);
-													})}
+															);
+														})}
+											</div>
 										</div>
 									</div>
-								</div>
-							) : (
-								<div></div>
-							)}
-							<div>
+								) : null}
+							{/* <div>
 								{user ? (
 									<div
 										onClick={ReviewTextHandler}
@@ -403,7 +418,7 @@ const ProductDetails = () => {
 										Login to post your review
 									</button>
 								)}
-							</div>
+							</div> */}
 						</div>
 					</div>
 				</div>
@@ -442,44 +457,42 @@ const ProductDetails = () => {
 					</div>
 				) : null}
 			</div>
-			<div>
+			<div className="pDSP">
 				SIMILAR PRODUCTS
 				<div>
-					{loading ? <Loader/> : (
-						<div className="productHome">
+					{loading ? (
+						<Loader />
+					) : (
+						<div className="productHome productHomeDT">
 							{products.map((product, index) => (
 								<div
-								className="allHome"
-								key={index}
-							>
-								<div className="allHomeImg">
-									<Link
-										className="Link"
-										to={`/product/${product._id}`}
-									>
-										<img
-											src={product.images[0]?.url}
-											alt="img"
-										/>
-									</Link>
-								</div>
-								<div className="allTD">
-									<div>
-										<div className="allName">
-											{product.name}
+									className="allHome allHomeDT"
+									key={index}
+								>
+									<div className="allHomeImg">
+										<Link
+											className="Link"
+											to={`/product/${product._id}`}
+										>
+											<img
+												src={product.images[0]?.url}
+												alt="img"
+											/>
+										</Link>
+									</div>
+									<div className="allTD">
+										<div>
+											<div className="allName">{product.name}</div>
+											<div className="allStars">₦{product.price}</div>
 										</div>
-										<div className="allStars">
-											₦{product.price}
+										<div
+											onClick={() => addToCart(product._id)}
+											className="basket basketSC"
+										>
+											<Cart className="cartIcon" />
 										</div>
 									</div>
-									<div
-										onClick={() => addToCart(product._id)}
-										className="basket basketSC"
-									>
-										<Cart className="cartIcon" />
-									</div>
 								</div>
-							</div>
 							))}
 						</div>
 					)}
