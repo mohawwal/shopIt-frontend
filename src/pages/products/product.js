@@ -45,12 +45,12 @@ const Product = ({ product }) => {
 						</div>
 						<div className="allStars">₦{product.price}</div>
 					</div>
-					<div
+					{product && product.stock >= 1 ?<div
 						className="basket"
 						onClick={() => addToCart(product._id)}
 					>
 						<BsCart4 className="prodCartIcon" />
-					</div>
+					</div> : <></>}
 				</div>
 			</div>
 		</div>

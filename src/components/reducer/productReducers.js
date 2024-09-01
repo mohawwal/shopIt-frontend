@@ -194,6 +194,7 @@ export const productReducer = (state = {}, action) => {
         case UPDATE_PRODUCT_RESET:
             return {
                 ...state,
+                loading: false,
                 isUpdated: false
             }
 

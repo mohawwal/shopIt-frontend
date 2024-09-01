@@ -19,7 +19,7 @@ export const payment = (paymentData) => async (dispatch) => {
 		dispatch({ type: MAKE_PAYMENT_ORDER_REQUEST });
 
 		const { data } = await axios.post("/api/v1/startPayment", paymentData);
-		console.log("payment data -", data)
+		console.log("payment action - ",data)
 
 		dispatch({
 			type: MAKE_PAYMENT_ORDER_SUCCESS,

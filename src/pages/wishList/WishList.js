@@ -1,33 +1,32 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "./wishList.css";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromWishList } from "../../actions/wishListAction";
 import AlertContext from "../../components/alert/AlertContext";
+import Cancel from "../../assets/svg/cancel";
 import { Link } from "react-router-dom";
 
 const WishList = () => {
 	const dispatch = useDispatch();
-	
-	const [, setAlert] = useContext(AlertContext)
+
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
 	const unLikeItem = (id) => {
 		dispatch(removeFromWishList(id));
-		showAlert("Product removed to Favorite", 'success')
+		showAlert("Product removed to Favorite", "success");
 	};
 
 	const { wishList } = useSelector((state) => state.wishList);
 
-	if(wishList && wishList.length <1){
-		return (
-			<div className="npl">NO PRODUCT LIKED</div>
-		)
+	if (wishList && wishList.length < 1) {
+		return <div className="npl">YOU HAVE NOT LIKED ANY PRODUCT 💖</div>;
 	}
 
 	return (
@@ -44,12 +43,17 @@ const WishList = () => {
 								alt="wishImage"
 							/>
 						</div>
-						<Link to={`/product/${listItem.product}`} className="itemProfile">
-							<span>{listItem.name}</span>
-							<span>₦{listItem.price}</span>
+						<Link
+							to={`/product/${listItem.product}`}
+							className="itemProfile"
+						>
+							<div>{listItem.name}</div>
+							<span>₦{listItem.price.toLocaleString()}</span>
 						</Link>
 						<div className="itemUnlikeBtn">
-							<button onClick={() => unLikeItem(listItem.product)}>X</button>
+							<button onClick={() => unLikeItem(listItem.product)}>
+								<Cancel className="cancelIcons" />
+							</button>
 						</div>
 					</div>
 				))}

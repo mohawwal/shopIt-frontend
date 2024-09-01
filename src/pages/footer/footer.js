@@ -1,48 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation } from "react-router-dom";
+import React from 'react'
 import './footer.css'
 
 const Footer = () => {
-    const location = useLocation()
-
-    const [footerStyle, setFooterStyle] = useState('footerHome')
-
-    useEffect(() => {
-        let footerClass = "footerHome"
-
-        if(location.pathname === '/') {
-            footerClass = "footerHome"
-        } else if (location.pathname === '/register') {
-            footerClass = "footerNone"
-        } else if (location.pathname === '/login') {
-            footerClass = "footerNone"
-        } else if(location.pathname.startsWith('/me')) {
-            footerClass = "footerNone"
-        } else if(location.pathname.startsWith('/password')) {
-            footerClass = "footerNone"
-        } else if(location.pathname.startsWith('/order')) {
-            footerClass = "footerNone"
-        } else if(location.pathname.startsWith('/dashboard')) {
-            footerClass = "footerNone"
-        } else if(location.pathname.startsWith('/wishlist')) {
-            footerClass = "footerNone"
-        } else if(location.pathname.startsWith('/payment')) {
-            footerClass = "footerNone"
-        } else if (location.pathname === '/shop') {
-            footerClass = "footerNone"
-        } else if (location.pathname === '/shipping') {
-            footerClass = "footerNone"
-        } else if (location.pathname === '/cart') {
-            footerClass = "footerNone"
-        } else if(location.pathname.startsWith('/admin')) {
-            footerClass = "footerNone"
-        } 
-
-        setFooterStyle(footerClass)
-    },[footerStyle, location.pathname])
+    
     
   return (
-    <div className={`footer ${footerStyle}`}>
+    <div className={`footer`}>
         <div className='knowText'>BE THE FIRST TO KNOW!</div>
         <div className='footer-input'>
             <div className='side-line'></div>

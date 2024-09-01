@@ -35,6 +35,7 @@ import UpdateProduct from "./components/admin/updateProduct/UpdateProduct";
 import OrderList from "./components/admin/ordersList/orderList";
 import ProcessOrder from "./components/admin/processOrder/processOrder";
 import Alert from "./components/alert/alert";
+import PageFooter from "./pages/footer/pageFooter";
 //import Alert from "./components/alert/alert";
 //import AlertContext from "./components/alert/AlertContext";
 
@@ -208,7 +209,7 @@ function App() {
 					</Route>
 
 				</Routes>
-				<Footer />
+				<PageFooter />
 				<nav className="bottomNav">
 					<NavDown />
 				</nav>

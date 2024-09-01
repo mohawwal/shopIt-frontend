@@ -55,15 +55,21 @@
 .downList li {
 	margin-top: 4px;
 	width: 100%;
-	background-color: rgba(154, 154, 154, 0.545);
-	padding: 3px;
+	background-color: rgba(170, 170, 170, 0.545);
 	border-radius: 5px;
+	font-size: 0.1rem;
 	color: rgb(0, 0, 0);
 }
 
 .liLink {
 	width: 100%;
-	background-color: red;
+	font-size: 0.3rem;
+}
+
+.liLink p {
+	font-size: 0.95rem;
+	padding: 3px;
+	width: 100%;
 }
 
 @media screen and (max-width: 560px) {

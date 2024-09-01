@@ -20,6 +20,11 @@
     color: rgb(101, 93, 255);
   }
 
+  .boxDown {
+    width: 1.7rem;
+    margin-top: 2px;
+  }
+
 .navDown {
     display: flex;
     align-items: center;

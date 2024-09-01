@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useState, useContext, useCallback } from "react";
+import React, {
+	useEffect,
+	useMemo,
+	useState,
+	useContext,
+	useCallback,
+} from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -43,8 +49,14 @@ const OrderList = () => {
 		console.log("clicked");
 	}, []);
 
-	const headers = ['Order ID', 'Quantity', 'Price', 'Status', 'Actions'];
-
+	const headers = [
+		"Order ID",
+		"Quantity",
+		"Date",
+		"Price",
+		"Status",
+		"Actions",
+	];
 
 	const columns = useMemo(
 		() => [
@@ -54,8 +66,25 @@ const OrderList = () => {
 			},
 			{
 				header: "No of Items",
-				accessorFn: (order) => order.orderItems.length,
+				accessorFn: (order) =>
+					order && order.orderItems && order.orderItems.length,
 			},
+			{
+				header: "Paid At",
+				accessorFn: (order) => {
+					const date = new Date(order.paidAt);
+					return date.toLocaleString("en-US", {
+						year: "numeric",
+						month: "2-digit",
+						day: "2-digit",
+						hour: "2-digit",
+						minute: "2-digit",
+						second: "2-digit",
+						hour12: true,
+					});
+				},
+			},
+
 			{
 				header: "Amount",
 				accessorFn: (row) => row.totalPrice,
@@ -67,11 +96,15 @@ const OrderList = () => {
 				cell: ({ getValue }) => (
 					<p
 						style={{
-							color: getValue().includes("Delivered") ? "green" : "red",
+							color: getValue().toLowerCase().includes("delivered")
+								? "green"
+								: getValue().toLowerCase().includes("processing")
+									? "red"
+									: "blue",
 						}}
-					>
+						>
 						{getValue()}
-					</p>
+						</p>
 				),
 			},
 			{
@@ -131,66 +164,78 @@ const OrderList = () => {
 			</div>
 			<div className="adminOrders">
 				<div>
-				<MetaData title={"Order List"} />
-				<h3 className="allO">All Orders</h3>
+					<MetaData title={"Order List"} />
+					<h3 className="allO">All Orders</h3>
 
-				{loading ? (
-					<Loader />
-				) : (
-					<>
-						<input
-							value={globalFilter || ""}
-							onChange={(e) => setGlobalFilter(e.target.value)}
-							placeholder="Search orders"
-							className="search-input"
-						/>
-						<table className="orderTable">
-							<thead>
-								<tr>
-									{headers.map((header, index) => (
-										<th key={index}>{header}</th>
-									))}
-								</tr>
-							</thead>
-							<tbody>
-								{getRowModel().rows.map((row) => (
-									<tr key={row.id}>
-										{row.getVisibleCells().map((cell) => (
-											<td key={cell.id}>
-												{cell.column.columnDef.cell?.(cell) ?? cell.getValue()}
-											</td>
+					{loading ? (
+						<Loader />
+					) : (
+						<>
+							<input
+								value={globalFilter || ""}
+								onChange={(e) => setGlobalFilter(e.target.value)}
+								placeholder="Search orders"
+								className="search-input"
+							/>
+							<div>
+								<b>TOTAL AMOUNT - </b>₦{totalAmount}
+							</div>
+							<table className="orderTable">
+								<thead>
+									<tr>
+										{headers.map((header, index) => (
+											<th key={index}>{header}</th>
 										))}
 									</tr>
-								))}
-							</tbody>
-						</table>
-						<div className="pagination-controls">
-							<button onClick={() => previousPage()} disabled={!canPreviousPage}>
-								Previous
-							</button>
-							<span>
-								Page <strong>{getState().pagination.pageIndex + 1} of {getPageCount()}</strong>
-							</span>
-							<button onClick={() => nextPage()} disabled={!canNextPage}>
-								Next
-							</button>
-							<select
-								value={getState().pagination.pageSize}
-								onChange={(e) => setPageSize(Number(e.target.value))}
-							>
-								{[10, 20, 30].map((size) => (
-									<option
-										key={size}
-										value={size}
-									>
-										Show {size}
-									</option>
-								))}
-							</select>
-						</div>
-					</>
-				)}
-				<div>{totalAmount}</div>
+								</thead>
+								<tbody>
+									{getRowModel().rows.map((row) => (
+										<tr key={row.id}>
+											{row.getVisibleCells().map((cell) => (
+												<td key={cell.id}>
+													{cell.column.columnDef.cell?.(cell) ??
+														cell.getValue()}
+												</td>
+											))}
+										</tr>
+									))}
+								</tbody>
+							</table>
+							<div className="pagination-controls">
+								<button
+									onClick={() => previousPage()}
+									disabled={!canPreviousPage}
+								>
+									Previous
+								</button>
+								<span>
+									Page{" "}
+									<strong>
+										{getState().pagination.pageIndex + 1} of {getPageCount()}
+									</strong>
+								</span>
+								<button
+									onClick={() => nextPage()}
+									disabled={!canNextPage}
+								>
+									Next
+								</button>
+								<select
+									value={getState().pagination.pageSize}
+									onChange={(e) => setPageSize(Number(e.target.value))}
+								>
+									{[10, 20, 30].map((size) => (
+										<option
+											key={size}
+											value={size}
+										>
+											Show {size}
+										</option>
+									))}
+								</select>
+							</div>
+						</>
+					)}
 				</div>
 			</div>
 		</div>

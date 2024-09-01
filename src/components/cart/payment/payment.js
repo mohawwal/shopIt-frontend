@@ -28,17 +28,17 @@ const Payment = () => {
 
 	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-	//const { user } = useSelector((state) => state.auth);
-	// In your Payment component
 	const { loading, order, error } = useSelector((state) => state.payment);
 
 	const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
 
+
 	const paymentData = {
 		amount: Math.round(orderInfo.totalPrice),
 		email: orderInfo?.shippingInfo?.email,
-		products: orderInfo.orderItems || [],
+		products: orderInfo.orderItems,
 	};
+	
 
 	useEffect(() => {
 		dispatch(payment(paymentData));
@@ -73,7 +73,6 @@ const Payment = () => {
 
 					// Verify the payment after the payment window is closed
 					const reference = order.data.data.reference;
-					console.log("reference - ", reference);
 
 					dispatch(verifyPayment(reference))
 						.then((response) => {
@@ -81,6 +80,13 @@ const Payment = () => {
 
 							if (paymentStatus === "success") {
 								showAlert(`Payment ${paymentStatus}`, "success");
+
+								orderInfo.paymentInfo = {
+									reference: response.payload.data.reference,
+									success: response.payload.data.success,
+									status: response.payload.data.status,
+								}
+
 								dispatch(addOrder(orderInfo));
 								navigate("/orders/me");
 							} else {

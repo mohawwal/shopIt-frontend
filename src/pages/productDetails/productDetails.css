@@ -55,6 +55,10 @@
     width: 50%;
 }
 
+.spaceText {
+    padding: 10px 3% 5px;
+}
+
 .PDImage {
     width: 100%;
     height: 50vh;
@@ -147,9 +151,16 @@
 }
 
 .detailsName .PDName {
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     font-weight: 500;
     width: 70%;
+}
+
+.OOF {
+    width: 100%;
+    text-align: right;
+    color: red;
+    font-weight: 500;
 }
 
 .PDReview {

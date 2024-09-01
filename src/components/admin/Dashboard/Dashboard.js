@@ -53,7 +53,7 @@ const Dashboard = () => {
 					<div className="dashFolder">
 						<div className="dashFolderAmount">
 							<p>Total Amount</p>
-							<span>{parseFloat(totalAmount).toFixed(2)}</span>
+							<span>₦{parseFloat(totalAmount).toFixed(2)}</span>
 						</div>
 						<div className="dashFolderBottom">
 							<div className="dashFolderBottomFiles">

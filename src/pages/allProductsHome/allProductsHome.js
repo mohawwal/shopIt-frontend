@@ -96,12 +96,16 @@ const AllProductsHome = () => {
 												₦{formatPrice(product.price)}
 											</div>
 										</div>
-										<div
-											onClick={() => addToCart(product._id)}
-											className="basket"
-										>
-											<BsCart4 className="basketIcon" />
-										</div>
+										{product && product.stock >= 1 ? (
+											<div
+												className="basket"
+												onClick={() => addToCart(product._id)}
+											>
+												<BsCart4 className="basketIcon" />
+											</div>
+										) : (
+											<></>
+										)}
 									</div>
 								</div>
 							);
@@ -141,12 +145,16 @@ const AllProductsHome = () => {
 												₦{formatPrice(product.price)}
 											</div>
 										</div>
-										<div
-											onClick={() => addToCart(product._id)}
-											className="basket basketSC"
-										>
-											<BsCart4 className="basketIcon" />
-										</div>
+										{product && product.stock >= 1 ? (
+											<div
+												className="basket basketSC"
+												onClick={() => addToCart(product._id)}
+											>
+												<BsCart4 className="basketIcon" />
+											</div>
+										) : (
+											<></>
+										)}
 									</div>
 								</div>
 							);

@@ -35,7 +35,7 @@ const Search = ({ toggleSearch }) => {
 					onSubmit={handleSubmit}
 				>
 					<input
-						type="text"
+						type="search"
 						placeholder="Search Product"
 						onChange={(e) => setKeyWords(e.target.value)}
 					/>

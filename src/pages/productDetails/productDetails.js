@@ -45,11 +45,13 @@ const ProductDetails = () => {
 		product: productDetails,
 		error: detailsError,
 	} = useSelector((state) => state.productDetails);
+	// console.log(productDetails)
+
 	const { loading, products, pageNo } = useSelector(
 		(state) => state.productCategory,
 	);
 
-	const { user } = useSelector((state) => state.auth);
+	// const { user } = useSelector((state) => state.auth);
 	const { wishList } = useSelector((state) => state.wishList);
 	const { success, error } = useSelector((state) => state.newReview);
 
@@ -85,13 +87,11 @@ const ProductDetails = () => {
 		dispatch(getProductDetails(id));
 	}, [detailsError, dispatch, error, productDetails.category, success]);
 
-	// const handleClick = (index) => {
-	// 	setActiveProductInfo(activeProductInfo === index ? 0 : index);
-	// };
+
 
 	const reviewHandler = () => {
 		if (rating === 0 || comment.trim() === "") {
-			//alert.error("Please provide a rating and a comment.");
+			showAlert("Please provide a rating and a comment.", "error");
 			return;
 		}
 
@@ -244,12 +244,7 @@ const ProductDetails = () => {
 								</div> */}
 							</div>
 
-							<div className="commentsPD">
-								<div>Product Description</div>
-								<p>{productDetails.description}</p>
-							</div>
-
-							<div className="qtyCart">
+							{productDetails && productDetails.stock >= 1 ? <div className="qtyCart">
 								<div className="prodDetailsQty">
 									<button
 										className="btnLeft"
@@ -279,75 +274,14 @@ const ProductDetails = () => {
 								>
 									<span>Add to Cart</span>
 								</button>
+							</div> : <div className="OOF">OUT OF STOCK</div>}
+
+
+							<div className="commentsPD">
+								<div>Product Description</div>
+								<p>{productDetails.description}</p>
 							</div>
-
-							{/* <div className="accordion">
-								<div className="spanAcc">
-									<div className="accordions-item">
-										<button
-											className={
-												activeProductInfo === 0
-													? "accordions-item-button active CProduct"
-													: "accordions-item-button CProduct"
-											}
-											onClick={() => handleClick(0)}
-										>
-											-Details
-										</button>
-									</div>
-									<div className="accordions-item">
-										<button
-											className={
-												activeProductInfo === 1
-													? "accordions-item-button active CPackage"
-													: "accordions-item-button CPackage"
-											}
-											onClick={() => handleClick(1)}
-										>
-											Packaging
-										</button>
-									</div>
-									<div className="accordions-item">
-										<button
-											className={
-												activeProductInfo === 2
-													? "accordions-item-button active CShipping"
-													: "accordions-item-button CShipping"
-											}
-											onClick={() => handleClick(2)}
-										>
-											Shipping-
-										</button>
-									</div>
-								</div>
-							</div>
-
-							<div className="PDContent">
-								<div>
-									{activeProductInfo === 0 && (
-										<div className="activeProductContent">
-											{productDetails.description}
-										</div>
-									)}
-								</div>
-								<div>
-									{activeProductInfo === 1 && (
-										<div className="activeProductContent">
-											Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-											Sit cupiditate, natus eveniet esse unde dolore.
-										</div>
-									)}
-								</div>
-								<div>
-									{activeProductInfo === 2 && (
-										<div className="activeProductContent">
-											Lorem ipsum dolor sit amet consectetur adipisicing elit.
-											Corporis magnam cum pariatur ea ad non natus nostrum quae?
-										</div>
-									)}
-								</div>
-							</div> */}
-
+							
 							{productDetails.numberOfReviews ?
 								productDetails.numberOfReviews >= 1 && (
 									<div>
@@ -387,11 +321,7 @@ const ProductDetails = () => {
 																			<div className="reviewRatingStar">
 																				{renderRatingStars(review.rating)}
 																			</div>
-																			{/* <div>
-																			{" "}
-																			<GoDotFill className="dotIcon" />{" "}
-																		</div> */}
-																			{/* <div> ({review.rating})</div> */}
+																			
 																		</div>
 																	</div>
 																	<div className="rc">{review.comment}</div>
@@ -402,23 +332,7 @@ const ProductDetails = () => {
 										</div>
 									</div>
 								) : null}
-							{/* <div>
-								{user ? (
-									<div
-										onClick={ReviewTextHandler}
-										className="PostReview"
-									>
-										Post your review
-									</div>
-								) : (
-									<button
-										className="loginPostReview"
-										onClick={() => navigate("/login")}
-									>
-										Login to post your review
-									</button>
-								)}
-							</div> */}
+							
 						</div>
 					</div>
 				</div>
@@ -458,7 +372,7 @@ const ProductDetails = () => {
 				) : null}
 			</div>
 			<div className="pDSP">
-				SIMILAR PRODUCTS
+				<div className="spaceText">SIMILAR PRODUCTS</div>
 				<div>
 					{loading ? (
 						<Loader />

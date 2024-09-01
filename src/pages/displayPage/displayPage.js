@@ -6,6 +6,7 @@ import AllProductsHome from "../allProductsHome/allProductsHome";
 import AllHomeCategory from "../allProductsHome/allHomeCategory";
 import { motion } from "framer-motion";
 import './displayPage.css'
+import Footer from "../footer/footer";
 
 const DisplayPage = () => {
 	const sliderVariants = {
@@ -16,8 +17,8 @@ const DisplayPage = () => {
 			x: "-100%",
 			transition: {
 				repeat: Infinity,
-				repeatType: "mirror",
-				duration: 25,
+				repeatType: "loop",
+				duration: 55,
 				ease: "linear", 
 			},
 		},
@@ -44,18 +45,6 @@ const DisplayPage = () => {
 							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
 							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
 							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
-							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
-							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
-							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
-							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
-							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
-							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
-							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
-							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
-							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
-							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
-							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
-							<p>Step into the world of ZARMARIO, where fashion meets exclusivity. Discover the ultimate collection of trendsetting styles that redefine elegance and elevate your wardrobe. At ZARMARIO, every piece tells a story of sophistication and flair—where the drip is real, and the light never fades. Embrace the essence of luxury and let your fashion speak volumes. Wear ZARMARIO, where every look is a masterpiece in the making.</p>
 						</motion.div>
 						<div className="mTB"></div>
 					</div>
@@ -64,6 +53,9 @@ const DisplayPage = () => {
 					</div>
 				</section>
 				<Middle />
+				<footer>
+					<Footer />
+				</footer>
 			</div>
 		</div>
 	);

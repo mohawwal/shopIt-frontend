@@ -1,7 +1,7 @@
 .adminProductList {
     padding-top: 8vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: row;
     margin: 0 auto;
 }

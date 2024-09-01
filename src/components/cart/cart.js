@@ -86,7 +86,7 @@ const Cart = () => {
 																	removeCartItemHandler(item.product)
 																}
 															>
-																<Cancel className="cancelIcons" />
+																<Cancel className="missIcon" />
 															</div>
 														</div>
 														<div className="itemProp spaceB">

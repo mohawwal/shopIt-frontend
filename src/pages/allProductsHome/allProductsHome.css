@@ -1,6 +1,7 @@
 .allProdHome, .catProdHome {
     width: 100%;
     margin-top: 0px;
+    padding-top: 5px;
 }
 
 .shopHomeCategory {
@@ -38,7 +39,7 @@
     font-size: 1rem;
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
+    margin: 0 2% 0;
 }
 
 .allHomeImg {
