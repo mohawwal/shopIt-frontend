@@ -24,7 +24,7 @@ const ProductFolder = () => {
 		});
 	};
 
-	const [price, setPrice] = useState([0, 100000])
+	const [price, setPrice] = useState([0, 100000]);
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -54,10 +54,16 @@ const ProductFolder = () => {
 		const { value, name } = e.target;
 		setPrice((prevPrice) => {
 			const newPrice = [...prevPrice];
-			if(name === "min") newPrice[0] = value;
-			if(name === "max") newPrice[1] = value;
-			return newPrice
-		})
+			if (name === "min") newPrice[0] = value;
+			if (name === "max") newPrice[1] = value;
+			return newPrice;
+		});
+	};
+
+	const [filerToggle, setFilterToggle] = useState(false)
+
+	const toggleFilter = () => {
+		setFilterToggle(!filerToggle)
 	}
 
 	if (loading) {
@@ -74,30 +80,34 @@ const ProductFolder = () => {
 			<div className="itemPhase">
 				<div className="itemOption">
 					<div className="sliderContainer">
-					<div className="priceFilter">
-						<label>
-							Min Price:
-							<input
-								type="number"
-								name="min"
-								value={price[0]}
-								onChange={handlePriceChange}
-							/>
-						</label>
-						<label>
-							Max Price:
-							<input
-								type="number"
-								name="max"
-								value={price[1]}
-								onChange={handlePriceChange}
-							/>
-						</label>
-						<button onClick={() => dispatch(getProductCategory(`${id}`, currentPage, price))}>
-							Apply Filter
-						</button>
-					</div>
-						<div className="filterSlide">
+						<div className={`${filerToggle ? "priceFilter" : "priceFilterNone"}`}>
+							<label>
+								Min ₦:
+								<input
+									type="number"
+									name="min"
+									value={price[0]}
+									onChange={handlePriceChange}
+								/>
+							</label>
+							<label>
+								Max ₦:
+								<input
+									type="number"
+									name="max"
+									value={price[1]}
+									onChange={handlePriceChange}
+								/>
+							</label>
+							<button
+								onClick={() =>
+									dispatch(getProductCategory(`${id}`, currentPage, price))
+								}
+							>
+								Apply Filter
+							</button>
+						</div>
+						<div className="filterSlide" onClick={toggleFilter}>
 							<FaFilter className="filterIcon" />
 						</div>
 					</div>

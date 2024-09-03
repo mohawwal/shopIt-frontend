@@ -31,10 +31,36 @@
 
 .sliderContainer {
     width: 100%;
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.priceFilter {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 0;
+}
+
+.priceFilter label input {
+    width: 70px;
+    border: rgb(12, 12, 12);
+}
+
+.priceFilter button {
+    padding: 3px 7px;
+    background-color: rgb(156, 156, 237);
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.priceFilterNone {
+    display: none;
 }
 
 .t-slider {
@@ -79,12 +105,6 @@
     color: rgb(0, 0, 0);
 }
 
-.sliderContainer {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-}
 
 .filterSlide {
     margin: 25px 10px;
