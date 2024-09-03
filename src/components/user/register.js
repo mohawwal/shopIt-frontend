@@ -130,13 +130,13 @@ const Register = () => {
 							Enter your credentials to access your account.
 						</div>
 					</div>
-					<div className="google">
+					{/* <div className="google">
 						<img
 							src={googleIcon}
 							alt="gg"
 						/>
 						<div>Log in with Google</div>
-					</div>
+					</div> */}
 					<div className="orLine">
 						<div className="line"></div>
 						<div className="or">or</div>
