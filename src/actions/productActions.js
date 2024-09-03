@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../axios/axios'
 import {
     PRODUCT_CATEGORY_REQUEST,
     PRODUCT_CATEGORY_SUCCESS,

@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from '../axios/axios'
 import {
     ADD_TO_WISHLIST,
     REMOVE_FROM_WISHLIST
