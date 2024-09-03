@@ -1,3 +1,7 @@
 .processOrder {
     margin-bottom: 10vh;
 }
+
+.processOrderImage img{
+    width: 20%;
+}

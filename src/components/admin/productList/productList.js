@@ -1,11 +1,10 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	getAdminProducts,
 	clearErrors,
 	deleteProduct,
 } from "../../../actions/productActions";
-import ClipLoader from "react-spinners/ClipLoader";
 import AlertContext from "../../alert/AlertContext";
 import { Link, useNavigate } from "react-router-dom";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
@@ -19,6 +18,7 @@ import {
   createColumnHelper
 } from '@tanstack/react-table'
 import './productList.css'
+import Loader from "../../../pages/loader/loader";
 
 const ProductList = () => {
 	const dispatch = useDispatch();
@@ -106,9 +106,18 @@ const ProductList = () => {
 		}),
 	];
 
+  const initialPageSize = 10;
+
+  const dynamicSize = useMemo(() => {
+    const totalProducts = products?.length || 0;
+    return totalProducts - initialPageSize > 0 
+      ? totalProducts - initialPageSize
+      : totalProducts
+  },[products])
+
 	const [pagination, setPagination] = useState({
     pageIndex: 0,
-    pageSize: 10,  
+    pageSize: dynamicSize,  
   })
 
   const table = useReactTable({
@@ -130,11 +139,7 @@ const ProductList = () => {
         <div>
           <p>All Products</p>
           {loading ? (
-            <ClipLoader
-            color="white"
-            loading={true}
-            size={24}
-          />
+            <Loader />
           ) : (
             <div className="adminProductTable">
               <input

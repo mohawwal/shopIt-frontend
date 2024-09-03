@@ -13,6 +13,9 @@ import {
 	authReducer,
 	userReducer,
 	forgotPasswordReducer,
+	allUserReducer,
+	getUsersDetailsReducer,
+	UpdateUserReducer
 } from "./components/reducer/userReducer";
 import { cartReducer } from "./components/reducer/cartReducers";
 import {
@@ -20,7 +23,7 @@ import {
 	myOrderReducer,
 	getOrderDetailsReducer,
 	allOrderReducer,
-	orderReducer
+	orderReducer,
 } from "./components/reducer/orderReducer";
 import {
 	paymentReducer,
@@ -37,6 +40,9 @@ const reducer = combineReducers({
 	newReview: newReviewReducer,
 	auth: authReducer,
 	user: userReducer,
+	allUsers: allUserReducer,
+	getUsersDetails: getUsersDetailsReducer,
+	UpdateUser: UpdateUserReducer,
 	forgotPassword: forgotPasswordReducer,
 	cart: cartReducer,
 	payment: paymentReducer,

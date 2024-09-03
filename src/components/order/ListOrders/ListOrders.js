@@ -4,46 +4,40 @@ import "./ListOrders.css";
 import Loading from "../../../pages/loader/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { myOrder, clearErrors } from "../../../actions/orderAction";
-import { formatDate } from '../dateTime'
+import { formatDate } from "../dateTime";
 import AlertContext from "../../alert/AlertContext";
 
 const ListOrders = () => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
-	const [, setAlert] = useContext(AlertContext)
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
-	const { user, isAuthenticated } = useSelector(state => state.auth)
+	const { user, isAuthenticated } = useSelector((state) => state.auth);
 	const { orders, loading, error } = useSelector((state) => state.myOrder);
 
-	
 	useEffect(() => {
-
-		if(!isAuthenticated && !user) {
+		if (!isAuthenticated && !user) {
 			navigate("/");
 		}
 
 		dispatch(myOrder());
 
 		if (error) {
-			showAlert(error, 'error')
+			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
-
 	}, [dispatch, error, isAuthenticated, navigate]);
 
-
-	if(loading) {
-		return (
-			<Loading/>
-		)
+	if (loading) {
+		return <Loading />;
 	}
 
 	return (
@@ -66,8 +60,12 @@ const ListOrders = () => {
 												<span style={{ color: "green" }}>
 													{order.orderStatus}
 												</span>
-											) : (
+											) : String(order.orderStatus).includes("Processing") ? (
 												<span style={{ color: "red" }}>
+													{order.orderStatus}
+												</span>
+											) : (
+												<span style={{ color: "blue" }}>
 													{order.orderStatus}
 												</span>
 											)}
@@ -81,7 +79,9 @@ const ListOrders = () => {
 							))}
 						</div>
 					</div>
-				) : (<div>Order is Empty</div>)}
+				) : (
+					<div className="orderEmpty">Order is Empty 😔</div>
+				)}
 			</div>
 		</div>
 	);

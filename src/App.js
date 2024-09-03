@@ -1,9 +1,8 @@
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DisplayPage from "./pages/displayPage/displayPage";
 import ProductFolder from "./pages/productFolder/productFolder";
-import Footer from "./pages/footer/footer";
 import ProductDetails from "./pages/productDetails/productDetails";
 import Login from "./components/user/Login";
 import Cart from "./components/cart/cart";
@@ -20,13 +19,12 @@ import NavDown from "./pages/navDown/navDown";
 import Shipping from "./components/cart/shipping";
 import Payment from "./components/cart/payment/payment";
 import ListOrders from "./components/order/ListOrders/ListOrders";
-
 import store from "./store";
 import { loadUser } from "./actions/userAction";
 import Profile from "./components/user/profile/profile";
 import ProtectedRoute from "./components/route/protectedRoute";
 import OrderDetails from "./components/order/orderDetails/orderDetails";
-import DashBoard from "./components/admin/Dashboard/Dashboard"
+import DashBoard from "./components/admin/Dashboard/Dashboard";
 import ProductList from "./components/admin/productList/productList";
 import WishList from "./pages/wishList/WishList";
 import NewProduct from "./components/admin/newProduct/newProduct";
@@ -36,10 +34,12 @@ import OrderList from "./components/admin/ordersList/orderList";
 import ProcessOrder from "./components/admin/processOrder/processOrder";
 import Alert from "./components/alert/alert";
 import PageFooter from "./pages/footer/pageFooter";
-//import Alert from "./components/alert/alert";
-//import AlertContext from "./components/alert/AlertContext";
+import UserList from "./components/admin/userList/UserList";
+import UpdateUser from "./components/admin/updateUser/UpdateUser";
 
 function App() {
+	
+
 	useEffect(() => {
 		store.dispatch(loadUser());
 	}, []);
@@ -54,7 +54,7 @@ function App() {
 				<div>
 					<Alert />
 				</div>
-				
+
 				<Routes>
 					<Route
 						path="/"
@@ -137,7 +137,6 @@ function App() {
 						element={<Payment />}
 						exact
 					/>
-					
 
 					{/* Protected Route if not authenticated user */}
 					<Route element={<ProtectedRoute />}>
@@ -206,8 +205,21 @@ function App() {
 							element={<ProcessOrder />}
 							exact
 						/>
-					</Route>
 
+						<Route
+							path="/admin/users"
+							isAdmin={true}
+							element={<UserList />}
+							exact
+						/>
+
+						<Route
+							path="/admin/user/:userId"
+							isAdmin={true}
+							element={<UpdateUser />}
+							exact
+						/>
+					</Route>
 				</Routes>
 				<PageFooter />
 				<nav className="bottomNav">

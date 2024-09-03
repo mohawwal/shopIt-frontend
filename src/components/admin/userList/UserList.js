@@ -13,22 +13,18 @@ import {
 	getPaginationRowModel,
 	getFilteredRowModel,
 } from "@tanstack/react-table";
-import { getAllOrder, clearErrors, deleteOrder } from "../../../actions/orderAction";
+import { getAllUsers, clearErrors } from "../../../actions/userAction";
 import AlertContext from "../../alert/AlertContext";
 import Loader from "../../../pages/loader/loader";
 import SideBar from "../sidebar/sideBar";
 import MetaData from "../../layouts/MetaData";
-import "./orderList.css";
-import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
+import "./userList.css";
 
-const OrderList = () => {
+const UserList = () => {
 	const dispatch = useDispatch();
 	const [globalFilter, setGlobalFilter] = useState("");
 	const [, setAlert] = useContext(AlertContext);
 
-	const { loading, totalAmount, orders, error } = useSelector(
-		(state) => state.allOrder,
-	);
 
 	const showAlert = (message, type) => {
 		setAlert({
@@ -37,86 +33,48 @@ const OrderList = () => {
 		});
 	};
 
-	const { isDeleted } = useSelector((state) => state.order)
-
+    const { users, loading, error } = useSelector(state => state.allUsers)
+    // const { isDeleted } = useSelector(state => state.deleteUser)
 
 	useEffect(() => {
-		dispatch(getAllOrder());
+        dispatch(getAllUsers())
 
-		if (error) {
+        if (error) {
 			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
+		
+	}, [dispatch, error]);
 
-		if(isDeleted) {
-			showAlert("Order Deleted Successfully", "success")
-			dispatch({ type: DELETE_ORDER_RESET })
-		}
-
-	}, [dispatch, error, isDeleted]);
-
-
-	const handleDeleteOrder = useCallback((id) => {
-		dispatch(deleteOrder(id))
-	}, [dispatch]);
 
 	const headers = [
-		"Order ID",
-		"Quantity",
-		"Date",
-		"Price",
-		"Status",
+		"User ID",
+		"Name",
+		"Email",
+		"Role",
 		"Actions",
 	];
 
 	const columns = useMemo(
 		() => [
 			{
-				header: "Order ID",
+				header: "User ID",
 				accessorKey: "_id",
 			},
 			{
-				header: "No of Items",
-				accessorFn: (order) =>
-					order && order.orderItems && order.orderItems.length,
+				header: "Name",
+				accessorFn: (users) =>
+					users && users.name,
 			},
 			{
-				header: "Paid At",
-				accessorFn: (order) => {
-					const date = new Date(order.paidAt);
-					return date.toLocaleString("en-US", {
-						year: "numeric",
-						month: "2-digit",
-						day: "2-digit",
-						hour: "2-digit",
-						minute: "2-digit",
-						second: "2-digit",
-						hour12: true,
-					});
-				},
+				header: "Email",
+				accessorFn: (users) =>
+					users && users.email,
 			},
-
-			{
-				header: "Amount",
-				accessorFn: (row) => row.totalPrice,
-				cell: ({ getValue }) => `₦${getValue()}`,
-			},
-			{
-				header: "Status",
-				accessorFn: (row) => row.orderStatus,
-				cell: ({ getValue }) => (
-					<p
-						style={{
-							color: getValue().toLowerCase().includes("delivered")
-								? "green"
-								: getValue().toLowerCase().includes("processing")
-									? "red"
-									: "blue",
-						}}
-						>
-						{getValue()}
-						</p>
-				),
+            {
+				header: "Role",
+				accessorFn: (users) =>
+					users && users.role,
 			},
 			{
 				header: "Actions",
@@ -124,34 +82,26 @@ const OrderList = () => {
 				cell: ({ row }) => (
 					<div className="action-row">
 						<Link
-							to={`/admin/order/${row.original._id}`}
+							to={`/admin/user/${row.original._id}`}
 							className="btn viewBtn"
 						>
 							View
 						</Link>
-						<button
-							className="btn"
-							onClick={() => handleDeleteOrder(row.original._id)}
-						>
-							Delete
-						</button>
 					</div>
 				),
 			},
 		],
-		[handleDeleteOrder],
+		[],
 	);
-
-	// const data = useMemo(() => orders, [orders]);
 
 	const initialPageSize = 10;
 
 	const dynamicSize = useMemo(() => {
-		const totalOrders = orders?.length || 0;
-		return totalOrders - initialPageSize > 0 
-		? totalOrders - initialPageSize
-		: totalOrders
-	},[orders])
+		const totalUsers = users?.length || 0;
+		return totalUsers - initialPageSize > 0 
+		? totalUsers - initialPageSize
+		: totalUsers
+	},[users])
 
 		const [pagination, setPagination] = useState({
 		pageIndex: 0,
@@ -160,7 +110,7 @@ const OrderList = () => {
 
 	const table = useReactTable({
 		columns,
-		data: orders || [],
+		data: users || [],
 		getCoreRowModel: getCoreRowModel(),
 		getPaginationRowModel: getPaginationRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
@@ -177,7 +127,7 @@ const OrderList = () => {
 			<div className="adminOrders">
 				<div>
 					<MetaData title={"Order List"} />
-					<h3 className="allO">All Orders</h3>
+					<h3 className="allO">All Users</h3>
 
 					{loading ? (
 						<Loader />
@@ -189,9 +139,7 @@ const OrderList = () => {
 								placeholder="Search orders"
 								className="search-input"
 							/>
-							<div>
-								<span>TOTAL AMOUNT - </span><b>₦{totalAmount}</b>
-							</div>
+                            <div><span>No of Users: </span><b>{users && users.length}</b></div>
 							<table className="orderTable">
 								<thead>
 									<tr>
@@ -245,4 +193,4 @@ const OrderList = () => {
 	);
 };
 
-export default OrderList;
+export default UserList;

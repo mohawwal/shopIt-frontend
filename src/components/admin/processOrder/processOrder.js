@@ -10,6 +10,7 @@ import SideBar from "../sidebar/sideBar";
 import AlertContext from "../../alert/AlertContext";
 import Loader from "../../../pages/loader/loader";
 import "./processOrder.css";
+import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 
 const ProcessOrder = () => {
 	const dispatch = useDispatch();
@@ -24,9 +25,16 @@ const ProcessOrder = () => {
 		});
 	};
 
-	const { order, loading, error } = useSelector(
+	const [status, setStatus] = useState("");
+
+	const { order, loading } = useSelector(
 		(state) => state.getOrderDetails,
 	);
+
+	const {
+		isUpdated,
+		error
+	} = useSelector((state) => state.order);
 
 	const { user } = useSelector((state) => state.auth);
 
@@ -34,25 +42,32 @@ const ProcessOrder = () => {
 		dispatch(getOrderDetails(orderId));
 
 		if (error) {
+			console.log("useEffect triggered");
 			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
-	}, [dispatch, error, orderId]);
+		
+
+		if(isUpdated) {
+			console.log("Order successfully updated");
+			showAlert("Order Updated Successfully", "success")
+			dispatch({ type: UPDATE_ORDER_RESET })
+		}
+
+	}, [dispatch, error, isUpdated, orderId]);
 
 	const isShippingWithinLagos = order?.shippingInfo?.state
 		?.toLowerCase()
 		.includes("lagos");
 
-	const [status, setStatus] = useState("");
+	const updateOrderHandler = (id) => {
 
-	const updateOrderHandler = () => {
-		console.log("Updating order status to:", status); 
-		const orderData = {
-			status,
-		};
-		dispatch(updateOrder(orderId, orderData));
-		showAlert("Order status updated successfully", "success");
-	};
+		const formData = new FormData()
+		formData.set('status', status)
+
+		dispatch(updateOrder(id, formData));
+	}
+	
 
 	if (loading) {
 		return <Loader />;
@@ -140,7 +155,7 @@ const ProcessOrder = () => {
 						<div>
 							{order && order.orderItems && order.orderItems.map((items, index) => (
 								<div key={index}>
-									<div>
+									<div className="processOrderImage">
 										<img
 											src={items.image}
 											alt=""
@@ -182,8 +197,8 @@ const ProcessOrder = () => {
 							<option value="Delivered">Delivered</option>
 						</select>
 
-						<button onClick={updateOrderHandler}>
-							Update order status
+						<button onClick={() => updateOrderHandler(order?._id)}>
+							{<p>Update order status</p>}
 						</button>
 					</div>
 				</div>

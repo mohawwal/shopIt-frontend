@@ -38,12 +38,15 @@ import {
 
 
 
-export const getProductCategory = ( category, currentPage = 1 ) => async (dispatch) => {
+export const getProductCategory = ( category, currentPage = 1, price ) => async (dispatch) => {
     try {
 
         dispatch({ type: PRODUCT_CATEGORY_REQUEST })
 
-        const { data } = await axios.get(`/api/v1/category?category=${category}&page=${currentPage}`)
+        let link = `/api/v1/category?category=${category}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}`
+        
+        const { data } = await axios.get(link)
+
 
         dispatch({
             type: PRODUCT_CATEGORY_SUCCESS,

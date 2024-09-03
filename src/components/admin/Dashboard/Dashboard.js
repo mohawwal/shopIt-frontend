@@ -4,6 +4,7 @@ import "./dashboard.css";
 import {Link} from 'react-router-dom'
 import AlertContext from "../../alert/AlertContext";
 import { useSelector, useDispatch } from 'react-redux'
+import { getAllUsers } from "../../../actions/userAction";
 import { getAdminProducts, clearErrors } from "../../../actions/productActions";
 import { getAllOrder } from "../../../actions/orderAction";
 import Loader from "../../../pages/loader/loader";
@@ -22,6 +23,7 @@ const Dashboard = () => {
 
     const { error, products } = useSelector((state) => state.allProducts);
 	const { totalAmount, orders, loading } = useSelector((state) => state.allOrder)
+    const { users } = useSelector(state => state.allUsers)
     
 	let outOfStock = 0
 
@@ -34,6 +36,7 @@ const Dashboard = () => {
 	useEffect(() => {
 		dispatch(getAdminProducts())
 		dispatch(getAllOrder())
+		dispatch(getAllUsers())
 
 		if (error) {
 			showAlert(error, 'error')
@@ -79,7 +82,7 @@ const Dashboard = () => {
 							<div className="dashFolderBottomFiles">
 								<div className="contentDash" style={{backgroundColor: "rgb(223, 166, 245)"}}>
 									<p>Users</p>
-									<span>x</span>
+									<span>{users && users.length}</span>
 								</div>
 								<Link to='/admin/users' className="viewDash">
 									<p>View Details</p>

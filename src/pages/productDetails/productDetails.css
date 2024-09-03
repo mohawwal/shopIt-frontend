@@ -23,6 +23,7 @@
     margin: 0 auto;
 }
 
+
 .backArrowPD span {
     height: 100%;
     display: flex;
@@ -51,9 +52,24 @@
     width: 45%;
 }
 
+.pDImageImg {
+    position: relative;
+    height: 100%;
+}
+
 .PDImageFolder {
     width: 50%;
+    position: relative;
 }
+
+.imgNPIcons {
+
+}
+
+.imgIcon {
+    width: 80px;
+}
+
 
 .spaceText {
     padding: 10px 3% 5px;
@@ -67,8 +83,29 @@
 .PDImageList {
     height: 25%;
     height: 70px;
-    background-color: palegreen;
+    margin-top: 3%;
+    background-color: transparent;
     width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 3%;
+}
+
+.productImage {
+    border: 1px solid rgb(148, 148, 148);
+    width: 55px;
+    height: 55px;
+    border-radius: 8px;
+}
+
+.productImage img {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: top;
 }
 
 .PDImage img {
@@ -397,6 +434,12 @@
     color: rgb(0, 0, 0);
     font-size: 1rem;
 }
+
+.prodDetailsQty .btnRight.btnBlur, 
+.prodDetailsQty .btnLeft.btnBlur {
+    color: red;
+}
+
 
 .prodDetailsQty button {
     height: 100%;

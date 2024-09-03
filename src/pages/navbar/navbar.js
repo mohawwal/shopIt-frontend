@@ -78,6 +78,8 @@ const Navbar = () => {
 			navClass = "navOut";
 		} else if (location.pathname.includes("/order")) {
 			navClass = "navOut";
+		} else if (location.pathname.includes("/admin")) {
+			navClass = "navOut";
 		} else if (location.pathname.includes("/password/Update")) {
 			navClass = "minNonNav";
 		} else if (location.pathname === "/login") {

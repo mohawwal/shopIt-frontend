@@ -144,8 +144,113 @@ li span {
 
 /* pageFooter */
 .pageFooter {
-    height: 20vh;
-    margin: 5vh 0 8vh;
+    margin: 5vh 0 0;
     background-color: black;
-    color: rgb(63, 206, 63);
+    color: rgb(255, 255, 255);
+}
+
+.cardIcons {
+    width: 35px;
+    height: 30px;
+}
+
+.socialsIcons {
+    display: flex;
+    gap: 15px;
+    height: 33px;
+}
+
+.socialIcons {
+    width: 22px;
+}
+
+.portIcon {
+    width: 25px;
+    margin-left: 8px;
+}
+
+.appIcons {
+    width: 39px;
+}
+
+@media screen and (max-width: 550px) {
+    .pageFooter {
+        margin-bottom: 8vh;
+    }
+}
+
+.signPageFooter {
+    font-size: 1.1rem;
+    height: 20px;
+}
+
+.pages {
+    padding: 4%;
+    height: 100%;
+}
+
+.pageInput {
+    height: 100px;
+}
+
+.pageInput input {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    height: 38px;
+    padding: 5px 15px;
+    font-size: 1rem;
+    background-color: rgba(59, 59, 59, 0.862);
+    border-radius: 15px;
+    border: none;
+    margin-top: 4%;
+}
+
+.pageInput button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: rgb(107, 107, 239);
+    color: white;
+    height: 35px;
+    width: 120px;
+    border-radius: 5px;
+    border: none;
+}
+
+.pageMiddle {
+    height: 200px;
+    border-top: 0.2px dashed rgba(203, 203, 203, 0.781);
+    border-bottom: 0.2px dashed rgba(203, 203, 203, 0.781);
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pageMiddle p {
+    text-decoration: underline;
+    padding-bottom: 10px;
+}
+
+.pageMiddle span {
+    display: flex;
+    flex-direction: column;
+}
+
+.pageMiddle span h4 {
+    padding-bottom: 10px;
+}
+
+.pageMiddle span .payIcons {
+    padding-top: 10px;
+}
+
+.pageMiddle span span {
+    color: rgb(187, 187, 187);
+    font-size: 0.8rem;
+}
+
+.pageDown {
+    height: 10px;
+    font-size: 0.8rem;
 }

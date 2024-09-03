@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
-import ViewHide from "../../assets/svg/viewHide";
+//import ViewHide from "../../assets/svg/viewHide";
 import ViewShow from "../../assets/svg/viewShow";
 import AlertContext from "../../components/alert/AlertContext";
 import Love from "../../assets/svg/love";
@@ -25,6 +25,9 @@ import {
 import Cart from "../../assets/svg/cart";
 import { getProductCategory } from "../../actions/productActions";
 import Loader from "../loader/loader";
+import ImgNext from "../../assets/svg/imgNext";
+import ImgPrev from "../../assets/svg/imgPrev";
+
 
 const ProductDetails = () => {
 	const navigate = useNavigate();
@@ -64,9 +67,11 @@ const ProductDetails = () => {
 	const isProductInWishList = wishList.some((item) => item.product === id);
 	const [likeProduct, setLikeProduct] = useState(isProductInWishList);
 
+	const price = ([0, 100000])
+
 	useEffect(() => {
 		if (productDetails.category) {
-			dispatch(getProductCategory(productDetails.category, pageNo));
+			dispatch(getProductCategory(productDetails.category, pageNo, price));
 		}
 
 		if (detailsError) {
@@ -85,7 +90,7 @@ const ProductDetails = () => {
 		}
 
 		dispatch(getProductDetails(id));
-	}, [detailsError, dispatch, error, productDetails.category, success]);
+	}, [detailsError, dispatch, error, productDetails.category, id, success]);
 
 
 
@@ -165,6 +170,8 @@ const ProductDetails = () => {
 		setShowReviewText(!showReviewText);
 	};
 
+	const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
 	if (detailsLoading) {
 		return <Loading />;
 	}
@@ -187,14 +194,21 @@ const ProductDetails = () => {
 						<div className="PDFolderImage">
 							<div className="PDImage">
 								<img
-									src={productDetails.images && productDetails.images[0].url}
+									className="pDImageImg"
+									src={productDetails.images && productDetails.images[currentImageIndex]?.url}
 									alt="detailsIMG"
 								/>
+								{/* <div className="imgNPIcons">
+									<ImgPrev className="imgIcon"/>
+									<ImgNext className='imgIcon'/>
+								</div> */}
 							</div>
 							<div className="PDImageList">
-								<p>img1</p>
-								<p>img2</p>
-								<p>img3</p>
+								{productDetails && productDetails.images && productDetails.images.map((productImage, index) => (
+									<div className="productImage" key={productImage.id} onClick={() => setCurrentImageIndex(index)}>
+										<img src={productImage.url} alt="" />
+									</div>
+								))}
 							</div>
 						</div>
 
@@ -239,9 +253,6 @@ const ProductDetails = () => {
 								<div className="DRate">
 									( {productDetails.ratings} ratings )
 								</div>
-								{/* <div>
-									<GoDotFill className="dotIcon" />
-								</div> */}
 							</div>
 
 							{productDetails && productDetails.stock >= 1 ? <div className="qtyCart">
@@ -281,7 +292,7 @@ const ProductDetails = () => {
 								<div>Product Description</div>
 								<p>{productDetails.description}</p>
 							</div>
-							
+
 							{productDetails.numberOfReviews ?
 								productDetails.numberOfReviews >= 1 && (
 									<div>
@@ -321,7 +332,7 @@ const ProductDetails = () => {
 																			<div className="reviewRatingStar">
 																				{renderRatingStars(review.rating)}
 																			</div>
-																			
+
 																		</div>
 																	</div>
 																	<div className="rc">{review.comment}</div>
@@ -332,7 +343,7 @@ const ProductDetails = () => {
 										</div>
 									</div>
 								) : null}
-							
+
 						</div>
 					</div>
 				</div>
@@ -371,6 +382,8 @@ const ProductDetails = () => {
 					</div>
 				) : null}
 			</div>
+
+
 			<div className="pDSP">
 				<div className="spaceText">SIMILAR PRODUCTS</div>
 				<div>

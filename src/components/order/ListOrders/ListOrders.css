@@ -34,3 +34,8 @@
     color: rgb(0, 26, 171);
     font-size: 0.6rem;
 }
+
+.orderEmpty {
+    text-align: center;
+    color: red;
+}
