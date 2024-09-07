@@ -27,7 +27,7 @@ const Profile = () => {
 		})
 	}
 
-	const { user, loading } = useSelector((state) => state.auth);
+	const { user, isAuthenticated, loading } = useSelector((state) => state.auth);
 
 	const signOutFromProfile = () => {
 		dispatch(logOut())
@@ -49,7 +49,7 @@ const Profile = () => {
 						<div className="head">Profile Details</div>
 					</div>
 					<div className="profileSection">
-						<div>
+						{isAuthenticated && user && user.avatar?.url ? <div>
 							<img
 								src={user && user.avatar.url}
 								alt="avatar"
@@ -57,7 +57,9 @@ const Profile = () => {
 							<Link to="/me/Update" className="imgPen">
 								<Pen className="icons editIcon" />
 							</Link>
-						</div>
+						</div> : <div><p>add profile picture</p> <Link to="/me/Update" className="imgPen">
+								<Pen className="icons editIcon" />
+							</Link></div>}
 					</div>
 					<div className="profileLog">
 						<div className="profileDetailsLog">

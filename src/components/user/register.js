@@ -6,7 +6,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import * as Yup from "yup";
 import { Field, ErrorMessage, useFormik, FormikProvider } from "formik";
 import avatarPrev from "../../assets/images/avatarPreview.png";
-import googleIcon from "../../assets/images/google_icon.png";
+// import googleIcon from "../../assets/images/google_icon.png";
 import AlertContext from "../alert/AlertContext";
 import "./user.css";
 
@@ -87,6 +87,10 @@ const Register = () => {
 			if (selectedAvatar) {
 				formData.append("avatar", selectedAvatar);
 			}
+
+			// formData.forEach((value, key) => {
+			// 	console.log(key, value);
+			// });
 
 			dispatch(register(formData));
 		},

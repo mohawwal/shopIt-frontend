@@ -133,7 +133,7 @@ const ProductFolder = () => {
 				</div>
 			</div>
 
-			<div class="paginationContainer">
+			<div className="paginationContainer">
 				<div className="pagination">
 					<span className="tryPeg">
 						{currentPage > 1 && (

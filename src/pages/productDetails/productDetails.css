@@ -62,12 +62,28 @@
     position: relative;
 }
 
-/* .imgNPIcons {
+.imgNPIcons {
+    /* background-color: red; */
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} 
 
-} */
+.imgNPIcons button {
+    /* background-color: aliceblue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+}
 
-.imgIcon {
-    width: 80px;
+.imgNPIcons button .imgNextIcon {
+    width: 1.5rem;
 }
 
 
@@ -78,6 +94,7 @@
 .PDImage {
     width: 100%;
     height: 50vh;
+    position: relative;
 }
 
 .PDImageList {
@@ -218,15 +235,29 @@
     font-size: 0.9rem;
 }
 
+.aYR {
+    font-size: 0.8rem;
+    color: rgb(98, 104, 255);
+    cursor: pointer;
+    text-align: right;
+    margin-top: 1rem;
+}
+
+.aYR:hover, .aYR:focus {
+    text-decoration: underline;
+    color: black;
+}
+
 .commentsPD {
     margin: 1.5rem 0;
     width: 100%;
 }
 
 .commentsPD div {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 500;
     padding: 0 0 7px;
+    color: #4d4d4db8;
 }
 
 .commentsPD p {
@@ -276,6 +307,36 @@
     padding: 8px 18px;
     max-width: 150px;
     min-width: 90px;
+    cursor: pointer;
+}
+
+.PDSize {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.PDSize span {
+    color: #4d4d4db8;
+    font-size: 0.8rem;
+}
+
+.PDSize ul {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 15px;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.PDSize ul li:hover, .PDSize ul li:focus {
+    text-decoration: underline;
+    color: rgb(110, 110, 220);
+    font-weight: 600;
+}
+
+.PDCart:hover, .PDCart:focus {
+    background-color: #000000;
 }
 
 .underline {
@@ -343,8 +404,9 @@
 }
 
 .PRnR p {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #4d4d4db8;
 }
 
 .PDR {
@@ -489,41 +551,33 @@
 }
 
 .postReviewBox {
-    background-color: rgba(214, 222, 252, 0.54);
-    position: fixed;
-    height: 100vh;
-    top: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .postReviewBox textarea {
-    width: 80%;
-    height: 150px;
-    max-width: 350px;
+    width: 100%;
+    height: 100px;
     padding: 5px;
+    border-radius: 10px;
 }
 
 .postReviewBox input {
-    width: 80%;
-    max-width: 350px;
-    height: 5%;
-    padding: 5px;
+    border-radius: 5px;
 }
 
 .postReviewBox button {
     width: 80%;
     max-width: 350px;
-    margin-top: 10px;
     height: 35px;
-    background-color: rgb(86, 111, 255);
+    background-color: rgb(95, 119, 250);
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .reviewRatingStar {
@@ -575,6 +629,11 @@
 
 .pDSP {
     margin-top: 20px;
+}
+
+.DName {
+    color: rgba(124, 0, 0, 0.729);
+    font-weight: 500;
 }
 
 @media screen and (max-width: 800px) {

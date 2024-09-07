@@ -8,21 +8,21 @@ const Whatsapp = ({ className }) => {
 		>
 			<g
 				id="SVGRepo_bgCarrier"
-				stroke-width="0"
+				strokeWidth="0"
 			/>
 
 			<g
 				id="SVGRepo_tracerCarrier"
-				stroke-linecap="round"
-				stroke-linejoin="round"
+				strokeLinecap="round"
+				strokeLinejoin="round"
 			/>
 
 			<g id="SVGRepo_iconCarrier">
 				<g
 					id="Icons"
-					stroke-width="0.384"
+					strokeWidth="0.384"
 					fill="white"
-					fill-rule="evenodd"
+					fillRule="evenodd"
 				>
 					{" "}
 					<g

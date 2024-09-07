@@ -47,8 +47,8 @@ const WishList = () => {
 							to={`/product/${listItem.product}`}
 							className="itemProfile"
 						>
-							<div>{listItem.name}</div>
-							<span>₦{listItem.price.toLocaleString()}</span>
+							<div>{listItem.name && listItem.name.toUpperCase()}</div>
+							<span>₦{listItem.price && listItem.price.toLocaleString()}</span>
 						</Link>
 						<div className="itemUnlikeBtn">
 							<button onClick={() => unLikeItem(listItem.product)}>

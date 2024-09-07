@@ -1,4 +1,4 @@
-import axios from '../axios/axios'
+import axios from 'axios'
 
 import {
     LOGIN_REQUEST,
@@ -53,6 +53,7 @@ import {
 
 } from '../components/constants/userConstants'
 
+
 //LOGIN
 export const login = (email, password) => async (dispatch) => {
     try {
@@ -65,20 +66,22 @@ export const login = (email, password) => async (dispatch) => {
         }
 
         const { data } = await axios.post('/api/v1/login', {email, password}, config)
+        // localStorage.setItem('authToken', data.token);
 
         dispatch({
             type: LOGIN_SUCCESS,
             payload: data.user
         })
 
+
     } catch(error) {
+        const errorMessage = error.response?.data?.message || error.message;
         dispatch({
             type: LOGIN_FAIL,
-            payload: error.response.data.message || error.message,
+            payload: errorMessage
         })
     }
 }
-
 
 //REGISTER
 export const register = (userData) => async (dispatch) => {
@@ -92,6 +95,7 @@ export const register = (userData) => async (dispatch) => {
         }
 
         const {data} = await axios.post('/api/v1/register', userData, config)
+        // localStorage.setItem('authToken', data.token);
 
         dispatch({
             type: REGISTER_USER_SUCCESS,
@@ -100,10 +104,13 @@ export const register = (userData) => async (dispatch) => {
 
 
     } catch(error) {
+        const errorMessage = error.response?.data?.message || error.message;
+        console.log(errorMessage)
+        console.log(error)
         dispatch({
             type: REGISTER_USER_FAIL,
-            payload: error.response?.data?.message || error.message,
-        });          
+            payload: errorMessage
+        })
     }
 }
 
@@ -121,13 +128,13 @@ export const loadUser = () => async(dispatch) => {
 
 
     } catch(error) {
+        const errorMessage = error.response?.data?.message || error.message;
         dispatch({
             type: LOAD_USER_FAIL,
-            payload: error.response.data.message || error.message,
+            payload: errorMessage
         })
     }
 }
-
 
 //Update Profile 
 export const updateProfile = (userData) => async(dispatch) => {
@@ -149,13 +156,13 @@ export const updateProfile = (userData) => async(dispatch) => {
 
 
     }catch(error) {
+        const errorMessage = error.response?.data?.message || error.message;
         dispatch({
             type: UPDATE_PROFILE_FAIL,
-            payload: error.response.data.message || error.message,
+            payload: errorMessage
         })
     }
 }
-
 
 //Update password
 export const updatePassword = (passwords) => async (dispatch) => {
@@ -176,9 +183,10 @@ export const updatePassword = (passwords) => async (dispatch) => {
         })
 
     }catch(error) {
+        const errorMessage = error.response?.data?.message || error.message;
         dispatch({
             type: UPDATE_PASSWORD_FAIL,
-            payload: error.response.data.message || error.message,
+            payload: errorMessage
         })
     }
 
@@ -202,12 +210,7 @@ export const forgetPassword = (email) => async (dispatch) => {
             payload: data.message,
         });
     } catch (error) {
-        let errorMessage = 'An error occurred';
-        if (error.response && error.response.data && error.response.data.message) {
-            errorMessage = error.response.data.message;
-        } else if (error.message) {
-            errorMessage = error.message;
-        }
+        const errorMessage = error.response?.data?.message || error.message;
         dispatch({
             type: FORGOT_PASSWORD_FAIL,
             payload: errorMessage,
@@ -234,13 +237,13 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
         })
 
     } catch(error) {
+        const errorMessage = error.response?.data?.message || error.message;
         dispatch({
             type: NEW_PASSWORD_FAIL,
-            payload: error.response.data.message || error.message
+            payload: errorMessage
         })
     }
 }
-
 
 //LogOut user
 export const logOut = () => async (dispatch) => {
@@ -251,14 +254,13 @@ export const logOut = () => async (dispatch) => {
         })
 
     } catch(error) {
+        const errorMessage = error.response?.data?.message || error.message;
         dispatch({
             type: LOGOUT_FAIL,
-            payload: error.response.data.message || error.message
+            payload: errorMessage
         })
     }
 }
-
-
 
 //admin all users
 export const getAllUsers = () => async (dispatch) => {
@@ -273,9 +275,10 @@ export const getAllUsers = () => async (dispatch) => {
         })
 
     } catch(error) {
+        const errorMessage = error.response?.data?.message || error.message;
         dispatch({
             type: ALL_USERS_FAIL,
-            payload: error.response.data.message || error.message
+            payload: errorMessage
         })
     }
 }
@@ -293,14 +296,14 @@ export const getUserDetails = (id) => async (dispatch) => {
 
 
 	} catch (error) {
+		const errorMessage = error.response?.data?.message || error.message;
 		dispatch({
 			type: USERS_DETAILS_FAIL,
-			payload: error.response.data.message || error.message
+			payload: errorMessage,
 		});
 	}
 	
 };
-
 
 // delete USER ADMIN
 export const deleteUser = (id) => async (dispatch) => {
@@ -316,13 +319,13 @@ export const deleteUser = (id) => async (dispatch) => {
 
 
 	} catch (error) {
+		const errorMessage = error.response?.data?.message || error.message;
 		dispatch({
 			type: DELETE_USERS_FAIL,
-			payload: error.response.data.message || error.message
+			payload: errorMessage,
 		});
 	}
 };
-
 
 // Update user - ADMIN
 export const UpdateUser = (id, userData) => async (dispatch) => {
@@ -338,9 +341,10 @@ export const UpdateUser = (id, userData) => async (dispatch) => {
 
 
 	} catch (error) {
+		const errorMessage = error.response?.data?.message || error.message;
 		dispatch({
 			type: UPDATE_USERS_FAIL,
-			payload: error.response.data.message || error.message
+			payload: errorMessage,
 		});
 	}
 };

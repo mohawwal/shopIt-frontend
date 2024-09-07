@@ -69,6 +69,7 @@ let initialState = {
 			? JSON.parse(localStorage.getItem("wishList"))
 			: [],
 	},
+	authToken: localStorage.getItem("authToken")
 };
 
 const middleware = [thunk];

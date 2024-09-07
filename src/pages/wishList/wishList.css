@@ -22,7 +22,8 @@
 
 .itemProfile div {
     font-weight: 500;
-    width: 1.2rem;
+    width: 100%;
+    font-size: 1rem;
 }
 
 .itemImg img {

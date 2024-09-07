@@ -7,9 +7,9 @@ const Ig = ({ className }) => {
 			<g
 				id="Page-1"
 				stroke="none"
-				stroke-width="1"
+				strokeWidth="1"
 				fill="white"
-				fill-rule="evenodd"
+				fillRule="evenodd"
 			>
 				<g
 					transform="translate(-340.000000, -7439.000000)"

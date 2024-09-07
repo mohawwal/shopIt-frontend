@@ -9,13 +9,13 @@ const Verve = ({ className, fill }) => {
 			<g
 				id="Page-1"
 				stroke="none"
-				stroke-width="1"
+				strokeWidth="1"
 				fill={fill}
-				fill-rule="evenodd"
+				fillRule="evenodd"
 			>
 				<g
 					id="verve"
-					fill-rule="nonzero"
+					fillRule="nonzero"
 				>
 					<rect
 						id="Rectangle-path"

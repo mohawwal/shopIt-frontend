@@ -65,9 +65,9 @@ const AllProductsHome = () => {
 	return (
 		<div>
 			<div className="allProdHome">
-				<div class="moving-sentence MDSC">NEW MARIO'S</div>
+				<div className="moving-sentence MDSC">NEW MARIO'S</div>
 				<div className="productHome">
-					{products &&
+					{Array.isArray(products) && products.length > 0 ? (
 						products.map((product, index) => {
 							return (
 								<div
@@ -109,14 +109,17 @@ const AllProductsHome = () => {
 									</div>
 								</div>
 							);
-						})}
+						})
+					) : (
+						<>NO PRODUCT FOUND</>
+					)}
 				</div>
 			</div>
 			{/* smaller screen */}
 			<div className="allProdHomeSC">
-				<div class="moving-sentence MDSC">NEW MARIO'S</div>
+				<div className="moving-sentence MDSC">NEW MARIO'S</div>
 				<div className="productHomeSC">
-					{products &&
+					{Array.isArray(products) && products.length > 0 ? (
 						products.map((product, index) => {
 							return (
 								<div
@@ -158,7 +161,10 @@ const AllProductsHome = () => {
 									</div>
 								</div>
 							);
-						})}
+						})
+					) : (
+						<>NO PRODUCT FOUND</>
+					)}
 				</div>
 				<div className="pagSC">
 					<div className="pagination">

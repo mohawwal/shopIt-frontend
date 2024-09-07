@@ -19,9 +19,13 @@ const NavDown = () => {
 
 		if (location.pathname === "/") {
 			downNavClass = "downNavHome";
-		} else if (location.pathname === "/login" || location.pathname === "/password/forgot" || location.pathname === "/register") {
+		} else if (
+			location.pathname === "/login" ||
+			location.pathname === "/password/forgot" ||
+			location.pathname === "/register"
+		) {
 			downNavClass = "downNavNone";
-		} 
+		}
 
 		setDownNav(downNavClass);
 	}, [location.pathname]);
@@ -31,42 +35,87 @@ const NavDown = () => {
 	return (
 		<div className={`navDown ${downNav}`}>
 			<div className="navDownComp">
-				<Link to="/" className="downAccount">
+				<Link
+					to="/"
+					className="downAccount"
+				>
 					<Home className={`iconsDown ${isActive("/") ? "active" : ""}`} />
 					<p className={`pText ${isActive("/") ? "active" : ""}`}>Home</p>
 				</Link>
 			</div>
 			<div className="navDownComp">
-				<Link to="/shop" className="downAccount">
-					<ShopIcon className={`iconsDown ${isActive("/shop") ? "active" : ""}`} />
+				<Link
+					to="/shop"
+					className="downAccount"
+				>
+					<ShopIcon
+						className={`iconsDown ${isActive("/shop") ? "active" : ""}`}
+					/>
 					<p className={`pText ${isActive("/shop") ? "active" : ""}`}>Shop</p>
 				</Link>
 			</div>
 			<div className="navDownComp">
-				<Link to="/wishlist" className="downAccount">
-					<FavoriteStar className={`iconsDown ${isActive("/wishlist") ? "active" : ""}`} />
-					<p className={`pText ${isActive("/wishlist") ? "active" : ""}`}>WishList</p>
+				<Link
+					to="/wishlist"
+					className="downAccount"
+				>
+					<FavoriteStar
+						className={`iconsDown ${isActive("/wishlist") ? "active" : ""}`}
+					/>
+					<p className={`pText ${isActive("/wishlist") ? "active" : ""}`}>
+						WishList
+					</p>
 				</Link>
 			</div>
 			{isAuthenticated && user && (
 				<div className="navDownComp">
-					<Link to="/orders/me" className="downAccount">
-						<Orders className={`iconsDown ${isActive("/orders/me") ? "active" : ""}`} />
-						<p className={`pText ${isActive("/orders/me") ? "active" : ""}`}>Order</p>
+					<Link
+						to="/orders/me"
+						className="downAccount"
+					>
+						<Orders
+							className={`iconsDown ${isActive("/orders/me") ? "active" : ""}`}
+						/>
+						<p className={`pText ${isActive("/orders/me") ? "active" : ""}`}>
+							Order
+						</p>
 					</Link>
 				</div>
 			)}
 			<div className="navDownComp">
 				<div className="downAccount">
-					{isAuthenticated && user && user.avatar && user.avatar.url ? (
-						<Link to="/me" className="navDownAvatar">
-							<img src={user.avatar.url} alt="" />
+					{isAuthenticated && user && user.avatar?.url ? (
+						<Link
+							to="/me"
+							className="navDownAvatar"
+						>
+							<img
+								src={user.avatar.url}
+								alt="Profile"
+							/>
+						</Link>
+					) : isAuthenticated && user && !user.avatar ? (
+						<Link
+							to="/me"
+							className="navDownAvatar"
+						>
+							<UserIcon
+								className="iconsDownProfile"
+								fill="white"
+							/>
 						</Link>
 					) : (
-						<Link to="/login" className="navDownAvatar">
-							<UserIcon className="iconsDownProfile" fill="white" />
+						<Link
+							to="/login"
+							className="navDownAvatar"
+						>
+							<UserIcon
+								className="iconsDownProfile"
+								fill="white"
+							/>
 						</Link>
 					)}
+
 					<p className={`pText ${isActive("/me") ? "active" : ""}`}>Profile</p>
 				</div>
 			</div>

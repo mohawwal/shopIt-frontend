@@ -1,4 +1,4 @@
-import axios from '../axios/axios'
+import axios from 'axios'
 import {
 	MAKE_PAYMENT_ORDER_REQUEST,
 	MAKE_PAYMENT_ORDER_SUCCESS,

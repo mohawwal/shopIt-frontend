@@ -9,15 +9,15 @@ const NotificationBell = ({ className }) => {
 			<g
 				id="icons"
 				stroke="none"
-				stroke-width="1"
+				strokeWidth="1"
 				fill="none"
-				fill-rule="evenodd"
+				fillRule="evenodd"
 			>
 				<g
 					id="ui-gambling-website-lined-icnos-casinoshunter"
 					transform="translate(-85.000000, -283.000000)"
 					fill="#252528"
-					fill-rule="nonzero"
+					fillRule="nonzero"
 				>
 					<g
 						id="square-filled"

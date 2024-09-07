@@ -1,12 +1,11 @@
 import "./App.css";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DisplayPage from "./pages/displayPage/displayPage";
 import ProductFolder from "./pages/productFolder/productFolder";
 import ProductDetails from "./pages/productDetails/productDetails";
 import Login from "./components/user/Login";
 import Cart from "./components/cart/cart";
-
 import NavCategory from "./pages/navCategory/navCategory";
 import Register from "./components/user/register";
 import Reviews from "./pages/reviews/reviews";
@@ -19,8 +18,6 @@ import NavDown from "./pages/navDown/navDown";
 import Shipping from "./components/cart/shipping";
 import Payment from "./components/cart/payment/payment";
 import ListOrders from "./components/order/ListOrders/ListOrders";
-import store from "./store";
-import { loadUser } from "./actions/userAction";
 import Profile from "./components/user/profile/profile";
 import ProtectedRoute from "./components/route/protectedRoute";
 import OrderDetails from "./components/order/orderDetails/orderDetails";
@@ -37,8 +34,10 @@ import PageFooter from "./pages/footer/pageFooter";
 import UserList from "./components/admin/userList/UserList";
 import UpdateUser from "./components/admin/updateUser/UpdateUser";
 
+import store from "./store";
+import { loadUser } from "./actions/userAction";
+
 function App() {
-	
 
 	useEffect(() => {
 		store.dispatch(loadUser());
@@ -219,7 +218,9 @@ function App() {
 							element={<UpdateUser />}
 							exact
 						/>
+						
 					</Route>
+
 				</Routes>
 				<PageFooter />
 				<nav className="bottomNav">

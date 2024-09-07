@@ -45,6 +45,7 @@ const NewProduct = () => {
 		price: "",
 		description: "",
 		stock: "",
+		// size: [],
 		seller: "",
 		category: "",
 	};
@@ -75,6 +76,48 @@ const NewProduct = () => {
 		"Gifts",
 	];
 
+	//const [allSizes, setAllSizes] = useState([])
+	//console.log(allSizes)
+
+	// const sizes = [
+	// 	"S",
+	// 	"M",
+	// 	"L",
+	// 	"XL",
+	// 	"XXL",
+	// 	"XXXL",
+	// 	"30",
+	// 	"32",
+	// 	"34",
+	// 	"36",
+	// 	"38",
+	// 	"40",
+	// 	"42",
+	// 	"44",
+	// 	"46",
+	// 	"48",
+	// 	"50",
+	// ];
+
+	// const [checkedState, setCheckedState] = useState(
+	// 	new Array(sizes.length).fill(false),
+	// );
+
+	// const handleSizeChange = (position) => {
+	// 	const updatedCheckedState = checkedState.map((item, index) =>
+	// 		index === position ? !item : item,
+	// 	);
+	// 	setCheckedState(updatedCheckedState);
+
+	// 	const selectedSizes = sizes.filter(
+	// 		(size, index) => updatedCheckedState[index],
+	// 	);
+
+	// 	formik.setFieldValue("size", selectedSizes);
+
+	// 	//setAllSizes(selectedSizes)
+	// };
+
 	const validationSchema = Yup.object().shape({
 		name: Yup.string()
 			.min(3, "Name must be at least 3 characters long")
@@ -101,6 +144,8 @@ const NewProduct = () => {
 			.positive("Stock must be a positive number")
 			.required("Stock is required"),
 
+		size: Yup.array().required("product sizes available are required"),
+
 		seller: Yup.string()
 			.min(3, "Seller name must be at least 3 characters long")
 			.max(50, "Seller name cannot exceed 50 characters")
@@ -118,6 +163,7 @@ const NewProduct = () => {
 			formData.append("price", values.price);
 			formData.append("description", values.description);
 			formData.append("category", values.category);
+			//formData.append("size", JSON.stringify(values.size));
 			formData.append("stock", values.stock);
 			formData.append("seller", values.seller);
 
@@ -269,6 +315,30 @@ const NewProduct = () => {
 							</Field>
 						</div>
 					</div>
+
+					{/* <div className="sizeNP">
+						<div className="nameAs">
+							<label htmlFor="name_field">Size</label>
+							<div className="as">*</div>
+						</div>
+						<div>
+							<ul>
+								{sizes.map((size, index) => (
+									<li key={index}>
+										<input
+											type="checkbox"
+											id={`size-${index}`}
+											name="size"
+											value={size}
+											checked={checkedState[index]}
+											onChange={() => handleSizeChange(index)}
+										/>
+										<label htmlFor={`size-${index}`}>{size}</label>
+									</li>
+								))}
+							</ul>
+						</div>
+					</div> */}
 
 					<div className="">
 						<div className="nameAs">

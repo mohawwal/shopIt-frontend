@@ -1,7 +1,7 @@
 .newProduct {
     padding-top: 7vh;
     width: 90%;
-    margin: 0 auto;
+    margin: 0 auto 12vh;
     max-width: 1000px;
 }
 
@@ -20,4 +20,8 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+.sizeNP {
+    margin-top: 20px;
 }

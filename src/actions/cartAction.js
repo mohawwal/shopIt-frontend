@@ -1,14 +1,16 @@
-import axios from '../axios/axios'
+import axios  from 'axios'
 import { ADD_TO_CART, REMOVE_ITEM_CART, SAVE_SHIPPING_INFO } from '../components/constants/cartConstants'
 
 export const addItemToCart =  (id, quantity) => async (dispatch, getState) => {
     const { data } = await axios.get(`/api/v1/product/${id}`)
+    console.log("data from cart", data)
     dispatch({
         type: ADD_TO_CART,
         payload: {
             product: data.product._id,
             name: data.product.name,
             price: data.product.price,
+            //size: data.product.size,
             image: data.product.images[0].url,
             stock: data.product.stock,
             quantity
@@ -40,6 +42,6 @@ export const saveShippingInfo = (data) => async (dispatch) => {
     try {
         await localStorage.setItem('shippingInfo', JSON.stringify(data));
     } catch (error) {
-        //alert.error('Failed to save shipping info to localStorage:', error);
+        alert.error('Failed to save shipping info to localStorage:', error);
     }
 };

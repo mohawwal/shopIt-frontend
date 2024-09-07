@@ -26,7 +26,7 @@ const Navbar = () => {
 		})
 	}
 
-	const { loading, user } = useSelector((state) => state.auth);
+	const { loading, user, isAuthenticated } = useSelector((state) => state.auth);
 	const { cartItems } = useSelector((state) => state.cart);
 
 	const logOutHandler = () => {
@@ -116,7 +116,7 @@ const Navbar = () => {
 		<div className={`${navbar ? "navBar active" : "navBar"} ${navStyle}`}>
 			{user && user ? (
 				<div className="contactNav">
-					<Link
+					{isAuthenticated && user && user.avatar?.url ? <Link
 						to="/me"
 						className="contactNavbar"
 						type="button"
@@ -128,7 +128,7 @@ const Navbar = () => {
 							/>
 						</div>
 						<p>Hi {user && user.name}</p>
-					</Link>
+					</Link> : <div style={{display: "none"}}></div>}
 				</div>
 			) : (
 				!loading && (

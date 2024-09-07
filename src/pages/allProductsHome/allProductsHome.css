@@ -177,7 +177,7 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
-        height: 75vh;
+        /* height: 75vh; */
         display: block;
     }
 
@@ -185,6 +185,8 @@
         height: 7%;
     }
     .pagSC {
+        margin: 10px 0 0;
+        padding-bottom: 5px;
         display: block;
         height: 7%;
         display: flex;

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ClipLoader from "react-spinners/ClipLoader";
 import { login, clearErrors } from "../../actions/userAction";
-import googleIcon from "../../assets/images/google_icon.png";
+// import googleIcon from "../../assets/images/google_icon.png";
 import AlertContext from "../alert/AlertContext";
 
 const Login = () => {
@@ -34,6 +34,7 @@ const Login = () => {
 		(state) => state.auth,
 	);
 
+
 	useEffect(() => {
 		if (formSubmitted && isAuthenticated) {
 			navigate("/");
@@ -55,7 +56,7 @@ const Login = () => {
 					<div className="toe">
 						Enter your credentials to access your account.
 					</div>
-					{/* <div className="errorMsg">{error}</div> */}
+					<div className="errorMsg">{error}</div>
 				</div>
 				{/*  <div className="google">
 					<img
@@ -87,11 +88,6 @@ const Login = () => {
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
 								/>
-								{/* <ErrorMessage
-									name="email"
-									component="div"
-									className="errorMsg"
-								/> */}
 							</div>
 						</div>
 
@@ -118,11 +114,6 @@ const Login = () => {
 									value={password}
 									onChange={(e) => setPassword(e.target.value)}
 								/>
-								{/* <ErrorMessage
-									name="password"
-									component="div"
-									className="errorMsg"
-								/> */}
 							</div>
 						</div>
 
