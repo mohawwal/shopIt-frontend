@@ -114,35 +114,7 @@ const Navbar = () => {
 
 	return (
 		<div className={`${navbar ? "navBar active" : "navBar"} ${navStyle}`}>
-			{user && user ? (
-				<div className="contactNav">
-					{isAuthenticated && user && user.avatar?.url ? <Link
-						to="/me"
-						className="contactNavbar"
-						type="button"
-					>
-						<div className="profileAvatar">
-							<img
-								src={user.avatar && user.avatar.url}
-								alt="profile"
-							/>
-						</div>
-						<p>Hi {user && user.name}</p>
-					</Link> : <div style={{display: "none"}}></div>}
-				</div>
-			) : (
-				!loading && (
-					<Link
-						to="/login"
-						className="contactNav contactNavbar"
-					>
-						<p>Sign In</p>
-						<div>
-							<Add className="icons" />
-						</div>
-					</Link>
-				)
-			)}
+			
 			<div className="preNavMenu">
 				<div onClick={handleNav}>
 					<span>

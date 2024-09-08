@@ -145,7 +145,7 @@ li span {
 /* pageFooter */
 .pageFooter {
     margin: 5vh 0 0;
-    background-color: black;
+    background-color: rgb(9, 0, 41);
     color: rgb(255, 255, 255);
 }
 
@@ -158,6 +158,7 @@ li span {
     display: flex;
     gap: 15px;
     height: 33px;
+    margin: 8px 0;
 }
 
 .socialIcons {
@@ -195,41 +196,46 @@ li span {
 
 .pageInput input {
     width: 90%;
+    max-width: 450px;
     display: flex;
     flex-direction: column;
-    height: 38px;
+    height: 35px;
     padding: 5px 15px;
-    font-size: 1rem;
-    background-color: rgba(59, 59, 59, 0.862);
-    border-radius: 15px;
+    font-size: 0.9rem;
+    background-color: rgba(52, 52, 52, 0.862);
+    border-radius: 10px;
     border: none;
-    margin-top: 4%;
+    margin-top: 20px;
 }
 
 .pageInput button {
     margin-top: 10px;
     padding: 5px 10px;
-    background: rgb(107, 107, 239);
-    color: white;
+    background: rgb(177, 177, 255);
+    color: rgb(0, 0, 0);
     height: 35px;
-    width: 120px;
+    width: 110px;
     border-radius: 5px;
     border: none;
 }
 
 .pageMiddle {
-    height: 200px;
-    border-top: 0.2px dashed rgba(203, 203, 203, 0.781);
-    border-bottom: 0.2px dashed rgba(203, 203, 203, 0.781);
+    border-top:  0.2px dashed rgba(202, 202, 202, 0.377);
+    border-bottom: 0.2px dashed rgba(202, 202, 202, 0.377);
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     justify-content: center;
+    cursor: pointer;
 }
 
 .pageMiddle p {
     text-decoration: underline;
     padding-bottom: 10px;
+    font-size: 0.9rem;
+    padding-top: 10px;
+    font-style: italic;
+    cursor: pointer;
 }
 
 .pageMiddle span {
@@ -243,14 +249,22 @@ li span {
 
 .pageMiddle span .payIcons {
     padding-top: 10px;
+    height: 80px;
+}
+
+.pageMiddle span .payIcons img {
+    height: 100%;
 }
 
 .pageMiddle span span {
     color: rgb(187, 187, 187);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .pageDown {
-    height: 10px;
-    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: rgb(203, 196, 255);
 }

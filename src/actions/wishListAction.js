@@ -6,7 +6,7 @@ import {
 
 export const addToWishList = (id) => async (dispatch, getState) => {
    
-    const {data} = await axios.get(`/api/v1/product/${id}`)
+    const {data} = await axios.get(`https://shopit-api-1.onrender.com/api/v1/product/${id}`)
     dispatch({
         type: ADD_TO_WISHLIST,
         payload: {

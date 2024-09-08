@@ -31,32 +31,57 @@
 
 .sliderContainer {
     width: 100%;
-    height: 60px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .priceFilter {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     width: 90%;
+    height: 100px;
+    max-width: 350px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    padding: 20px 0;
+    padding: 10px 0;
+    border-radius: 10px;
+    background-color: rgba(213, 213, 213, 0.226);
+    font-size: 0.9rem;
+}
+
+.pFFInput {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .priceFilter label input {
     width: 70px;
     border: rgb(12, 12, 12);
+    background-color:  rgba(213, 213, 213, 0.326);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 4px 2px;
 }
 
 .priceFilter button {
-    padding: 3px 7px;
-    background-color: rgb(156, 156, 237);
+    padding: 5px 10px;
+    width: 90%;
+    max-width: 250px;
+    background-color: rgba(178, 178, 243, 0.86);
     border: none;
-    border-radius: 8px;
+    border-radius: 7px;
     font-weight: 500;
+}
+
+.priceFilter button:hover, .priceFilter button:focus {
+    background-color: black;
+    color: white;
 }
 
 .priceFilterNone {

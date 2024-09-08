@@ -144,7 +144,7 @@ const NewProduct = () => {
 			.positive("Stock must be a positive number")
 			.required("Stock is required"),
 
-		size: Yup.array().required("product sizes available are required"),
+		//size: Yup.array().required("product sizes available are required"),
 
 		seller: Yup.string()
 			.min(3, "Seller name must be at least 3 characters long")
@@ -157,6 +157,7 @@ const NewProduct = () => {
 		validationSchema: validationSchema,
 		validateOnBlur: true,
 		onSubmit: (values) => {
+			//console.log("Formik errors: ", formik.errors);
 			let formData = new FormData();
 
 			formData.append("name", values.name);
@@ -171,9 +172,9 @@ const NewProduct = () => {
 				formData.append(`images[${index}]`, image);
 			});
 
-			for (let [key, value] of formData.entries()) {
-				console.log(`${key}`, value);
-			}
+			// for (let [key, value] of formData.entries()) {
+			// 	console.log(`${key}`, value);
+			// }
 
 			dispatch(newProduct(formData));
 		},
@@ -404,7 +405,6 @@ const NewProduct = () => {
 							/>
 						))}
 					</div>
-
 					<div className="btnPss">
 						<button
 							disabled={loading ? true : false}

@@ -18,7 +18,7 @@ export const payment = (paymentData) => async (dispatch) => {
 	try {
 		dispatch({ type: MAKE_PAYMENT_ORDER_REQUEST });
 
-		const { data } = await axios.post("/api/v1/startPayment", paymentData);
+		const { data } = await axios.post("https://shopit-api-1.onrender.com/api/v1/startPayment", paymentData);
 		console.log("payment action - ",data)
 
 		dispatch({
@@ -41,7 +41,7 @@ export const verifyPayment = (reference) => async(dispatch) => {
     try {
         dispatch({ type: VERIFY_PAYMENT_ORDER_REQUEST });
 
-        const { data } = await axios.get(`/api/v1/createPayment?reference=${reference}`);
+        const { data } = await axios.get(`https://shopit-api-1.onrender.com/api/v1/createPayment?reference=${reference}`);
 		console.log("verify data -", data)
 
         if(data.success) {

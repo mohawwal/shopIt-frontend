@@ -81,24 +81,26 @@ const ProductFolder = () => {
 				<div className="itemOption">
 					<div className="sliderContainer">
 						<div className={`${filerToggle ? "priceFilter" : "priceFilterNone"}`}>
-							<label>
-								Min ₦:
-								<input
-									type="number"
-									name="min"
-									value={price[0]}
-									onChange={handlePriceChange}
-								/>
-							</label>
-							<label>
-								Max ₦:
-								<input
-									type="number"
-									name="max"
-									value={price[1]}
-									onChange={handlePriceChange}
-								/>
-							</label>
+							<div className="pFFInput">
+								<label>
+									Min: ₦
+									<input
+										type="number"
+										name="min"
+										value={price[0]}
+										onChange={handlePriceChange}
+									/>
+								</label>
+								<label>
+									Max: ₦
+									<input
+										type="number"
+										name="max"
+										value={price[1]}
+										onChange={handlePriceChange}
+									/>
+								</label>
+							</div>
 							<button
 								onClick={() =>
 									dispatch(getProductCategory(`${id}`, currentPage, price))
