@@ -70,7 +70,7 @@ const Burger = ({ handleNav, user, loading, logoutFunc }) => {
 						</p>
 						<ArrowRight className="icons arrowIcons" />
 					</div>
-					<div>
+					{/* <div>
 						<p>
 							<a
 								href="https://awwal-portfolio.vercel.app/CONTACT"
@@ -81,9 +81,31 @@ const Burger = ({ handleNav, user, loading, logoutFunc }) => {
 							</a>
 						</p>
 						<ArrowRight className="icons arrowIcons" />
-					</div>
+					</div> */}
 				</div>
 				<div className="infoNav">
+					{user && <div onClick={handleNav}>
+						<Link to="/me">Profile</Link>
+					</div>}
+					{/* <div>
+						<a
+							href="https://awwal-portfolio.vercel.app/CONTACT"
+							target="_blank"
+							rel="noreferrer"
+						>
+							Contact Us
+						</a>
+					</div> */}
+					{user && (
+						<div onClick={handleNav}>
+							<Link to="/orders/me">My Orders</Link>
+						</div>
+					)}
+					{user && user.role === "admin" ? (
+						<div onClick={handleNav}>
+							<Link to="/dashboard">My Dashboard</Link>
+						</div>
+					) : null}
 					<div>
 						{user && user.name !== null ? (
 							<div onClick={logoutFunc}>
@@ -101,23 +123,6 @@ const Burger = ({ handleNav, user, loading, logoutFunc }) => {
 								</div>
 							)
 						)}
-					</div>
-					{user && user.role === "admin" ? (
-						<div onClick={handleNav}>
-							<Link to="/dashboard">My Dashboard</Link>
-						</div>
-					) : null}
-					{user && <div onClick={handleNav}>
-						<Link to="/orders/me">My Orders</Link>
-					</div>}
-					<div>
-						<a
-							href="https://awwal-portfolio.vercel.app/CONTACT"
-							target="_blank"
-							rel="noreferrer"
-						>
-							Contact Us
-						</a>
 					</div>
 				</div>
 			</div>

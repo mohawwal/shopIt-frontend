@@ -129,6 +129,14 @@
     width: 10px;
 }
 
+.boldTxt {
+    cursor: pointer;
+}
+
+.boldTxt:hover, .boldTxt:focus {
+    font-weight: 600;
+}
+
 .signSpace div, .signSpace div span {
     display: flex;
     align-items: center;

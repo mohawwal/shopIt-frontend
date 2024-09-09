@@ -1,5 +1,5 @@
 import "./profile.css";
-import React,{ useContext } from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "../../../pages/loader/loader";
@@ -8,31 +8,31 @@ import EditIcon from "../../../assets/svg/edit";
 import GreaterThan from "../../../assets/svg/greaterThan";
 import Logout from "../../../assets/svg/logout";
 import Bin from "../../../assets/svg/bin";
-import ChangePassword from "../../../assets/svg/chnagePassword"
-import Pen from '../../../assets/svg/pen'
+import ChangePassword from "../../../assets/svg/chnagePassword";
+import Pen from "../../../assets/svg/pen";
 import { logOut } from "../../../actions/userAction";
 import { useDispatch } from "react-redux";
 import AlertContext from "../../alert/AlertContext";
 
 const Profile = () => {
-	const dispatch = useDispatch()
-	const navigate = useNavigate()
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
-	const [, setAlert] = useContext(AlertContext)
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
 	const { user, isAuthenticated, loading } = useSelector((state) => state.auth);
 
 	const signOutFromProfile = () => {
-		dispatch(logOut())
-		showAlert('sign out successfully', 'success')
-	}
+		dispatch(logOut());
+		showAlert("sign out successfully", "success");
+	};
 
 	if (loading) {
 		return <Loader />;
@@ -42,24 +42,40 @@ const Profile = () => {
 		<div className="profile">
 			<div className="profileBox">
 				<div className="profileForm">
-					<div className="profileStart" onClick={() => navigate(-1)}>
+					<div
+						className="profileStart"
+						onClick={() => navigate(-1)}
+					>
 						<div>
 							<ArrowLeft className="icons aLI" />
 						</div>
 						<div className="head">Profile Details</div>
 					</div>
 					<div className="profileSection">
-						{isAuthenticated && user && user.avatar?.url ? <div>
-							<img
-								src={user && user.avatar.url}
-								alt="avatar"
-							/>
-							<Link to="/me/Update" className="imgPen">
-								<Pen className="icons editIcon" />
-							</Link>
-						</div> : <div><p>add profile picture</p> <Link to="/me/Update" className="imgPen">
-								<Pen className="icons editIcon" />
-							</Link></div>}
+						{isAuthenticated && user && user.avatar?.url ? (
+							<div>
+								<img
+									src={user && user.avatar.url}
+									alt="avatar"
+								/>
+								<Link
+									to="/me/Update"
+									className="imgPen"
+								>
+									<Pen className="icons editIcon" />
+								</Link>
+							</div>
+						) : (
+							<div>
+								<p>add profile picture</p>{" "}
+								<Link
+									to="/me/Update"
+									className="imgPen"
+								>
+									<Pen className="icons editIcon" />
+								</Link>
+							</div>
+						)}
 					</div>
 					<div className="profileLog">
 						<div className="profileDetailsLog">
@@ -81,18 +97,32 @@ const Profile = () => {
 									<EditIcon className="icons editIcon" />
 								</Link>
 							</div>
-							<div className="detailLog">
+							{/* <div className="detailLog">
 								<div>
 									<div>User Role</div>
 									<span>{user ? user.role.toUpperCase() : ''}</span>
 								</div>
-							</div>
-							<div className="detailLog">
-								<div>
-									<div>Joined</div>
-									<span>{user && user.createdAt.substring(0, 10)}</span>
+							</div> */}
+							{user && (
+								<Link
+									to="/orders/me"
+									className="detailLog"
+								>
+									<div className="boldTxt">My Orders</div>
+								</Link>
+							)}
+							{user && user.role === "user" ? (
+								<div className="detailLog">
+									<div>
+										<div>Joined</div>
+										<span>{user && user.createdAt.substring(0, 10)}</span>
+									</div>
 								</div>
-							</div>
+							) :  (
+								<Link to='/dashboard' className="detailLog">
+									<div className="boldTxt">Dashboard</div>
+								</Link>
+							)}
 						</div>
 						<div className="orLine pLine">
 							<div className="line"></div>
@@ -100,7 +130,10 @@ const Profile = () => {
 							<div className="line"></div>
 						</div>
 						<div className="profileSignLog">
-							<div className="signSpace" onClick={signOutFromProfile}>
+							<div
+								className="signSpace"
+								onClick={signOutFromProfile}
+							>
 								<div>
 									<span>
 										<Logout className="icons signOutIcon" />
@@ -111,7 +144,10 @@ const Profile = () => {
 									<GreaterThan className="icons gTI" />
 								</span>
 							</div>
-							<Link to='/password/Update' className="signSpace">
+							<Link
+								to="/password/Update"
+								className="signSpace"
+							>
 								<div>
 									<span>
 										<ChangePassword className="icons signOutIcon" />

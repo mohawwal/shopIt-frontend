@@ -49,15 +49,20 @@
 .addIcon {
     width: 1.2rem;
 }
-  
 
 .navText {
     width: 30%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
     text-align: center;
     letter-spacing: 0.3rem;
 }
+
+
+.zarIcons {
+    width: rem;
+}
+ 
 
 .navIcons {
     width: 35%;
@@ -72,6 +77,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
+
     gap: 0.4rem;
     position: relative;
     cursor: pointer;
@@ -257,7 +264,132 @@
 
 .navIcon {
     width: 1.28rem;
-} 
+}
+
+.navIconsBS {
+    display: none;
+}
+
+
+@media screen and (max-width: 950px) {
+    .navOSS {
+        display: block;
+    }
+    .menuListBS {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 950px) {
+    .contactNav, .navText, .navIcons {
+        display: none;
+    }
+
+    .navIconsBS {
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        gap: 20px;
+    }
+}
+
+.navTextBS {
+    font-weight: 600;
+}
+
+.menuListBS {
+    width: 60%;
+    cursor: pointer;
+}
+
+.menuListBS ul {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: row;
+    width: 100%;
+    gap: 6%;
+}
+
+.menuListBS ul li, .menuListBS ul li div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    font-size: 0.8rem;
+}
+
+.downIcons {
+    width: 0.8rem;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li div {
+    display: flex;
+    align-items: center;
+}
+
+.menu li .submenu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 400px; 
+    display: none;
+    background-color: rgba(5, 0, 41, 0.779); 
+    color: rgb(210, 199, 255); 
+    z-index: 10;
+}
+
+.menu li ul li {
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.submenu li:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+
+.menu li:hover .submenu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.menu li:hover div {
+    color: black;
+    font-weight: 600;
+}
+
+
+.submenu {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+  
+  .menu li:hover .submenu {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
 @media screen and (min-width: 1000px) {
     .navBurger {
@@ -267,6 +399,7 @@
         width: 60%;
     }
 }
+
 
 @media screen and (max-width: 700px) {
     .navMenu span {
@@ -283,7 +416,12 @@
     }
 }
 
+@media screen and (min-width: 550px) {
+    
+}
+
 @media screen and (max-width: 550px) {
+    
     .contactNav, .navMenu {
         display: none;
     }

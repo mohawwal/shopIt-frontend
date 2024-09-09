@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axiosInstance from '../axios/axios'
 
 import {
     LOGIN_REQUEST,
@@ -65,8 +65,9 @@ export const login = (email, password) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post('https://shopit-api-1.onrender.com/api/v1/login', {email, password}, config)
-        
+        const { data } = await axiosInstance.post('/api/v1/login', {email, password}, config)
+        console.log(data)
+        localStorage.setItem('token', data.token)
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -76,6 +77,7 @@ export const login = (email, password) => async (dispatch) => {
 
     } catch(error) {
         const errorMessage = error.response?.data?.message || error.message;
+        console.log(errorMessage)
         dispatch({
             type: LOGIN_FAIL,
             payload: errorMessage
@@ -94,8 +96,8 @@ export const register = (userData) => async (dispatch) => {
             }
         }
 
-        const {data} = await axios.post('https://shopit-api-1.onrender.com/api/v1/register', userData, config)
-       
+        const {data} = await axiosInstance.post('/api/v1/register', userData, config)
+        localStorage.setItem('token', data.token)
 
         dispatch({
             type: REGISTER_USER_SUCCESS,
@@ -119,7 +121,7 @@ export const loadUser = () => async(dispatch) => {
     try {
         dispatch({ type: LOAD_USER_REQUEST })
 
-        const { data } = await axios.get('https://shopit-api-1.onrender.com/api/v1/me')
+        const { data } = await axiosInstance.get('/api/v1/me')
 
         dispatch({
             type: LOAD_USER_SUCCESS,
@@ -147,7 +149,7 @@ export const updateProfile = (userData) => async(dispatch) => {
             }
         }
 
-        const { data } = await axios.put('https://shopit-api-1.onrender.com/api/v1/me/update', userData, config)
+        const { data } = await axiosInstance.put('/api/v1/me/update', userData, config)
 
         dispatch({
             type: UPDATE_PROFILE_SUCCESS,
@@ -175,7 +177,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.put('https://shopit-api-1.onrender.com/api/v1/password/update', passwords, config)
+        const { data } = await axiosInstance.put('/api/v1/password/update', passwords, config)
 
         dispatch({
             type: UPDATE_PASSWORD_SUCCESS,
@@ -203,7 +205,7 @@ export const forgetPassword = (email) => async (dispatch) => {
             },
         };
 
-        const { data } = await axios.post('https://shopit-api-1.onrender.com/api/v1/password/forgot', email, config);
+        const { data } = await axiosInstance.post('/api/v1/password/forgot', email, config);
 
         dispatch({
             type: FORGOT_PASSWORD_SUCCESS,
@@ -229,7 +231,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
             },
         };
 
-        const { data } = await axios.put(`https://shopit-api-1.onrender.com/api/v1/password/reset/${token}`, passwords, config)
+        const { data } = await axiosInstance.put(`/api/v1/password/reset/${token}`, passwords, config)
 
         dispatch({
             type: NEW_PASSWORD_SUCCESS,
@@ -248,10 +250,13 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
 //LogOut user
 export const logOut = () => async (dispatch) => {
     try {
-        await axios.get('https://shopit-api-1.onrender.com/api/v1/logout')
+        await axiosInstance.get('/api/v1/logout')
+        localStorage.removeItem('token');
+        
         dispatch({
             type: LOGOUT_SUCCESS,
         })
+        
 
     } catch(error) {
         const errorMessage = error.response?.data?.message || error.message;
@@ -267,7 +272,7 @@ export const getAllUsers = () => async (dispatch) => {
     try {
         dispatch({type: ALL_USERS_REQUEST})
 
-        const { data } = await axios.get(`https://shopit-api-1.onrender.com/api/v1/admin/users`)
+        const { data } = await axiosInstance.get(`/api/v1/admin/users`)
 
         dispatch({
             type: ALL_USERS_SUCCESS,
@@ -287,7 +292,7 @@ export const getUserDetails = (id) => async (dispatch) => {
 	try {
 		dispatch({ type: USERS_DETAILS_REQUEST })
 
-		const { data } = await axios.get(`https://shopit-api-1.onrender.com/api/v1/admin/user/${id}`); 
+		const { data } = await axiosInstance.get(`/api/v1/admin/user/${id}`); 
 
 		dispatch({
 			type: USERS_DETAILS_SUCCESS,
@@ -310,7 +315,7 @@ export const deleteUser = (id) => async (dispatch) => {
 	try {
 		dispatch({ type: DELETE_USERS_REQUEST })
 
-		const { data } = await axios.delete(`https://shopit-api-1.onrender.com/api/v1/admin/user/${id}`); 
+		const { data } = await axiosInstance.delete(`/api/v1/admin/user/${id}`); 
 
 		dispatch({
 			type: DELETE_USERS_SUCCESS,
@@ -332,7 +337,7 @@ export const UpdateUser = (id, userData) => async (dispatch) => {
 	try {
 		dispatch({ type: UPDATE_USERS_REQUEST })
 
-		const { data } = await axios.put(`https://shopit-api-1.onrender.com/api/v1/admin/user/${id}`, userData); 
+		const { data } = await axiosInstance.put(`/api/v1/admin/user/${id}`, userData); 
 
 		dispatch({
 			type: UPDATE_USERS_SUCCESS,

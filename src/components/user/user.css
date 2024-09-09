@@ -93,7 +93,7 @@
 }
 
 .nameAs label {
-    font-size: 0.96rem;
+    font-size: 0.9rem;
     color: rgba(0, 0, 0, 0.688);
     padding: 5px 0;
 }
@@ -166,7 +166,7 @@
     height: 2.8rem;
     padding: 10px;
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .inputField input {
@@ -176,7 +176,7 @@
 
 .errorMsg {
     color: #ea5555;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-align: right;
     border: 0.2rem;
 }
@@ -214,7 +214,7 @@
 
 .fpHead {
     font-weight: 600;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin: 10% 0;
 }
 

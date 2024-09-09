@@ -143,7 +143,7 @@ const Cart = () => {
 														className="cancelII"
 														onClick={() => removeCartItemHandler(item.product)}
 													>
-														<Cancel className="cancelIcons" />
+														<Cancel className="missIcon" />
 													</div>
 													<div className="cartItemImgII">
 														<img
@@ -153,7 +153,7 @@ const Cart = () => {
 														/>
 													</div>
 													<div className=" plainProp cartProdII">
-														<Link to={`product/${item.product}`}>
+														<Link to={`/product/${item.product}`}>
 															{item.name.toUpperCase()}
 														</Link>
 													</div>

@@ -1,8 +1,8 @@
-import axios  from 'axios'
+import axiosInstance from '../axios/axios'
 import { ADD_TO_CART, REMOVE_ITEM_CART, SAVE_SHIPPING_INFO } from '../components/constants/cartConstants'
 
 export const addItemToCart =  (id, quantity) => async (dispatch, getState) => {
-    const { data } = await axios.get(`https://shopit-api-1.onrender.com/api/v1/product/${id}`)
+    const { data } = await axiosInstance.get(`/api/v1/product/${id}`)
     console.log("data from cart", data)
     dispatch({
         type: ADD_TO_CART,

@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axiosInstance  from '../axios/axios'
 import {
     ADD_TO_WISHLIST,
     REMOVE_FROM_WISHLIST
@@ -6,7 +6,7 @@ import {
 
 export const addToWishList = (id) => async (dispatch, getState) => {
    
-    const {data} = await axios.get(`https://shopit-api-1.onrender.com/api/v1/product/${id}`)
+    const {data} = await axiosInstance.get(`/api/v1/product/${id}`)
     dispatch({
         type: ADD_TO_WISHLIST,
         payload: {

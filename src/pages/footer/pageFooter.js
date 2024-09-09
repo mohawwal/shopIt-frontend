@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import bankCard from "../../assets/images/paystackCards.png"
+import bankCard from "../../assets/images/paystackCards.png";
 import WhatsappBlack from "../../assets/svg/whatsappBlack";
 import Ig from "../../assets/svg/ig";
 import Portfolio from "../../assets/svg/portfolio";
@@ -55,8 +55,16 @@ const PageFooter = () => {
 						placeholder="Enter your phone number or email address"
 					/>
 					<button>Subscribe</button>
-				</div> 
-				<div className="pageMiddle">
+				</div>
+				<Link
+					to="https://awwal-portfolio.vercel.app/CONTACT"
+					className="socialsIcons"
+				>
+					<WhatsappBlack className="appIcons" />
+					<Ig className="socialIcons" />
+					<Portfolio className="portIcon" />
+				</Link>
+				{/* <div className="pageMiddle">
 					<p>Return Policy</p>
 					<span>
 						<h4>CONTACT US</h4>
@@ -65,15 +73,11 @@ const PageFooter = () => {
 						<div className="payIcons">
 							<img src={bankCard} alt="" />
 						</div>
-						<Link to='https://awwal-portfolio.vercel.app/CONTACT' className="socialsIcons">
-							<WhatsappBlack className="appIcons" />
-							<Ig className="socialIcons" />
-							<Portfolio className="portIcon" />
-						</Link>
+						
 					</span>
 					
 				</div>
-                <div className="pageDown">Thank You For Shopping With Zarmario❤️</div>
+                <div className="pageDown">Thank You For Shopping With Zarmario❤️</div> */}
 			</div>
 		</div>
 	);
