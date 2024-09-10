@@ -19,7 +19,7 @@ export const payment = (paymentData) => async (dispatch) => {
 		dispatch({ type: MAKE_PAYMENT_ORDER_REQUEST });
 
 		const { data } = await axiosInstance.post("/api/v1/startPayment", paymentData);
-		console.log("payment action - ",data)
+		////console.log("payment action - ",data)
 
 		dispatch({
 			type: MAKE_PAYMENT_ORDER_SUCCESS,
@@ -42,7 +42,7 @@ export const verifyPayment = (reference) => async(dispatch) => {
         dispatch({ type: VERIFY_PAYMENT_ORDER_REQUEST });
 
         const { data } = await axiosInstance.get(`/api/v1/createPayment?reference=${reference}`);
-		console.log("verify data -", data)
+		//console.log("verify data -", data)
 
         if(data.success) {
 			dispatch({

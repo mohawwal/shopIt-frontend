@@ -29,7 +29,7 @@ const OrderDetails = () => {
 	const { order, error, loading } = useSelector(
 		(state) => state.getOrderDetails,
 	);
-	console.log(order);
+	//console.log(order);
 
 	useEffect(() => {
 		dispatch(getOrderDetails(id));

@@ -89,7 +89,7 @@ const Register = () => {
 			}
 
 			// formData.forEach((value, key) => {
-			// 	console.log(key, value);
+			// 	//console.log(key, value);
 			// });
 
 			dispatch(register(formData));

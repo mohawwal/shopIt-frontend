@@ -20,7 +20,7 @@ const Shipping = () => {
 	const { shippingInfo } = useSelector((state) => state.cart);
 	const { user, isAuthenticated } = useSelector((state) => state.auth);
 	const { cartItems } = useSelector((state) => state.cart);
-	//console.log(cartItems)
+	////console.log(cartItems)
 
 	const prevShippingPrice = 5000;
 	const shippingPrice = parseFloat(prevShippingPrice.toFixed(0));

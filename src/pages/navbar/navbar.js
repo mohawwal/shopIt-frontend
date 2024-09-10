@@ -133,7 +133,7 @@ const Navbar = () => {
 						</Link>
 					</div>
 				) : isAuthenticated && user ? (
-					<p>Hi {user && user.name}</p>
+					<Link to='/me' style={{fontSize: '0.8rem'}}>👋🏽 {user && user.name && user.name.toUpperCase()}</Link>
 				) : (
 					!loading && (
 						<Link
