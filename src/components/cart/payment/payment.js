@@ -63,11 +63,11 @@ const Payment = () => {
 			key: "pk_test_d0c7316ac62fc13a305c4c3605ec0ded38ed3f3d",
 
 			onSuccess: (transaction) => {
-				console.log("transaction successful - ", transaction);
-				console.log("ref - ", paymentOrder?.data?.reference);
+				//console.log("transaction successful - ", transaction);
+				//console.log("ref - ", paymentOrder?.data?.reference);
 				dispatch(verifyPayment(transaction.reference))
 					.then((response) => {
-						console.log(response);
+						//console.log(response);
 						if (response?.payload?.success) {
 							
 							orderInfo.paymentInfo = {
@@ -102,24 +102,22 @@ const Payment = () => {
 	}
 	return (
 		<div className="payment">
-			<div>
+			<div className="backChange" onClick={navigate(-1)}>
 				<p>Change Order Detail</p>
 			</div>
-			<div>Zarmario</div>
-			<div>
+			<div className="mariO">Zarmario</div>
+			<div className="payDet">
 				<div className="paystack">
-					<div>
+					<div className="pSText">
 						<span>Pay With Paystack</span>
-						<div>
-							<span>
+							<div className="payAmt">
 								₦{order?.itemPrice}{" "}
 								<i>
 									includes ₦
 									{order?.order?.taxPrice + order?.order?.shippingPrice}{" "}
 									shipping / Tax Fee
 								</i>
-							</span>
-						</div>
+							</div>
 						<p>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
 							molestias recusandae sint inventore incidunt perspiciatis ipsa
@@ -127,7 +125,7 @@ const Payment = () => {
 							quod rerum consectetur dolore odio?
 						</p>
 					</div>
-					<div>mark</div>
+					<div>✅</div>
 				</div>
 
 				<div className="buttonPay">

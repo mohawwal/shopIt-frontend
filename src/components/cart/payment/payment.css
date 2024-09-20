@@ -1,5 +1,67 @@
 .payment {
-    padding-top: 10vh;
+    padding: 10vh 3%;
     max-width: 600px;
     margin: 0 auto;
+}
+
+.backChange p {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: rgba(33, 33, 33, 0.827);
+}
+
+.backChange:hover, .backChange:focus {
+    text-decoration: underline;
+}
+
+.mariO {
+    margin: 10px 0;
+}
+
+.paystack {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.buttonPay {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: rgba(146, 146, 236, 0.666);
+    height: 70px;
+    margin: 5vh 0 10vh;
+    padding: 0 5%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.buttonPay div {
+    font-size: 1.5rem;
+}
+
+.buttonPay button {
+    height: 40px;
+    width: 90px;
+    border-radius: 13px;
+    font-weight: 600;
+    border: none;
+}
+
+.pSText span {
+    color: rgb(129, 129, 235);
+    font-weight: 600;
+}
+
+.pSText p {
+    font-size: 0.85rem;
+    color: rgba(88, 88, 88, 0.899);
+}
+
+.payAmt {
+    color: rgba(157, 157, 157, 0.76);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 7px 0;
 }

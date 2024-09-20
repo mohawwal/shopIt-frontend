@@ -29,7 +29,7 @@ const OrderDetails = () => {
 	const { order, error, loading } = useSelector(
 		(state) => state.getOrderDetails,
 	);
-	//console.log(order);
+	console.log(order);
 
 	useEffect(() => {
 		dispatch(getOrderDetails(id));
@@ -70,7 +70,7 @@ const OrderDetails = () => {
 					</div>
 					<div className="orderText">
 						{order?.shippingInfo?.streetAddress
-							? `${order.shippingInfo.streetAddress || order.shippingInfo.park}, ${order.shippingInfo.location}, ${order.shippingInfo.state}`
+							? `${order.shippingInfo.streetAddress || order.shippingInfo.park}, ${order.shippingInfo.state}`
 							: "Shipping information is not available"}
 					</div>
 					<div className="orderDate">
