@@ -36,6 +36,7 @@ import UpdateUser from "./components/admin/updateUser/UpdateUser";
 
 import store from "./store";
 import { loadUser } from "./actions/userAction";
+import PeopleProduct from "./pages/peopleProduct/peopleProduct";
 
 function App() {
 
@@ -53,6 +54,8 @@ function App() {
 				<div>
 					<Alert />
 				</div>
+
+				
 
 				<Routes>
 					<Route
@@ -73,6 +76,11 @@ function App() {
 					<Route
 						path="/product/:id"
 						element={<ProductDetails />}
+						exact
+					/>
+					<Route
+						path="/products/:people"
+						element={<PeopleProduct />}
 						exact
 					/>
 					<Route

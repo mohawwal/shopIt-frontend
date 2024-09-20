@@ -23,12 +23,12 @@
 }
 
 .listDiv p {
-    color: rgba(51, 51, 51, 0.956);
+    color: rgba(0, 0, 0, 0.956);
     font-size: 0.8rem;
 }
 
 .orderDetList .listDiv span {
-    color: rgba(54, 54, 54, 0.679);
+    color: rgba(39, 39, 39, 0.662);
     font-weight: 600;
 }
 
@@ -46,11 +46,12 @@
 
 .orderDet h2 {
     margin-bottom: 0.6rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .orderDet p {
     margin-bottom: 0.7rem;
+    font-size: 0.95rem;
 }
 
 

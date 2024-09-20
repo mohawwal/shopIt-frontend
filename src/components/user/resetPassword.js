@@ -67,7 +67,7 @@ const ResetPassword = () => {
 	});
 
 	return (
-		<div>
+		<div className="forgetPassword">
 			<FormikProvider
 				value={formik}
 				className="profile"
@@ -77,7 +77,7 @@ const ResetPassword = () => {
 					encType="application/json"
 				>
 					<div className="space emailSpace">
-						<div>reset password</div>
+						<h3 style={{margin: "30px 0"}}>Reset password</h3>
 						<div>
 							<div className="nameAs">
 								<label htmlFor="name_field">Password</label>
@@ -116,6 +116,7 @@ const ResetPassword = () => {
 							</div>
 						</div>
 						<button
+							className="fpButton"
 							type="submit"
 							disabled={loading ? true : false}
 						>
@@ -126,7 +127,7 @@ const ResetPassword = () => {
 									size={20}
 								/>
 							) : (
-								<div>Enter</div>
+								"Enter"
 							)}
 						</button>
 					</div>

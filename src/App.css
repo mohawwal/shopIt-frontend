@@ -13,6 +13,10 @@ p {
   font-size: 12px;
 }
 
+button {
+  cursor: pointer;
+}
+
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   /* font-family: Helvetica, Arial, sans-serif; */

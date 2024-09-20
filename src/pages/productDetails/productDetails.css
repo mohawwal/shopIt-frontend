@@ -23,6 +23,32 @@
     margin: 0 auto;
 }
 
+.allName {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+.pFHomes {
+    background-color: #b9b9b938;
+    min-width: 180px;
+    max-width: 180px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 7px;
+}
+
+.pFHomes .pFImgs {
+    height: 153px;
+}
+
+.pFImgs img {
+    object-fit: cover;
+    object-position: top;
+    height: 100%;
+}
 
 .backArrowPD span {
     height: 100%;
@@ -478,7 +504,7 @@
 }
 
 .prodDetailsQty {
-    height: 1.7rem;
+    height: 1.5rem;
     width: 20%;
     min-width: 100px;
     display: flex;
@@ -489,12 +515,12 @@
 
 .prodDetailsQty input {
     text-align: center;
-    width: 1.5rem;
+    width: 1.3rem;
     height: 100%;
     border: none;
     background-color: whitesmoke;
     color: rgb(0, 0, 0);
-    font-size: 1rem;
+    font-size: 0.85rem;
 }
 
 .prodDetailsQty .btnRight.btnBlur, 

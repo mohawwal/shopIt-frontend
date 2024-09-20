@@ -374,7 +374,11 @@
     .showCover {
         display: block;
         width: 68%;
+        height: 100vh;
+    }
+    .showCover img {
         height: 100%;
-        background-color: red;
+        object-fit: cover;
+        object-position: center;
     }
 }

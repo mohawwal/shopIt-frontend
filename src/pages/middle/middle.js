@@ -30,10 +30,7 @@ const Middle = () => {
             illo itaque adipisci est excepturi 
             eaque, minima incidunt. Cumque esse
             adipisicing elit. Deleniti dolor sun
-            illo itaque adipisci est excepturi 
-            eaque, minima incidunt. Cumque esse
-            hic nisi incidunt distinctio tempor
-            a natus eveniet vero cupiditate.
+            illo itaque adipisci e.
         </p>
       </div>
     </div>

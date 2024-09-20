@@ -7,6 +7,10 @@ import {
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,
+    
+    PRODUCT_FOR_CATEGORY_REQUEST,
+    PRODUCT_FOR_CATEGORY_SUCCESS,
+    PRODUCT_FOR_CATEGORY_FAIL,
 
     ALL_PRODUCT_REQUEST,
     ALL_PRODUCT_SUCCESS,
@@ -57,6 +61,30 @@ export const getProductCategory = (category, currentPage = 1, price) => async (d
         });
     }
 };
+
+
+export const getPeopleProduct = (people, currentPage = 1, price) => async (dispatch) => {
+    try {
+        dispatch({ type: PRODUCT_FOR_CATEGORY_REQUEST });
+
+        const { data } = await axiosInstance.get(`/api/v1/products/${people}?&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}`);
+        
+
+        dispatch({
+            type: PRODUCT_FOR_CATEGORY_SUCCESS,
+            payload: data
+        });
+
+    } catch (error) {
+        const errorMessage = error.response ? error.response.data.message : error.message;
+        console.log(error)
+        dispatch({
+            type: PRODUCT_FOR_CATEGORY_FAIL,
+            payload: errorMessage
+        });
+    }
+};
+
 
 export const getProductDetails = (_id) => async (dispatch) => {
     try {

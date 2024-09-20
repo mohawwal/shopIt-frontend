@@ -22,7 +22,8 @@ import {
 	addToWishList,
 	removeFromWishList,
 } from "../../actions/wishListAction";
-import Cart from "../../assets/svg/cart";
+import { BsCart4 } from "react-icons/bs";
+//import Cart from "../../assets/svg/cart";
 import { getProductCategory } from "../../actions/productActions";
 import Loader from "../loader/loader";
 import ImgNext from "../../assets/svg/imgNext";
@@ -451,31 +452,40 @@ const ProductDetails = () => {
 						<div className="productHome productHomeDT">
 							{products.map((product, index) => (
 								<div
-									className="allHome allHomeDT"
+									className="pFHomes"
 									key={index}
 								>
-									<div className="allHomeImg">
-										<Link
-											className="Link"
-											to={`/product/${product._id}`}
-										>
-											<img
-												src={product.images[0]?.url}
-												alt="img"
-											/>
-										</Link>
-									</div>
-									<div className="allTD">
-										<div>
-											<div className="allName">{product.name}</div>
-											<div className="allStars">₦{product.price}</div>
+									<Link
+										Link
+										to={`/product/${product._id}`}
+										className="pFImgs"
+									>
+										<img
+											src={product.images && product.images[0].url}
+											alt="goods"
+										/>
+									</Link>
+									<div className="allTDs">
+										<div className="allT">
+											<div className="allName">
+												<div className="allName">
+													{product.name ? product.name.toUpperCase() : ""}
+												</div>
+											</div>
+											<div className="allStars">
+												₦{product.price.toLocaleString()}
+											</div>
 										</div>
-										<div
-											onClick={() => addToCart(product._id)}
-											className="basket basketSC"
-										>
-											<Cart className="cartIcon" />
-										</div>
+										{product && product.stock >= 1 ? (
+											<div
+												className="basket"
+												onClick={() => addToCart(product._id)}
+											>
+												<BsCart4 className="prodCartIcon" />
+											</div>
+										) : (
+											<></>
+										)}
 									</div>
 								</div>
 							))}

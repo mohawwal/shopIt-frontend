@@ -1,21 +1,27 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import "./payment.css";
-import CheckoutSteps from "../checkoutSteps";
+import { useSelector, useDispatch } from "react-redux";
+import Loader from "../../../pages/loader/loader";
 import ClipLoader from "react-spinners/ClipLoader";
-import { useDispatch, useSelector } from "react-redux";
+import { MAKE_PAYMENT_ORDER_RESET } from "../../constants/paymentConstant";
 import {
-	clearErrors,
-	payment,
+	initializePayment,
 	verifyPayment,
+	clearErrors,
 } from "../../../actions/paymentAction";
+import Paystack from "@paystack/inline-js";
+import AlertContext from "../../alert/AlertContext";
 import { useNavigate } from "react-router-dom";
 import { addOrder } from "../../../actions/orderAction";
-import AlertContext from "../../alert/AlertContext";
-import { MAKE_PAYMENT_ORDER_RESET } from "../../constants/paymentConstant";
+import { clearCart } from "../../../actions/cartAction";
 
 const Payment = () => {
 	const dispatch = useDispatch();
+	const popup = new Paystack();
 	const navigate = useNavigate();
+
+	const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+	const { user, isAuthenticated } = useSelector((state) => state.auth);
 
 	const [, setAlert] = useContext(AlertContext);
 
@@ -27,119 +33,119 @@ const Payment = () => {
 	};
 
 	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-
-	const { loading, order, error } = useSelector((state) => state.payment);
-
-	const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
-
+	const { loading, order, error } = useSelector((state) => state.createOrder);
+	const { order: paymentOrder } = useSelector((state) => state.payment);
+	//const {status} = useSelector((state => state.verifyPayment))
 
 	const paymentData = {
-		amount: Math.round(orderInfo.totalPrice),
-		email: orderInfo?.shippingInfo?.email,
-		products: orderInfo.orderItems,
+		amount: order?.totalPrice,
+		email: order?.email,
+		products: orderInfo?.orderItems,
 	};
-	
 
 	useEffect(() => {
-		dispatch(payment(paymentData));
-
 		if (error) {
 			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
+	}, [dispatch, error]);
 
-		return () => {
-			dispatch({ type: MAKE_PAYMENT_ORDER_RESET });
-		};
-	}, [error, dispatch]);
-
-	const initializePayment = (e) => {
+	const paymentFunc = (e) => {
 		e.preventDefault();
 		setIsButtonDisabled(true);
 
-		if (
-			order &&
-			order.data &&
-			order.data.data &&
-			order.data.data.authorization_url
-		) {
-			const authorizationUrl = order.data.data.authorization_url;
+		dispatch(initializePayment(paymentData));
 
-			const paymentWindow = window.open(authorizationUrl);
+		popup.newTransaction({
+			email: paymentData.email,
+			amount: paymentData.amount * 100,
+			products: paymentData.products,
+			key: "pk_test_d0c7316ac62fc13a305c4c3605ec0ded38ed3f3d",
 
-			const interval = setInterval(() => {
-				if (paymentWindow.closed) {
-					clearInterval(interval);
+			onSuccess: (transaction) => {
+				console.log("transaction successful - ", transaction);
+				console.log("ref - ", paymentOrder?.data?.reference);
+				dispatch(verifyPayment(transaction.reference))
+					.then((response) => {
+						console.log(response);
+						if (response?.payload?.success) {
+							
+							orderInfo.paymentInfo = {
+								reference: response?.payload?.reference,
+								success: response?.payload?.success,
+								status: "payment success",
+								paidAt: response?.payload?.paidAt,
+							};
 
-					// Verify the payment after the payment window is closed
-					const reference = order.data.data.reference;
+							dispatch(addOrder(orderInfo));
+							dispatch(clearCart());
+							showAlert(`Payment successful`, "success");
+							
+							user && isAuthenticated ? navigate("/orders/me") : navigate("/");
 
-					dispatch(verifyPayment(reference))
-						.then((response) => {
-							const paymentStatus = response.payload.data.status;
-
-							if (paymentStatus === "success") {
-								showAlert(`Payment ${paymentStatus}`, "success");
-
-								orderInfo.paymentInfo = {
-									reference: response.payload.data.reference,
-									success: response.payload.data.success,
-									status: response.payload.data.status,
-								}
-
-								dispatch(addOrder(orderInfo));
-								navigate("/orders/me");
-							} else {
-								showAlert(`Payment ${paymentStatus}`, "error");
-								navigate("/shipping");
-								setIsButtonDisabled(false);
-							}
-						})
-						.catch((error) => {
-							// Handle the error if needed
-							showAlert(
-								`Payment verification failed: ${error.message}`,
-								"error",
-							);
-						});
-				}
-			}, 1000);
-		} else {
-			showAlert("Failed to open payment window.", "error");
-		}
+							return dispatch({ type: MAKE_PAYMENT_ORDER_RESET });
+						}
+					})
+					.catch((error) => {
+						showAlert(`Payment verification failed: ${error.message}`, "error");
+					});
+			},
+			onCancel: () => {
+				showAlert("Payment was canceled", "error");
+				navigate("/shipping");
+			},
+		});
 	};
 
+	if (loading) {
+		return <Loader />;
+	}
 	return (
-		<div className="cart">
-			<div className="checkShip">
-				<CheckoutSteps
-					shipping
-					confirmOrder
-					payment
-				/>
+		<div className="payment">
+			<div>
+				<p>Change Order Detail</p>
 			</div>
-			<div className="payment">
-				<div>
-					<span>THANK YOU FOR PATRONIZING ZARMARIO</span>
-				</div>
-				<button
-					id="pay_btn"
-					disabled={isButtonDisabled}
-					className={isButtonDisabled ? "disBtn" : "notDisBtn"}
-					onClick={(e) => initializePayment(e)}
-				>
-					{loading ? (
+			<div>Zarmario</div>
+			<div>
+				<div className="paystack">
+					<div>
+						<span>Pay With Paystack</span>
 						<div>
+							<span>
+								₦{order?.itemPrice}{" "}
+								<i>
+									includes ₦
+									{order?.order?.taxPrice + order?.order?.shippingPrice}{" "}
+									shipping / Tax Fee
+								</i>
+							</span>
+						</div>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+							molestias recusandae sint inventore incidunt perspiciatis ipsa
+							odit animi repellendus eligendi beatae, maxime tempora quae itaque
+							quod rerum consectetur dolore odio?
+						</p>
+					</div>
+					<div>mark</div>
+				</div>
+
+				<div className="buttonPay">
+					<div>₦{order?.totalPrice}</div>
+					<button
+						disabled={isButtonDisabled}
+						onClick={(e) => paymentFunc(e)}
+					>
+						Continue
+						{loading && (
 							<ClipLoader
 								color={"black"}
 								loading={true}
 								size={23}
 							/>
-						</div>
-					) : (
-						<p>Make Payment</p>
-					)}
-				</button>
+						)}
+					</button>
+				</div>
 			</div>
 		</div>
 	);

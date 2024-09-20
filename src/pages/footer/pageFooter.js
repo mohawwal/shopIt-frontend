@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import bankCard from "../../assets/images/paystackCards.png";
+//import bankCard from "../../assets/images/paystackCards.png";
 import WhatsappBlack from "../../assets/svg/whatsappBlack";
 import Ig from "../../assets/svg/ig";
 import Portfolio from "../../assets/svg/portfolio";
@@ -64,20 +64,6 @@ const PageFooter = () => {
 					<Ig className="socialIcons" />
 					<Portfolio className="portIcon" />
 				</Link>
-				{/* <div className="pageMiddle">
-					<p>Return Policy</p>
-					<span>
-						<h4>CONTACT US</h4>
-						<span>08159124775</span>
-						<span>Lagos, Nigeria</span>
-						<div className="payIcons">
-							<img src={bankCard} alt="" />
-						</div>
-						
-					</span>
-					
-				</div>
-                <div className="pageDown">Thank You For Shopping With Zarmario❤️</div> */}
 			</div>
 		</div>
 	);

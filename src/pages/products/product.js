@@ -8,20 +8,20 @@ import AlertContext from "../../components/alert/AlertContext";
 
 const Product = ({ product }) => {
 	const dispatch = useDispatch();
-	const [, setAlert] = useContext(AlertContext)
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
 	const quantity = 1;
 
 	const addToCart = (id) => {
 		dispatch(addItemToCart(id, quantity));
-		showAlert('Item Added To Cart', 'success')
+		showAlert("Item Added To Cart", "success");
 	};
 	return (
 		<div className="folderList">
@@ -43,14 +43,18 @@ const Product = ({ product }) => {
 								{product.name ? product.name.toUpperCase() : ""}
 							</div>
 						</div>
-						<div className="allStars">₦{product.price}</div>
+						<div className="allStars">₦{product.price.toLocaleString()}</div>
 					</div>
-					{product && product.stock >= 1 ?<div
-						className="basket"
-						onClick={() => addToCart(product._id)}
-					>
-						<BsCart4 className="prodCartIcon" />
-					</div> : <></>}
+					{product && product.stock >= 1 ? (
+						<div
+							className="basket"
+							onClick={() => addToCart(product._id)}
+						>
+							<BsCart4 className="prodCartIcon" />
+						</div>
+					) : (
+						<></>
+					)}
 				</div>
 			</div>
 		</div>

@@ -3,29 +3,32 @@ import AlertContext from "../alert/AlertContext";
 import { useDispatch, useSelector } from "react-redux";
 import { forgetPassword, clearErrors } from "../../actions/userAction";
 import { useFormik, FormikProvider, Field } from "formik";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const ForgotPassword = () => {
 	const dispatch = useDispatch();
-	
-	const [, setAlert] = useContext(AlertContext)
+
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
-	const { message, error, loading } = useSelector((state) => state.forgotPassword);
+	const { message, error, loading } = useSelector(
+		(state) => state.forgotPassword,
+	);
 
 	useEffect(() => {
 		if (error) {
-			showAlert(error, 'error')
+			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
 
 		if (message) {
-			showAlert(message, 'success')
+			showAlert(message, "success");
 		}
 	}, [dispatch, error, message]);
 
@@ -68,7 +71,21 @@ const ForgotPassword = () => {
 								onChange={formik.handleChange}
 							/>
 						</div>
-            			<button className="fpButton" type="submit" disabled={loading ? true : false}>Send email</button>
+						<button
+							className="fpButton"
+							type="submit"
+							disabled={loading ? true : false}
+						>
+							{loading ? (
+								<ClipLoader
+									color={"white"}
+									loading={true}
+									size={20}
+								/>
+							) : (
+								"Send email"
+							)}
+						</button>
 					</div>
 				</form>
 			</FormikProvider>

@@ -6,6 +6,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { login, clearErrors } from "../../actions/userAction";
 // import googleIcon from "../../assets/images/google_icon.png";
 import AlertContext from "../alert/AlertContext";
+import bgImg from '../../assets/images/bg/bg6.jpg'
 
 const Login = () => {
 	const dispatch = useDispatch();
@@ -56,7 +57,7 @@ const Login = () => {
 					<div className="toe">
 						Enter your credentials to access your account.
 					</div>
-					<div className="errorMsg">{error}</div>
+					{/* <div className="errorMsg">{error}</div> */}
 				</div>
 				{/*  <div className="google">
 					<img
@@ -154,7 +155,7 @@ const Login = () => {
 				</div>
 			</div>
 			<div className="showCover">
-				<div>IMAGE</div>
+				<img src={bgImg} alt="" />
 			</div>
 		</div>
 	);

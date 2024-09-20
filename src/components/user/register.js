@@ -9,6 +9,7 @@ import avatarPrev from "../../assets/images/avatarPreview.png";
 // import googleIcon from "../../assets/images/google_icon.png";
 import AlertContext from "../alert/AlertContext";
 import "./user.css";
+import bgImg from '../../assets/images/bg/bg6.jpg'
 
 const Register = () => {
 	const dispatch = useDispatch();
@@ -163,7 +164,7 @@ const Register = () => {
 									<Field
 										type="name"
 										name="name"
-										placeholder="name"
+										placeholder="Name"
 										className="field"
 										value={formik.values.name}
 										onChange={formik.handleChange}
@@ -248,7 +249,7 @@ const Register = () => {
 					</FormikProvider>
 				</div>
 				<div className="showCover">
-					<div>IMAGE</div>
+					<img src={bgImg} alt="" />
 				</div>
 			</div>
 		</Fragment>

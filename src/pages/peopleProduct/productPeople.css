@@ -1,0 +1,90 @@
+.productPeople {
+    padding-top: 10vh;
+}
+
+.peopleCat, .pSliderContainer {
+    display: none;
+}
+
+@media screen and (min-width: 950px) {
+    .productPeople {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .peopleNav {
+        width: 20%;
+        max-width: 250px;
+        height: 100%;
+    }
+    .peopleFold {
+        width: 100%;
+    }
+
+    .peopleCat {
+        background-color: transparent;
+    }
+
+    .peopleCat, .pSliderContainer {
+        display: block;
+    }
+
+    .pFT {
+        font-weight: bold;
+        font-size: 1rem; 
+    }
+
+    .pCL {
+        font-size: 0.75rem;
+        color: rgba(0, 0, 0, 0.797);
+
+    }
+
+    .peopleCat span {
+        font-weight: 600;
+        font-size: 1rem;
+        margin-left: 5%;
+        margin-bottom: 10px;
+    }
+
+    .peopleCat ul {
+        padding: 5%;
+    }
+
+    .peopleCat ul li {
+        margin-bottom: 15px;
+    }
+
+    .peopleCat ul li:hover, .peopleCat ul li:focus {
+        color: rgb(3, 3, 56);
+        font-weight: 600;
+    }
+    
+    .pPriceFilter {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 5%;
+    }
+
+    .pPriceFilter button {
+        width: 100%;
+        background-color: rgb(171, 169, 245);
+        color: black;
+        border: none;
+        height: 25px;
+        margin: 10px 5% 20px;
+        border-radius: 10px;
+    }
+
+    .pPFInput {
+        margin: 10px 0;
+    }
+
+    .pPFInput label input {
+        border: none;
+        margin-top: 10px;
+        border: none;
+    }
+}

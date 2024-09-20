@@ -10,6 +10,7 @@ import { FaFilter } from "react-icons/fa";
 import MetaData from "../../components/layouts/MetaData";
 import AlertContext from "../../components/alert/AlertContext";
 
+
 const ProductFolder = () => {
 	const dispatch = useDispatch();
 	const { id } = useParams();
@@ -60,11 +61,11 @@ const ProductFolder = () => {
 		});
 	};
 
-	const [filerToggle, setFilterToggle] = useState(false)
+	const [filerToggle, setFilterToggle] = useState(false);
 
 	const toggleFilter = () => {
-		setFilterToggle(!filerToggle)
-	}
+		setFilterToggle(!filerToggle);
+	};
 
 	if (loading) {
 		return (
@@ -80,7 +81,9 @@ const ProductFolder = () => {
 			<div className="itemPhase">
 				<div className="itemOption">
 					<div className="sliderContainer">
-						<div className={`${filerToggle ? "priceFilter" : "priceFilterNone"}`}>
+						<div
+							className={`${filerToggle ? "priceFilter" : "priceFilterNone"}`}
+						>
 							<div className="pFFInput">
 								<label>
 									Min: ₦
@@ -102,14 +105,18 @@ const ProductFolder = () => {
 								</label>
 							</div>
 							<button
-								onClick={() =>
-									dispatch(getProductCategory(`${id}`, currentPage, price))
-								}
+								onClick={() => {
+									dispatch(getProductCategory(`${id}`, currentPage, price));
+									toggleFilter();
+								}}
 							>
 								Apply Filter
 							</button>
 						</div>
-						<div className="filterSlide" onClick={toggleFilter}>
+						<div
+							className="filterSlide"
+							onClick={toggleFilter}
+						>
 							<FaFilter className="filterIcon" />
 						</div>
 					</div>

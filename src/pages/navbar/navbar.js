@@ -29,6 +29,7 @@ const Navbar = () => {
 	};
 
 	const { loading, user, isAuthenticated } = useSelector((state) => state.auth);
+	//console.log(user)
 	const { cartItems } = useSelector((state) => state.cart);
 
 	const logOutHandler = () => {
@@ -104,6 +105,8 @@ const Navbar = () => {
 			navClass = "navOut";
 		} else if (location.pathname === "/shop") {
 			navClass = "navOut";
+		} else if (location.pathname.includes("/password/reset")) {
+			navClass = "navNone";
 		}
 
 		setNavStyle(navClass);
@@ -129,11 +132,14 @@ const Navbar = () => {
 									alt="profile"
 								/>
 							</div>
-							<p>Hi {user && user.name}</p>
 						</Link>
 					</div>
 				) : isAuthenticated && user ? (
-					<Link to='/me' style={{fontSize: '0.8rem'}}>👋🏽 {user && user.name && user.name.toUpperCase()}</Link>
+					<Link to="/me">
+						<div style={{ fontSize: "0.9rem", marginBottom: "5px" }}>
+							👋🏽 {user && user.name && user.name.toUpperCase()}
+						</div>
+					</Link>
 				) : (
 					!loading && (
 						<Link
@@ -237,13 +243,13 @@ const Navbar = () => {
 					</li> */}
 					<li>
 						<div>
-							<div>MEN</div>
-							<ArrowToggleDown
+							<Link to="/products/men">MEN</Link>
+							{/* <ArrowToggleDown
 								className="downIcons"
 								fill="white"
-							/>
+							/> */}
 						</div>
-						<ul className="submenu">
+						{/* <ul className="submenu">
 							<li>
 								<Link to="/product/category/Men_Shirt">SHIRT</Link>
 							</li>
@@ -271,17 +277,17 @@ const Navbar = () => {
 							<li>
 								<Link to="/product/category/Men_Cap">CAP</Link>
 							</li>
-						</ul>
+						</ul> */}
 					</li>
 					<li>
 						<div>
-							<div>WOMEN</div>
-							<ArrowToggleDown
+							<Link to="/products/women">WOMEN</Link>
+							{/* <ArrowToggleDown
 								className="downIcons"
 								fill="white"
-							/>
+							/> */}
 						</div>
-						<ul className="submenu">
+						{/* <ul className="submenu">
 							<li>
 								<Link to="/product/category/Women_Dresses">DRESSES</Link>
 							</li>
@@ -297,17 +303,17 @@ const Navbar = () => {
 							<li>
 								<Link to="/product/category/Women_Bag">BAG</Link>
 							</li>
-						</ul>
+						</ul> */}
 					</li>
 					<li>
 						<div>
-							<div>KIDS</div>
-							<ArrowToggleDown
+							<Link to="/products/kids">KIDS</Link>
+							{/* <ArrowToggleDown
 								className="downIcons"
 								fill="white"
-							/>
+							/> */}
 						</div>
-						<ul className="submenu">
+						{/* <ul className="submenu">
 							<li>
 								<Link to="/product/category/Kids_Boys">BOYS</Link>
 							</li>
@@ -317,13 +323,17 @@ const Navbar = () => {
 							<li>
 								<Link to="/product/category/Kids_Shoes">SHOES</Link>
 							</li>
-						</ul>
+						</ul> */}
 					</li>
 					<li>
-						<div><Link to='/product/category/Fragrance'>FRAGRANCE</Link></div>
+						<div>
+							<Link to="/product/category/Fragrance">FRAGRANCE</Link>
+						</div>
 					</li>
 					<li>
-						<div><Link to='/product/category/Jewelry'>JEWELRY</Link></div>
+						<div>
+							<Link to="/product/category/Jewelry">JEWELRY</Link>
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -349,7 +359,7 @@ const Navbar = () => {
 				{searchNav ? <Search toggleSearch={toggleSearch} /> : ""}
 
 				{isAuthenticated && user && user.avatar?.url ? (
-					<div>
+					<div style={{ marginBottom: "5px" }}>
 						<Link
 							to="/me"
 							className="contactNavbarBS"
@@ -364,9 +374,13 @@ const Navbar = () => {
 						</Link>
 					</div>
 				) : isAuthenticated && user ? (
-					<p>Hi {user && user.name}</p>
+					<Link to="/me">
+						<div style={{ fontSize: "0.9rem", marginBottom: "5px" }}>
+							👋🏽 {user && user.name && user.name.toUpperCase()}
+						</div>
+					</Link>
 				) : (
-					!loading && (
+					!isAuthenticated && (
 						<Link
 							to="/login"
 							className="contactNavBS contactNavbar"

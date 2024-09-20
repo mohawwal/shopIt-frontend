@@ -6,6 +6,7 @@ import AllProductsHome from "../allProductsHome/allProductsHome";
 import AllHomeCategory from "../allProductsHome/allHomeCategory";
 import { motion } from "framer-motion";
 import "./displayPage.css";
+//import PageFooter from "../footer/pageFooter"
 // import ReactWhatsapp from "react-whatsapp";
 import Footer from "../footer/footer";
 // import WhatsApp from "../../assets/svg/whatsApp";
@@ -63,6 +64,7 @@ const DisplayPage = () => {
 				</section>
 				<Middle />
 				<footer>
+					{/* <PageFooter /> */}
 					<Footer />
 				</footer>
 				{/* <motion.div

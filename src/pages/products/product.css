@@ -13,7 +13,7 @@
 
 
 .folderImg {
-  height: 78%;
+  height: 80%;
   width: 100%;
 }
 
@@ -62,12 +62,14 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .allT .allStars {
   font-size: 1rem;
   color: rgb(18, 2, 65);
-  font-weight: 500;
 } 
 
 

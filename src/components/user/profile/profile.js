@@ -66,7 +66,7 @@ const Profile = () => {
 									<Pen className="icons editIcon" />
 								</Link>
 							</div>
-						) : (
+						) : isAuthenticated && user && !user.avatar?.url && (
 							<div>
 								<p>add profile picture</p>{" "}
 								<Link

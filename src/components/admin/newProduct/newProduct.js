@@ -121,7 +121,7 @@ const NewProduct = () => {
 	const validationSchema = Yup.object().shape({
 		name: Yup.string()
 			.min(3, "Name must be at least 3 characters long")
-			.max(20, "Name cannot exceed 20 characters")
+			.max(200, "Name cannot exceed 200 characters")
 			.required("Name is required"),
 
 		price: Yup.number()

@@ -8,6 +8,10 @@ import {
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,
 
+    PRODUCT_FOR_CATEGORY_REQUEST,
+    PRODUCT_FOR_CATEGORY_SUCCESS,
+    PRODUCT_FOR_CATEGORY_FAIL,
+
     NEW_PRODUCT_REQUEST,
     NEW_PRODUCT_SUCCESS,
     NEW_PRODUCT_RESET,
@@ -44,6 +48,7 @@ import {
 export const productCategoryReducer = ( state = { products: [], category: '' }, action ) => {
     switch(action.type) {
 
+        case PRODUCT_FOR_CATEGORY_REQUEST:
         case PRODUCT_CATEGORY_REQUEST:
             return {
                 loading: true,
@@ -51,6 +56,7 @@ export const productCategoryReducer = ( state = { products: [], category: '' }, 
                 category: ''
             }
 
+        case PRODUCT_FOR_CATEGORY_SUCCESS:
         case PRODUCT_CATEGORY_SUCCESS:
             return {
                 loading: false,
@@ -60,8 +66,45 @@ export const productCategoryReducer = ( state = { products: [], category: '' }, 
                 category: action.payload.category,
                 products: action.payload.products,
             }
-
+        
+        case PRODUCT_FOR_CATEGORY_FAIL:
         case PRODUCT_CATEGORY_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+
+        default:
+            return state
+    }
+}
+
+
+export const productPeopleReducer = ( state = { products: [] }, action ) => {
+    switch(action.type) {
+
+        case PRODUCT_FOR_CATEGORY_REQUEST:
+            return {
+                loading: true,
+                products: [],
+            }
+
+        case PRODUCT_FOR_CATEGORY_SUCCESS:
+            return {
+                loading: false,
+                productsCount: action.payload.productsCount,
+                resPerPage: action.payload.resPerPage,
+                pageNo: action.payload.pageNo,
+                products: action.payload.products,
+            }
+        
+        case PRODUCT_FOR_CATEGORY_FAIL:
             return {
                 loading: false,
                 error: action.payload
