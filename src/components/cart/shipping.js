@@ -26,7 +26,7 @@ const Shipping = () => {
 	const { shippingInfo } = useSelector((state) => state.cart);
 	const { user, isAuthenticated } = useSelector((state) => state.auth);
 	const { cartItems } = useSelector((state) => state.cart);
-	//console.log("cartItems - ", cartItems)
+	console.log("cartItems - ", cartItems)
 
 	const [selectedShippingPrice, setSelectedShippingPrice] = useState(0);
 
@@ -119,11 +119,7 @@ const Shipping = () => {
 				totalPrice,
 				orderItems: cartItems.map((item) => ({
 					product: item.product,
-					name: item.name,
-					image: item.image,
-					price: item.price,
 					quantity: item.quantity,
-					stock: item.stock
 				})),
 				shippingInfo: {
 					name: formik.values.firstName + " " + formik.values.lastName,
@@ -135,11 +131,11 @@ const Shipping = () => {
 					orderNote: formik.values.orderNote,
 				},
 			};
-
+			
 			sessionStorage.setItem("orderInfo", JSON.stringify(data));
 			dispatch(saveShippingInfo(shippingData));
 			dispatch(addOrder(data))
-			navigate("/payment");
+			navigate("/payment")
 		},
 	});
 

@@ -34,7 +34,7 @@ const Payment = () => {
 
 	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 	const { loading, order, error } = useSelector((state) => state.createOrder);
-	const { order: paymentOrder } = useSelector((state) => state.payment);
+	//const { order: paymentOrder } = useSelector((state) => state.payment);
 	//const {status} = useSelector((state => state.verifyPayment))
 
 	const paymentData = {
@@ -102,9 +102,10 @@ const Payment = () => {
 	}
 	return (
 		<div className="payment">
-			<div className="backChange" onClick={navigate(-1)}>
-				<p>Change Order Detail</p>
-			</div>
+			<div className="backChange" onClick={() => navigate(-1)}>
+  <p>Change Order Detail</p>
+</div>
+
 			<div className="mariO">Zarmario</div>
 			<div className="payDet">
 				<div className="paystack">
