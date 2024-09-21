@@ -130,7 +130,8 @@ const Payment = () => {
 				</div>
 
 				<div className="buttonPay">
-					<div>₦{order?.totalPrice}</div>
+					<div>₦{order?.totalPrice?.toLocaleString()}</div>
+
 					<button
 						disabled={isButtonDisabled}
 						onClick={(e) => paymentFunc(e)}
