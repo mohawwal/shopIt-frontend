@@ -209,7 +209,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
         };
 
         const { data } = await axiosInstance.put(`/api/v1/admin/product/${id}`, productData, config);
-        //console.log("update product", data);
+        console.log("update product", data);
 
         dispatch({
             type: UPDATE_PRODUCT_SUCCESS,
@@ -222,7 +222,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
             type: UPDATE_PRODUCT_FAIL,
             payload: errorMessage
         });
-        //console.log("update product error", error);
+        console.log("update product error", error);
     }
 };
 

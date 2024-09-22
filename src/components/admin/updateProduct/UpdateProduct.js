@@ -34,7 +34,7 @@ const UpdateProduct = () => {
 	} = useSelector((state) => state.product);
 	const { product, error } = useSelector((state) => state.productDetails);
 
-	// //console.log(product);
+	// console.log(product);
 
 	const [name, setName] = useState("");
 	const [price, setPrice] = useState("");
@@ -160,7 +160,7 @@ const UpdateProduct = () => {
 			});
 
 			// for (let [key, value] of formData.entries()) {
-			// 	//console.log(`${key}`, value);
+			// 	console.log(`${key}`, value);
 			// }
 
 			dispatch(updateProduct(product._id, formData));

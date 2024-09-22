@@ -7,7 +7,7 @@ import Burger from "../burger/burger";
 import { Link, useLocation } from "react-router-dom";
 import Search from "../search/search";
 import Add from "../../assets/svg/arrowUp";
-import ArrowToggleDown from "../../assets/svg/arrowToggleDown";
+//import ArrowToggleDown from "../../assets/svg/arrowToggleDown";
 // import Zarmario from "../../assets/svg/Zarmario"
 
 import { useDispatch, useSelector } from "react-redux";
@@ -29,7 +29,7 @@ const Navbar = () => {
 	};
 
 	const { loading, user, isAuthenticated } = useSelector((state) => state.auth);
-	//console.log(user)
+
 	const { cartItems } = useSelector((state) => state.cart);
 
 	const logOutHandler = () => {

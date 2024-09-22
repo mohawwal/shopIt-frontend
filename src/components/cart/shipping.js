@@ -119,6 +119,10 @@ const Shipping = () => {
 				totalPrice,
 				orderItems: cartItems.map((item) => ({
 					product: item.product,
+					name: item.name,
+					stock: item.stock,
+					price: item.price,
+					image: item.image,
 					quantity: item.quantity,
 				})),
 				shippingInfo: {

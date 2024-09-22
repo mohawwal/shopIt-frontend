@@ -28,7 +28,7 @@ const Profile = () => {
 	};
 
 	const { user, isAuthenticated, loading } = useSelector((state) => state.auth);
-	//console.log(user)
+	console.log(user)
 
 	const signOutFromProfile = () => {
 		dispatch(logOut());

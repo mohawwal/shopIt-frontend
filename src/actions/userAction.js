@@ -66,7 +66,7 @@ export const login = (email, password) => async (dispatch) => {
         }
 
         const { data } = await axiosInstance.post('/api/v1/login', {email, password}, config)
-        console.log(data)
+
         localStorage.setItem('token', data.token)
 
         dispatch({
@@ -106,8 +106,7 @@ export const register = (userData) => async (dispatch) => {
 
     } catch(error) {
         const errorMessage = error.response?.data?.message || error.message;
-        console.log(errorMessage)
-        console.log(error)
+ 
         dispatch({
             type: REGISTER_USER_FAIL,
             payload: errorMessage
