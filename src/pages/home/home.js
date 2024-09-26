@@ -9,6 +9,7 @@ const home = () => {
 		<div className="home">
 			<div className="homeImgFile">
 				<div className="homeImg her">
+					<div className="homeBgColorA"></div>
 					<img
 						src="https://res.cloudinary.com/dqhbcpiul/image/upload/v1727006787/image4_o4losw.jpg"
 						alt="man-img"
@@ -23,6 +24,7 @@ const home = () => {
 					</div>
 				</div>
 				<div className="homeImg him">
+					<div className="homeBgColorB"></div>
 					<img 
 						src="https://res.cloudinary.com/dqhbcpiul/image/upload/v1727006833/image12_w2qu4j.jpg" 
 						alt="woman-img" 

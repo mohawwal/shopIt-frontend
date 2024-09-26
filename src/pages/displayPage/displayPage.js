@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import MetaData from "../../components/layouts/MetaData";
 import Home from "../home/home";
 import Middle from "../middle/middle";
@@ -7,12 +7,12 @@ import AllHomeCategory from "../allProductsHome/allHomeCategory";
 import { motion } from "framer-motion";
 import "./displayPage.css";
 //import PageFooter from "../footer/pageFooter"
-// import ReactWhatsapp from "react-whatsapp";
+import ReactWhatsapp from "react-whatsapp";
 import Footer from "../footer/footer";
-// import WhatsApp from "../../assets/svg/whatsApp";
+import WhatsApp from "../../assets/svg/whatsApp";
 
 const DisplayPage = () => {
-	// const constraintsRef = useRef(null);
+	const constraintsRef = useRef(null);
 
 	const sliderVariants = {
 		initial: {
@@ -67,7 +67,7 @@ const DisplayPage = () => {
 					{/* <PageFooter /> */}
 					<Footer />
 				</footer>
-				{/* <motion.div
+				<motion.div
 					ref={constraintsRef}
 					className="whatsapp"
 				>
@@ -84,7 +84,7 @@ const DisplayPage = () => {
 							<WhatsApp />
 						</motion.div>
 					</ReactWhatsapp>
-				</motion.div> */}
+				</motion.div>
 			</div>
 		</div>
 	);

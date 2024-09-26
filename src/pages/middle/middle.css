@@ -24,12 +24,13 @@
 
 .listDiv p {
     color: rgba(0, 0, 0, 0.956);
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 .orderDetList .listDiv span {
     color: rgba(39, 39, 39, 0.662);
     font-weight: 600;
+    font-size: 0.7rem;
 }
 
 .orderDetList div span {
@@ -46,12 +47,12 @@
 
 .orderDet h2 {
     margin-bottom: 0.6rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .orderDet p {
     margin-bottom: 0.7rem;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
 }
 
 
@@ -60,9 +61,6 @@
         margin: 5%;
     }
 
-    .orderDet h2 {
-        font-size: 1.8rem;
-    }
 }
 
 @media screen and (max-width: 844px) {

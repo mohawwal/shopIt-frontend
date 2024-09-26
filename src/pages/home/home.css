@@ -1,79 +1,102 @@
 .home {
-    background-color: rgb(0, 0, 0);
-    color: white;
-    height: 100vh;
-    width: 100%;
+	background-color: rgb(0, 0, 0);
+	color: white;
+	height: 100vh;
+	width: 100%;
+}
+
+.Link div {
+	position: relative;
+	z-index: 21;
+}
+
+.homeBgColorA,
+.homeBgColorB {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(74, 76, 188, 0.16);
+	z-index: 18;
+}
+
+.homeBgColorA:hover,
+.homeBgColorB:hover,
+.homeBgColorA:focus,
+.homeBgColorB:focus {
+	background-color: rgba(3, 2, 2, 0.403);
+    z-index: 5;
 }
 
 @media screen and (max-width: 545px) {
-    .home {
-        height: 93vh;
-    }
+	.home {
+		height: 92vh;
+	}
 }
 
 .homeImgFile {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
 }
 
 .homeImg {
-    position: relative;
-    height: 100%;
-    width: 50%;
+	position: relative;
+	height: 100%;
+	width: 50%;
 }
 
 .homeImg img {
-    object-fit: cover;
-    object-position: center;
-    height: 100%;
-    width: 100%;
+	object-fit: cover;
+	object-position: center;
+	height: 100%;
+	width: 100%;
 }
 
 .blur {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 50%;
-    background-color: rgba(18, 14, 88, 0.399);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 50%;
+	background-color: rgba(18, 14, 88, 0.399);
 }
 
 .blur div {
-    font-weight: 800;
-    font-size: 50px;
-    cursor: pointer;
-    padding: 0.2rem;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
+	font-weight: 800;
+	font-size: 3.85rem;
+	cursor: pointer;
+	padding: 0.2rem;
+	color: rgb(255, 255, 255);
+	text-decoration: none;
 }
 
-.blur div:hover, .blur div:focus {
-    padding: 0.8rem;
-    color: black;
-    border-radius: 0.8rem;
+.blur div:hover,
+.blur div:focus {
+	padding: 0.8rem;
+	color: black;
+	border-radius: 0.8rem;
 }
 
 @media screen and (max-width: 690px) {
-    .homeImgFile {
-        flex-direction: column;
-        width: 100%;
-    }
-    .homeImg {
-        width: 100%;
-        height: 50%;
-    }
-    .blur {
-        padding-top: 30%;
-    } 
-    .blur div h1 {
-        border: none;
-    }
+	.homeImgFile {
+		flex-direction: column;
+		width: 100%;
+	}
+	.homeImg {
+		width: 100%;
+		height: 50%;
+	}
+	.blur {
+		padding-top: 30%;
+	}
+	.blur div h1 {
+		border: none;
+	}
 }

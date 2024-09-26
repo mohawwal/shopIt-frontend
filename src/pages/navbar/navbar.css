@@ -8,7 +8,7 @@
     height: 3rem;
     padding: 2rem 3% 1.5rem;
     position: fixed;
-    z-index: 30;
+    z-index: 25;
     background: transparent;
 }
 
@@ -57,15 +57,10 @@
 
 .navText {
     width: 30%;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     text-align: center;
     letter-spacing: 0.3rem;
-}
-
-
-.zarIcons {
-    width: rem;
 }
  
 
@@ -74,7 +69,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 0.6rem;
+    gap: 0.7rem;
     height: 100%;
 }
 
@@ -91,7 +86,7 @@
 }
 
 .navIcon {
-    width: 1rem;
+    width: 1.3rem;
 }
 
 .navMenu div, .navMenu span {
@@ -187,8 +182,8 @@
 }
 
 .cartBag {
-    height: 2.9rem;
-    width: 2.1rem;
+    height: 2.3rem;
+    width: 2rem;
     display: flex;
     align-items: center;
     justify-content: right;
@@ -203,8 +198,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 1.2rem;
+    height: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -236,7 +231,7 @@
 }
 
 .hamburgerIcon {
-    width: 1.3rem;
+    width: 1.1rem;
 }
 
 .preNavMenu {
@@ -259,16 +254,16 @@
 }
 
 .menuS {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
 }
 
 
 .navIcons {
-    gap: 0.8rem;
+    gap: 0.65rem;
 }
 
 .navIcon {
-    width: 1.28rem;
+    width: 1.25rem;
 }
 
 .navIconsBS {
@@ -315,7 +310,7 @@
     justify-content: left;
     flex-direction: row;
     width: 100%;
-    gap: 6%;
+    gap: 5%;
 }
 
 .menuListBS ul li, .menuListBS ul li div {
@@ -323,7 +318,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    font-size: 0.8rem;
+    font-size: 0.67rem;
 }
 
 .downIcons {

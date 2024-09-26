@@ -33,13 +33,16 @@
     min-width: 11rem;
     border-radius: 0.2rem;
     transition: transform 0.3s ease-in-out;
+    background-color: rgba(228, 228, 228, 0.092);
+    margin: 10px 0;
 }
 
 .moving-sentence {
-    font-size: 1rem;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
     margin: 0 2% 0;
+    font-weight: 500;
 }
 
 .allHomeImg {
@@ -47,10 +50,16 @@
     padding: 0.1rem;
 }
 
+.allHome:hover, .allHome:focus {
+    background-color: rgba(216, 216, 216, 0.455);
+    border-radius: 5px;
+}
+
 .allHomeImg img {
     height: 100%;
     object-fit: cover;
     object-position: top;
+    border-radius: 5px;
 }
 
 .allTD {
@@ -75,12 +84,14 @@
 
 .allName {
     font-size: 0.8rem;
-    font-weight: 500;
+    color: rgba(13, 13, 62, 0.781);
+    font-weight: 600;
 }
 
+
 .allStars {
-    font-size: 0.8rem;
-    color: rgb(27, 27, 69);
+    font-size: 0.9rem;
+    color: rgba(17, 17, 50, 0.915);
 }
 
 .newMario {
