@@ -26,7 +26,6 @@ const Shipping = () => {
 	const { shippingInfo } = useSelector((state) => state.cart);
 	const { user, isAuthenticated } = useSelector((state) => state.auth);
 	const { cartItems } = useSelector((state) => state.cart);
-	console.log("cartItems - ", cartItems)
 
 	const [selectedShippingPrice, setSelectedShippingPrice] = useState(0);
 
@@ -135,11 +134,12 @@ const Shipping = () => {
 					orderNote: formik.values.orderNote,
 				},
 			};
-			
+
 			sessionStorage.setItem("orderInfo", JSON.stringify(data));
+			
 			dispatch(saveShippingInfo(shippingData));
 			dispatch(addOrder(data))
-			navigate("/payment")
+			navigate("/payment");
 		},
 	});
 

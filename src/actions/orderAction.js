@@ -39,6 +39,8 @@ export const addOrder = (orderData) => async (dispatch) => {
             }
         });
 
+		console.log('order data - ', data)
+
         dispatch({
             type: CREATE_ORDER_SUCCESS,
             payload: data

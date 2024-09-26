@@ -34,7 +34,7 @@ const Navbar = () => {
 
 	const logOutHandler = () => {
 		dispatch(logOut());
-		showAlert("LoggedOut successful", "success");
+		showAlert("SignOut successful", "success");
 	};
 
 	const [navStyle, setNavStyle] = useState("navHome");

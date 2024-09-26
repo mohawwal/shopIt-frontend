@@ -27,7 +27,6 @@ const NewProduct = () => {
 	useEffect(() => {
 		if (error) {
 			showAlert(error, "error");
-			console.log(error);
 			dispatch(clearErrors());
 		}
 
@@ -77,7 +76,6 @@ const NewProduct = () => {
 	];
 
 	//const [allSizes, setAllSizes] = useState([])
-	//console.log(allSizes)
 
 	// const sizes = [
 	// 	"S",
@@ -157,7 +155,6 @@ const NewProduct = () => {
 		validationSchema: validationSchema,
 		validateOnBlur: true,
 		onSubmit: (values) => {
-			//console.log("Formik errors: ", formik.errors);
 			let formData = new FormData();
 
 			formData.append("name", values.name);
@@ -173,7 +170,7 @@ const NewProduct = () => {
 			});
 
 			// for (let [key, value] of formData.entries()) {
-			// 	console.log(`${key}`, value);
+			// console.log(`${key}`, value);
 			// }
 
 			dispatch(newProduct(formData));

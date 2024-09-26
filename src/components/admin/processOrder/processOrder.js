@@ -42,14 +42,12 @@ const ProcessOrder = () => {
 		dispatch(getOrderDetails(orderId));
 
 		if (error) {
-			console.log("useEffect triggered");
 			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
 		
 
 		if(isUpdated) {
-			console.log("Order successfully updated");
 			showAlert("Order Updated Successfully", "success")
 			dispatch({ type: UPDATE_ORDER_RESET })
 		}

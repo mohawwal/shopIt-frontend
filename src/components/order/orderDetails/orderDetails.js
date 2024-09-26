@@ -29,7 +29,7 @@ const OrderDetails = () => {
 	const { order, error, loading } = useSelector(
 		(state) => state.getOrderDetails,
 	);
-	console.log(order);
+	console.log('details - ', order)
 
 	useEffect(() => {
 		dispatch(getOrderDetails(id));
@@ -98,7 +98,7 @@ const OrderDetails = () => {
 								/>
 								<div className="classDetails">
 									<span>{item.name}</span>
-									<p>x{item.quantity}</p>
+									<p><i>Qty</i> - <b>x{item.quantity}</b></p>
 								</div>
 							</div>
 							<div>

@@ -48,7 +48,6 @@ const ProductDetails = () => {
 		product: productDetails,
 		error: detailsError,
 	} = useSelector((state) => state.productDetails);
-	// console.log(productDetails);
 
 	const { loading, products, pageNo } = useSelector(
 		(state) => state.productCategory,

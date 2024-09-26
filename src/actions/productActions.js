@@ -77,7 +77,6 @@ export const getPeopleProduct = (people, currentPage = 1, price) => async (dispa
 
     } catch (error) {
         const errorMessage = error.response ? error.response.data.message : error.message;
-        console.log(error)
         dispatch({
             type: PRODUCT_FOR_CATEGORY_FAIL,
             payload: errorMessage
@@ -209,7 +208,6 @@ export const updateProduct = (id, productData) => async (dispatch) => {
         };
 
         const { data } = await axiosInstance.put(`/api/v1/admin/product/${id}`, productData, config);
-        console.log("update product", data);
 
         dispatch({
             type: UPDATE_PRODUCT_SUCCESS,
@@ -222,7 +220,6 @@ export const updateProduct = (id, productData) => async (dispatch) => {
             type: UPDATE_PRODUCT_FAIL,
             payload: errorMessage
         });
-        console.log("update product error", error);
     }
 };
 

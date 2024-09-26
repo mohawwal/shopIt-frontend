@@ -95,6 +95,7 @@ const Register = () => {
 
 			dispatch(register(formData));
 		},
+		
 	});
 
 	const handleFileChange = (e) => {

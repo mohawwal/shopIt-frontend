@@ -47,7 +47,6 @@ const reducer = combineReducers({
 	UpdateUser: UpdateUserReducer,
 	forgotPassword: forgotPasswordReducer,
 	cart: cartReducer,
-	payment: paymentReducer,
 	verifyPayment: verifyPaymentReducer,
 	createOrder: createOrderReducer,
 	myOrder: myOrderReducer,

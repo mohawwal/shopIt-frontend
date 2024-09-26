@@ -34,8 +34,6 @@ const UpdateProduct = () => {
 	} = useSelector((state) => state.product);
 	const { product, error } = useSelector((state) => state.productDetails);
 
-	// console.log(product);
-
 	const [name, setName] = useState("");
 	const [price, setPrice] = useState("");
 	const [description, setDescription] = useState("");
