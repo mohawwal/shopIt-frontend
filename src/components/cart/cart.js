@@ -202,7 +202,7 @@ const Cart = () => {
 						</div>
 
 						<div className="OrderDetails">
-							<div className="orderHead">CART TOTALS ({totalGoods})</div>
+							<div className="orderHead">🛒 CART TOTALS({totalGoods})</div>
 							<div className="listOrderSpaces">
 								<div className="orderFlex">
 									<p className="orWay">Total </p>

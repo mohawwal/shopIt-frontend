@@ -234,6 +234,7 @@
 	background-color: rgba(16, 16, 161, 0.627);
 	color: white;
 	cursor: pointer;
+	margin-bottom: 10px;
 }
 
 .orderFlex {
@@ -363,9 +364,9 @@
 }
 
 .shippingName {
-	font-size: 1rem;
+	font-size: 0.9rem;
 	margin-bottom: 4px;
-	color: rgb(53, 53, 53);
+	color: rgba(53, 53, 53, 0.753);
 }
 .shippingName span {
 	color: rgb(103, 133, 255);
@@ -538,7 +539,7 @@
 
 .shipDetails p {
 	color: rgba(28, 28, 28, 0.886);
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 }
 
 .shipDetails p span {
@@ -686,10 +687,10 @@ input[type="number"]::-webkit-outer-spin-button {
 .d-wrapper .zig-zag-top:before {
 	background: linear-gradient(
 			-45deg,
-			rgb(103, 133, 255) 16px,
+			rgba(103, 133, 255, 0.87) 16px,
 			transparent 0
 		),
-		linear-gradient(45deg, rgb(103, 133, 255) 16px, transparent 0);
+		linear-gradient(45deg, rgba(103, 133, 255, 0.877) 16px, transparent 0);
 	background-position: left top;
 	background-repeat: repeat-x;
 	background-size: 7px 39px;
@@ -706,8 +707,8 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .d-wrapper	.zig-zag-bottom:after{
     background: 
-                linear-gradient(-45deg, transparent 16px, rgb(103, 133, 255) 0), 
-                linear-gradient(45deg, transparent 16px, rgb(103, 133, 255)  0);
+                linear-gradient(-45deg, transparent 16px, rgba(103, 133, 255, 0.881) 0), 
+                linear-gradient(45deg, transparent 16px, rgba(103, 133, 255, 0.89)  0);
     background-repeat: repeat-x;
     background-position: left bottom;
     background-size: 7px 39px;
@@ -1058,10 +1059,10 @@ input[type="number"]::-webkit-outer-spin-button {
 		bottom: 0;
 		left: 0;
 		width: 96%;
-		margin-bottom: 8vh;
+		margin-bottom: 10vh;
 		z-index: 20;
 		background-color: rgb(255, 255, 255);
-		border: 0.1px 0.1px none solid rgba(111, 0, 0, 0.421);
+		border: 0.1px 0.1px solid rgba(111, 0, 0, 0.421);
 		height: 18vh;
 	}
 	.cartSmallList {
