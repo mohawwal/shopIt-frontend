@@ -43,38 +43,39 @@ const ListOrders = () => {
 	return (
 		<div className="ListOrders">
 			<div>
-				{orders && orders.length > 0 ? (
+				{orders?.length > 0 ? (
 					<div>
 						<div>
 							{orders.map((order) => (
-								<Link to={`/order/${order._id}`}>
-									<div
-										className="list"
-										key={order._id}
-									>
-										<div className="listA">
-											<div>{order && order._id}</div>
-											{order &&
-											order.orderStatus &&
-											String(order.orderStatus).includes("Delivered") ? (
-												<span style={{ color: "green" }}>
-													{order.orderStatus}
-												</span>
-											) : String(order.orderStatus).includes("Processing") ? (
-												<span style={{ color: "red" }}>
-													{order.orderStatus}
-												</span>
-											) : (
-												<span style={{ color: "blue" }}>
-													{order.orderStatus}
-												</span>
-											)}
+								<Link
+									to={`/order/${order._id}`}
+									key={order._id}
+								>
+									{order.paymentInfo?.success && (
+										<div className="list">
+											<div className="listA">
+												<div>{order._id}</div>
+												{order.orderStatus &&
+												String(order.orderStatus).includes("Delivered") ? (
+													<span style={{ color: "green" }}>
+														{order.orderStatus}
+													</span>
+												) : String(order.orderStatus).includes("Processing") ? (
+													<span style={{ color: "red" }}>
+														{order.orderStatus}
+													</span>
+												) : (
+													<span style={{ color: "blue" }}>
+														{order.orderStatus}
+													</span>
+												)}
+											</div>
+											<div className="listB">
+												<span>{formatDate(order.createdAt)}</span>
+												<span className="timeLine">View timeline</span>
+											</div>
 										</div>
-										<div className="listB">
-											<span>{formatDate(order && order.createdAt)}</span>
-											<span className="timeLine">View timeline</span>
-										</div>
-									</div>
+									)}
 								</Link>
 							))}
 						</div>

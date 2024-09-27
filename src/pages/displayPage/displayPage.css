@@ -1,52 +1,19 @@
-/* 
-@media screen and (max-width: 550px) {
-    .PRODUCT_PAGE {
-        height: 75.5vh;
-    }
-} */
-
 .whatsapp {
     position: fixed;
     z-index: 20;
-    top: 0;
-    margin-top: 8vh;
+    bottom: 15vh;
     right: 0;
-    background-color: transparent;
-    width: 15%;
-    height: 80vh;
-    display: flex;
-    align-items: flex-end;
-    justify-content: right;
-  }
-  
-  .reactWhatsapp {
-    background-color: transparent;
-    border: none;
-  }
-  
-  @keyframes borderPulse {
-    0% {
-        border-width: 1px;
-    }
-    50% {
-        border-width: 3px;
-    }
-    100% {
-        border-width: 1px;
-    }
-  }
-  
-  .whatsappIcon {
-    width: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: transparent;
-    border-top: 15px solid rgb(195, 195, 195);
-    border-right: 15px solid rgb(195, 195, 195);
-    border-radius: 50%;
-    animation: borderPulse 0.8s infinite;
   }
   
+  .waIconImg {
+    width: 49px;
+    height: 49px;
+    padding: 3px;
+  }
+  
+
   
   

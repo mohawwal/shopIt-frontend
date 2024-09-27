@@ -43,7 +43,7 @@ const AllCategory = () => {
 	}
 	return (
 		<div className="catProdHome">
-			<div className="moving-sentence">SIMILAR MARIO'S</div>
+			<div className="moving-sentence">SIMILAR MARIO'S👌</div>
 			<div className="productHome">
 				{products.map((product, index) => {
 					return (

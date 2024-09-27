@@ -38,8 +38,13 @@
 }
 
 .orderStatus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
     padding-right: 10px;
     color: red;
+    font-size: 0.8rem;
 }
 
 .detailsOrder div {
@@ -58,16 +63,10 @@
 .LTD {
     display: flex;
     align-items: flex-start;
-    flex-direction: row;
+    flex-direction: column;
     gap: 3%;
 }
 
-.LTD .orderLine {
-    width: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-}
 
 .LocIcon {
     width: 1.1rem;
@@ -77,13 +76,16 @@
     width: 60%;
     text-align: left;
     color: rgba(0, 0, 120, 0.901);
+    padding: 0 5px;
 }
 
 .LTD .orderDate {
-    width: 30%;
-    text-align: center;
-    font-size: 0.85rem;
-    text-align: left;
+    width: 100%;
+    text-align: center; 
+    font-size: 0.8rem;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.756);
+    padding: 10px 2% 0;
 
 }
 
@@ -116,7 +118,16 @@
 .viewOrders div {
     padding: 10px;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    color: rgba(30, 30, 30, 0.697);
+}
+
+.oTN {
+    font-size: 1.2rem;
+}
+
+.prsIcons {
+    width: 25px;
 }
 
 .orderImgText {

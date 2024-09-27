@@ -35,7 +35,7 @@ const ProductList = () => {
 	const { loading, error, products } = useSelector(
 		(state) => state.allProducts,
 	);
-	const { error: deleteError, isDeleted } = useSelector(
+	const { loading: deleteLoading, error: deleteError, isDeleted } = useSelector(
 		(state) => state.product,
 	);
 
@@ -129,6 +129,12 @@ const ProductList = () => {
     onPaginationChange: setPagination,
     state: { pagination },
   })
+
+  if(deleteLoading) {
+    return (
+      <Loader />
+    )
+  }
 
 	return (
 		<div className="adminProductList">

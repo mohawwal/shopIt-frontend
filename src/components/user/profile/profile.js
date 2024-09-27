@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "../../../pages/loader/loader";
-import ArrowLeft from "../../../assets/svg/arrowLeft";
+import UTurn from "../../../assets/svg/UTurn";
 import EditIcon from "../../../assets/svg/edit";
 import GreaterThan from "../../../assets/svg/greaterThan";
 import Logout from "../../../assets/svg/logout";
@@ -47,7 +47,7 @@ const Profile = () => {
 						onClick={() => navigate(-1)}
 					>
 						<div>
-							<ArrowLeft className="icons aLI" />
+							<UTurn className="icons aLI" fill="rgba(116, 106, 224, 0.948)" />
 						</div>
 						<div className="head">Profile Details</div>
 					</div>
@@ -82,7 +82,7 @@ const Profile = () => {
 							<div className="detailLog">
 								<div>
 									<div>Account name</div>
-									<span>{user && user.name}</span>
+									<span className="pNBlur">{user && user.name}</span>
 								</div>
 								<Link to="/me/Update">
 									<EditIcon className="icons editIcon" />
@@ -91,7 +91,7 @@ const Profile = () => {
 							<div className="detailLog">
 								<div>
 									<div>Email address</div>
-									<span>{user && user.email}</span>
+									<span className="pNBlur">{user && user.email}</span>
 								</div>
 								<Link to="/me/Update">
 									<EditIcon className="icons editIcon" />

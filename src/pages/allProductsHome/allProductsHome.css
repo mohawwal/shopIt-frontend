@@ -59,7 +59,7 @@
     height: 100%;
     object-fit: cover;
     object-position: top;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
 }
 
 .allTD {

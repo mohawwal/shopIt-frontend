@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React from "react";
 import MetaData from "../../components/layouts/MetaData";
 import Home from "../home/home";
 import Middle from "../middle/middle";
@@ -6,14 +6,10 @@ import AllProductsHome from "../allProductsHome/allProductsHome";
 import AllHomeCategory from "../allProductsHome/allHomeCategory";
 import { motion } from "framer-motion";
 import "./displayPage.css";
-//import PageFooter from "../footer/pageFooter"
-import ReactWhatsapp from "react-whatsapp";
+import waIcon from '../../assets/images/waIcon.png'
 import Footer from "../footer/footer";
-import WhatsApp from "../../assets/svg/whatsApp";
 
 const DisplayPage = () => {
-	const constraintsRef = useRef(null);
-
 	const sliderVariants = {
 		initial: {
 			x: "100%",
@@ -67,24 +63,13 @@ const DisplayPage = () => {
 					{/* <PageFooter /> */}
 					<Footer />
 				</footer>
-				<motion.div
-					ref={constraintsRef}
+				<div
 					className="whatsapp"
 				>
-					<ReactWhatsapp
-						className="reactWhatsapp"
-						number="+2348159124775"
-						message="I am available for web development jobs/freelance gigs, Whether you're looking to start a new project, enhance an existing site, or need technical consultation. Feel free to reach out to discuss your project or to simply connect! "
-					>
-						<motion.div
-							drag
-							dragConstraints={constraintsRef}
-							className="whatsappIcon"
-						>
-							<WhatsApp />
-						</motion.div>
-					</ReactWhatsapp>
-				</motion.div>
+					<a target="_blank" rel="noreferrer noopener" href="https://wa.me/+2348159124775">
+						<img src={waIcon} alt="" className="waIconImg" />
+					</a>
+				</div>
 			</div>
 		</div>
 	);

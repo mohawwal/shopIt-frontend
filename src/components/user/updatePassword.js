@@ -10,32 +10,32 @@ import * as Yup from "yup";
 
 import ViewHide from "../../assets/svg/viewHide";
 import ViewShow from "../../assets/svg/viewShow";
-import ArrowLeft from "../../assets/svg/arrowLeft"
+import ArrowLeft from "../../assets/svg/arrowLeft";
 import AlertContext from "../alert/AlertContext";
 
 const UpdatePassword = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const [, setAlert] = useContext(AlertContext)
+	const [, setAlert] = useContext(AlertContext);
 
 	const showAlert = (message, type) => {
 		setAlert({
 			message,
-			type
-		})
-	}
+			type,
+		});
+	};
 
 	const { error, isUpdated, loading } = useSelector((state) => state.user);
 
 	useEffect(() => {
 		if (error) {
-			showAlert(error, 'error')
+			showAlert(error, "error");
 			dispatch(clearErrors());
 		}
 
 		if (isUpdated) {
-			showAlert("Password Changed Successfully", 'success')
+			showAlert("Password Changed Successfully", "success");
 			navigate("/me");
 		}
 
@@ -86,14 +86,14 @@ const UpdatePassword = () => {
 				>
 					<div className="pass">
 						<div
-									className="profileStart editPStart"
-									onClick={() => navigate(-1)}
-								>
-									<div>
-										<ArrowLeft className="icons aLI" />
-									</div>
-									<div className="head">Change Password</div>
-								</div>
+							className="profileStart editPStart"
+							onClick={() => navigate(-1)}
+						>
+							<div>
+								<ArrowLeft className="icons aLI" />
+							</div>
+							<div className="head">Change Password</div>
+						</div>
 						{/* Old Password Input */}
 						<div className="passFolder">
 							<label htmlFor="oldPassword">Old Password</label>
@@ -102,6 +102,7 @@ const UpdatePassword = () => {
 									<Field
 										id="oldPassword"
 										name="oldPassword"
+										className="rstPw"
 										type={formik.values.showOldPassword ? "text" : "password"}
 										onChange={formik.handleChange}
 										value={formik.values.oldPassword}
@@ -115,7 +116,11 @@ const UpdatePassword = () => {
 											)
 										}
 									>
-										{formik.values.showOldPassword ? <ViewHide className='icons'/> : <ViewShow className='icons' />}
+										{formik.values.showOldPassword ? (
+											<ViewHide className="icons" />
+										) : (
+											<ViewShow className="icons" />
+										)}
 									</button>
 								</div>
 							</div>
@@ -134,6 +139,7 @@ const UpdatePassword = () => {
 									<Field
 										id="newPassword"
 										name="password"
+										className="rstPw"
 										type={formik.values.showNewPassword ? "text" : "password"}
 										onChange={formik.handleChange}
 										value={formik.values.password}
@@ -147,7 +153,11 @@ const UpdatePassword = () => {
 											)
 										}
 									>
-										{formik.values.showNewPassword ? <ViewHide className='icons'/> : <ViewShow className='icons' />}
+										{formik.values.showNewPassword ? (
+											<ViewHide className="icons" />
+										) : (
+											<ViewShow className="icons" />
+										)}
 									</button>
 								</div>
 							</div>
@@ -163,11 +173,15 @@ const UpdatePassword = () => {
 								type="submit"
 								disabled={loading ? true : false}
 							>
-								{loading ? <ClipLoader
+								{loading ? (
+									<ClipLoader
 										color={"white"}
 										loading={true}
 										size={20}
-									/> : <div>Reset Password</div>}
+									/>
+								) : (
+									<div>Reset Password</div>
+								)}
 							</button>
 						</div>
 					</div>

@@ -38,8 +38,9 @@
 }
 
 .profileStart .head {
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(26, 25, 27, 0.578);
 }
 
 .orText {
@@ -47,7 +48,7 @@
 }
 
 .aLI {
-    width: 1.4rem;
+    width: 1.6rem;
 }
 
 .profileLog {
@@ -160,4 +161,8 @@
 
 .showAlertInProfile {
     display: block;
+}
+
+.pNBlur {
+    color: rgba(16, 16, 16, 0.651);
 }

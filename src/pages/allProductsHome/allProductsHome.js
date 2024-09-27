@@ -117,7 +117,7 @@ const AllProductsHome = () => {
 			</div>
 			{/* smaller screen */}
 			<div className="allProdHomeSC">
-				<div className="moving-sentence MDSC">NEW MARIO'S</div>
+				<div className="moving-sentence MDSC">NEW MARIO'S👌</div>
 				<div className="productHomeSC">
 					{Array.isArray(products) && products.length > 0 ? (
 						products.map((product, index) => {

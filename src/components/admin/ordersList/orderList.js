@@ -37,7 +37,7 @@ const OrderList = () => {
 		});
 	};
 
-	const { isDeleted } = useSelector((state) => state.order)
+	const { isDeleted, loading: deleteLoading } = useSelector((state) => state.order)
 
 
 	useEffect(() => {
@@ -64,6 +64,7 @@ const OrderList = () => {
 		"Order ID",
 		"Quantity",
 		"Date",
+		"payment status",
 		"Price",
 		"Status",
 		"Actions",
@@ -94,6 +95,15 @@ const OrderList = () => {
 						hour12: true,
 					});
 				},
+			},
+			{
+				header: "Paid Status",
+				accessorFn: (order) => (order.paidAt ? "Paid" : "Not Paid"),
+				cell: ({ getValue }) => (
+					<span style={{ color: getValue() === "Paid" ? "green" : "red" }}>
+						{getValue()}
+					</span>
+				),
 			},
 
 			{
@@ -142,8 +152,6 @@ const OrderList = () => {
 		[handleDeleteOrder],
 	);
 
-	// const data = useMemo(() => orders, [orders]);
-
 	const initialPageSize = 10;
 
 	const dynamicSize = useMemo(() => {
@@ -179,7 +187,7 @@ const OrderList = () => {
 					<MetaData title={"Order List"} />
 					<h3 className="allO">All Orders</h3>
 
-					{loading ? (
+					{loading || deleteLoading ? (
 						<Loader />
 					) : (
 						<>

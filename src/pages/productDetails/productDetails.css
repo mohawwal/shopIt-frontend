@@ -110,6 +110,7 @@
 
 .imgNPIcons button .imgNextIcon {
     width: 1.5rem;
+    opacity: 50%;
 }
 
 
@@ -137,7 +138,7 @@
 }
 
 .productImage {
-    border: 1px solid rgb(148, 148, 148);
+    border: 1px solid rgba(116, 106, 224, 0.948);
     width: 55px;
     height: 55px;
     border-radius: 8px;

@@ -15,7 +15,7 @@ import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
 import ViewShow from "../../assets/svg/viewShow";
 import AlertContext from "../../components/alert/AlertContext";
 import Love from "../../assets/svg/love";
-import ArrowLeft from "../../assets/svg/arrowLeft";
+import UTurn from "../../assets/svg/UTurn";
 import MetaData from "../../components/layouts/MetaData";
 import { NEW_REVIEW_RESET } from "../../components/constants/productConstants";
 import {
@@ -197,7 +197,7 @@ const ProductDetails = () => {
 						className="backArrowPD"
 						onClick={() => navigate(-1)}
 					>
-						<ArrowLeft className="icons ArrowLeft" />
+						<UTurn className="icons aLI" fill="rgba(116, 106, 224, 0.948)" />
 						<span>Back</span>
 					</div>
 
