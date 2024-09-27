@@ -27,7 +27,6 @@ import {
 	orderReducer,
 } from "./components/reducer/orderReducer";
 import {
-	paymentReducer,
 	verifyPaymentReducer,
 } from "./components/reducer/paymentReducer";
 import { wishListReducer } from "./components/reducer/wishListReducer";

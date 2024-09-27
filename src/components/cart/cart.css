@@ -75,8 +75,9 @@
 }
 
 .subTotalPrice {
-	font-size: 1rem;
-	color: rgba(0, 0, 0, 0.812);
+	font-size: 0.8rem;
+	width: 100%;
+	color: rgba(0, 0, 0, 0.904);
 }
 
 .missIcon {
@@ -105,7 +106,7 @@
 }
 
 .subTotalPrice {
-	font-size: 1rem;
+	font-size: 0.85rem;
 }
 
 .itemDownBtn .leftBtn {
@@ -147,7 +148,7 @@
 .shoppingCart {
 	font-size: 0.8rem;
 	text-align: center;
-	background-color: rgba(16, 16, 161, 0.396);
+	background-color: rgba(23, 23, 166, 0.51);
 	padding: 0.5rem 0;
 	color: white;
 	margin-top: 15px;
@@ -160,7 +161,7 @@
 }
 
 .cartSections {
-	padding: 2px 10px;
+	padding: 0px 10px;
 }
 
 .OrderDetails {
@@ -173,11 +174,11 @@
 
 .orWay {
 	font-weight: 600;
-	font-size: 1rem;
+	font-size: 0.9rem;
 }
 
 .orderHead {
-	font-size: 1.05rem;
+	font-size: 0.9rem;
 	width: 100%;
 	text-align: left;
 	font-weight: 500;
@@ -218,7 +219,6 @@
 }
 
 .checkOut {
-	margin: 1px 0;
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -227,7 +227,7 @@
 }
 
 .checkOut button {
-	padding: 10px 15px;
+	padding: 5px 15px;
 	border: none;
 	font-size: 0.9rem;
 	width: 100%;
@@ -250,7 +250,7 @@
 
 .listOrderSpaces {
 	margin: 1px 0;
-	font-size: 12px;
+	font-size: 0.8px;
 }
 
 .inputOrderList {
@@ -259,7 +259,6 @@
 	gap: 5px;
 	width: 80%;
 	justify-content: right;
-	margin: 5px 0 15px;
 }
 
 .inputList {
@@ -274,18 +273,18 @@
 
 .EmptyCart {
 	color: rgba(0, 0, 61, 0.753);
-	font-size: 1rem;
+	font-size: 0.8rem;
 	width: 100%;
 	text-align: center;
 }
 
 .oDText {
-	font-size: 1rem;
+	font-size: 0.85rem;
 }
 
 .oDLarge {
-	font-size: 1.2rem;
-	color: rgb(2, 2, 62);
+	font-size: 1rem;
+	color: rgb(3, 3, 49);
 }
 
 .itemDown {
@@ -359,7 +358,7 @@
 }
 
 .billingDetails {
-	font-size: 1.2rem;
+	font-size: 1rem;
 	margin: 20px 0 10px;
 }
 
@@ -391,7 +390,7 @@
 .verifyText {
 	color: rgb(103, 133, 255);
 	font-weight: 600;
-	font-size: 0.9rem;
+	font-size: 0.85rem;
 }
 
 .shipNoteCat {
@@ -410,7 +409,7 @@
 	width: 100%;
 	overflow-y: auto;
 	border-radius: 20px;
-	font-size: 1rem;
+	font-size: 0.9rem;
 }
 
 .LSN {
@@ -1062,11 +1061,11 @@ input[type="number"]::-webkit-outer-spin-button {
 		margin-bottom: 20%;
 		z-index: 20;
 		background-color: rgb(255, 255, 255);
-		border: 0.1px 0.1px solid rgba(111, 0, 0, 0.421);
+		border: 0.1px 0.1px solid rgba(111, 0, 0, 0.325);
 		
 	}
 	.cartSmallList {
-		margin-bottom: 24vh;
+		margin-bottom: 29vh;
 	}
 }
 
