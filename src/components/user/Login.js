@@ -6,7 +6,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { login, clearErrors } from "../../actions/userAction";
 // import googleIcon from "../../assets/images/google_icon.png";
 import AlertContext from "../alert/AlertContext";
-import bgImg from '../../assets/images/bg/bg6.jpg'
+//import bgImg from '../../assets/images/bg/bg6.jpg'
 
 const Login = () => {
 	const dispatch = useDispatch();
@@ -155,7 +155,7 @@ const Login = () => {
 				</div>
 			</div>
 			<div className="showCover">
-				<img src={bgImg} alt="" />
+			<img src="https://res.cloudinary.com/dqhbcpiul/image/upload/v1727398514/bg6_q9cck0.jpg" alt="" />
 			</div>
 		</div>
 	);

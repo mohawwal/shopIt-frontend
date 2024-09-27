@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import ClipLoader from "react-spinners/ClipLoader";
 import { Field, ErrorMessage, useFormik, FormikProvider } from "formik";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
+import UTurn from "../../../assets/svg/UTurn";
 
 const NewProduct = () => {
 	const dispatch = useDispatch();
@@ -74,47 +75,6 @@ const NewProduct = () => {
 		"Jewelry",
 		"Gifts",
 	];
-
-	//const [allSizes, setAllSizes] = useState([])
-
-	// const sizes = [
-	// 	"S",
-	// 	"M",
-	// 	"L",
-	// 	"XL",
-	// 	"XXL",
-	// 	"XXXL",
-	// 	"30",
-	// 	"32",
-	// 	"34",
-	// 	"36",
-	// 	"38",
-	// 	"40",
-	// 	"42",
-	// 	"44",
-	// 	"46",
-	// 	"48",
-	// 	"50",
-	// ];
-
-	// const [checkedState, setCheckedState] = useState(
-	// 	new Array(sizes.length).fill(false),
-	// );
-
-	// const handleSizeChange = (position) => {
-	// 	const updatedCheckedState = checkedState.map((item, index) =>
-	// 		index === position ? !item : item,
-	// 	);
-	// 	setCheckedState(updatedCheckedState);
-
-	// 	const selectedSizes = sizes.filter(
-	// 		(size, index) => updatedCheckedState[index],
-	// 	);
-
-	// 	formik.setFieldValue("size", selectedSizes);
-
-	// 	//setAllSizes(selectedSizes)
-	// };
 
 	const validationSchema = Yup.object().shape({
 		name: Yup.string()
@@ -202,6 +162,13 @@ const NewProduct = () => {
 
 	return (
 		<div className="newProduct">
+			<div
+						className="backArrowPD"
+						onClick={() => navigate(-1)}
+					>
+						<UTurn className="icons aLI" fill="rgba(116, 106, 224, 0.948)" />
+						<span>Back</span>
+					</div>
 			<FormikProvider
 				value={formik}
 				className="formLog"
@@ -215,7 +182,7 @@ const NewProduct = () => {
 							<label htmlFor="name_field">Name</label>
 							<div className="as">*</div>
 						</div>
-						<div className="">
+						<div className="updateProduct">
 							<Field
 								type="name"
 								name="name"
@@ -238,7 +205,7 @@ const NewProduct = () => {
 							<div className="as">*</div>
 						</div>
 						<div className="">
-							<div style={{ display: "flex", alignItems: "center" }}>
+							<div className="updateProduct" style={{ display: "flex", alignItems: "center" }}>
 								<span>₦</span>
 								<Field
 									type="number"
@@ -262,7 +229,7 @@ const NewProduct = () => {
 							<label htmlFor="name_field">Description</label>
 							<div className="as">*</div>
 						</div>
-						<div className="">
+						<div className="updateProduct">
 							<Field
 								as="textarea"
 								name="description"
@@ -284,7 +251,7 @@ const NewProduct = () => {
 							<label htmlFor="name_field">Category</label>
 							<div className="as">*</div>
 						</div>
-						<div className="">
+						<div className="updateProduct">
 							<Field
 								as="select"
 								name="category"
@@ -343,7 +310,7 @@ const NewProduct = () => {
 							<label htmlFor="name_field">stock</label>
 							<div className="as">*</div>
 						</div>
-						<div className="">
+						<div className="updateProduct">
 							<Field
 								type="number"
 								name="stock"

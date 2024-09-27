@@ -33,6 +33,7 @@ import Alert from "./components/alert/alert";
 import PageFooter from "./pages/footer/pageFooter";
 import UserList from "./components/admin/userList/UserList";
 import UpdateUser from "./components/admin/updateUser/UpdateUser";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 import store from "./store";
 import { loadUser } from "./actions/userAction";
@@ -228,12 +229,14 @@ function App() {
 						/>
 						
 					</Route>
+					<Route path="*" element={<NotFoundPage />} />
 
 				</Routes>
 				<PageFooter />
 				<nav className="bottomNav">
 					<NavDown />
 				</nav>
+				
 			</Router>
 		</div>
 	);

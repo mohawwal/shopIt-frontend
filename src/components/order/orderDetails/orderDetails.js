@@ -74,12 +74,13 @@ const OrderDetails = () => {
 			<div className="orderLTD">
 				<div className="LTD">
 					<div className="orderText">
-						📍{order?.shippingInfo?.streetAddress
+						📍
+						{order?.shippingInfo?.streetAddress
 							? `${order.shippingInfo.streetAddress || order.shippingInfo.park}, ${order.shippingInfo.state}`
 							: "Shipping information is not available"}
 					</div>
 					<div className="orderDate">
-					📅{formatDate(order?.createdAt || new Date())}
+						📅{formatDate(order?.createdAt || new Date())}
 					</div>
 				</div>
 			</div>
@@ -108,7 +109,10 @@ const OrderDetails = () => {
 										}}
 									/>
 									<div className="classDetails">
-										<span>{item.name && item.name.charAt(0).toUpperCase() + item.name.slice(1)}</span>
+										<span>
+											{item.name &&
+												item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+										</span>
 										<p>
 											<i>Qty</i> - <b>x{item.quantity}</b>
 										</p>
@@ -122,26 +126,28 @@ const OrderDetails = () => {
 				</div>
 			</div>
 			<div className="orderDetailsFooter">
-  <div>
-    <span>Sub-total</span>
-    <span>₦{order && order.itemsPrice.toLocaleString()}</span>
-  </div>
-  <div>
-    <span>Delivery</span>
-    <span>₦{order && order.shippingPrice.toLocaleString()}</span>
-  </div>
-  <div>
-    <span>Service fee</span>
-    <span>₦{order && order.taxPrice.toLocaleString()}</span>
-  </div>
-  <div>
-    <span style={{ fontWeight: "bold" }}>Total</span>
-    <span className="oTN" style={{ fontWeight: "bold" }}>
-      ₦{order && order.totalPrice.toLocaleString()}
-    </span>
-  </div>
-</div>
-
+				<div>
+					<span>Sub-total</span>
+					<span>₦{order && order.itemsPrice.toLocaleString()}</span>
+				</div>
+				<div>
+					<span>Delivery</span>
+					<span>₦{order && order.shippingPrice.toLocaleString()}</span>
+				</div>
+				<div>
+					<span>Service fee</span>
+					<span>₦{order && order.taxPrice.toLocaleString()}</span>
+				</div>
+				<div>
+					<span style={{ fontWeight: "bold" }}>Total</span>
+					<span
+						className="oTN"
+						style={{ fontWeight: "bold" }}
+					>
+						₦{order && order.totalPrice.toLocaleString()}
+					</span>
+				</div>
+			</div>
 		</div>
 	);
 };

@@ -7,6 +7,8 @@ import Loader from "../../../pages/loader/loader";
 import { UpdateUser } from '../../../actions/userAction';
 import { DELETE_USERS_RESET, UPDATE_USERS_RESET } from '../../constants/userConstants';
 import { deleteUser } from '../../../actions/userAction';
+import './UpdateUser.css'
+import UTurn from '../../../assets/svg/UTurn';
 
 const UpdateUsers = () => {
   const {userId} = useParams()
@@ -72,9 +74,17 @@ const UpdateUsers = () => {
 
   return (
     <div className="newProduct">
+      <div
+						className="backArrowPD"
+						onClick={() => navigate(-1)}
+					>
+						<UTurn className="icons aLI" fill="rgba(116, 106, 224, 0.948)" />
+						<span>Back</span>
+					</div>
+      <div className='UpdateUser'>
       <div>
         <b>#{user && user._id}</b>
-        <div>
+        <div className='uUPP'>
           <img src={user && user.avatar && user.avatar.url} alt="" />
         </div>
         <div>
@@ -84,7 +94,7 @@ const UpdateUsers = () => {
           {/* <div>Joined: <b></b></div> */}
         </div>
       </div>
-      <div>
+      <div className='uUR'>
         <div>
           <label htmlFor="name">Name</label>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
@@ -106,6 +116,7 @@ const UpdateUsers = () => {
         <div>
           <button onClick={() => deleteUserHandler(user && user._id)}>Delete User</button>
         </div>
+      </div>
       </div>
     </div>
   )

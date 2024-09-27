@@ -1,0 +1,32 @@
+.uUPP {
+    width: 100px;
+}
+
+.UpdateUser {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.uUR div {
+    margin: 5px 0;
+    width: 100%;
+}
+
+.uUR div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.uUR div input {
+    border: 1px solid black;
+    height: 35px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.uUR div button {
+    margin-top: 10px;
+    padding: 5px;
+}

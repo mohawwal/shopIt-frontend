@@ -11,6 +11,8 @@ import { updateProduct } from "../../../actions/productActions";
 import ClipLoader from "react-spinners/ClipLoader";
 import * as Yup from "yup";
 import { Field, ErrorMessage, useFormik, FormikProvider } from "formik";
+import UTurn from "../../../assets/svg/UTurn";
+import './updateProduct.css'
 
 const UpdateProduct = () => {
 	const dispatch = useDispatch();
@@ -191,6 +193,13 @@ const UpdateProduct = () => {
 
 	return (
 		<div className="newProduct">
+			<div
+						className="backArrowPD"
+						onClick={() => navigate(-1)}
+					>
+						<UTurn className="icons aLI" fill="rgba(116, 106, 224, 0.948)" />
+						<span>Back</span>
+					</div>
 			<FormikProvider
 				value={formik}
 				className="formLog"

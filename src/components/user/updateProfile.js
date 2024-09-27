@@ -8,7 +8,7 @@ import avatarPrev from "../../assets/images/avatarPreview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { updateProfile, loadUser, clearErrors } from "../../actions/userAction";
 import { UPDATE_PROFILE_RESET } from "../constants/userConstants";
-import UTurn from "../../assets/svg/UTurn";
+import ArrowLeft from "../../assets/svg/arrowLeft";
 import AlertContext from "../alert/AlertContext";
 
 const UpdateProfile = () => {
@@ -103,7 +103,7 @@ const UpdateProfile = () => {
 									onClick={() => navigate(-1)}
 								>
 									<div>
-									<UTurn className="icons aLI" fill="rgba(116, 106, 224, 0.948)" />
+										<ArrowLeft className="icons aLI" />
 									</div>
 									<div className="head">Edit Profile</div>
 								</div>
