@@ -87,8 +87,8 @@ const Register = () => {
 		const file = e.currentTarget.files[0];
 		if (file) {
 			setSelectedAvatar(file);
-			setPreviewImage(URL.createObjectURL(file)); // Preview the selected image
-			formik.setFieldValue("avatar", file); // Set the file in Formik's form data
+			setPreviewImage(URL.createObjectURL(file)); 
+			formik.setFieldValue("avatar", file);
 		}
 	};
 

@@ -88,8 +88,8 @@ const AllProductsHome = () => {
 									<div className="allTD">
 										<div>
 											<div className="allName">
-												{product.name && product.name.length > 13
-													? `${product.name.toUpperCase().slice(0, 13)}...`
+												{product.name && product.name.length > 18
+													? `${product.name.toUpperCase().slice(0, 18)}...`
 													: product.name.toUpperCase()}
 											</div>
 											<div className="allStars">
@@ -139,8 +139,10 @@ const AllProductsHome = () => {
 									</div>
 									<div className="allTD allTDSC">
 										<div>
-											<div className="allName">
-												{product?.name}
+										<div className="allName">
+												{product.name && product.name.length > 18
+													? `${product.name.toUpperCase().slice(0, 18)}...`
+													: product.name.toUpperCase()}
 											</div>
 											<div className="allStars">
 												₦{formatPrice(product.price)}

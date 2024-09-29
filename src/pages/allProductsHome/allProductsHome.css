@@ -90,7 +90,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     text-transform: uppercase;
-    max-width: 100%;
 }
 
 
@@ -241,7 +240,7 @@
         object-position: top;
     }
     .adcTSC {
-        background-color: rgb(116, 146, 237);
+        background-color: rgba(126, 151, 225, 0.984);
         width: 95%;
         height: 32px;
         margin: 0 auto;
