@@ -137,26 +137,26 @@ const AllProductsHome = () => {
 											/>
 										</Link>
 									</div>
-									<div className="allTD">
+									<div className="allTD allTDSC">
 										<div>
 											<div className="allName">
-												{product.name && product.name.length > 13
-													? `${product.name.toUpperCase().slice(0, 13)}...`
-													: product.name.toUpperCase()}
+												{product?.name}
 											</div>
 											<div className="allStars">
 												₦{formatPrice(product.price)}
 											</div>
 										</div>
+									</div>
+									<div className="adcTSC">
 										{product && product.stock >= 1 ? (
 											<div
-												className="basket basketSC"
+												className="basketTSC"
 												onClick={() => addToCart(product._id)}
 											>
-												<BsCart4 className="basketIcon" />
+												<p>ADD TO CART 🛒</p>
 											</div>
 										) : (
-											<></>
+											<p className="oOS">Out Of Stock</p>
 										)}
 									</div>
 								</div>

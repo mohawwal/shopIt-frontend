@@ -3,9 +3,10 @@ import './navCategory.css'
 import { categories } from '../../components/data/categories'
 import { useNavigate, useParams } from 'react-router-dom'
 import ArrowRight from '../../assets/svg/arrowRight'
-import ArrowLeft from '../../assets/svg/arrowLeft'
+//import ArrowLeft from '../../assets/svg/arrowLeft'
 import { Link } from 'react-router-dom'
 import MetaData from '../../components/layouts/MetaData'
+import UTurn from '../../assets/svg/UTurn'
 
 const NavCategory = () => {
   const { catId } = useParams()
@@ -20,7 +21,7 @@ const NavCategory = () => {
         <div className='blurNav blurNav2'></div>
         <div className='navBurger navBurger2'>
           <div className='navBack' onClick={() => navigate(-1)}>
-            <ArrowLeft className="icons arrowIcon"/>
+            <UTurn className="icons aLI" fill="rgba(116, 106, 224, 0.948)" />
             <p>Back</p>
           </div>
           <div className='burgerList burgerList2'>

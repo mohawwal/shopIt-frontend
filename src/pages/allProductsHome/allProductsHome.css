@@ -84,13 +84,19 @@
 
 .allName {
     font-size: 0.8rem;
-    color: rgba(13, 13, 62, 0.781);
+    color: rgba(13, 13, 62, 0.707);
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    max-width: 100%;
 }
 
 
 .allStars {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
+    font-weight: 500;
     color: rgba(17, 17, 50, 0.915);
 }
 
@@ -219,19 +225,48 @@
 
     .allHomeSC {
         width: 47%;
-        height: 240px;
+        height: 250px;
         background-color: rgb(232, 232, 232);
         margin: 5px 1px;
         border-radius: 6px;
     }
 
     .allHomeImgSC {
-        height: 80%;
+        height: 66%;
     }
     .allHomeImgSC img {
         height: 100%;
         width: 100%;
         object-fit: cover;
         object-position: top;
+    }
+    .adcTSC {
+        background-color: rgb(116, 146, 237);
+        width: 95%;
+        height: 32px;
+        margin: 0 auto;
+        border-radius: 5px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .adcTSC:hover, .adcTSC:focus {
+        background-color: black;
+        color: white;
+    }
+    .basketTSC {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+    .oOS {
+        cursor: crosshair;
+    }
+    .allTDSC {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-top: 3px;
     }
 } 

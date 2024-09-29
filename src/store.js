@@ -30,6 +30,7 @@ import {
 	verifyPaymentReducer,
 } from "./components/reducer/paymentReducer";
 import { wishListReducer } from "./components/reducer/wishListReducer";
+import { uploadReducer } from "./components/reducer/uploadReducer";
 
 const reducer = combineReducers({
 	productCategory: productCategoryReducer,
@@ -53,6 +54,7 @@ const reducer = combineReducers({
 	allOrder: allOrderReducer,
 	order: orderReducer,
 	wishList: wishListReducer,
+	upload: uploadReducer
 });
 
 let initialState = {

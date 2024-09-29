@@ -123,7 +123,8 @@
 }
 
 .oTN {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+    font-weight: 500;
 }
 
 .prsIcons {
@@ -165,4 +166,8 @@
     justify-content: space-between;
     margin: 10px 0 15px;
     font-size: 1rem;
+}
+
+.oDBlur {
+    color: rgba(5, 5, 5, 0.885);
 }

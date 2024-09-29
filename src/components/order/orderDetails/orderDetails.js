@@ -128,23 +128,22 @@ const OrderDetails = () => {
 			<div className="orderDetailsFooter">
 				<div>
 					<span>Sub-total</span>
-					<span>₦{order && order.itemsPrice.toLocaleString()}</span>
+					<span className="oDBlur">₦{order && order.itemsPrice && order.itemsPrice.toLocaleString()}</span>
 				</div>
 				<div>
 					<span>Delivery</span>
-					<span>₦{order && order.shippingPrice.toLocaleString()}</span>
+					<span className="oDBlur">₦{order && order.shippingPrice && order.shippingPrice.toLocaleString()}</span>
 				</div>
 				<div>
 					<span>Service fee</span>
-					<span>₦{order && order.taxPrice.toLocaleString()}</span>
+					<span className="oDBlur">₦{order && order.taxPrice && order.taxPrice.toLocaleString()}</span>
 				</div>
 				<div>
 					<span style={{ fontWeight: "bold" }}>Total</span>
 					<span
 						className="oTN"
-						style={{ fontWeight: "bold" }}
 					>
-						₦{order && order.totalPrice.toLocaleString()}
+						₦{order && order.totalPrice && order.totalPrice.toLocaleString()}
 					</span>
 				</div>
 			</div>

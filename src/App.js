@@ -38,6 +38,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
 import PeopleProduct from "./pages/peopleProduct/peopleProduct";
+import Add from "./pages/Add";
 
 function App() {
 
@@ -55,8 +56,6 @@ function App() {
 				<div>
 					<Alert />
 				</div>
-
-				
 
 				<Routes>
 					<Route
@@ -144,6 +143,11 @@ function App() {
 						path="/payment"
 						element={<Payment />}
 						exact
+					/>
+
+					<Route
+						path="/add"
+						element={<Add/>}
 					/>
 
 					{/* Protected Route if not authenticated user */}

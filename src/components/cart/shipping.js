@@ -405,7 +405,7 @@ const Shipping = () => {
 															<div className="yourOrderName">
 																<div>
 																	<p>{item.name && item.name.toUpperCase()}</p>
-																	<span>x{item.quantity}</span>
+																	<span style={{fontSize: "0.85rem"}}><i>Qty </i>x{item.quantity}</span>
 																</div>
 															</div>
 															<div className="yourOrderPrice">

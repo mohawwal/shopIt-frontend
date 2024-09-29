@@ -82,7 +82,6 @@ const UpdateProfile = () => {
 					setSelectedAvatar(reader.result);
 				}
 			};
-
 			reader.readAsDataURL(e.target.files[0]);
 		}
 	};
