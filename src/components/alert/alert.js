@@ -11,8 +11,8 @@ const alertStyles = {
     borderRadius: "6px",
     fontSize: "0.9rem",
     fontWeight: 400,
-    width: "90%",
-    maxWidth: "350px",
+    width: "80%",
+    maxWidth: "300px",
 };
 
 

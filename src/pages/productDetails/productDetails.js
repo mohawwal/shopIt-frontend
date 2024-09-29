@@ -270,7 +270,6 @@ const ProductDetails = () => {
 							<div className="PDPriceComment">
 								<div className="PDPrice">
 									<span className="DPrice">
-										{" "}
 										₦
 										{productDetails.price &&
 											productDetails.price.toLocaleString()}
