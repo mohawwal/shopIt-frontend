@@ -129,9 +129,9 @@ const Login = () => {
 						<div className="btnPss">
 							<button
 								type="submit"
-								disabled={loading ? true : false}
+								disabled={loading && formSubmitted ? true : false}
 							>
-								{loading ? (
+								{loading && formSubmitted ? (
 									<ClipLoader
 										color={"white"}
 										loading={true}
