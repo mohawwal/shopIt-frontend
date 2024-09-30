@@ -88,8 +88,8 @@ const AllProductsHome = () => {
 									<div className="allTD">
 										<div>
 											<div className="allName">
-												{product.name && product.name.length > 18
-													? `${product.name.toUpperCase().slice(0, 18)}...`
+												{product.name && product.name.length > 16
+													? `${product.name.toUpperCase().slice(0, 16)}...`
 													: product.name.toUpperCase()}
 											</div>
 											<div className="allStars">

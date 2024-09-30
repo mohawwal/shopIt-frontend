@@ -95,6 +95,7 @@ export const register = (userData) => async (dispatch) => {
             }
         }
 
+        console.log("Registering user with data:", userData);
         const {data} = await axiosInstance.post('/api/v1/register', userData, config)
         localStorage.setItem('token', data.token)
 
