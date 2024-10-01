@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../loader/loader";
 import "./productPeople.css";
 import { Link } from "react-router-dom";
+import { FaFilter } from "react-icons/fa";
 import { categories } from "../../components/data/categories";
 
 const PeopleProduct = () => {
@@ -16,7 +17,7 @@ const PeopleProduct = () => {
 		(state) => state.productPeople,
 	);
 
-	const [price, setPrice] = useState([0, 100000]);
+	const [price, setPrice] = useState([0, 10000000]);
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -47,6 +48,12 @@ const PeopleProduct = () => {
 		dispatch(getPeopleProduct(people, currentPage, price));
 	}, [currentPage, dispatch, error, people]);
 
+	const [filerToggle, setFilterToggle] = useState(false);
+
+	const toggleFilter = () => {
+		setFilterToggle(!filerToggle);
+	};
+
 	if (loading) {
 		return <Loader />;
 	}
@@ -54,7 +61,7 @@ const PeopleProduct = () => {
 	return (
 		<div className="productPeople">
 			<div className="peopleNav">
-				<div style={{height: "50%"}}>
+				<div style={{ height: "50%" }}>
 					<div className="pSliderContainer">
 						<div className="pPriceFilter">
 							<span className="pFT">FILTER</span>
@@ -90,7 +97,10 @@ const PeopleProduct = () => {
 						</div>
 					</div>
 				</div>
-				<div className="peopleCat" style={{height: "50%"}}>
+				<div
+					className="peopleCat"
+					style={{ height: "50%" }}
+				>
 					<span>{people.toUpperCase()}-CATEGORY</span>
 					<ul>
 						{categories.map((category) => (
@@ -105,7 +115,7 @@ const PeopleProduct = () => {
 														className="linkList"
 													>
 														<div>
-															<p className="pCL" >{item}</p>
+															<p className="pCL">{item}</p>
 														</div>
 													</Link>
 												</li>
@@ -119,6 +129,43 @@ const PeopleProduct = () => {
 				</div>
 			</div>
 			<div className="peopleFold">
+				<div className="sliderContainer takeOutFill">
+					<div className={`${filerToggle ? "priceFilter" : "priceFilterNone"}`}>
+						<div className="pFFInput">
+							<label>
+								Min: ₦
+								<input
+									type="number"
+									name="min"
+									value={price[0]}
+									onChange={handlePriceChange}
+								/>
+							</label>
+							<label>
+								Max: ₦
+								<input
+									type="number"
+									name="max"
+									value={price[1]}
+									onChange={handlePriceChange}
+								/>
+							</label>
+						</div>
+						<button
+							onClick={() => {
+								dispatch(getPeopleProduct(people, currentPage, price));
+							}}
+						>
+							Apply Filter
+						</button>
+					</div>
+					<div
+						className="filterSlide"
+						onClick={toggleFilter}
+					>
+						<FaFilter className="filterIcon" />
+					</div>
+				</div>
 				<div className="prodFold">
 					{products && products.length > 0 ? (
 						products.map((product) => {

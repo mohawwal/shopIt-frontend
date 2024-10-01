@@ -57,6 +57,7 @@ ul li {
 
 .navListLink div p, .otherNav li p {
     font-size: 1rem;
+    font-weight: 400;
 }
 
 .burgerList {

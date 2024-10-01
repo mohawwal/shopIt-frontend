@@ -25,7 +25,7 @@ const ProductFolder = () => {
 		});
 	};
 
-	const [price, setPrice] = useState([0, 100000]);
+	const [price, setPrice] = useState([0, 10000000]);
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const [activeIndex, setActiveIndex] = useState(0);

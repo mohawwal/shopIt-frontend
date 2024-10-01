@@ -131,7 +131,7 @@ const Cart = () => {
 														<div className="itemProp spaceD">
 															<div className="itemUp">SUBTOTAL</div>
 															<div style={{fontSize: "1rem"}} className="itemDown subTotalPrice">
-															{`₦ ${(item.price * item.quantity).toFixed(2)}`}
+															{`₦ ${(item.price * item.quantity).toLocaleString()}`}
 															</div>
 														</div>
 													</div>
@@ -191,7 +191,7 @@ const Cart = () => {
 														</button>
 													</div>
 													<div style={{fontSize: "1rem"}} className="itemDown subTotalPrice cartSubII">
-														{`₦ ${(item.price * item.quantity).toFixed(0)}`}
+														{`₦ ${(item.price * item.quantity).toLocaleString()}`}
 													</div>
 												</div>
 											</div>

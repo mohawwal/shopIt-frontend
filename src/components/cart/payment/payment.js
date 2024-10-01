@@ -40,6 +40,7 @@ const Payment = () => {
 		products: orderInfo?.orderItems,
 	};
 	console.log("paymentData - ", paymentData);
+	console.log("paymentData Reference - ", paymentData.reference);
 
 	useEffect(() => {
 		if (error) {

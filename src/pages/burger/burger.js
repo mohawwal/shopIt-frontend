@@ -5,11 +5,31 @@ import ArrowRight from "../../assets/svg/arrowRight";
 import { Link } from "react-router-dom";
 import { categories } from "../../components/data/categories";
 import { accessories } from "../../components/data/categories";
+import { motion } from "framer-motion";
 //import SignOutAlert from "../../components/user/signOutAlert/signOutAlert";
 
 const Burger = ({ handleNav, user, loading, logoutFunc }) => {
+	const container = {
+		hidden: { opacity: 1, scale: 0 },
+		visible: {
+		  opacity: 1,
+		  scale: 1,
+		  transition: {
+			delayChildren: 0.3,
+			staggerChildren: 0.2
+		  }
+		}
+	};
+	  
+	const item = {
+		hidden: { y: 20, opacity: 0 },
+		visible: {
+		  y: 0,
+		  opacity: 1
+		}
+	};
 	return (
-		<div className="burger">
+		<motion.div className="burger">
 			<div className="cancelBurger">
 				<span onClick={handleNav}>
 					<Cancel className="icons cancelIcon" />
@@ -22,10 +42,12 @@ const Burger = ({ handleNav, user, loading, logoutFunc }) => {
 						<ArrowRight className="icons arrowIcons" />
 					</li>
 				</ul>
-				<ul className="otherNav">
+				<motion.ul className="otherNav" variants={container}
+									initial="hidden"
+									animate="visible">
 					{categories.map((category) => {
 						return (
-							<li onClick={handleNav}>
+							<motion.li onClick={handleNav} variants={item}>
 								<Link
 									to={`/category/${category.id}`}
 									className="navListLink Link"
@@ -37,14 +59,17 @@ const Burger = ({ handleNav, user, loading, logoutFunc }) => {
 										<ArrowRight className="icons arrowIcons" />
 									</div>
 								</Link>
-							</li>
+							</motion.li>
 						);
 					})}
-				</ul>
-				<ul className="otherNav">
+				</motion.ul>
+				<motion.ul className="otherNav" variants={container}
+									initial="hidden"
+									animate="visible">
 					{accessories.map((accessory) => {
 						return (
-							<li onClick={handleNav}>
+							<motion.li onClick={handleNav} 
+							variants={item}>
 								<Link
 									to={`/product/category/${accessory.title}`}
 									className="navListLink Link"
@@ -52,10 +77,10 @@ const Burger = ({ handleNav, user, loading, logoutFunc }) => {
 									<p>{accessory.title}</p>
 									<ArrowRight className="icons arrowIcons" />
 								</Link>
-							</li>
+							</motion.li>
 						);
 					})}
-				</ul>
+				</motion.ul>
 
 				<div className="servicesNav">
 					<div>
@@ -126,7 +151,7 @@ const Burger = ({ handleNav, user, loading, logoutFunc }) => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

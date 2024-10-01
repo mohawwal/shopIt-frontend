@@ -60,7 +60,7 @@
     object-fit: cover;
     object-position: top;
     border-radius: 5px 5px 0 0;
-    padding: 4px;
+    padding: 8px 4px 0;
 }
 
 .allTD {
@@ -85,8 +85,8 @@
 
 .allName {
     font-size: 0.8rem;
-    color: rgba(13, 13, 62, 0.707);
-    font-weight: 600;
+    color: rgba(3, 3, 3, 0.707);
+    font-weight: 400;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

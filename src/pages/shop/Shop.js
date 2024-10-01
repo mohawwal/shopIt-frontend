@@ -6,6 +6,7 @@ import Loader from "../loader/loader";
 import { shopCategory } from "../../components/data/categories";
 import { Link } from "react-router-dom";
 import ArrowUpRight from "../../assets/svg/arrowUpRight";
+import { motion } from "framer-motion";
 
 const Shop = () => {
 	const dispatch = useDispatch();
@@ -18,43 +19,72 @@ const Shop = () => {
 		}
 	}, [dispatch, error]);
 
+	const container = {
+		hidden: { opacity: 1, scale: 0 },
+		visible: {
+			opacity: 1,
+			scale: 1,
+			transition: {
+				delayChildren: 0.5,
+				staggerChildren: 0.3,
+			},
+		},
+	};
+
+	const item = {
+		hidden: { y: 30, opacity: 0 },
+		visible: {
+			y: 0,
+			opacity: 1,
+		},
+	};
+
 	if (loading) {
 		return <Loader />;
 	}
 
 	return (
-		<div className="navShop">
+		<motion.div
+			className="navShop"
+			variants={container}
+			initial="hidden"
+			animate="visible"
+		>
 			{shopCategory.map((shop, index) => (
-			<div className="shopCategory" key={index}>
-				<div className="shopSpace">
-					<div className="shopImageBox">
-						<img
-							src={shop.image}
-							alt="img"
-						/>
-					</div>
-					<div className="shopDetailsBox">
-						<div className="detailsShop">
-							<span>{shop.title}</span>
-							<p>Mario Store</p>
+				<div
+					className="shopCategory"
+					key={index}
+					variants={item}
+				>
+					<div className="shopSpace">
+						<div className="shopImageBox">
+							<img
+								src={shop.image}
+								alt="img"
+							/>
 						</div>
-						<Link
-							className="buyShop"
-							to={`/product/category/${shop.category}`}
-						>
-							<p>Buy now</p>
-							<div>
-								<ArrowUpRight
-									className="arrowUpRight"
-									fill="black"
-								/>
+						<div className="shopDetailsBox">
+							<div className="detailsShop">
+								<span>{shop.title}</span>
+								<p>Mario Store</p>
 							</div>
-						</Link>
+							<Link
+								className="buyShop"
+								to={`/product/category/${shop.category}`}
+							>
+								<p>Buy now</p>
+								<div>
+									<ArrowUpRight
+										className="arrowUpRight"
+										fill="black"
+									/>
+								</div>
+							</Link>
+						</div>
 					</div>
 				</div>
-			</div>
 			))}
-		</div>
+		</motion.div>
 	);
 };
 

@@ -5,6 +5,7 @@ import Loader from "../loader/loader";
 import { shopCategory } from "../../components/data/categories";
 import { Link } from "react-router-dom";
 import ArrowUpRight from "../../assets/svg/arrowUpRight";
+import { motion } from "framer-motion";
 
 const AllHomeCategory = () => {
 	const dispatch = useDispatch();
@@ -21,14 +22,43 @@ const AllHomeCategory = () => {
 		return <Loader />;
 	}
 
+	const container = {
+		hidden: { opacity: 1, scale: 0 },
+		visible: {
+			opacity: 1,
+			scale: 1,
+			transition: {
+				delayChildren: 0.3,
+				staggerChildren: 0.2,
+			},
+		},
+	};
+
+	const item = {
+		hidden: { y: 20, opacity: 0 },
+		visible: {
+			y: 0,
+			opacity: 1,
+		},
+	};
+
 	return (
-		<div className="catProdHome" style={{marginTop: "20px"}}>
+		<div
+			className="catProdHome"
+			style={{ marginTop: "20px" }}
+		>
 			<div className="moving-sentence">MARIO'S SHOP 👌</div>
-			<div className="productHome">
+			<motion.div
+				className="productHome"
+				variants={container}
+				initial="hidden"
+				animate="visible"
+			>
 				{shopCategory.map((shop, index) => (
-					<div
+					<motion.div
 						className="aHC"
 						key={index}
+						variants={item}
 					>
 						<div className="shopSpace">
 							<div className="shopImageBox">
@@ -56,9 +86,9 @@ const AllHomeCategory = () => {
 								</Link>
 							</div>
 						</div>
-					</div>
+					</motion.div>
 				))}
-			</div>
+			</motion.div>
 		</div>
 	);
 };

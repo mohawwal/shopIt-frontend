@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import { addItemToCart } from "../../actions/cartAction";
 import AlertContext from "../../components/alert/AlertContext";
+import { motion } from "framer-motion";
 
 const AllProductsHome = () => {
 	const dispatch = useDispatch();
@@ -55,6 +56,26 @@ const AllProductsHome = () => {
 		if (targetPage >= 1 && targetPage <= pageNo) setCurrentPage(targetPage);
 	};
 
+	const container = {
+		hidden: { opacity: 1, scale: 0 },
+		visible: {
+			opacity: 1,
+			scale: 1,
+			transition: {
+				delayChildren: 0.5,
+				staggerChildren: 0.3,
+			},
+		},
+	};
+
+	const item = {
+		hidden: { y: 30, opacity: 0 },
+		visible: {
+			y: 0,
+			opacity: 1,
+		},
+	};
+
 	if (loading) {
 		return (
 			<div>
@@ -66,13 +87,19 @@ const AllProductsHome = () => {
 		<div>
 			<div className="allProdHome">
 				<div className="moving-sentence MDSC">NEW MARIO'S👌</div>
-				<div className="productHome">
+				<motion.div
+					className="productHome"
+					variants={container}
+					initial="hidden"
+					animate="visible"
+				>
 					{Array.isArray(products) && products.length > 0 ? (
 						products.map((product, index) => {
 							return (
-								<div
+								<motion.div
 									className="allHome Link"
 									key={index}
+									variants={item}
 								>
 									<div className="allHomeImg">
 										<Link
@@ -88,8 +115,8 @@ const AllProductsHome = () => {
 									<div className="allTD">
 										<div>
 											<div className="allName">
-												{product.name && product.name.length > 16
-													? `${product.name.toUpperCase().slice(0, 16)}...`
+												{product.name && product.name.length > 13
+													? `${product.name.toUpperCase().slice(0, 13)}...`
 													: product.name.toUpperCase()}
 											</div>
 											<div className="allStars">
@@ -107,24 +134,30 @@ const AllProductsHome = () => {
 											<></>
 										)}
 									</div>
-								</div>
+								</motion.div>
 							);
 						})
 					) : (
 						<>NO PRODUCT FOUND</>
 					)}
-				</div>
+				</motion.div>
 			</div>
 			{/* smaller screen */}
 			<div className="allProdHomeSC">
 				<div className="moving-sentence MDSC">NEW MARIO'S👌</div>
-				<div className="productHomeSC">
+				<motion.div
+					className="productHomeSC"
+					variants={container}
+					initial="hidden"
+					animate="visible"
+				>
 					{Array.isArray(products) && products.length > 0 ? (
 						products.map((product, index) => {
 							return (
-								<div
+								<motion.div
 									className="allHomeSC"
 									key={index}
+									variants={item}
 								>
 									<div className="allHomeImgSC">
 										<Link
@@ -139,7 +172,7 @@ const AllProductsHome = () => {
 									</div>
 									<div className="allTD allTDSC">
 										<div>
-										<div className="allName">
+											<div className="allName">
 												{product.name && product.name.length > 18
 													? `${product.name.toUpperCase().slice(0, 18)}...`
 													: product.name.toUpperCase()}
@@ -161,13 +194,13 @@ const AllProductsHome = () => {
 											<p className="oOS">Out Of Stock</p>
 										)}
 									</div>
-								</div>
+								</motion.div>
 							);
 						})
 					) : (
 						<>NO PRODUCT FOUND</>
 					)}
-				</div>
+				</motion.div>
 				<div className="pagSC">
 					<div className="pagination">
 						<span className="tryPeg">
